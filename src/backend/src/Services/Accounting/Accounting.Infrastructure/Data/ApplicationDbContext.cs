@@ -1,4 +1,5 @@
-﻿namespace Accounting.Infrastructure.Data;
+﻿
+namespace Accounting.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext
 {
@@ -18,6 +19,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(builder);
     }
