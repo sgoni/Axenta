@@ -2,6 +2,11 @@
 
 public class ApplicationDbContext : DbContext
 {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
     // DbSets
     public DbSet<AccountType> AccountTypes => Set<AccountType>();
     public DbSet<Account> Accounts => Set<Account>();
@@ -11,8 +16,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<DocumentReference> DocumentReferences => Set<DocumentReference>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
+        base.OnModelCreating(builder);
     }
 }

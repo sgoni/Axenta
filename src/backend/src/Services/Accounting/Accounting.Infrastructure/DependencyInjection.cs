@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Accounting.Infrastructure;
+﻿namespace Accounting.Infrastructure;
 
 public static class DependencyInjection
 {
