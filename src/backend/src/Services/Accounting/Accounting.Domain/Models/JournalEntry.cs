@@ -39,9 +39,9 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
     public void AddLine(AccountId accountId, decimal debit, decimal credit, int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfLessThan(debit, zero);
-        ArgumentOutOfRangeException.ThrowIfLessThan(credit, zero);
-        ArgumentOutOfRangeException.ThrowIfLessThan(lineNumber, 1);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(debit);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(credit);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
         var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
