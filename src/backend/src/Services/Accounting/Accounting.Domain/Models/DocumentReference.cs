@@ -5,8 +5,7 @@
 /// </summary>
 public class DocumentReference : Entity<DocumentReferenceId>
 {
-    internal DocumentReference(JournalEntryId journalEntryId, string sourceType,
-        SourceId sourceId)
+    internal DocumentReference(JournalEntryId journalEntryId, string sourceType, SourceId sourceId)
     {
         Id = DocumentReferenceId.Of(Guid.NewGuid());
         JournalEntryId = journalEntryId;
@@ -14,7 +13,7 @@ public class DocumentReference : Entity<DocumentReferenceId>
         SourceId = sourceId;
     }
 
-    public JournalEntryId JournalEntryId { get; private set; }
-    public string SourceType { get; private set; }
-    public SourceId SourceId { get; private set; }
+    public JournalEntryId JournalEntryId { get; private set; } = default!;
+    public string SourceType { get; private set; } = default!;
+    public SourceId SourceId { get; private set; } = default!;
 }

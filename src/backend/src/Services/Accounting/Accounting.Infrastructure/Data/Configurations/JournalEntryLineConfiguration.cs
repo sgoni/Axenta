@@ -10,8 +10,10 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
             journalEntryLineId => journalEntryLineId.Value,
             dbId => JournalEntryLineId.Of(dbId));
 
-        builder.Property(e => e.Debit).HasColumnType("numeric(18,2)").HasDefaultValue(0);
-        builder.Property(e => e.Credit).HasColumnType("numeric(18,2)").HasDefaultValue(0);
+        builder.Property(e => e.JournalEntryId).IsRequired();
+        builder.Property(e => e.Debit).HasColumnType("numeric(18,2)").HasDefaultValue(0).IsRequired();
+        builder.Property(e => e.Credit).HasColumnType("numeric(18,2)").HasDefaultValue(0).IsRequired();
+        builder.Property(e => e.LineNumber).HasColumnType("numeric(3,0)").HasDefaultValue(0).IsRequired();
 
         builder.HasCheckConstraint("CK_Debit_NonNegative", "\"Debit\" >= 0");
         builder.HasCheckConstraint("CK_Credit_NonNegative", "\"Credit\" >= 0");

@@ -5,19 +5,19 @@
 /// </summary>
 public class JournalEntryLine : Entity<JournalEntryLineId>
 {
-    internal JournalEntryLine(JournalEntryId entryId, AccountId accountId, decimal debit, decimal credit,
+    internal JournalEntryLine(JournalEntryId journalEntryId, AccountId accountId, decimal debit, decimal credit,
         int lineNumber)
     {
         Id = JournalEntryLineId.Of(Guid.NewGuid());
-        JournalEntryId = entryId;
+        JournalEntryId = journalEntryId;
         AccountId = accountId;
         Debit = debit;
         Credit = credit;
         LineNumber = lineNumber;
     }
 
-    public JournalEntryId JournalEntryId { get; private set; }
-    public AccountId AccountId { get; private set; }
+    public JournalEntryId JournalEntryId { get; private set; } = default!;
+    public AccountId AccountId { get; private set; } = default!;
     public decimal Debit { get; private set; }
     public decimal Credit { get; private set; }
     public int LineNumber { get; private set; }

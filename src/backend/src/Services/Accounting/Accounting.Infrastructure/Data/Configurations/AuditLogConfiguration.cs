@@ -10,6 +10,10 @@ public class AuditLogConfiguration : IEntityTypeConfiguration<AuditLog>
             audilogId => audilogId.Value,
             dbId => AuditLogId.Of(dbId));
 
+        builder.Property(a => a.EntityId).HasConversion(
+            audilogId => audilogId.Value,
+            dbId => EntityId.Of(dbId));
+
         builder.Property(e => e.Entity).HasMaxLength(100).IsRequired();
         builder.Property(e => e.Action).HasMaxLength(20).IsRequired();
         builder.Property(e => e.PerformedAt).HasDefaultValueSql("now()");

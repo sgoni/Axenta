@@ -8,18 +8,20 @@ public class JournalEntry : Aggregate<JournalEntryId>
     private const int zero = 0;
 
     private readonly List<DocumentReference> _documentReferences = new();
+
     private readonly List<JournalEntryLine> _journalEntryLines = new();
-    public IReadOnlyCollection<JournalEntryLine> JournalEntryLines => _journalEntryLines.AsReadOnly();
     public IReadOnlyCollection<DocumentReference> DocumentReferences => _documentReferences.AsReadOnly();
+    public IReadOnlyCollection<JournalEntryLine> JournalEntryLines => _journalEntryLines.AsReadOnly();
 
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
 
-    public static JournalEntry Create(DateTime date, string? description, PeriodId? periodId)
+    public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId)
     {
         var journalEntry = new JournalEntry
         {
+            Id = id,
             Date = date,
             Description = description,
             PeriodId = periodId
