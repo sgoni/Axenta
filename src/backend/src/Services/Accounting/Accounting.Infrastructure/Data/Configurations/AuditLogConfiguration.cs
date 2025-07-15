@@ -4,19 +4,46 @@ public class AuditLogConfiguration : IEntityTypeConfiguration<AuditLog>
 {
     public void Configure(EntityTypeBuilder<AuditLog> builder)
     {
-        builder.ToTable("AuditLog");
-        builder.HasKey(a => a.Id);
-        builder.Property(a => a.Id).HasConversion(
-            audilogId => audilogId.Value,
-            dbId => AuditLogId.Of(dbId));
+        builder.ToTable("AuditLogs");
 
-        builder.Property(a => a.EntityId).HasConversion(
-            audilogId => audilogId.Value,
-            dbId => EntityId.Of(dbId));
+        builder.HasKey(al => al.Id);
 
-        builder.Property(e => e.Entity).HasMaxLength(100).IsRequired();
-        builder.Property(e => e.Action).HasMaxLength(20).IsRequired();
-        builder.Property(e => e.PerformedAt).HasDefaultValueSql("now()");
-        builder.Property(e => e.Details).HasColumnType("jsonb");
+        builder.Property(al => al.Id)
+            .HasConversion(
+                pid => pid!.Value,
+                val => AuditLogId.Of(val)
+            )
+            .IsRequired();
+
+        builder.Property(al => al.Entity)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(al => al.Action)
+            .IsRequired()
+            .HasMaxLength(50);
+
+        builder.Property(al => al.PerformedAt)
+            .IsRequired();
+
+        builder.Property(al => al.Details)
+            .HasMaxLength(500);
+
+        builder.Property(al => al.EntityId)
+            .HasConversion(
+                eid => eid.Value,
+                val => EntityId.Of(val)
+            )
+            .IsRequired()
+            .HasColumnName("EntityId");
+
+        builder.Property(al => al.PerformedBy)
+            .HasConversion(
+                pb => pb.Value,
+                val => PerformedBy.Of(val)
+            )
+            .IsRequired()
+            .HasColumnName("PerformedBy")
+            .HasMaxLength(100);
     }
 }

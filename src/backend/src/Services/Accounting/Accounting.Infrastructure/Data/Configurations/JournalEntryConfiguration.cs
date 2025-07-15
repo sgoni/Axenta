@@ -4,29 +4,38 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 {
     public void Configure(EntityTypeBuilder<JournalEntry> builder)
     {
-        builder.ToTable("JournalEntry");
+        builder.ToTable("JournalEntries");
+
         builder.HasKey(j => j.Id);
 
-        builder.Property(j => j.Id).HasConversion(
-            journalEntryId => journalEntryId.Value,
-            dbId => JournalEntryId.Of(dbId));
+        builder.Property(j => j.Id)
+            .HasConversion(
+                pid => pid!.Value,
+                val => JournalEntryId.Of(val)
+            )
+            .IsRequired();
 
-        builder.Property(j => j.PeriodId).HasConversion(
-            periodId => periodId.Value,
-            dbId => PeriodId.Of(dbId));
+        builder.Property(j => j.Date)
+            .IsRequired();
 
-        builder.Property(e => e.Date).IsRequired();
-        builder.Property(e => e.Description);
-        builder.Property(e => e.CreatedAt).HasDefaultValueSql("now()");
+        builder.Property(j => j.Description)
+            .HasMaxLength(500);
 
-        builder.HasOne<JournalEntry>()
-            .WithMany()
-            .HasForeignKey(e => e.PeriodId)
-            .OnDelete(DeleteBehavior.SetNull);
+        builder.Property(j => j.PeriodId)
+            .HasConversion(
+                pid => pid!.Value,
+                val => PeriodId.Of(val)
+            )
+            .HasColumnName("PeriodId");
 
-        // Relación 1 - N
-        builder.HasMany(e => e.JournalEntryLines)
+        builder.HasMany(j => j.DocumentReferences)
             .WithOne()
-            .HasForeignKey(jl => jl.JournalEntryId);
+            .HasForeignKey(dr => dr.JournalEntryId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(j => j.JournalEntryLines)
+            .WithOne()
+            .HasForeignKey(el => el.JournalEntryId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -1,26 +1,25 @@
-using Accounting.API;
-using Accounting.Application;
-using Accounting.Infrastructure;
-
-var builder = WebApplication.CreateBuilder(args);
+internal class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services
-    .AddApplicationServices()
-    .AddInfrastructureServices(builder.Configuration)
-    .AddApiServices(builder.Configuration);
+        builder.Services
+            .AddApplicationServices()
+            .AddInfrastructureServices(builder.Configuration)
+            .AddApiServices(builder.Configuration);
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+        builder.Services.AddOpenApi();
 
-var app = builder.Build();
+        var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.MapOpenApi();
-//}
-//
-//app.UseHttpsRedirection();
+        app.UseApiServices();
 
-app.Run();
+        if (app.Environment.IsDevelopment()) await app.InitialiseDatabaseAsync();
+
+        app.Run();
+    }
+}

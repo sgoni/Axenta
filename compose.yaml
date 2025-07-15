@@ -1,7 +1,0 @@
-﻿services:
-  accounting.api:
-    image: accounting.api
-    build:
-      context: .
-      dockerfile: src/backend/src/Services/Accounting/Accounting.API/Dockerfile
-

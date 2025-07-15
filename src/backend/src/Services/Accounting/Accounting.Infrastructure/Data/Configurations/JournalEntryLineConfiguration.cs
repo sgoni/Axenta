@@ -4,23 +4,50 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
 {
     public void Configure(EntityTypeBuilder<JournalEntryLine> builder)
     {
-        builder.ToTable("JournalEntryLine");
-        builder.HasKey(j => j.Id);
-        builder.Property(j => j.Id).HasConversion(
-            journalEntryLineId => journalEntryLineId.Value,
-            dbId => JournalEntryLineId.Of(dbId));
+        builder.ToTable("JournalEntryLines");
 
-        builder.Property(e => e.JournalEntryId).IsRequired();
-        builder.Property(e => e.Debit).HasColumnType("numeric(18,2)").HasDefaultValue(0).IsRequired();
-        builder.Property(e => e.Credit).HasColumnType("numeric(18,2)").HasDefaultValue(0).IsRequired();
-        builder.Property(e => e.LineNumber).HasColumnType("numeric(3,0)").HasDefaultValue(0).IsRequired();
+        builder.HasKey(l => l.Id);
 
-        builder.HasCheckConstraint("CK_Debit_NonNegative", "\"Debit\" >= 0");
-        builder.HasCheckConstraint("CK_Credit_NonNegative", "\"Credit\" >= 0");
+        builder.Property(l => l.Id)
+            .HasConversion(
+                lineId => lineId.Value,
+                val => JournalEntryLineId.Of(val)
+            )
+            .IsRequired();
 
-        builder.HasOne<Account>()
-            .WithMany()
-            .HasForeignKey(j => j.AccountId)
-            .OnDelete(DeleteBehavior.Restrict);
+        builder.Property(l => l.JournalEntryId)
+            .HasConversion(
+                jeId => jeId.Value,
+                val => JournalEntryId.Of(val)
+            )
+            .IsRequired()
+            .HasColumnName("JournalEntryId");
+
+        builder.Property(l => l.AccountId)
+            .HasConversion(
+                accId => accId.Value,
+                val => AccountId.Of(val)
+            )
+            .IsRequired()
+            .HasColumnName("AccountId");
+
+        builder.Property(l => l.Debit)
+            .HasColumnType("decimal(18,2)")
+            .IsRequired();
+
+        builder.Property(l => l.Credit)
+            .HasColumnType("decimal(18,2)")
+            .IsRequired();
+
+        builder.Property(l => l.LineNumber)
+            .IsRequired();
+
+        builder.HasOne<JournalEntry>()
+            .WithMany(j => j.JournalEntryLines)
+            .HasForeignKey(l => l.JournalEntryId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasIndex(l => new { l.JournalEntryId, l.LineNumber })
+            .IsUnique();
     }
 }

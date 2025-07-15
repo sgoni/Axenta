@@ -4,26 +4,43 @@ public class DocumentReferenceConfiguration : IEntityTypeConfiguration<DocumentR
 {
     public void Configure(EntityTypeBuilder<DocumentReference> builder)
     {
-        builder.ToTable("DocumentReference");
-        builder.HasKey(d => d.Id);
-        builder.Property(d => d.Id).HasConversion(
-            documentId => documentId.Value,
-            dbId => DocumentReferenceId.Of(dbId));
+        builder.ToTable("DocumentReferences");
 
-        builder.Property(d => d.JournalEntryId).HasConversion(
-            journalEntryId => journalEntryId.Value,
-            dbId => JournalEntryId.Of(dbId));
-        
-        builder.Property(d => d.SourceId).HasConversion(
-            sourceId => sourceId.Value,
-            dbId => SourceId.Of(dbId));
-        
-        builder.Property(e => e.SourceId);
-        builder.Property(e => e.SourceType).HasMaxLength(50).IsRequired();
+        builder.HasKey(dr => dr.Id);
 
-        builder.HasOne<DocumentReference>()
-            .WithMany()
-            .HasForeignKey(jl => jl.JournalEntryId)
-            .OnDelete(DeleteBehavior.Cascade);
+        builder.Property(dr => dr.Id)
+            .HasConversion(
+                jeId => jeId.Value,
+                val => DocumentReferenceId.Of(val)
+            )
+            .IsRequired();
+
+        builder.Property(dr => dr.JournalEntryId)
+            .HasConversion(
+                jeId => jeId.Value,
+                val => JournalEntryId.Of(val)
+            )
+            .IsRequired()
+            .HasColumnName("JournalEntryId");
+
+        builder.Property(dr => dr.SourceType)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(dr => dr.SourceId)
+            .HasConversion(
+                src => src.Value,
+                val => SourceId.Of(val)
+            )
+            .IsRequired()
+            .HasColumnName("SourceId");
+
+        builder.HasOne<JournalEntry>()
+            .WithMany(j => j.DocumentReferences)
+            .HasForeignKey(dr => dr.JournalEntryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasIndex(dr => new { dr.JournalEntryId, dr.SourceType, dr.SourceId })
+            .IsUnique();
     }
 }

@@ -4,13 +4,27 @@ public class AccountTypeConfiguration : IEntityTypeConfiguration<AccountType>
 {
     public void Configure(EntityTypeBuilder<AccountType> builder)
     {
-        builder.ToTable("AccountType");
-        builder.HasKey(c => c.Id);
-        builder.Property(c => c.Id).HasConversion(
-            accountTypeId => accountTypeId.Value,
-            dbId => TypeId.Of(dbId));
+        builder.ToTable("AccountTypes");
 
-        builder.Property(c => c.Name).HasMaxLength(50).IsRequired();
-        builder.Property(c => c.Description).HasMaxLength(100);
+        builder.HasKey(at => at.Id);
+
+        builder.Property(at => at.Id)
+            .HasConversion(
+                pid => pid!.Value,
+                val => AccountTypeId.Of(val)
+            )
+            .IsRequired();
+
+        builder.Property(at => at.Name)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(at => at.Description)
+            .HasMaxLength(250);
+
+        builder.HasMany(at => at.Accounts)
+            .WithOne(a => a.Type)
+            .HasForeignKey(a => a.AccountTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

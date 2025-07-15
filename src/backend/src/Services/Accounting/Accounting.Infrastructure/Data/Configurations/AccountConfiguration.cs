@@ -4,24 +4,41 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
-        builder.ToTable("Account");
-        builder.HasKey(ac => ac.Id);
-        builder.Property(ac => ac.Id).HasConversion(
-            accountId => accountId.Value,
-            dbId => AccountId.Of(dbId));
+        builder.ToTable("Accounts");
 
-        builder.Property(ac => ac.Code).HasMaxLength(20).IsRequired();
-        builder.Property(ac => ac.Name).HasMaxLength(100).IsRequired();
-        builder.Property(ac => ac.IsActive).HasDefaultValue(true);
+        builder.HasKey(a => a.Id);
 
-        builder.HasOne<AccountType>()
-            .WithMany()
-            .HasForeignKey(ac => ac.TypeId)
+        builder.Property(a => a.Id)
+            .HasConversion(
+                pid => pid!.Value,
+                val => AccountId.Of(val)
+            )
+            .IsRequired();
+
+        builder.Property(a => a.Code)
+            .IsRequired()
+            .HasMaxLength(50);
+
+        builder.Property(a => a.Name)
+            .IsRequired()
+            .HasMaxLength(150);
+
+        builder.Property(a => a.IsActive)
+            .IsRequired();
+
+        builder.Property(a => a.AccountTypeId)
+            .IsRequired();
+
+        builder.HasOne(a => a.Type)
+            .WithMany(at => at.Accounts)
+            .HasForeignKey(a => a.AccountTypeId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne<Account>()
-            .WithMany()
-            .HasForeignKey(ac => ac.ParentId)
+        builder.Property(a => a.ParentId);
+
+        builder.HasOne(a => a.Parent)
+            .WithMany(a => a.Children)
+            .HasForeignKey(a => a.ParentId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -1,0 +1,17 @@
+services:
+  accountingdb:
+    container_name: accountingdb
+    restart: always
+    environment:
+      POSTGRES_DB: Accountingdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - axenta-net
+    volumes:
+      - postgres_axenta:/var/lib/postgresql/data
+
+networks:
+  axenta-net:  
