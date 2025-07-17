@@ -8,3 +8,4 @@ global using Accounting.Infrastructure.Data;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.Extensions.DependencyInjection;
 global using Accounting.Infrastructure.Data;
+global using Accounting.Domain.Abstractions;

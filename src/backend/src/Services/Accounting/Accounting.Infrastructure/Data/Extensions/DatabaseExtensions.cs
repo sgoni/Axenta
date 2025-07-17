@@ -32,7 +32,7 @@ public static class DatabaseExtensions
 
     private static async Task SeedAccountsAsync(ApplicationDbContext context)
     {
-        if (!await context.AccountTypes.AnyAsync())
+        if (!await context.Accounts.AnyAsync())
         {
             await context.Accounts.AddRangeAsync(InitialData.Accounts);
             await context.SaveChangesAsync();
@@ -41,7 +41,7 @@ public static class DatabaseExtensions
 
     private static async Task SeedPeriodsAsync(ApplicationDbContext context)
     {
-        if (!await context.AccountTypes.AnyAsync())
+        if (!await context.Periods.AnyAsync())
         {
             await context.Periods.AddRangeAsync(InitialData.Periods);
             await context.SaveChangesAsync();

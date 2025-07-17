@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
 
 namespace Accounting.Infrastructure;
 
@@ -18,7 +19,11 @@ public static class DependencyInjection
         var connectionString =
             $"Server={server};Port={port};Database={database};User Id=postgres;Password=postgres;Include Error Detail=true";
 
-        services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+        services.AddDbContext<ApplicationDbContext>((sp, options) =>
+        {
+            options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+            options.UseNpgsql(connectionString);
+        });
 
         return services;
     }
