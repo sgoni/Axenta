@@ -19,6 +19,9 @@ public static class DependencyInjection
         var connectionString =
             $"Server={server};Port={port};Database={database};User Id=postgres;Password=postgres;Include Error Detail=true";
 
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
