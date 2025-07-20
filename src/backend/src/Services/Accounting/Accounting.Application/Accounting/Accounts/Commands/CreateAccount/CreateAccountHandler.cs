@@ -1,7 +1,4 @@
-﻿using Accounting.Application.Data;
-using Accounting.Domain.VelueObjects;
-
-namespace Accounting.Application.Accounting.Accounts.Commands._CreateAccount;
+﻿namespace Accounting.Application.Accounting.Accounts.Commands.CreateAccount;
 
 public class CreateAccountHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateAccountCommand, CreateAccountResult>
@@ -22,11 +19,11 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
     private Account CreateNewAccount(AccountDto accountDto)
     {
         var newAccount =
-            Account.Create(id: AccountId.Of(Guid.NewGuid()),
-                code: accountDto.Code,
-                name: accountDto.Name,
-                accountTypeId: AccountTypeId.Of(accountDto.AccountTypeId),
-                parentId: AccountId.Of(accountDto.ParentId));
+            Account.Create(AccountId.Of(Guid.NewGuid()),
+                accountDto.Code,
+                accountDto.Name,
+                AccountTypeId.Of(accountDto.AccountTypeId),
+                AccountId.Of(accountDto.ParentId));
 
         return newAccount;
     }

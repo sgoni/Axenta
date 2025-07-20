@@ -35,6 +35,19 @@ public class Account : Entity<AccountId>
         return account;
     }
 
+    public void Update(string code, string name, AccountTypeId accountTypeId, AccountId parentId,
+        bool isActive)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(code);
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+
+        Code = code;
+        Name = name;
+        AccountTypeId = accountTypeId;
+        ParentId = parentId;
+        IsActive = isActive;
+    }
+
     public void Deactivate()
     {
         IsActive = false;
