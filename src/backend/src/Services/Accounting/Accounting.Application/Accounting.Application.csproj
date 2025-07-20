@@ -11,4 +11,12 @@
         <ProjectReference Include="..\Accounting.Domain\Accounting.Domain.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Accounting\Commands\" />
+      <Folder Include="Accounting\EventHandlers\Domain\" />
+      <Folder Include="Accounting\EventHandlers\Integration\" />
+      <Folder Include="Accounting\Queries\" />
+      <Folder Include="Exceptions\" />
+    </ItemGroup>
+
 </Project>

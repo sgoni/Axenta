@@ -217,7 +217,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.ToTable("JournalEntries", (string)null);
                 });
 
-            modelBuilder.Entity("Accounting.Domain.Models.JournalEntryLine", b =>
+            modelBuilder.Entity("Accounting.Domain.Models.JournalEntryLineDto", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
@@ -326,7 +326,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Accounting.Domain.Models.JournalEntryLine", b =>
+            modelBuilder.Entity("Accounting.Domain.Models.JournalEntryLineDto", b =>
                 {
                     b.HasOne("Accounting.Domain.Models.JournalEntry", null)
                         .WithMany("JournalEntryLines")

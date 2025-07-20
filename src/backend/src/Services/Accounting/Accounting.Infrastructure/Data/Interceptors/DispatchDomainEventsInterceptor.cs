@@ -25,7 +25,7 @@ public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesIn
 
         var aggregates = eventDataContext.ChangeTracker
             .Entries<IAggregate>()
-            .Where(a => a.Entity.DomainEvents != null && a.Entity.DomainEvents.Any())
+            .Where(a => a.Entity.DomainEvents.Any())
             .Select(a => a.Entity);
 
         var domainEvents = aggregates
