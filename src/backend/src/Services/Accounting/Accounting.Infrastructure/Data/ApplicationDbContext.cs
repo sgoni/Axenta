@@ -1,6 +1,8 @@
-﻿namespace Accounting.Infrastructure.Data;
+﻿using Accounting.Application.Data;
 
-public class ApplicationDbContext : DbContext
+namespace Accounting.Infrastructure.Data;
+
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
