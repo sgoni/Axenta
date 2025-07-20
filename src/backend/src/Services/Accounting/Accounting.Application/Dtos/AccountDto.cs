@@ -1,6 +1,4 @@
-﻿using Accounting.Domain.Models;
-
-namespace Accounting.Application.Dtos;
+﻿namespace Accounting.Application.Dtos;
 
 public record AccountDto(
     Guid Id,

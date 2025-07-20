@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public class AccountTypeId
+public record AccountTypeId
 {
     private AccountTypeId(Guid value)
     {

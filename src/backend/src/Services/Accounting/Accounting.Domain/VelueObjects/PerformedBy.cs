@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public class PerformedBy
+public record PerformedBy
 {
     private PerformedBy(Guid value)
     {

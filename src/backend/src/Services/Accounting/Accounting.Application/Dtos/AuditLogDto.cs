@@ -1,6 +1,4 @@
-﻿using Accounting.Domain.VelueObjects;
-
-namespace Accounting.Application.Dtos;
+﻿namespace Accounting.Application.Dtos;
 
 public record AuditLogDto(
     Guid Id,
