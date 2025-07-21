@@ -1,9 +1,12 @@
 ﻿global using Accounting.Application.Data;
 global using Accounting.Application.Dtos;
 global using Accounting.Application.Exceptions;
+global using Accounting.Domain.Events;
 global using Accounting.Domain.Models;
 global using Accounting.Domain.VelueObjects;
 global using Axenta.BuildingBlocks.CQRS;
 global using Axenta.BuildingBlocks.Exceptions;
 global using FluentValidation;
+global using MediatR;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Logging;

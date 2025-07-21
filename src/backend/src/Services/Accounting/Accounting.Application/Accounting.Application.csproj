@@ -12,15 +12,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Accounting\Accounts\Commands\DeleteAccount\"/>
         <Folder Include="Accounting\Accounts\Queries\"/>
         <Folder Include="Accounting\DocumentReferences\Commands\"/>
         <Folder Include="Accounting\DocumentReferences\Queries\"/>
         <Folder Include="Accounting\JournalEntries\Commands\"/>
-        <Folder Include="Accounting\JournalEntries\EventHandlers\Domain\"/>
         <Folder Include="Accounting\JournalEntries\EventHandlers\Integration\"/>
         <Folder Include="Accounting\AuditLogs\Commands\"/>
         <Folder Include="Accounting\AuditLogs\Queries\"/>
+        <Folder Include="Accounting\JournalEntries\Queries\"/>
         <Folder Include="Accounting\Periods\Commands\"/>
         <Folder Include="Accounting\Periods\Queries\"/>
     </ItemGroup>
