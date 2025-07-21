@@ -6,6 +6,6 @@ public class JournalEntryUpdatedEventHandler(ILogger<JournalEntryUpdatedEventHan
     public Task Handle(JournalEntryCreatedEvent notification, CancellationToken cancellationToken)
     {
         logger.LogInformation("Domain Event handled: {DomainEvent}", notification.GetType().Name);
-        return Task.CompletedTask;
+        return Task.CompletedTask; 
     }
 }

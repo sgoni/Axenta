@@ -6,6 +6,5 @@ public record AccountDto(
     string Name,
     Guid AccountTypeId,
     Guid ParentId,
-    bool IsActive,
-    Guid Type
+    bool IsActive
 );
