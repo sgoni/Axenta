@@ -2,4 +2,4 @@
 
 public record GetAccountByIdQuery(Guid AccountId) : IQuery<GetAccountByIdQueryResult>;
 
-public record GetAccountByIdQueryResult(AccountDto Account);
+public record GetAccountByIdQueryResult(AccountDetailDto AccountDetail);

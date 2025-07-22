@@ -9,21 +9,21 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
         //Save to database
         //return result
 
-        var account = CreateNewAccount(command.Account);
+        var account = CreateNewAccount(command.AccountDetail);
         dbContext.Accounts.Add(account);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new CreateAccountResult(account.Id.Value);
     }
 
-    private Account CreateNewAccount(AccountDto accountDto)
+    private Account CreateNewAccount(AccountDetailDto accountDetailDto)
     {
         var newAccount =
             Account.Create(AccountId.Of(Guid.NewGuid()),
-                accountDto.Code,
-                accountDto.Name,
-                AccountTypeId.Of(accountDto.AccountTypeId),
-                AccountId.Of(accountDto.ParentId));
+                accountDetailDto.Code,
+                accountDetailDto.Name,
+                AccountTypeId.Of(accountDetailDto.AccountTypeId),
+                AccountId.Of(accountDetailDto.ParentId));
 
         return newAccount;
     }

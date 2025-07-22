@@ -22,7 +22,7 @@ namespace Accounting.Infrastructure.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Accounting.Domain.Models.Account", b =>
+            modelBuilder.Entity("Accounting.Domain.Models.AccountDetail", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
@@ -299,7 +299,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.ToTable("Periods", (string)null);
                 });
 
-            modelBuilder.Entity("Accounting.Domain.Models.Account", b =>
+            modelBuilder.Entity("Accounting.Domain.Models.AccountDetail", b =>
                 {
                     b.HasOne("Accounting.Domain.Models.AccountType", "Type")
                         .WithMany("Accounts")
@@ -307,7 +307,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Accounting.Domain.Models.Account", "Parent")
+                    b.HasOne("Accounting.Domain.Models.AccountDetail", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -335,7 +335,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Accounting.Domain.Models.Account", b =>
+            modelBuilder.Entity("Accounting.Domain.Models.AccountDetail", b =>
                 {
                     b.Navigation("Children");
                 });

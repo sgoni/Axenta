@@ -9,24 +9,24 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
         //save to database
         //return result
 
-        var accountId = AccountId.Of(command.Account.Id);
+        var accountId = AccountId.Of(command.AccountDetail.Id);
         var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
 
-        if (account is null) throw new AccountNotFoundException(command.Account.Id);
+        if (account is null) throw new AccountNotFoundException(command.AccountDetail.Id);
 
-        UpdateAccountWithNewValues(account, command.Account);
+        UpdateAccountWithNewValues(account, command.AccountDetail);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new UpdateAccountResult(true);
     }
 
-    private void UpdateAccountWithNewValues(Account account, AccountDto accountDto)
+    private void UpdateAccountWithNewValues(Account account, AccountDetailDto accountDetailDto)
     {
         account.Update(
-            accountDto.Name,
-            accountDto.Code,
-            AccountTypeId.Of(accountDto.AccountTypeId),
-            AccountId.Of(accountDto.ParentId),
-            accountDto.IsActive);
+            accountDetailDto.Name,
+            accountDetailDto.Code,
+            AccountTypeId.Of(accountDetailDto.AccountTypeId),
+            AccountId.Of(accountDetailDto.ParentId),
+            accountDetailDto.IsActive);
     }
 }

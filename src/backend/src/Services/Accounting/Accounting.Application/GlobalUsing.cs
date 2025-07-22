@@ -1,6 +1,8 @@
 ﻿global using Accounting.Application.Data;
 global using Accounting.Application.Dtos;
 global using Accounting.Application.Exceptions;
+global using Accounting.Application.Extensions;
+global using Accounting.Application.Extensions;
 global using Accounting.Domain.Events;
 global using Accounting.Domain.Models;
 global using Accounting.Domain.VelueObjects;

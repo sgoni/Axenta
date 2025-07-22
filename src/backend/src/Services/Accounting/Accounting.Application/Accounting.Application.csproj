@@ -12,9 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Accounting\Accounts\Queries\GetAccountsByType\" />
-        <Folder Include="Accounting\Accounts\Queries\GetAccountsTree\" />
-        <Folder Include="Accounting\Accounts\Queries\GetAccounts\" />
+        <Folder Include="Accounting\Accounts\Queries\GetAccountsTree\"/>
         <Folder Include="Accounting\DocumentReferences\Commands\"/>
         <Folder Include="Accounting\DocumentReferences\Queries\"/>
         <Folder Include="Accounting\JournalEntries\Commands\"/>

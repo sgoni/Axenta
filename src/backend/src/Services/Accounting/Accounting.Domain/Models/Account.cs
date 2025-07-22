@@ -11,10 +11,10 @@ public class Account : Entity<AccountId>
     public string Code { get; private set; } = default!;
     public string Name { get; private set; } = default!;
     public AccountTypeId AccountTypeId { get; private set; } = default!;
-    public AccountId? ParentId { get; private set; }
+    public AccountId ParentId { get; private set; }
     public bool IsActive { get; private set; }
     public AccountType Type { get; private set; } = null!;
-    public Account? Parent { get; private set; } = default!;
+    public Account Parent { get; private set; } = default!;
 
     public static Account Create(AccountId id, string code, string name, AccountTypeId accountTypeId,
         AccountId parentId)
