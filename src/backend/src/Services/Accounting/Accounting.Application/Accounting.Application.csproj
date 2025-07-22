@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Accounting\Accounts\Queries\GetAccountsTree\"/>
         <Folder Include="Accounting\DocumentReferences\Commands\"/>
         <Folder Include="Accounting\DocumentReferences\Queries\"/>
         <Folder Include="Accounting\JournalEntries\Commands\"/>

@@ -9,16 +9,12 @@ public static class AccountExtensions
             account.Code,
             account.Name,
             account.AccountTypeId.Value,
+            account.ParentId.Value,
             account.IsActive
         ));
     }
 
-    public static AccountDetailDto ToAccountDto(this Account account)
-    {
-        return DtoFromAccount(account);
-    }
-
-    private static AccountDetailDto DtoFromAccount(Account account)
+    public static AccountDetailDto DtoFromAccount(this Account account)
     {
         return new AccountDetailDto(
             account.Id.Value,
@@ -27,5 +23,30 @@ public static class AccountExtensions
             account.AccountTypeId.Value,
             account.ParentId.Value,
             account.IsActive);
+    }
+
+    public static List<AccountTreeDto>? ToAccountTreeDtoList(this List<Account> accounts)
+    {
+        return accounts.Select(account => new AccountTreeDto(
+            account.Id.Value,
+            account.Code,
+            account.Name,
+            account.AccountTypeId.Value,
+            account.ParentId.Value,
+            new List<AccountTreeDto>()
+        )) as List<AccountTreeDto>;
+    }
+
+    public static List<AccountTreeDto> AccountTreeDto(List<AccountTreeDto>? flatAccounts)
+    {
+        var lookup = flatAccounts.ToDictionary(x => x.Id);
+        var roots = new List<AccountTreeDto>();
+
+        foreach (var account in flatAccounts)
+            if (account.ParentAccountId == null)
+                roots.Add(account);
+            else if (lookup.TryGetValue(account.ParentAccountId.Value, out var parent)) parent.Children.Add(account);
+
+        return roots;
     }
 }

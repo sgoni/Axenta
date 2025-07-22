@@ -8,6 +8,7 @@ global using Accounting.Domain.Models;
 global using Accounting.Domain.VelueObjects;
 global using Axenta.BuildingBlocks.CQRS;
 global using Axenta.BuildingBlocks.Exceptions;
+global using Axenta.BuildingBlocks.Pagination;
 global using FluentValidation;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;

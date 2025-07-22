@@ -1,6 +1,4 @@
-﻿using Axenta.BuildingBlocks.Pagination;
-
-namespace Accounting.Application.Accounting.Accounts.Queries.GetAccounts;
+﻿namespace Accounting.Application.Accounting.Accounts.Queries.GetAccounts;
 
 public record GetAccountsQuery(PaginationRequest PaginationRequest) : IQuery<GetAccountsResult>;
 

@@ -1,12 +1,10 @@
-﻿using Axenta.BuildingBlocks.Pagination;
-
-namespace Accounting.Application.Accounting.Accounts.Queries.GetAccounts;
+﻿namespace Accounting.Application.Accounting.Accounts.Queries.GetAccounts;
 
 public class GetAccountsHandler(IApplicationDbContext dbContext) : IQueryHandler<GetAccountsQuery, GetAccountsResult>
 {
     public async Task<GetAccountsResult> Handle(GetAccountsQuery query, CancellationToken cancellationToken)
     {
-        // get orders with pagination
+        // get accounts with pagination
         // return result
 
         var pageIndex = query.PaginationRequest.PageIndex;
@@ -14,9 +12,11 @@ public class GetAccountsHandler(IApplicationDbContext dbContext) : IQueryHandler
         var totalCount = await dbContext.Accounts.LongCountAsync(cancellationToken);
 
         var accounts = await dbContext.Accounts
+            .AsNoTracking()
             .OrderBy(account => account.Id.Value)
             .Skip(pageIndex * pageSize)
-            .Take(pageSize).ToListAsync(cancellationToken);
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
 
         return new GetAccountsResult(
             new PaginatedResult<AccountDto>(

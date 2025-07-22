@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace Accounting.Application.Accounting.Accounts.Queries.GetAccountTypes;
+﻿namespace Accounting.Application.Accounting.Accounts.Queries.GetAccountTypes;
 
 public class GetAccountTypesHandler(IApplicationDbContext dbContext)
     : IQueryHandler<GetAccountTypesQuery, GetAccountTypesResult>

@@ -4,5 +4,6 @@ public record AccountTreeDto(
     Guid Id,
     string Code,
     string Name,
-    Guid AccountType,
+    Guid AccountTypeId,
+    Guid? ParentAccountId,
     List<AccountTreeDto> Children);

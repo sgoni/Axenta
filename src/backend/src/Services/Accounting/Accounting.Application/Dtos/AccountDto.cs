@@ -5,5 +5,6 @@ public class AccountDto(
     string Code,
     string Name,
     Guid AccountTypeId,
+    Guid ParentAccountId,
     bool IsActive
 );
