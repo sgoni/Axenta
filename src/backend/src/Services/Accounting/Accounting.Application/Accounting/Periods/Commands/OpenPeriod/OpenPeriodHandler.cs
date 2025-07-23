@@ -1,9 +1,9 @@
-﻿namespace Accounting.Application.Accounting.Periods.Commands.ClosePeriod;
+﻿namespace Accounting.Application.Accounting.Periods.Commands.OpenPeriod;
 
-public class UpdatePeriodHandler(IApplicationDbContext dbContext)
-    : ICommandHandler<ClosePeriodCommand, ClosePeriodResult>
+public class OpenPeriodHandler(IApplicationDbContext dbContext)
+    : ICommandHandler<OpenPeriodCommand, OpenPeriodResult>
 {
-    public async Task<ClosePeriodResult> Handle(ClosePeriodCommand command, CancellationToken cancellationToken)
+    public async Task<OpenPeriodResult> Handle(OpenPeriodCommand command, CancellationToken cancellationToken)
     {
         //Update period entity from command object
         //save to database
@@ -14,9 +14,9 @@ public class UpdatePeriodHandler(IApplicationDbContext dbContext)
 
         if (period == null) throw new PeriodNotFoundException(command.PeriodId);
 
-        period.Close();
+        period.Open();
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new ClosePeriodResult(true);
+        return new OpenPeriodResult(true);
     }
 }
