@@ -35,4 +35,9 @@ public class Period : Entity<PeriodId>
     {
         IsClosed = true;
     }
+
+    public void Open()
+    {
+        IsClosed = false;
+    }
 }

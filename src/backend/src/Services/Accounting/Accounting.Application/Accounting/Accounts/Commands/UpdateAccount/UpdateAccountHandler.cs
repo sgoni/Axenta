@@ -5,7 +5,7 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
 {
     public async Task<UpdateAccountResult> Handle(UpdateAccountCommand command, CancellationToken cancellationToken)
     {
-        //Update Order entity from command object
+        //Update account entity from command object
         //save to database
         //return result
 
