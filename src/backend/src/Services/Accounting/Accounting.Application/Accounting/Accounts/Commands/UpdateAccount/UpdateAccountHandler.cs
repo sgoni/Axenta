@@ -20,13 +20,13 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
         return new UpdateAccountResult(true);
     }
 
-    private void UpdateAccountWithNewValues(Account account, AccountDetailDto accountDetailDto)
+    private void UpdateAccountWithNewValues(Account account, AccountDto accountDetailDto)
     {
         account.Update(
             accountDetailDto.Name,
             accountDetailDto.Code,
             AccountTypeId.Of(accountDetailDto.AccountTypeId),
-            AccountId.Of(accountDetailDto.ParentId),
+            AccountId.Of(accountDetailDto.ParentAccountId),
             accountDetailDto.IsActive);
     }
 }

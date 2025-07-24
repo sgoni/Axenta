@@ -14,9 +14,9 @@ public static class AccountExtensions
         ));
     }
 
-    public static AccountDetailDto DtoFromAccount(this Account account)
+    public static AccountDto DtoFromAccount(this Account account)
     {
-        return new AccountDetailDto(
+        return new AccountDto(
             account.Id.Value,
             account.Code,
             account.Name,

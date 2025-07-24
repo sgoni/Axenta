@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Application.Dtos;
 
-public class AccountDto(
+public record AccountDto(
     Guid Id,
     string Code,
     string Name,

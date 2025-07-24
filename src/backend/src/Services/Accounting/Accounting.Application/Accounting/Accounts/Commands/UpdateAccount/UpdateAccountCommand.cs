@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Application.Accounting.Accounts.Commands.UpdateAccount;
 
-public record UpdateAccountCommand(AccountDetailDto AccountDetail) : ICommand<UpdateAccountResult>;
+public record UpdateAccountCommand(AccountDto AccountDetail) : ICommand<UpdateAccountResult>;
 
 public record UpdateAccountResult(bool IsSuccess);
 

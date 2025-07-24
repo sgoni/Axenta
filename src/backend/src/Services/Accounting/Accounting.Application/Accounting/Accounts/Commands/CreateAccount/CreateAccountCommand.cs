@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Application.Accounting.Accounts.Commands.CreateAccount;
 
-public record CreateAccountCommand(AccountDetailDto AccountDetail) : ICommand<CreateAccountResult>;
+public record CreateAccountCommand(AccountDto AccountDetail) : ICommand<CreateAccountResult>;
 
 public record CreateAccountResult(Guid Id);
 

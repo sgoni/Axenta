@@ -16,14 +16,14 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
         return new CreateAccountResult(account.Id.Value);
     }
 
-    private Account CreateNewAccount(AccountDetailDto accountDetailDto)
+    private Account CreateNewAccount(AccountDto accountDetailDto)
     {
         var newAccount =
             Account.Create(AccountId.Of(Guid.NewGuid()),
                 accountDetailDto.Code,
                 accountDetailDto.Name,
                 AccountTypeId.Of(accountDetailDto.AccountTypeId),
-                AccountId.Of(accountDetailDto.ParentId));
+                AccountId.Of(accountDetailDto.ParentAccountId));
 
         return newAccount;
     }

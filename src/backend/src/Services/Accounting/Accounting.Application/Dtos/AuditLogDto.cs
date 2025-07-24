@@ -6,5 +6,5 @@ public record AuditLogDto(
     string Action,
     Guid PerformedBy,
     DateTime PerformedAt,
-    string Details
+    string? Details
 );
