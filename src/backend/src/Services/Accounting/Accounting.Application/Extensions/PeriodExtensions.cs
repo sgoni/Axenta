@@ -1,0 +1,16 @@
+﻿namespace Accounting.Application.Extensions;
+
+public static class PeriodExtensions
+{
+    public static IEnumerable<PeriodDto> ToPeriodDtoList(this IEnumerable<Period> periods)
+    {
+        return periods.Select(period =>
+            new PeriodDto(
+                period.Year,
+                period.Month,
+                period.StartDate,
+                period.EndDate,
+                period.IsClosed
+            ));
+    }
+}

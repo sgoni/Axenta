@@ -19,7 +19,6 @@
         <Folder Include="Accounting\AuditLogs\Commands\"/>
         <Folder Include="Accounting\AuditLogs\Queries\"/>
         <Folder Include="Accounting\JournalEntries\Queries\"/>
-        <Folder Include="Accounting\Periods\Queries\"/>
     </ItemGroup>
 
     <ItemGroup>
