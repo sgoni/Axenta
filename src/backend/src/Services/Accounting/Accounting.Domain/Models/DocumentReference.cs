@@ -13,6 +13,14 @@ public class DocumentReference : Entity<DocumentReferenceId>
         SourceId = sourceId;
     }
 
+    public static DocumentReference Create(JournalEntryId journalEntryId, string sourceType, SourceId sourceId)
+    {
+        ArgumentNullException.ThrowIfNull(journalEntryId);
+        ArgumentNullException.ThrowIfNull(sourceId);
+        
+        return new DocumentReference(journalEntryId, sourceType, sourceId);
+    }
+
     public JournalEntryId JournalEntryId { get; private set; } = default!;
     public string SourceType { get; private set; } = default!;
     public SourceId SourceId { get; private set; } = default!;

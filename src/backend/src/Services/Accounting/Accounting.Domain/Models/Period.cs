@@ -41,16 +41,16 @@ public class Period : Entity<PeriodId>
         IsClosed = false;
     }
 
-    static DateTime GetFirstDayOfTheMonth()
+    private static DateTime GetFirstDayOfTheMonth()
     {
-        DateTime today = DateTime.Today;
+        var today = DateTime.Today;
         return new DateTime(today.Year, today.Month, 1);
     }
 
-    static DateTime GetLastDayOfMonth()
+    private static DateTime GetLastDayOfMonth()
     {
-        DateTime today = DateTime.Today;
-        int lastDay = DateTime.DaysInMonth(today.Year, today.Month);
+        var today = DateTime.Today;
+        var lastDay = DateTime.DaysInMonth(today.Year, today.Month);
         return new DateTime(today.Year, today.Month, lastDay);
     }
 }

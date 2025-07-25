@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Accounting\DocumentReferences\Commands\"/>
-        <Folder Include="Accounting\DocumentReferences\Queries\"/>
+        <Folder Include="Accounting\Documents\CreateDocumentReference\" />
+        <Folder Include="Accounting\Documents\GetDocumentReferenceById\" />
         <Folder Include="Accounting\JournalEntries\Commands\"/>
         <Folder Include="Accounting\JournalEntries\EventHandlers\Integration\"/>
         <Folder Include="Accounting\JournalEntries\Queries\"/>
