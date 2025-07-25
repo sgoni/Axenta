@@ -13,7 +13,7 @@ public class GetAccountsHandler(IApplicationDbContext dbContext) : IQueryHandler
 
         var accounts = await dbContext.Accounts
             .AsNoTracking()
-            .OrderBy(account => account.Id.Value)
+            .OrderBy(account => account.Code)
             .Skip(pageIndex * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);

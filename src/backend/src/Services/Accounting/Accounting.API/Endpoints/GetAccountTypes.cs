@@ -7,7 +7,7 @@ public class GetAccountTypes : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/api/accounts/types", async (ISender sender) =>
+        app.MapGet("/accounts/types", async (ISender sender) =>
             {
                 var result = await sender.Send(new GetAccountTypesQuery());
 
@@ -15,7 +15,7 @@ public class GetAccountTypes : ICarterModule
 
                 return Results.Ok(response);
             })
-            .WithName("GetOrdersByCustomer")
+            .WithName("GetAccountTypes")
             .Produces<GetAccountTypesResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)

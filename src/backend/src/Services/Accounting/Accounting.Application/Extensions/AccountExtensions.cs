@@ -9,7 +9,7 @@ public static class AccountExtensions
             account.Code,
             account.Name,
             account.AccountTypeId.Value,
-            account.ParentId.Value,
+            account.ParentId?.Value,
             account.IsActive
         ));
     }
@@ -21,7 +21,7 @@ public static class AccountExtensions
             account.Code,
             account.Name,
             account.AccountTypeId.Value,
-            account.ParentId.Value,
+            account.ParentId?.Value,
             account.IsActive);
     }
 

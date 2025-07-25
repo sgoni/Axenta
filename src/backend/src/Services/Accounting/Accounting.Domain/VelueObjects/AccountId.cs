@@ -16,4 +16,12 @@ public record AccountId
 
         return new AccountId(value);
     }
+
+    public static AccountId Of(Guid? parentAccountId)
+    {
+        ArgumentNullException.ThrowIfNull(parentAccountId);
+        if (parentAccountId == Guid.Empty) throw new DomainException("AccountId cannot be empty");
+
+        return new AccountId((Guid)parentAccountId);
+    }
 }

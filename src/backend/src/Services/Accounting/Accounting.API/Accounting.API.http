@@ -1,7 +1,31 @@
 # curl -X 'GET' 
-#  'https://localhost:5050/api/accounts/types' 
+#  'https://localhost:5050/accounts?PageIndex=1&PageSize=10' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/api/accounts/types
+GET {{API_HostAddress}}/accounts?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/desactivate' 
+#  -H 'accept: application/json'
+PUT {{API_HostAddress}}/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/desactivate
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate' 
+#  -H 'accept: application/json'
+PUT {{API_HostAddress}}/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/accounts/types' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/accounts/types
 accept: application/json
 
 ###

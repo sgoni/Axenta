@@ -5,6 +5,10 @@ public class DeleteAccountHandler(IApplicationDbContext dbContext)
 {
     public async Task<DeleteAccountResult> Handle(DeleteAccountCommand command, CancellationToken cancellationToken)
     {
+        //Delete Account entity from command object
+        //save to database
+        //return result
+
         var accountId = AccountId.Of(command.accountId);
         var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
 

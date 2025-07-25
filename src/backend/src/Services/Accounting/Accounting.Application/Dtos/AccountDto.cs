@@ -5,6 +5,6 @@ public record AccountDto(
     string Code,
     string Name,
     Guid AccountTypeId,
-    Guid ParentAccountId,
+    Guid? ParentAccountId,
     bool IsActive
 );
