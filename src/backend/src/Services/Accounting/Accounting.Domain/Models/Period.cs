@@ -44,13 +44,13 @@ public class Period : Entity<PeriodId>
     private static DateTime GetFirstDayOfTheMonth()
     {
         var today = DateTime.Today;
-        return new DateTime(today.Year, today.Month, 1);
+        return DateTime.SpecifyKind(new DateTime(today.Year, today.Month, 1), DateTimeKind.Utc);
     }
 
     private static DateTime GetLastDayOfMonth()
     {
         var today = DateTime.Today;
         var lastDay = DateTime.DaysInMonth(today.Year, today.Month);
-        return new DateTime(today.Year, today.Month, lastDay);
+        return DateTime.SpecifyKind(new DateTime(today.Year, today.Month, lastDay), DateTimeKind.Utc);
     }
 }

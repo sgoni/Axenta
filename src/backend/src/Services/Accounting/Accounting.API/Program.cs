@@ -18,7 +18,12 @@ internal class Program
         // Configure the HTTP request pipeline.
         app.UseApiServices();
 
-        if (app.Environment.IsDevelopment()) await app.InitialiseDatabaseAsync();
+        if (app.Environment.IsDevelopment())
+        {
+            await app.InitialiseDatabaseAsync();
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
 
         app.Run();
     }

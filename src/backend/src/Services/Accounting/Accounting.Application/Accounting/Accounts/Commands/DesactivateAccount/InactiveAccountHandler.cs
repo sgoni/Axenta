@@ -1,6 +1,4 @@
-﻿namespace Accounting.Application.Accounting.Accounts.Commands.InactiveAccount;
-
-public class InactiveAccountHandler(IApplicationDbContext dbContext)
+﻿public class InactiveAccountHandler(IApplicationDbContext dbContext)
     : ICommandHandler<DeactivateAccountCommand, DesactivateAccountResult>
 {
     public async Task<DesactivateAccountResult> Handle(DeactivateAccountCommand command,

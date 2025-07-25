@@ -1,6 +1,12 @@
-@Accounting.API_HostAddress = http://localhost:5118
+# curl -X 'GET' 
+#  'https://localhost:5050/api/accounts/types' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/api/accounts/types
+accept: application/json
 
-GET {{Accounting.API_HostAddress}}/weatherforecast/
-Accept: application/json
+###
+
+# curl -i http://httpbin.org/ip
+GET {{API_HostAddress}}/health
 
 ###

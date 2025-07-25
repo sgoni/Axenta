@@ -6,8 +6,8 @@ namespace Accounting.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,
-        IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices
+        (this IServiceCollection services, IConfiguration configuration)
     {
         //var server = configuration["DatabaseConfig:server"];
         //var port = configuration["DatabaseConfig:port"];
@@ -32,6 +32,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+
         return services;
     }
 }

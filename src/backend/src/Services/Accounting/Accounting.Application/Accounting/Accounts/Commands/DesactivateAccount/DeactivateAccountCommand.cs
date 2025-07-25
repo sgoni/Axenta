@@ -1,4 +1,4 @@
-﻿namespace Accounting.Application.Accounting.Accounts.Commands.InactiveAccount;
+﻿namespace Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
 
 public record DeactivateAccountCommand(Guid accountId) : ICommand<DesactivateAccountResult>;
 
