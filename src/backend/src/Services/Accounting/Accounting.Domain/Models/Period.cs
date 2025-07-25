@@ -11,7 +11,7 @@ public class Period : Entity<PeriodId>
     public DateTime EndDate { get; private set; }
     public bool IsClosed { get; private set; }
 
-    public static Period Create(PeriodId id, int year, int month, DateTime start, DateTime end)
+    public static Period Create(PeriodId id, int year, int month)
     {
         ArgumentOutOfRangeException.ThrowIfZero(year);
         ArgumentOutOfRangeException.ThrowIfZero(month);
@@ -23,8 +23,8 @@ public class Period : Entity<PeriodId>
             Id = id,
             Year = year,
             Month = month,
-            StartDate = start,
-            EndDate = end,
+            StartDate = GetFirstDayOfTheMonth(),
+            EndDate = GetLastDayOfMonth(),
             IsClosed = false
         };
 
@@ -39,5 +39,18 @@ public class Period : Entity<PeriodId>
     public void Open()
     {
         IsClosed = false;
+    }
+
+    static DateTime GetFirstDayOfTheMonth()
+    {
+        DateTime today = DateTime.Today;
+        return new DateTime(today.Year, today.Month, 1);
+    }
+
+    static DateTime GetLastDayOfMonth()
+    {
+        DateTime today = DateTime.Today;
+        int lastDay = DateTime.DaysInMonth(today.Year, today.Month);
+        return new DateTime(today.Year, today.Month, lastDay);
     }
 }

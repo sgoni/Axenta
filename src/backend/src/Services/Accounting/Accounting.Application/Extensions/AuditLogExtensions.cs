@@ -14,4 +14,16 @@ public static class AuditLogExtensions
                 auditLog.Details
             ));
     }
+
+    public static AuditLogDto DtoFromAuditLog(this AuditLog auditLog)
+    {
+        return new AuditLogDto(
+            auditLog.Id.Value,
+            auditLog.Entity,
+            auditLog.Action,
+            auditLog.PerformedBy.Value,
+            auditLog.PerformedAt,
+            auditLog.Details
+        );
+    }
 }

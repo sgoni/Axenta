@@ -42,9 +42,8 @@ public class InitialData
         {
             Period.Create(PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
                 DateTime.Now.Year,
-                DateTime.Now.Month,
-                DateTime.SpecifyKind(new DateTime(2025, 7, 1), DateTimeKind.Utc),
-                DateTime.SpecifyKind(new DateTime(2025, 7, 31), DateTimeKind.Utc))
+                DateTime.Now.Month
+            )
         };
 
     public static IEnumerable<JournalEntry> JournalEntriesWithLines

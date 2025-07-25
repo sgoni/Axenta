@@ -21,9 +21,8 @@ public class CreatePeriodHandler(IApplicationDbContext dbContext)
         var newPeriod =
             Period.Create(PeriodId.Of(Guid.NewGuid()),
                 DateTime.Now.Year,
-                DateTime.Now.Month,
-                DateTime.Now,
-                DateTime.Now);
+                DateTime.Now.Month
+            );
 
         return newPeriod;
     }
