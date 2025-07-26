@@ -9,7 +9,7 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
         //Save to database
         //return result
 
-        var account = CreateNewAccount(command.AccountDetail);
+        var account = CreateNewAccount(command.Account);
         dbContext.Accounts.Add(account);
         await dbContext.SaveChangesAsync(cancellationToken);
 
@@ -19,7 +19,8 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
     private Account CreateNewAccount(AccountDto accountDetailDto)
     {
         var newAccount =
-            Account.Create(AccountId.Of(Guid.NewGuid()),
+            Account.Create(
+                AccountId.Of(Guid.NewGuid()),
                 accountDetailDto.Code,
                 accountDetailDto.Name,
                 AccountTypeId.Of(accountDetailDto.AccountTypeId),

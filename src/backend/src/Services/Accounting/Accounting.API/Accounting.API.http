@@ -1,3 +1,28 @@
+# curl -X 'POST' 
+#  'https://localhost:5050/accounts' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "account": {
+#    "code": "7001",
+#    "name": "Gastos varios",
+#    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08"
+#  }
+#}'
+POST https://localhost:5050/accounts
+accept: application/json
+Content-Type: application/json
+
+{
+  "account": {
+    "code": "7001",
+    "name": "Gastos varios",
+    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08"
+  }
+}
+
+###
+
 # curl -X 'GET' 
 #  'https://localhost:5050/accounts?PageIndex=1&PageSize=10' 
 #  -H 'accept: application/json'

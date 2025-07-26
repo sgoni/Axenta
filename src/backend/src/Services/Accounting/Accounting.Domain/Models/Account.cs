@@ -17,7 +17,7 @@ public class Account : Entity<AccountId>
     public Account Parent { get; private set; } = default!;
 
     public static Account Create(AccountId id, string code, string name, AccountTypeId accountTypeId,
-        AccountId parentId)
+        AccountId? parentId)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(code);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
