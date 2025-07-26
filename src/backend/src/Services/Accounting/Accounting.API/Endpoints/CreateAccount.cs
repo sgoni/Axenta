@@ -4,7 +4,7 @@ namespace Accounting.API.Endpoints;
 
 public record CreateAccountRequest(AccountDto Account);
 
-public record CreateAccountResponse(Guid AccountId);
+public record CreateAccountResponse(Guid Id);
 
 public class CreateAccount : ICarterModule
 {
@@ -18,7 +18,7 @@ public class CreateAccount : ICarterModule
 
                     var response = result.Adapt<CreateAccountResponse>();
 
-                    return Results.Created($"/accounts/{response.AccountId}", response);
+                    return Results.Created($"/accounts/{response.Id}", response);
                 }
             )
             .WithName("CreateAccount")

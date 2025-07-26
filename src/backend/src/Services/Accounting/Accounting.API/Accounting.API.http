@@ -1,3 +1,11 @@
+# curl -X 'DELETE' 
+#  'https://localhost:5050/accounts/0065ecee-ee6b-4d42-bb8b-0e24b20c213f' 
+#  -H 'accept: application/json'
+DELETE https://localhost:5050/accounts/12bc88ce-fb30-4107-8da8-de6cbe4a5300
+accept: application/json
+
+###
+
 # curl -X 'POST' 
 #  'https://localhost:5050/accounts' 
 #  -H 'accept: application/json' 
