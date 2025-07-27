@@ -8,7 +8,8 @@ public class GetPeriodByIdHandler(IApplicationDbContext dbContext)
         // get periods by Id using dbContext
         // return result
 
-        var period = await dbContext.Periods.FindAsync(query.PeriodId, cancellationToken);
+        var periodId = PeriodId.Of(query.PeriodId);
+        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
         if (period == null) throw new PeriodNotFoundException(query.PeriodId);
 

@@ -1,3 +1,11 @@
+# curl -X 'GET' 
+#  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12
+accept: application/json
+
+###
+
 # curl -X 'PUT' 
 #  'https://localhost:5050/accounts' 
 #  -H 'accept: application/json' 
@@ -11,7 +19,7 @@
 #    "isActive": true
 #  }
 #}'
-PUT https://localhost:5050/accounts
+PUT {{API_HostAddress}}/accounts
 accept: application/json
 Content-Type: application/json
 
@@ -31,7 +39,7 @@ Content-Type: application/json
 # curl -X 'DELETE' 
 #  'https://localhost:5050/accounts/0065ecee-ee6b-4d42-bb8b-0e24b20c213f' 
 #  -H 'accept: application/json'
-DELETE https://localhost:5050/accounts/12bc88ce-fb30-4107-8da8-de6cbe4a5300
+DELETE {{API_HostAddress}}/accounts/12bc88ce-fb30-4107-8da8-de6cbe4a5300
 accept: application/json
 
 ###
@@ -47,7 +55,7 @@ accept: application/json
 #    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08"
 #  }
 #}'
-POST https://localhost:5050/accounts
+POST {{API_HostAddress}}/accounts
 accept: application/json
 Content-Type: application/json
 

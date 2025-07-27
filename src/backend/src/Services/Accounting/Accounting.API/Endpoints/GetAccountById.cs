@@ -2,7 +2,7 @@
 
 //- Accepts a customer ID.
 //- Uses a GetOrdersByCustomerQuery to fetch orders.
-//- Returns the list of orders for that customer.
+//- Returns the list of orders for that customer.m
 
 //public record GetAccountByIdRequest(Guid AccountId);
 
