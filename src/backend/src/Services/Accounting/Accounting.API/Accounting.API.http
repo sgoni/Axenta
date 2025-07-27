@@ -1,3 +1,33 @@
+# curl -X 'PUT' 
+#  'https://localhost:5050/accounts' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "account": {
+#    "id": "00445bc5-6287-4b1c-8af9-76df7fb37ac2",
+#    "code": "7006",
+#    "name": "Gastos varios",
+#    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
+#    "isActive": true
+#  }
+#}'
+PUT https://localhost:5050/accounts
+accept: application/json
+Content-Type: application/json
+
+{
+  "accountDetail": {
+    "id": "00445bc5-6287-4b1c-8af9-76df7fb37ac2",
+    "code": "7006",
+    "name": "Gastos varios de segundo nivel",
+    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
+    "parentAccountId": "8c597200-7580-4494-87b2-4661becf8690",
+    "isActive": false
+  }
+}
+
+###
+
 # curl -X 'DELETE' 
 #  'https://localhost:5050/accounts/0065ecee-ee6b-4d42-bb8b-0e24b20c213f' 
 #  -H 'accept: application/json'

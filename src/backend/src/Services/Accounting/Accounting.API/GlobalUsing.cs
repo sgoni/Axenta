@@ -1,7 +1,9 @@
 ﻿global using Accounting.API;
 global using Accounting.Application.Accounting.Accounts.Commands.ActiveAccount;
+global using Accounting.Application.Accounting.Accounts.Commands.CreateAccount;
 global using Accounting.Application.Accounting.Accounts.Commands.DeleteAccount;
 global using Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
+global using Accounting.Application.Accounting.Accounts.Commands.UpdateAccount;
 global using Accounting.Application.Accounting.Accounts.Queries.GetAccoubtById;
 global using Accounting.Application.Accounting.Accounts.Queries.GetAccounts;
 global using Accounting.Application.Accounting.Accounts.Queries.GetAccountTypes;

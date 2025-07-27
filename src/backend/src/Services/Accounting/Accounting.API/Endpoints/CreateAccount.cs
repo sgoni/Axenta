@@ -1,6 +1,4 @@
-﻿using Accounting.Application.Accounting.Accounts.Commands.CreateAccount;
-
-namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints;
 
 public record CreateAccountRequest(AccountDto Account);
 
