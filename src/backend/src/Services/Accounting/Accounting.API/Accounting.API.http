@@ -1,3 +1,18 @@
+# curl -X PUT --location "https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/close" 
+#    -H "accept: application/json"
+PUT https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/open
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/close' 
+#  -H 'accept: application/json'
+PUT https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/close
+accept: application/json
+
+###
+
 # curl -X 'GET' 
 #  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
 #  -H 'accept: application/json'
