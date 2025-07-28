@@ -23,3 +23,4 @@ global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Accounting.Application.Accounting.Periods.Queries.GetPeriodById;
 global using Accounting.Application.Accounting.Periods.Commands.ClosePeriod;
 global using Accounting.Application.Accounting.Periods.Commands.OpenPeriod;
+global using Accounting.Application.Accounting.Periods.Commands.CreatePeriod;

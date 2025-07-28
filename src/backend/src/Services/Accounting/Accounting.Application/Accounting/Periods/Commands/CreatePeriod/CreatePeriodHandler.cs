@@ -1,13 +1,24 @@
-﻿namespace Accounting.Application.Accounting.Periods.Commands.CreatePeriod;
+﻿using Axenta.BuildingBlocks.Exceptions.Handler;
+using Microsoft.AspNetCore.Http.HttpResults;
+using ValidationException = Axenta.BuildingBlocks.Exceptions.ValidationException;
+
+namespace Accounting.Application.Accounting.Periods.Commands.CreatePeriod;
 
 public class CreatePeriodHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreatePeriodCommand, CreatePeriodResult>
 {
     public async Task<CreatePeriodResult> Handle(CreatePeriodCommand command, CancellationToken cancellationToken)
     {
+        //Check not to duplicate period
         //Create period entity from command object
         //Save to database
         //return result
+
+        bool exists = await dbContext.Periods
+            .AnyAsync(p => p.Year == DateTime.Now.Year && p.Month == DateTime.Now.Month);
+
+        if (exists)
+            throw new ConflictException("The period already exists.");
 
         var period = CreateNewPeriod();
         dbContext.Periods.Add(period);
