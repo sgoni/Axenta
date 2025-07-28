@@ -10,7 +10,8 @@ public class GetPeriodsHandler(IApplicationDbContext dbContext) : IQueryHandler<
 
         var periods = await dbContext.Periods
             .AsNoTracking()
-            .OrderBy(p => p.StartDate)
+            .OrderBy(p => p.Year)
+            .ThenBy(p => p.Month)
             .Skip(pageIndex * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);
