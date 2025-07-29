@@ -1,0 +1,6 @@
+﻿namespace Accounting.Application.Accounting.DocumentReferences.Queries.GetDocumentReferenceByJournalEntryId;
+
+public record GetDocumentReferenceByJournalEntryIdQuery(Guid JournalEntryId)
+    : IQuery<GetDocumentReferenceByJournalEntryIdResult>;
+
+public record GetDocumentReferenceByJournalEntryIdResult(IEnumerable<DocumentReferenceDto> DocumentReferences);

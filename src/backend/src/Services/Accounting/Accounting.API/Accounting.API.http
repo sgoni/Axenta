@@ -1,7 +1,15 @@
 # curl -X 'GET' 
+#  'https://localhost:5050/journal-entries/3fa85f64-5717-4562-b3fc-2c963f66afa6/documents' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/journal-entries/3fa85f64-5717-4562-b3fc-2c963f66afa6/documents
+accept: application/json
+
+###
+
+# curl -X 'GET' 
 #  'https://localhost:5050/audit-logs?PageIndex=0&PageSize=10' 
 #  -H 'accept: application/json'
-GET https://localhost:5050/audit-logs?PageIndex=0&PageSize=10
+GET {{API_HostAddress}}/audit-logs?PageIndex=0&PageSize=10
 accept: application/json
 
 ###
