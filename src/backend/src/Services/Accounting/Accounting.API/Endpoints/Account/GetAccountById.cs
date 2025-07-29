@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Account;
 
 //- Accepts a customer ID.
 //- Uses a GetOrdersByCustomerQuery to fetch orders.

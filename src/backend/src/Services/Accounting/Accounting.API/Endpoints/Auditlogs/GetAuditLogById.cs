@@ -1,0 +1,26 @@
+﻿namespace Accounting.API.Endpoints.Auditlogs;
+
+//public record GetAuditLogByIdRequest(Guid PeriodId);
+
+public record GetAuditLogByIdResponse(AuditLogDto AuditDetail);
+
+public class GetAuditLogById : ICarterModule
+{
+    public void AddRoutes(IEndpointRouteBuilder app)
+    {
+        app.MapGet("/audit-logs/{id}", async (Guid id, ISender sender) =>
+            {
+                var result = await sender.Send(new GetAuditLogByIdQuery(id));
+
+                var response = result.Adapt<GetAuditLogByIdResponse>();
+
+                return Results.Ok(response);
+            })
+            .WithName("GetAuditLogById")
+            .Produces<GetAuditLogById>()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status404NotFound)
+            .WithSummary("View details of a specific change.")
+            .WithDescription("View details of a specific change.");
+    }
+}

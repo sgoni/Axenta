@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Account;
 
 //public record GetAccountTypeRequest();
 public record GetAccountTypesResponse(IEnumerable<AccountTypeDto> AccountTypes);

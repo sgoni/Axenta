@@ -1,12 +1,11 @@
-﻿using Accounting.Application.Accounting.Periods.Queries.GetPeriods;
-
-namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints;
 
 //- Accepts pagination parameters.
 //- Constructs a GetPeriodsQuery with these parameters.
 //- Retrieves the data and returns it in a paginated format.
 
 //public record GetPeriodsRequest(PaginationRequest PaginationRequest);
+
 public record GetPeriodsResponse(PaginatedResult<PeriodDto> Periods);
 
 public class GetPeriods : ICarterModule

@@ -1,4 +1,20 @@
 # curl -X 'GET' 
+#  'https://localhost:5050/audit-logs?PageIndex=0&PageSize=10' 
+#  -H 'accept: application/json'
+GET https://localhost:5050/audit-logs?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12
+accept: application/json
+
+###
+
+# curl -X 'GET' 
 #  'https://localhost:5050/periods/year=2025&month=7' 
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/periods/year=2025&month=7

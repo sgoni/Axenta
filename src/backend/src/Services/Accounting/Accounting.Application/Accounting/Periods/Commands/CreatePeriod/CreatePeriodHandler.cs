@@ -1,8 +1,4 @@
-﻿using Axenta.BuildingBlocks.Exceptions.Handler;
-using Microsoft.AspNetCore.Http.HttpResults;
-using ValidationException = Axenta.BuildingBlocks.Exceptions.ValidationException;
-
-namespace Accounting.Application.Accounting.Periods.Commands.CreatePeriod;
+﻿namespace Accounting.Application.Accounting.Periods.Commands.CreatePeriod;
 
 public class CreatePeriodHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreatePeriodCommand, CreatePeriodResult>
@@ -14,7 +10,7 @@ public class CreatePeriodHandler(IApplicationDbContext dbContext)
         //Save to database
         //return result
 
-        bool exists = await dbContext.Periods
+        var exists = await dbContext.Periods
             .AnyAsync(p => p.Year == DateTime.Now.Year && p.Month == DateTime.Now.Month);
 
         if (exists)

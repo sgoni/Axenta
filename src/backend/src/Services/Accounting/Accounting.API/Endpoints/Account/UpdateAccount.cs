@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Account;
 
 public record UpdateAccountRequest(AccountDto AccountDetail);
 

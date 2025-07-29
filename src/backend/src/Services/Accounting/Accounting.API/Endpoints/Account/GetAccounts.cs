@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Account;
 
 //- Accepts pagination parameters.
 //- Constructs a GetAccountsQuery with these parameters.

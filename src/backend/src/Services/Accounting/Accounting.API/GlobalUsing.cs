@@ -24,3 +24,7 @@ global using Accounting.Application.Accounting.Periods.Queries.GetPeriodById;
 global using Accounting.Application.Accounting.Periods.Commands.ClosePeriod;
 global using Accounting.Application.Accounting.Periods.Commands.OpenPeriod;
 global using Accounting.Application.Accounting.Periods.Commands.CreatePeriod;
+global using Accounting.Application.Accounting.Periods.Queries.GetPeriodExist;
+global using Accounting.Application.Accounting.Periods.Queries.GetPeriods;
+global using Accounting.Application.Accounting.AuditLogs.Queries.GetAuditLogById;
+global using Accounting.Application.Accounting.AuditLogs.Queries.GetAuditLogs;

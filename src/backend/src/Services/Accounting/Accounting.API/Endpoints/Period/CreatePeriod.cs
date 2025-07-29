@@ -1,6 +1,6 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Period;
 
-public record CreatePeriodRequest();
+public record CreatePeriodRequest;
 
 public record CreatePeriodResponse(Guid PeriodId);
 

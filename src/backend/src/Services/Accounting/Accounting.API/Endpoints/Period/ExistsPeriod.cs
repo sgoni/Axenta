@@ -1,7 +1,4 @@
-﻿using Accounting.Application.Accounting.Periods.Queries.GetPeriodExist;
-using Microsoft.VisualBasic;
-
-namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Period;
 
 //public record ExistsPeriodRequest(int year, int Month);
 

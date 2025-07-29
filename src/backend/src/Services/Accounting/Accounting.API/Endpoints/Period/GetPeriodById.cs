@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Period;
 
 //public record GetPeriodByIdRequest(Guid PeriodId);
 

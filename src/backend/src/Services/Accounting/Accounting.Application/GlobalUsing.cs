@@ -1,4 +1,5 @@
-﻿global using Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
+﻿global using Accounting.Application.Accounting.DocumentReferences.Commands.CreateDocumentReference;
+global using Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
 global using Accounting.Application.Data;
 global using Accounting.Application.Dtos;
 global using Accounting.Application.Exceptions;

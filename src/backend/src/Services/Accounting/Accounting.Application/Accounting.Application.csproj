@@ -12,9 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Accounting\Documents\CreateDocumentReference\"/>
-        <Folder Include="Accounting\Documents\GetDocumentReferenceById\"/>
-        <Folder Include="Accounting\JournalEntries\Commands\"/>
         <Folder Include="Accounting\JournalEntries\EventHandlers\Integration\"/>
         <Folder Include="Accounting\JournalEntries\Queries\"/>
     </ItemGroup>

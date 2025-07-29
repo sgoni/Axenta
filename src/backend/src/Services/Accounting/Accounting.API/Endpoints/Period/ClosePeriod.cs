@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Period;
 
 //- Constructs a ClosePeriodCommand.
 //- Sends the command using MediatR.

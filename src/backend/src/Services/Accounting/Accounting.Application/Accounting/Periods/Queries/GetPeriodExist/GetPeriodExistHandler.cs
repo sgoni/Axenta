@@ -5,7 +5,7 @@ public class GetPeriodExistHandler(IApplicationDbContext dbContext)
 {
     public async Task<GetPeriodExistResult> Handle(GetPeriodExistQuery query, CancellationToken cancellationToken)
     {
-        bool exists =
+        var exists =
             await dbContext.Periods.AnyAsync(p => p.Year == query.year && p.Month == query.month, cancellationToken);
 
         return new GetPeriodExistResult(exists);

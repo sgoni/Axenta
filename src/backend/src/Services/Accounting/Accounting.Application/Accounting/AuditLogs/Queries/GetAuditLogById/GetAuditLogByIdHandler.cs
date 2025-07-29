@@ -9,9 +9,10 @@ public class GetAuditLogByIdHandler(IApplicationDbContext dbContext)
         // get auditlog by Id using dbContext
         // return result
 
-        var auditLog = await dbContext.AuditLogs.FindAsync(query.AuditLogId, cancellationToken);
+        var audilogId = AuditLogId.Of(query.AuditLogId);
+        var auditLog = await dbContext.AuditLogs.FindAsync(audilogId, cancellationToken);
 
-        if (auditLog == null) throw new PeriodNotFoundException(query.AuditLogId);
+        if (auditLog == null) throw new AuditlogNotFoundException(query.AuditLogId);
 
         return new GetAuditLogByIdQueryResult(auditLog.DtoFromAuditLog());
     }

@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Account;
 
 //- Accepts the account ID as a parameter.
 //- Constructs a DeactivateAccountCommand.

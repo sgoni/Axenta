@@ -1,4 +1,4 @@
-﻿namespace Accounting.API.Endpoints;
+﻿namespace Accounting.API.Endpoints.Account;
 
 //- Accepts the Account ID as a parameter.
 //- Constructs a DeleteAccountCommand.
