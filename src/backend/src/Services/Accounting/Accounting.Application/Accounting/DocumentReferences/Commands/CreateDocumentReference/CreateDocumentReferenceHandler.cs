@@ -10,7 +10,7 @@ public class CreateDocumentReferenceHandler(IApplicationDbContext dbContext)
         //Save to database
         //return result
 
-        var documentRef = AssociateDocumentToAccountingEntry(command.documentRefDetail);
+        var documentRef = AssociateDocumentToAccountingEntry(command.DocumentReference);
         dbContext.DocumentReferences.Add(documentRef);
         await dbContext.SaveChangesAsync(cancellationToken);
 
