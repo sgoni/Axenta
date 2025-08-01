@@ -35,6 +35,13 @@ public class DocumentReferenceConfiguration : IEntityTypeConfiguration<DocumentR
             .IsRequired()
             .HasColumnName("SourceId");
 
+        builder.Property(dr => dr.ReferenceNumber)
+            .IsRequired()
+            .HasMaxLength(150);
+
+        builder.Property(dr => dr.Description)
+            .HasMaxLength(200);
+
         builder.HasOne<JournalEntry>()
             .WithMany(j => j.DocumentReferences)
             .HasForeignKey(dr => dr.JournalEntryId)

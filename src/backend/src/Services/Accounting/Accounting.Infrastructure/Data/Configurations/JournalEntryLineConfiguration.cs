@@ -47,7 +47,7 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
             .HasForeignKey(l => l.JournalEntryId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasIndex(l => new { l.JournalEntryId, l.LineNumber })
+        builder.HasIndex(l => new { l.JournalEntryId, l.Id, l.LineNumber })
             .IsUnique();
     }
 }

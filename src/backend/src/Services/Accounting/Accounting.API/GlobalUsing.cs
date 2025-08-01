@@ -29,3 +29,4 @@ global using Accounting.Application.Accounting.Periods.Queries.GetPeriods;
 global using Accounting.Application.Accounting.AuditLogs.Queries.GetAuditLogById;
 global using Accounting.Application.Accounting.AuditLogs.Queries.GetAuditLogs;
 global using Accounting.Application.Accounting.DocumentReferences.Queries.GetDocumentReferenceByJournalEntryId;
+global using Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;

@@ -49,12 +49,12 @@ public class JournalEntry : Aggregate<JournalEntryId>
         _journalEntryLines.Add(journalEntryLine);
     }
 
-    public void AddDocumentReference(string sourceType, SourceId sourceId)
+    public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceType);
         ArgumentNullException.ThrowIfNull(sourceId);
 
-        var documentReference = new DocumentReference(Id, sourceType, sourceId);
+        var documentReference = new DocumentReference(Id, sourceType, sourceId, referenceNumber, description);
         _documentReferences.Add(documentReference);
     }
 

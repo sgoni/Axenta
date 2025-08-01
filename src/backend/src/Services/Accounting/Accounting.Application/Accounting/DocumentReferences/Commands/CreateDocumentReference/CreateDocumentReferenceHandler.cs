@@ -23,7 +23,9 @@ public class CreateDocumentReferenceHandler(IApplicationDbContext dbContext)
             DocumentReference.Create(
                 JournalEntryId.Of(documentReferenceDto.JournalEntryId),
                 documentReferenceDto.SourceType,
-                SourceId.Of(documentReferenceDto.SourceId));
+                SourceId.Of(documentReferenceDto.SourceId),
+                documentReferenceDto.ReferenceNumber,
+                documentReferenceDto.Description);
 
         return newDocumentRef;
     }

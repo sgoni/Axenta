@@ -9,7 +9,9 @@ public static class DocumentRefExtensions
             documentReference.Id.Value,
             documentReference.JournalEntryId.Value,
             documentReference.SourceType,
-            documentReference.SourceId.Value
+            documentReference.SourceId.Value,
+            documentReference.ReferenceNumber,
+            documentReference.Description
         ));
     }
 
@@ -19,7 +21,9 @@ public static class DocumentRefExtensions
             documentReference.Id.Value,
             documentReference.JournalEntryId.Value,
             documentReference.SourceType,
-            documentReference.SourceId.Value
+            documentReference.SourceId.Value,
+            documentReference.ReferenceNumber,
+            documentReference.Description
         );
     }
 }

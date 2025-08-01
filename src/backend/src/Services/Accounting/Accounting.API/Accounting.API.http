@@ -1,3 +1,56 @@
+# curl -X 'POST' 
+#  'https://localhost:5050/journal-entries' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "journalEntry": {
+#    "date": "2025-08-01T02:26:27.053Z",
+#    "description": "Registro de ventas.",
+#    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+#    "lines": [
+#      {
+#        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+#        "debit": 4000,
+#        "credit": 0,
+#        "lineNumber": 1
+#      },
+#      {
+#        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+#        "debit": 0,
+#        "credit": 4000,
+#        "lineNumber": 1
+#      }	  
+#    ]
+#  }
+#}'
+POST {{API_HostAddress}}/journal-entries
+accept: application/json
+Content-Type: application/json
+
+{
+  "journalEntry": {
+    "date": "2025-08-01T02:26:27.053Z",
+    "description": "Registro de ventas.",
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "lines": [
+      {
+        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+        "debit": 4000,
+        "credit": 0,
+        "lineNumber": 1
+      },
+      {
+        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+        "debit": 0,
+        "credit": 4000,
+        "lineNumber": 1
+      }
+    ]
+  }
+}
+
+###
+
 # curl -X 'GET' 
 #  'https://localhost:5050/journal-entries/3fa85f64-5717-4562-b3fc-2c963f66afa6/documents' 
 #  -H 'accept: application/json'
@@ -38,7 +91,6 @@ accept: application/json
 POST {{API_HostAddress}}/periods
 accept: application/json
 Content-Type: application/json
-
 {}
 
 ###
