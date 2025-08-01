@@ -19,7 +19,7 @@ public class Account : Entity<AccountId>
     public Account Parent { get; private set; } = default!;
 
     public static Account Create(AccountId id, string code, string name, AccountTypeId accountTypeId,
-        AccountId? parentId)
+        AccountId? parentId, int level, bool isMovable)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(code);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -31,7 +31,9 @@ public class Account : Entity<AccountId>
             Name = name,
             AccountTypeId = accountTypeId,
             ParentId = parentId,
-            IsActive = true
+            IsActive = true,
+            Level = level,
+            IsMovable = isMovable
         };
 
         return account;

@@ -24,7 +24,9 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
                 accountDetailDto.Code,
                 accountDetailDto.Name,
                 AccountTypeId.Of(accountDetailDto.AccountTypeId),
-                AccountId.Of(accountDetailDto.ParentAccountId));
+                AccountId.Of(accountDetailDto.ParentAccountId),
+                accountDetailDto.Level,
+                accountDetailDto.IsMovable);
 
         return newAccount;
     }

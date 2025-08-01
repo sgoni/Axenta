@@ -6,5 +6,7 @@ public record AccountDto(
     string Name,
     Guid AccountTypeId,
     Guid? ParentAccountId,
-    bool IsActive
+    bool IsActive,
+    int Level,
+    bool IsMovable
 );

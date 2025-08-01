@@ -10,7 +10,9 @@ public static class AccountExtensions
             account.Name,
             account.AccountTypeId.Value,
             account.ParentId?.Value,
-            account.IsActive
+            account.IsActive,
+            account.Level,
+            account.IsMovable
         ));
     }
 
@@ -22,7 +24,9 @@ public static class AccountExtensions
             account.Name,
             account.AccountTypeId.Value,
             account.ParentId?.Value,
-            account.IsActive);
+            account.IsActive,
+            account.Level,
+            account.IsMovable);
     }
 
     public static List<AccountTreeDto>? ToAccountTreeDtoList(this List<Account> accounts)
