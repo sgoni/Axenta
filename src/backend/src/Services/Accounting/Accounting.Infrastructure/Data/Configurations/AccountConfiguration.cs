@@ -28,6 +28,12 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 
         builder.Property(a => a.AccountTypeId)
             .IsRequired();
+        
+        builder.Property(a => a.Level)
+            .IsRequired();
+        
+        builder.Property(a => a.IsMovable)
+            .IsRequired();
 
         builder.HasOne(a => a.Type)
             .WithMany(at => at.Accounts)
