@@ -2,7 +2,7 @@
 
 //public record GetDocumentReferenceByJournalEntryIdRequest(Guid JournalEntryId);
 
-public record GetDocumentReferenceByJournalEntryIdResponse(DocumentReferenceDto documentReferenceDetail);
+public record GetDocumentReferenceByJournalEntryIdResponse(IEnumerable<DocumentReferenceDto> DocumentReferences);
 
 public class GetDocumentById : ICarterModule
 {

@@ -67,7 +67,7 @@ public class InitialData
                 true),
 
             Account.Create(
-                AccountId.Of(new Guid("b603261e-272e-4aa6-9398-0dfb1a617d89")),
+                AccountId.Of(new Guid("c1d8a1d0-6ae0-4cf1-b7e5-a5e1a799e7ff")),
                 "1.1.2",
                 "Cuentas por Cobrar",
                 AccountTypeId.Of(new Guid("9546c264-0869-44d9-8031-371159b76d3f")),
@@ -80,7 +80,7 @@ public class InitialData
                 "1.1.2.01",
                 "Clientes",
                 AccountTypeId.Of(new Guid("9546c264-0869-44d9-8031-371159b76d3f")),
-                AccountId.Of(new Guid("b603261e-272e-4aa6-9398-0dfb1a617d89")),
+                AccountId.Of(new Guid("c1d8a1d0-6ae0-4cf1-b7e5-a5e1a799e7ff")),
                 4,
                 true),
 
@@ -156,7 +156,6 @@ public class InitialData
                 4,
                 true),
 
-            // Pasive accounts
             Account.Create(
                 AccountId.Of(new Guid("4ddb9bba-f3c2-4f01-90ae-3e0f599857e6")),
                 "2",
@@ -259,7 +258,7 @@ public class InitialData
                 false),
 
             Account.Create(
-                AccountId.Of(new Guid("55c126a9-3240-463b-95c3-80dd9dc7e593")),
+                AccountId.Of(new Guid("b33d3d96-4b34-44ae-9fe5-2fc8d657b115")),
                 "4.1.1",
                 "Ventas Nacionales",
                 AccountTypeId.Of(new Guid("6e705d5f-2d5c-449e-a187-17dc00d2c914")),
@@ -494,7 +493,20 @@ public class InitialData
                 0,
                 1300000);
 
-            return new List<JournalEntry> { journalEntry1, journalEntry2, journalEntry3, journalEntry4, journalEntry5 };
+            return new List<JournalEntry>
+                { journalEntry1, journalEntry2, journalEntry3, journalEntry4, journalEntry5, journalEntry6 };
         }
     }
+
+    public static IEnumerable<DocumentReference> DocumentReferencesRelatedToJournalEntry =>
+        new List<DocumentReference>
+        {
+            // Active accounts
+            DocumentReference.Create(
+                JournalEntryId.Of(new Guid("0b55189d-ce04-471f-abbb-f73208be063a")),
+                "Loan",
+                SourceId.Of(new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")),
+                "123456789", "Registro de préstamo con la entidad financiera"
+            )
+        };
 }

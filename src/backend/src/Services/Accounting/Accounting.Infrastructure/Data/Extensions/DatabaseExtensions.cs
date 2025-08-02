@@ -19,6 +19,7 @@ public static class DatabaseExtensions
         await SeedAccountsAsync(context);
         await SeedPeriodsAsync(context);
         await SeedJornalEntryWithLinesAsync(context);
+        await SeedDocumentReferencesAsync(context);
     }
 
     private static async Task SeedAccountTypeAsync(ApplicationDbContext context)
@@ -53,6 +54,15 @@ public static class DatabaseExtensions
         if (!await context.JournalEntries.AnyAsync())
         {
             await context.JournalEntries.AddRangeAsync(InitialData.JournalEntriesWithLines);
+            await context.SaveChangesAsync();
+        }
+    }
+    
+    private static async Task SeedDocumentReferencesAsync(ApplicationDbContext context)
+    {
+        if (!await context.DocumentReferences.AnyAsync())
+        {
+            await context.DocumentReferences.AddRangeAsync(InitialData.DocumentReferencesRelatedToJournalEntry);
             await context.SaveChangesAsync();
         }
     }
