@@ -1,3 +1,11 @@
+# curl -X 'GET' 
+#  'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/journal-entries?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
 # curl -X 'POST' 
 #  'https://localhost:5050/journal-entries' 
 #  -H 'accept: application/json' 
@@ -43,7 +51,7 @@ Content-Type: application/json
         "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
         "debit": 0,
         "credit": 4000,
-        "lineNumber": 1
+        "lineNumber": 2
       }
     ]
   }

@@ -20,6 +20,8 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
 
     private JournalEntry CreateNewJournalEntry(JournalEntryDto journalEntryDto)
     {
+        var LineNumber = 1;
+
         //Create header
         var newJournalEntry = JournalEntry.Create(
             JournalEntryId.Of(Guid.NewGuid()),
@@ -34,7 +36,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
                 AccountId.Of(journalEntryLineDto.AccountId),
                 journalEntryLineDto.Debit,
                 journalEntryLineDto.Credit,
-                journalEntryLineDto.LineNumber
+                LineNumber++
             );
 
         //Add document references

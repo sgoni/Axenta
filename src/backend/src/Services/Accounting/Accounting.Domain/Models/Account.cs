@@ -12,9 +12,9 @@ public class Account : Entity<AccountId>
     public string Name { get; private set; } = default!;
     public AccountTypeId AccountTypeId { get; private set; } = default!;
     public AccountId? ParentId { get; private set; }
-    public bool IsActive { get; private set; } = default!;
+    public bool IsActive { get; private set; }
     public int Level { get; private set; }
-    public bool IsMovable { get; private set; } = default!;
+    public bool IsMovable { get; private set; }
     public AccountType Type { get; private set; } = null!;
     public Account Parent { get; private set; } = default!;
 

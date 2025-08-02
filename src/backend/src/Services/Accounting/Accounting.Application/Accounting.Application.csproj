@@ -13,7 +13,6 @@
 
     <ItemGroup>
         <Folder Include="Accounting\JournalEntries\EventHandlers\Integration\"/>
-        <Folder Include="Accounting\JournalEntries\Queries\"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -328,7 +328,7 @@ public class InitialData
                 AccountTypeId.Of(new Guid("71bbd6e0-abf4-4f2a-afec-9199bb404b08")),
                 AccountId.Of(new Guid("15165f65-a55a-4f7c-8d87-9275301217af")),
                 3,
-                false),
+                false)
         };
 
 
@@ -388,13 +388,15 @@ public class InitialData
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("7446ddcb-7be6-46e4-94de-1b5275cd8b0f")),
                 15000000,
-                0
+                0,
+                2
             );
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("f4c0eb3c-eefa-49e2-b72b-01b55105d7b7")),
                 50000000,
-                0
+                0,
+                3
             );
 
             /*
@@ -417,7 +419,8 @@ public class InitialData
             journalEntry3.AddLine(
                 AccountId.Of(new Guid("a04ee151-03d4-4840-8697-600360d6977d")),
                 0,
-                2000000
+                2000000,
+                2
             );
 
             /*
@@ -440,7 +443,8 @@ public class InitialData
             journalEntry4.AddLine(
                 AccountId.Of(new Guid("a06a0526-6d78-487d-bca8-d4b4cb57ac00")),
                 0,
-                2500000
+                2500000,
+                2
             );
 
             /*
@@ -463,7 +467,8 @@ public class InitialData
             journalEntry5.AddLine(
                 AccountId.Of(new Guid("23b79d9f-96d3-4c20-ac8e-4387a70152b3")),
                 0,
-                1000000
+                1000000,
+                2
             );
 
             /*
@@ -486,12 +491,16 @@ public class InitialData
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("e19f4576-6224-40e3-8b03-01343b413df7")),
                 500000,
-                0);
+                0,
+                2
+            );
 
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("a06a0526-6d78-487d-bca8-d4b4cb57ac00")),
                 0,
-                1300000);
+                1300000,
+                3
+            );
 
             return new List<JournalEntry>
                 { journalEntry1, journalEntry2, journalEntry3, journalEntry4, journalEntry5, journalEntry6 };

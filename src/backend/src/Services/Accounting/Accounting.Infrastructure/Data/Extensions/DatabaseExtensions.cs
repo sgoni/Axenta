@@ -57,7 +57,7 @@ public static class DatabaseExtensions
             await context.SaveChangesAsync();
         }
     }
-    
+
     private static async Task SeedDocumentReferencesAsync(ApplicationDbContext context)
     {
         if (!await context.DocumentReferences.AnyAsync())
