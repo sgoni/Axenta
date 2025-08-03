@@ -16,6 +16,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
+    public bool IsCanceled { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId)
     {
@@ -32,9 +33,12 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description)
+    public void Update(string? description, DateTime date, PeriodId? periodId, bool isCanceled = false)
     {
         Description = description;
+        Date = date;
+        PeriodId = periodId;
+        IsCanceled = isCanceled;
 
         AddDomainEvent(new JournalEntryUpdatedEcent(this));
     }
@@ -47,6 +51,11 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
         var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
+    }
+
+    public void CancelSeat()
+    {
+        IsCanceled = true;
     }
 
     public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)

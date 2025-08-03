@@ -1,4 +1,4 @@
-﻿public class InactiveAccountHandler(IApplicationDbContext dbContext)
+﻿public class DesactiveAccountHandler(IApplicationDbContext dbContext)
     : ICommandHandler<DeactivateAccountCommand, DesactivateAccountResult>
 {
     public async Task<DesactivateAccountResult> Handle(DeactivateAccountCommand command,

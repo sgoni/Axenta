@@ -1,3 +1,11 @@
+# curl -X 'DELETE' 
+#  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
+#  -H 'accept: application/json'
+DELETE {{API_HostAddress}}/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e
+accept: application/json
+
+###
+
 # curl -X 'GET' 
 #  'https://localhost:5050/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946' 
 #  -H 'accept: application/json'
@@ -21,7 +29,7 @@ accept: application/json
 #  -d '{
 #  "journalEntry": {
 #    "date": "2025-08-01T02:26:27.053Z",
-#    "description": "Registro de ventas.",
+#    "description": "Registro de ventas de contado.",
 #    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
 #    "lines": [
 #      {

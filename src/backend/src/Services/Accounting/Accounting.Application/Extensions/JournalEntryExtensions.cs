@@ -9,6 +9,7 @@ public static class JournalEntryExtensions
             journalEntry.Id.Value,
             journalEntry.Date,
             journalEntry.Description,
+            journalEntry.IsCanceled,
             journalEntry.PeriodId.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
@@ -22,6 +23,7 @@ public static class JournalEntryExtensions
             journalEntry.Id.Value,
             journalEntry.Date,
             journalEntry.Description,
+            journalEntry.IsCanceled,
             journalEntry.PeriodId.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,

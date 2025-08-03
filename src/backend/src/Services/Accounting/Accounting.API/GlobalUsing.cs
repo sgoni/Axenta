@@ -33,3 +33,4 @@ global using Accounting.Application.Accounting.JournalEntries.Commands.CreateJou
 global using Accounting.Application.Accounting.JournalEntries.Queries.GetJournalEntries;
 global using Accounting.Application.Accounting.DocumentReferences.Commands.CreateDocumentReference;
 global using Accounting.Application.Accounting.JournalEntries.Queries.GetJournalEntryById;
+global using Accounting.Application.Accounting.JournalEntries.Commands.DeleteJornalEntryCommand;

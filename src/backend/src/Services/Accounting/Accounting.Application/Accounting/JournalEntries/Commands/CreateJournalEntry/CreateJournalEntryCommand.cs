@@ -9,6 +9,7 @@ public class CreateJournalEntryCommandValidator : AbstractValidator<CreateJourna
     public CreateJournalEntryCommandValidator()
     {
         RuleFor(x => x.JournalEntry.Description).NotEmpty().WithMessage("Description is required.");
+        RuleFor(x => x.JournalEntry.Date).NotEmpty().WithMessage("Date is required.");
         RuleFor(x => x.JournalEntry.PeriodId).NotEmpty().WithMessage("Periods is required.");
     }
 }
