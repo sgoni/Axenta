@@ -1,4 +1,12 @@
 # curl -X 'GET' 
+#  'https://localhost:5050/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946
+accept: application/json
+
+###
+
+# curl -X 'GET' 
 #  'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10' 
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/journal-entries?PageIndex=0&PageSize=10

@@ -2,6 +2,11 @@
 
 public record UpdateAccountRequest(AccountDto AccountDetail);
 
+//- Accepts a UpdateAccountRequest.
+//- Maps the request to an UpdateAccountCommand.
+//- Sends the command for processing.
+//- Returns a success or error response based on the outcome.
+
 public record UpdateAccountResponse(bool IsSuccescs);
 
 public class UpdateAccount : ICarterModule

@@ -1,6 +1,9 @@
-﻿using Accounting.Application.Accounting.DocumentReferences.Commands.CreateDocumentReference;
+﻿namespace Accounting.API.Endpoints.Documentreferences;
 
-namespace Accounting.API.Endpoints.Documentreferences;
+//- Accepts a CreateDocumentReferenceRequest object.
+//- Maps the request to a CreateDocumentReferenceCommand.
+//- Uses MediatR to send the command to the corresponding handler.
+//- Returns a response with the created account's ID.
 
 public record CreateDocumentReferenceRequest(DocumentReferenceDto DocumentReference);
 

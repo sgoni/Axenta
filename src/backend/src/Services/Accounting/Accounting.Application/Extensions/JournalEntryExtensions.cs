@@ -15,4 +15,17 @@ public static class JournalEntryExtensions
                     ln.Debit, ln.Credit, ln.LineNumber)).ToList()
         ));
     }
+
+    public static JournalEntryDto DtoFromJournalEntry(this JournalEntry journalEntry)
+    {
+        return new JournalEntryDto(
+            journalEntry.Id.Value,
+            journalEntry.Date,
+            journalEntry.Description,
+            journalEntry.PeriodId.Value,
+            journalEntry.JournalEntryLines
+                .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
+                    ln.Debit, ln.Credit, ln.LineNumber)).ToList()
+        );
+    }
 }

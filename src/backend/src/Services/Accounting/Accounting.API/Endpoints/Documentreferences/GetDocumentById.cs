@@ -1,5 +1,9 @@
 ﻿namespace Accounting.API.Endpoints.Documentreferences;
 
+//- Accepts a JournalEntry ID.
+//- Uses a GetDocumentReferenceByJournalEntryIdQuery to fetch orders.
+//- Returns the list of JournalEntries for that journalEntry.m
+
 //public record GetDocumentReferenceByJournalEntryIdRequest(Guid JournalEntryId);
 
 public record GetDocumentReferenceByJournalEntryIdResponse(IEnumerable<DocumentReferenceDto> DocumentReferences);

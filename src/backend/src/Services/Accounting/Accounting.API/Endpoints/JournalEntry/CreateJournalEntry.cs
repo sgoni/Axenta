@@ -1,5 +1,10 @@
 ﻿namespace Accounting.API.Endpoints.JournalEntry;
 
+//- Accepts a CreateJournalEntryRequest object.
+//- Maps the request to a CreateJournalEntryCommand.
+//- Uses MediatR to send the command to the corresponding handler.
+//- Returns a response with the created journalEntry's ID.
+
 public record CreateJournalEntryRequest(JournalEntryDto JournalEntry);
 
 public record CreateJournalEntryResponse(Guid Id);

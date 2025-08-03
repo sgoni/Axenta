@@ -1,5 +1,10 @@
 ﻿namespace Accounting.API.Endpoints.Account;
 
+//- Accepts a CreateAccountRequest object.
+//- Maps the request to a CreateAccountCommand.
+//- Uses MediatR to send the command to the corresponding handler.
+//- Returns a response with the created account's ID.
+
 public record CreateAccountRequest(AccountDto Account);
 
 public record CreateAccountResponse(Guid Id);

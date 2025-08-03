@@ -1,5 +1,9 @@
 ﻿namespace Accounting.API.Endpoints.Account;
 
+//- Accepts pagination parameters.
+//- Constructs a GetAccountTypesQuery with these parameters.
+//- Retrieves the data and returns it in a paginated format.
+
 //public record GetAccountTypeRequest();
 public record GetAccountTypesResponse(IEnumerable<AccountTypeDto> AccountTypes);
 

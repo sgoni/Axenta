@@ -1,5 +1,9 @@
 ﻿namespace Accounting.API.Endpoints.Auditlogs;
 
+//- Accepts a AuditLog ID.
+//- Uses a GetAuditLogByIdQuery to fetch orders.
+//- Returns AuditLog for thar Id.
+
 //public record GetAuditLogByIdRequest(Guid PeriodId);
 
 public record GetAuditLogByIdResponse(AuditLogDto AuditDetail);
