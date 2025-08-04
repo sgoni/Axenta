@@ -29,19 +29,19 @@ public static class AccountExtensions
             account.IsMovable);
     }
 
-    public static List<AccountTreeDto>? ToAccountTreeDtoList(this List<Account> accounts)
+    public static List<AccountTreeDto>? ToAccountTreeDtoList(this IEnumerable<Account> accounts)
     {
-        return accounts.Select(account => new AccountTreeDto(
+        return new List<AccountTreeDto>(accounts.Select(account => new AccountTreeDto(
             account.Id.Value,
             account.Code,
             account.Name,
             account.AccountTypeId.Value,
-            account.ParentId.Value,
+            account.ParentId?.Value,
             new List<AccountTreeDto>()
-        )) as List<AccountTreeDto>;
+        )));
     }
 
-    public static List<AccountTreeDto> AccountTreeDto(List<AccountTreeDto>? flatAccounts)
+    public static List<AccountTreeDto> BuildTree(List<AccountTreeDto>? flatAccounts)
     {
         var lookup = flatAccounts.ToDictionary(x => x.Id);
         var roots = new List<AccountTreeDto>();

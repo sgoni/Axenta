@@ -1,3 +1,11 @@
+# curl -X 'GET' 
+#  'https://localhost:5050/accounts/tree' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/accounts/tree
+accept: application/json
+
+###
+
 # curl -X 'DELETE' 
 #  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
 #  -H 'accept: application/json'
@@ -66,7 +74,7 @@ Content-Type: application/json
       {
         "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
         "debit": 0,
-        "credit": 4000,
+        "credit": 47800,
         "lineNumber": 2
       }
     ]
