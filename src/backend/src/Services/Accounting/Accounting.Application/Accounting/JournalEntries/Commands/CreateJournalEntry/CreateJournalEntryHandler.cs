@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
+﻿using ValidationException = FluentValidation.ValidationException;
+
+namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
 
 public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateJournalEntryCommand, CreateJournalEntryResult>
@@ -9,6 +11,15 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         //create Journal Entry entity from command object
         //save to database
         //return result 
+
+        //Validation accounting period is Open
+        var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
+        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
+
+        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
+
+        if (period.IsClosed)
+            throw new ValidationException("The accounting period is closed and seats cannot be registered.");
 
         var journalEntry = CreateNewJournalEntry(command.JournalEntry);
 
@@ -41,7 +52,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
 
         //Accounting validation Must = Have
         newJournalEntry.ValidateBalance();
-        
+
         //Add document references
 
         return newJournalEntry;
