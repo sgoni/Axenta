@@ -31,7 +31,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
 
     private JournalEntry CreateNewJournalEntry(JournalEntryDto journalEntryDto)
     {
-        int lineNumber = 1;
+        var lineNumber = 1;
 
         //Create header
         var newJournalEntry = JournalEntry.Create(

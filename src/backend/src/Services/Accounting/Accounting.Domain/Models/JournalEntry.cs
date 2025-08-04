@@ -79,14 +79,12 @@ public class JournalEntry : Aggregate<JournalEntryId>
         if (documentReference != null) _documentReferences.Remove(documentReference);
     }
 
-    public  void ValidateBalance()
+    public void ValidateBalance()
     {
         var totalDebit = _journalEntryLines.Sum(l => l.Debit);
         var totalCredit = _journalEntryLines.Sum(l => l.Credit);
 
         if (totalDebit != totalCredit)
-        {
             throw new DomainException("The accounting seat does not square: debits ≠ credits.");
-        }
     }
 }
