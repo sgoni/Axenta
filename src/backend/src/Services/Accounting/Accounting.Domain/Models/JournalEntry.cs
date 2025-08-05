@@ -16,7 +16,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
-    public bool IsCanceled { get; private set; }
+    public bool IsPosted { get; private set; } = true;
+    public bool IsReversed { get; private set; } = false;
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId)
     {
@@ -25,7 +26,9 @@ public class JournalEntry : Aggregate<JournalEntryId>
             Id = id,
             Date = date,
             Description = description,
-            PeriodId = periodId
+            PeriodId = periodId,
+            IsPosted = true,
+            IsReversed = false,
         };
 
         journalEntry.AddDomainEvent(new JournalEntryCreatedEvent(journalEntry));
@@ -38,7 +41,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         Description = description;
         Date = date;
         PeriodId = periodId;
-        IsCanceled = isCanceled;
+        IsReversed = isCanceled;
 
         AddDomainEvent(new JournalEntryUpdatedEcent(this));
     }
@@ -55,7 +58,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
     public void CancelSeat()
     {
-        IsCanceled = true;
+        IsReversed = true;
     }
 
     public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)

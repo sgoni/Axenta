@@ -7,7 +7,7 @@ public class AuditLog : Entity<AuditLogId>
 {
     public string Entity { get; private set; } = default!;
     public EntityId EntityId { get; private set; } = default!;
-    public string Action { get; private set; } = default!;
+    public string Action { get; private set; } = default!; // Insert, Update, Delete
     public PerformedBy PerformedBy { get; private set; } = default!;
     public DateTime PerformedAt { get; private set; }
     public string? Details { get; private set; }

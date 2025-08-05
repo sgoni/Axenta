@@ -21,9 +21,13 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
         builder.Property(j => j.Description)
             .HasMaxLength(500);
 
-        builder.Property(j => j.IsCanceled)
+        builder.Property(j => j.IsReversed)
             .IsRequired()
             .HasDefaultValue(false);
+
+        builder.Property(j => j.IsPosted)
+            .IsRequired()
+            .HasDefaultValue(true);
 
         builder.Property(j => j.PeriodId)
             .HasConversion(
