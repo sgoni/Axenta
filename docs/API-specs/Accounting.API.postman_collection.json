@@ -1,0 +1,3490 @@
+{
+	"info": {
+		"_postman_id": "87f4ef1d-2925-41cd-95f2-071b450d06fc",
+		"name": "Accounting.API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25334165"
+	},
+	"item": [
+		{
+			"name": "periods",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "close",
+							"item": [
+								{
+									"name": "Close period (no further movements allowed.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{scheme}}://{{host}}{{base_path}}/periods/:id/close",
+											"protocol": "{{scheme}}",
+											"host": [
+												"{{host}}{{base_path}}"
+											],
+											"path": [
+												"periods",
+												":id",
+												"close"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Close period (no further movements allowed."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/periods/:id/close",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"periods",
+														":id",
+														"close"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": false\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/periods/:id/close",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"periods",
+														":id",
+														"close"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "open",
+							"item": [
+								{
+									"name": "Reopen a closed period (if applicable.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{scheme}}://{{host}}{{base_path}}/periods/:id/open",
+											"protocol": "{{scheme}}",
+											"host": [
+												"{{host}}{{base_path}}"
+											],
+											"path": [
+												"periods",
+												":id",
+												"open"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Reopen a closed period (if applicable)."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/periods/:id/open",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"periods",
+														":id",
+														"open"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": false\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/periods/:id/open",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"periods",
+														":id",
+														"open"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "year={year}&month={month}",
+					"item": [
+						{
+							"name": "The Period Already Exists.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/periods/year={{year}}&month={{month}}",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"periods",
+										"year={{year}}&month={{month}}"
+									]
+								},
+								"description": "VThe Period Already Exists."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/periods/year={{year}}&month={{month}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												"year={{year}}&month={{month}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/periods/year={{year}}&month={{month}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												"year={{year}}&month={{month}}"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/periods/year={{year}}&month={{month}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												"year={{year}}&month={{month}}"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{periodId}",
+					"item": [
+						{
+							"name": "View a specific period.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/periods/:periodId",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"periods",
+										":periodId"
+									],
+									"variable": [
+										{
+											"key": "periodId",
+											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "View a specific period."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/periods/:periodId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												":periodId"
+											],
+											"variable": [
+												{
+													"key": "periodId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/periods/:periodId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												":periodId"
+											],
+											"variable": [
+												{
+													"key": "periodId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/periods/:periodId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												":periodId"
+											],
+											"variable": [
+												{
+													"key": "periodId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List accounting periods",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/periods?PageIndex=0&PageSize=10",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"periods"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "List accounting periods"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/periods?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"periods\": {\n    \"pageIndex\": -69658708,\n    \"pageSize\": -65422373,\n    \"count\": 38330331,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:81e2d532-b2cd-0249-9477-f5370a34de00\",\n        \"year\": -19887364,\n        \"month\": 22755762,\n        \"startDate\": \"2013-05-12T07:03:42.923Z\",\n        \"endDate\": \"1969-10-19T19:25:04.003Z\",\n        \"isClosed\": true\n      },\n      {\n        \"id\": \"01a269b9-062b-a526-d1b3-939ad3b4b65f\",\n        \"year\": 96443057,\n        \"month\": -92462875,\n        \"startDate\": \"1961-02-10T01:42:56.823Z\",\n        \"endDate\": \"1969-08-03T18:10:13.184Z\",\n        \"isClosed\": true\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/periods?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/periods?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Create accounting period",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/periods",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"periods"
+							]
+						},
+						"description": "Create accounting period"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/periods",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"periodId\": \"urn:uuid:49c445ff-a6a1-846f-1234-0cc05c531001\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/periods",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/periods",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "journal-entries",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "documents",
+							"item": [
+								{
+									"name": "See referenced documents",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"documentReference\": {\n    \"id\": \"6fd97569-b024-73ac-ba38-08a6890ffe77\",\n    \"journalEntryId\": \"669e1a3a-dbc1-c300-df8d-db59b1a0c3ca\",\n    \"sourceType\": \"culpa dolore dolor\",\n    \"sourceId\": \"urn:uuid:bc18a10d-039c-8af9-73d0-764c0dbda304\",\n    \"referenceNumber\": \"sunt elit\",\n    \"description\": \"ea Duis fugiat\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:id/documents",
+											"protocol": "{{scheme}}",
+											"host": [
+												"{{host}}{{base_path}}"
+											],
+											"path": [
+												"journal-entries",
+												":id",
+												"documents"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										},
+										"description": "See referenced documents"
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"documentReference\": {\n    \"id\": \"6fd97569-b024-73ac-ba38-08a6890ffe77\",\n    \"journalEntryId\": \"669e1a3a-dbc1-c300-df8d-db59b1a0c3ca\",\n    \"sourceType\": \"culpa dolore dolor\",\n    \"sourceId\": \"urn:uuid:bc18a10d-039c-8af9-73d0-764c0dbda304\",\n    \"referenceNumber\": \"sunt elit\",\n    \"description\": \"ea Duis fugiat\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"documentReference\": {\n    \"id\": \"6fd97569-b024-73ac-ba38-08a6890ffe77\",\n    \"journalEntryId\": \"669e1a3a-dbc1-c300-df8d-db59b1a0c3ca\",\n    \"sourceType\": \"culpa dolore dolor\",\n    \"sourceId\": \"urn:uuid:bc18a10d-039c-8af9-73d0-764c0dbda304\",\n    \"referenceNumber\": \"sunt elit\",\n    \"description\": \"ea Duis fugiat\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										}
+									]
+								},
+								{
+									"name": "See referenced documents.",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:id/documents",
+											"protocol": "{{scheme}}",
+											"host": [
+												"{{host}}{{base_path}}"
+											],
+											"path": [
+												"journal-entries",
+												":id",
+												"documents"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "See referenced documents."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"documentReferences\": [\n    {\n      \"id\": \"urn:uuid:33e265b6-9076-e6a5-c7dd-a34e680fbf62\",\n      \"journalEntryId\": \"73c47cad-3575-e9d5-3a32-5ee813fa78e4\",\n      \"sourceType\": \"occaecat sit in ullamc\",\n      \"sourceId\": \"urn:uuid:b9915e66-8227-fb7c-b29e-3d420e01a335\",\n      \"referenceNumber\": \"id ad sint\",\n      \"description\": \"in dolor quis ipsum\"\n    },\n    {\n      \"id\": \"9a736896-ac8b-7e97-f0c8-0472b7e3f25b\",\n      \"journalEntryId\": \"urn:uuid:5317d421-6508-75d8-1f50-6d9f9b3737cc\",\n      \"sourceType\": \"consectetur magna\",\n      \"sourceId\": \"aa413f23-a36a-24f3-6d32-35317fdca809\",\n      \"referenceNumber\": \"sint do ull\",\n      \"description\": \"ullamco exercitation magna\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/documents",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"documents"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Cancel or mark as deleted.",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:id",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"journal-entries",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Cancel or mark as deleted."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"isSuccess\": false\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{journalEntryId}",
+					"item": [
+						{
+							"name": "View detail of a seat.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:journalEntryId",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"journal-entries",
+										":journalEntryId"
+									],
+									"variable": [
+										{
+											"key": "journalEntryId",
+											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "View detail of a seat."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:journalEntryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":journalEntryId"
+											],
+											"variable": [
+												{
+													"key": "journalEntryId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:journalEntryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":journalEntryId"
+											],
+											"variable": [
+												{
+													"key": "journalEntryId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:journalEntryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":journalEntryId"
+											],
+											"variable": [
+												{
+													"key": "journalEntryId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create new seat (validating Must = Have)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"journal-entries"
+							]
+						},
+						"description": "Create new seat (validating Must = Have)"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "List countable seats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries?PageIndex=0&PageSize=10",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"journal-entries"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "List countable seats"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify an entry (only if the period is open)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"journal-entries"
+							]
+						},
+						"description": "Modify an entry (only if the period is open)"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/journal-entries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"journal-entries"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "audit-logs",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "View details of a specific change.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/audit-logs/:id",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"audit-logs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "View details of a specific change."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/audit-logs/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"audit-logs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/audit-logs/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"audit-logs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/audit-logs/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"audit-logs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Consult audit logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/audit-logs?PageIndex=0&PageSize=10",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"audit-logs"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Consult audit logs"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/audit-logs?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"audit-logs"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"auditlogs\": {\n    \"pageIndex\": -17044031,\n    \"pageSize\": 24740553,\n    \"count\": 87375037,\n    \"data\": [\n      {\n        \"id\": \"9335eb42-255d-8e26-cf46-35acd87dfb51\",\n        \"entity\": \"Excepteur anim minim\",\n        \"action\": \"commodo dolor\",\n        \"performedBy\": \"0ab9b0aa-a8ac-dd11-e64c-e3e184f79410\",\n        \"performedAt\": \"2013-10-12T12:49:57.390Z\",\n        \"details\": \"et irure nulla\"\n      },\n      {\n        \"id\": \"d40b36b3-e5bb-ba83-ded3-d09761836821\",\n        \"entity\": \"non ullamco ut\",\n        \"action\": \"labore est\",\n        \"performedBy\": \"urn:uuid:138700f6-9d47-0805-8313-c60c07cda84a\",\n        \"performedAt\": \"2001-11-26T05:39:47.516Z\",\n        \"details\": \"ea veniam amet\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/audit-logs?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"audit-logs"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/audit-logs?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"audit-logs"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "activate",
+							"item": [
+								{
+									"name": "Activate an account.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:id/activate",
+											"protocol": "{{scheme}}",
+											"host": [
+												"{{host}}{{base_path}}"
+											],
+											"path": [
+												"accounts",
+												":id",
+												"activate"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Activate an account."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:id/activate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":id",
+														"activate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": false\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:id/activate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":id",
+														"activate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "desactivate",
+							"item": [
+								{
+									"name": "Desactivate an account.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:id/desactivate",
+											"protocol": "{{scheme}}",
+											"host": [
+												"{{host}}{{base_path}}"
+											],
+											"path": [
+												"accounts",
+												":id",
+												"desactivate"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Desactivate an account."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:id/desactivate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":id",
+														"desactivate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": false\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/accounts/:id/desactivate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"accounts",
+														":id",
+														"desactivate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Delete (or inactivate) an account.",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:id",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"accounts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Delete (or inactivate) an account."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"isSuccess\": false\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{accountId}",
+					"item": [
+						{
+							"name": "Get a specific account.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:accountId",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"accounts",
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Get a specific account."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountId"
+											],
+											"variable": [
+												{
+													"key": "accountId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountId"
+											],
+											"variable": [
+												{
+													"key": "accountId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/:accountId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												":accountId"
+											],
+											"variable": [
+												{
+													"key": "accountId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "tree",
+					"item": [
+						{
+							"name": "Obtain the hierarchical tree of accounts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/tree",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"accounts",
+										"tree"
+									]
+								},
+								"description": "Obtain the hierarchical tree of accounts"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/tree",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												"tree"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"accountTree\": [\n    {\n      \"id\": \"c2f70870-182c-cfbf-363e-b783d635f6b6\",\n      \"code\": \"et adipisicing u\",\n      \"name\": \"amet exercitation\",\n      \"accountTypeId\": \"0899253e-a219-0615-0659-dd119fc149fe\",\n      \"parentAccountId\": \"urn:uuid:fd0b6736-8a14-33c4-5e88-ae65490e5316\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"urn:uuid:f4a4a8b2-2fce-0e7b-e164-4345a4711265\",\n      \"code\": \"commodo nostrud\",\n      \"name\": \"nulla ad velit nostrud\",\n      \"accountTypeId\": \"d535e5af-438a-7e09-e71e-19f887047cd6\",\n      \"parentAccountId\": \"urn:uuid:4f8de9b8-174d-bcda-16eb-0bf78887e881\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    }\n  ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/tree",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												"tree"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/tree",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												"tree"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "types",
+					"item": [
+						{
+							"name": "Get list of account types (asset, liability, etc.)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/types",
+									"protocol": "{{scheme}}",
+									"host": [
+										"{{host}}{{base_path}}"
+									],
+									"path": [
+										"accounts",
+										"types"
+									]
+								},
+								"description": "Get list of account types (asset, liability, etc.)"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/types",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												"types"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"accountTypes\": [\n    {\n      \"id\": \"urn:uuid:6e5dc5aa-a78c-9d97-eca5-28a21aa2870f\",\n      \"name\": \"Lorem ex officia nisi\",\n      \"description\": \"eiusmod nostrud\"\n    },\n    {\n      \"id\": \"b8e19a28-53e6-0a06-db0d-d7c3053dd7d4\",\n      \"name\": \"tempor \",\n      \"description\": \"sed do occaecat\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/types",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												"types"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/accounts/types",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"accounts",
+												"types"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create a new account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"account\": {\n    \"name\": \"Patentes y permisos municipales\",\n    \"accountTypeId\": \"71bbd6e0-abf4-4f2a-afec-9199bb404b08\",\n    \"ParentAccountId\": \"15165f65-a55a-4f7c-8d87-9275301217af\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/accounts",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"accounts"
+							]
+						},
+						"description": "Create a new account"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:64e8d550-1d86-2587-d591-f0554333f3ac\",\n    \"code\": \"aliquip sint\",\n    \"name\": \"officia esse ut labore\",\n    \"accountTypeId\": \"urn:uuid:3f66e2d8-d3e0-4ac2-cde4-ddff437ae55e\",\n    \"parentAccountId\": \"urn:uuid:f558bac5-f783-ecba-7f56-535be6d7f681\",\n    \"isActive\": false,\n    \"level\": 11225955,\n    \"isMovable\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/accounts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:64e8d550-1d86-2587-d591-f0554333f3ac\",\n    \"code\": \"aliquip sint\",\n    \"name\": \"officia esse ut labore\",\n    \"accountTypeId\": \"urn:uuid:3f66e2d8-d3e0-4ac2-cde4-ddff437ae55e\",\n    \"parentAccountId\": \"urn:uuid:f558bac5-f783-ecba-7f56-535be6d7f681\",\n    \"isActive\": false,\n    \"level\": 11225955,\n    \"isMovable\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/accounts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Get list of accounting accounts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/accounts?PageIndex=0&PageSize=10",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get list of accounting accounts"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/accounts?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"accounts\": {\n    \"pageIndex\": 83476983,\n    \"pageSize\": -90939378,\n    \"count\": -9039812,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:676a7110-26d5-1259-da83-b50e0722c45e\",\n        \"code\": \"minim adipisicing\",\n        \"name\": \"irure\",\n        \"accountTypeId\": \"urn:uuid:cdd7f298-ef49-9a27-8f6f-d68a5ec57168\",\n        \"parentAccountId\": \"8dcfbb64-2537-8e64-ccd6-37342d2a9358\",\n        \"isActive\": false,\n        \"level\": 82295719,\n        \"isMovable\": false\n      },\n      {\n        \"id\": \"75ec9611-8765-16f5-a57d-09ae00c83824\",\n        \"code\": \"cillum in id sit\",\n        \"name\": \"nostrud magna\",\n        \"accountTypeId\": \"54c97112-a935-4ed0-ab8c-09f75a26b305\",\n        \"parentAccountId\": \"7edafe3e-e872-8aca-4c6f-6c86087eb652\",\n        \"isActive\": false,\n        \"level\": 89265334,\n        \"isMovable\": false\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/accounts?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/accounts?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an existing account",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"accountDetail\": {\n    \"id\": \"00445bc5-6287-4b1c-8af9-76df7fb37ac2\",\n    \"code\": \"7006\",\n    \"name\": \"Gastos varios de segundo nivel\",\n    \"accountTypeId\": \"71bbd6e0-abf4-4f2a-afec-9199bb404b08\",\n    \"parentAccountId\": \"8c597200-7580-4494-87b2-4661becf8690\",\n    \"isActive\": false\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}{{base_path}}/accounts",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}{{base_path}}"
+							],
+							"path": [
+								"accounts"
+							]
+						},
+						"description": "Update an existing account"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"b81eeb92-4315-0e60-8e88-021666d49c6c\",\n    \"code\": \"quis ut dolor ut\",\n    \"name\": \"aute d\",\n    \"accountTypeId\": \"urn:uuid:4afecc3c-4b2e-3b30-91cf-75f91e9d310d\",\n    \"parentAccountId\": \"8b274edd-f9f6-cc5f-d94e-4df2c79869e9\",\n    \"isActive\": true,\n    \"level\": 28662052,\n    \"isMovable\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/accounts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"isSuccescs\": true\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"b81eeb92-4315-0e60-8e88-021666d49c6c\",\n    \"code\": \"quis ut dolor ut\",\n    \"name\": \"aute d\",\n    \"accountTypeId\": \"urn:uuid:4afecc3c-4b2e-3b30-91cf-75f91e9d310d\",\n    \"parentAccountId\": \"8b274edd-f9f6-cc5f-d94e-4df2c79869e9\",\n    \"isActive\": true,\n    \"level\": 28662052,\n    \"isMovable\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/accounts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scheme}}://{{host}}{{base_path}}/Health",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{host}}{{base_path}}"
+					],
+					"path": [
+						"Health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		},
+		{
+			"key": "year",
+			"value": "-4674247"
+		},
+		{
+			"key": "month",
+			"value": "-4674247"
+		}
+	]
+}
