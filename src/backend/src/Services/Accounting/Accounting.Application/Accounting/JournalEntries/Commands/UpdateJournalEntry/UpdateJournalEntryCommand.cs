@@ -2,7 +2,7 @@
 
 public record UpdateJournalEntryCommand(JournalEntryDto JournalEntry) : ICommand<UpdateJournalEntryResult>;
 
-public record UpdateJournalEntryResult(bool IsSuccess);
+public record UpdateJournalEntryResult(Guid Id);
 
 public class UpdateJournalEntryCommandValidator : AbstractValidator<UpdateJournalEntryCommand>
 {

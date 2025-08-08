@@ -17,7 +17,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
     public bool IsPosted { get; private set; } = true;
-    public bool IsReversed { get; private set; } = false;
+    public bool IsReversed { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId)
     {
@@ -28,7 +28,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             Description = description,
             PeriodId = periodId,
             IsPosted = true,
-            IsReversed = false,
+            IsReversed = false
         };
 
         journalEntry.AddDomainEvent(new JournalEntryCreatedEvent(journalEntry));
@@ -36,12 +36,11 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, PeriodId? periodId, bool isCanceled = false)
+    public void Update(string? description, DateTime date, bool isReversed = false)
     {
         Description = description;
         Date = date;
-        PeriodId = periodId;
-        IsReversed = isCanceled;
+        IsReversed = isReversed;
 
         AddDomainEvent(new JournalEntryUpdatedEcent(this));
     }
@@ -50,7 +49,22 @@ public class JournalEntry : Aggregate<JournalEntryId>
     {
         ArgumentOutOfRangeException.ThrowIfNegative(debit);
         ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentOutOfRangeException.ThrowIfNegative(credit);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
+
+        var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
+        _journalEntryLines.Add(journalEntryLine);
+    }
+
+    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, decimal debit, decimal credit,
+        int lineNumber = 1)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(debit);
+        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
+
+        var line = _journalEntryLines.SingleOrDefault(x => x.Id == IdLine);
+        RemoveLine(line.Id);
 
         var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);

@@ -1,11 +1,3 @@
-# curl -X 'GET' 
-#  'https://localhost:5050/accounts/tree' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/accounts/tree
-accept: application/json
-
-###
-
 # curl -X 'DELETE' 
 #  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
 #  -H 'accept: application/json'
@@ -27,6 +19,69 @@ accept: application/json
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/journal-entries?PageIndex=0&PageSize=10
 accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/journal-entries' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "journalEntry": {
+#    "id": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+#    "date": "2025-08-01T02:26:27.053Z",
+#    "description": "Registro de ventas por contado.",
+#    "isReversed": true,
+#    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+#    "lines": [
+#      {
+#        "id": "98723cc8-2f31-40a1-a4b0-aeb6ff085f86",
+#        "journalEntryId": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+#        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+#        "debit": 5000
+#        "credit": 0,
+#        "lineNumber": 1
+#      },
+#      {
+#        "id": "f3d8e587-6492-490d-823d-d1bffdf390fe",
+#        "journalEntryId": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+#        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+#        "debit": 0,
+#        "credit": 5000
+#        "lineNumber": 2
+#      }	  
+#    ]
+#  }
+#}'
+PUT {{API_HostAddress}}/journal-entries
+accept: application/json
+Content-Type: application/json
+
+{
+  "journalEntry": {
+    "id": "31c86b11-a2ca-40c3-8312-493c874d9c18",
+    "date": "2025-08-01T02:26:27.053Z",
+    "description": "Registro de ventas por contado demo.",
+    "isReversed": true,
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "lines": [
+      {
+        "journalEntryId": "31c86b11-a2ca-40c3-8312-493c874d9c18",
+        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+        "debit": 50000,
+        "credit": 0,
+        "lineNumber": 1
+      },
+      {
+        "journalEntryId": "31c86b11-a2ca-40c3-8312-493c874d9c18",
+        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+        "debit": 0,
+        "credit": 50000,
+        "lineNumber": 2
+      }
+    ]
+  }
+}
 
 ###
 
@@ -74,7 +129,7 @@ Content-Type: application/json
       {
         "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
         "debit": 0,
-        "credit": 47800,
+        "credit": 4000,
         "lineNumber": 2
       }
     ]
@@ -249,6 +304,14 @@ accept: application/json
 #  'https://localhost:5050/accounts/types' 
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/accounts/types
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/accounts/tree' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/accounts/tree
 accept: application/json
 
 ###

@@ -16,7 +16,7 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
         {
             var parentAccountId = AccountId.Of(command.Account.ParentAccountId);
             parentAccount = await dbContext.Accounts.FindAsync(parentAccountId);
-            
+
             if (parentAccount is null)
                 throw new Exception("Parent account does not exist.");
 
@@ -24,7 +24,7 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
             var siblingCount = await dbContext.Accounts.CountAsync(a => a.ParentId == parentAccount.Id);
 
             // Eg: If there are two children, the next one will be number 3
-            string suffix = (siblingCount + 1).ToString("D2"); // '01', '02', etc
+            var suffix = (siblingCount + 1).ToString("D2"); // '01', '02', etc
             newCode = $"{parentAccount.Code}.{suffix}";
         }
         else
@@ -45,13 +45,13 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
     {
         var newAccount =
             Account.Create(
-                id: AccountId.Of(Guid.NewGuid()),
-                code: newCode,
-                name: accountDetailDto.Name,
-                accountTypeId: AccountTypeId.Of(accountDetailDto.AccountTypeId),
-                parentId: AccountId.Of(accountDetailDto.ParentAccountId),
-                level: accountDetailDto.Level == null ? 1 : parentAccount.Level + 1,
-                isMovable: accountDetailDto.IsMovable);
+                AccountId.Of(Guid.NewGuid()),
+                newCode,
+                accountDetailDto.Name,
+                AccountTypeId.Of(accountDetailDto.AccountTypeId),
+                AccountId.Of(accountDetailDto.ParentAccountId),
+                accountDetailDto.Level == null ? 1 : parentAccount.Level + 1,
+                accountDetailDto.IsMovable);
 
         return newAccount;
     }

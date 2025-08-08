@@ -1,6 +1,4 @@
-﻿using ValidationException = FluentValidation.ValidationException;
-
-namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
+﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
 
 public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateJournalEntryCommand, CreateJournalEntryResult>
@@ -13,13 +11,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         //return result 
 
         //Validation accounting period is Open
-        var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
-        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
-
-        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
-
-        if (period.IsClosed)
-            throw new ValidationException("The accounting period is closed and seats cannot be registered.");
+        await PeriodIsOpen(command, cancellationToken);
 
         var journalEntry = CreateNewJournalEntry(command.JournalEntry);
 
@@ -27,6 +19,17 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new CreateJournalEntryResult(journalEntry.Id.Value);
+    }
+
+    private async Task PeriodIsOpen(CreateJournalEntryCommand command, CancellationToken cancellationToken)
+    {
+        var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
+        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
+
+        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
+
+        if (period.IsClosed)
+            throw new BadRequestException("The accounting period is closed and seats cannot be registered.");
     }
 
     private JournalEntry CreateNewJournalEntry(JournalEntryDto journalEntryDto)

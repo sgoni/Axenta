@@ -1,11 +1,11 @@
 ﻿namespace Accounting.API.Endpoints.Account;
 
-public record UpdateAccountRequest(AccountDto AccountDetail);
-
 //- Accepts a UpdateAccountRequest.
 //- Maps the request to an UpdateAccountCommand.
 //- Sends the command for processing.
 //- Returns a success or error response based on the outcome.
+
+public record UpdateAccountRequest(AccountDto AccountDetail);
 
 public record UpdateAccountResponse(bool IsSuccescs);
 
@@ -28,6 +28,5 @@ public class UpdateAccount : ICarterModule
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Update an existing account")
             .WithDescription("Update an existing account");
-        ;
     }
 }

@@ -13,7 +13,7 @@ public class CreateJournalEntry : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("journal-entries", async (CreateJournalEntryRequest request, ISender sender) =>
+        app.MapPost("/journal-entries", async (CreateJournalEntryRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateJournalEntryCommand>();
 

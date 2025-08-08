@@ -4,6 +4,6 @@ public record JournalEntryDto(
     Guid Id,
     DateTime Date,
     string Description,
-    bool IsCanceled,
+    bool IsReversed,
     Guid PeriodId,
     List<JournalEntryLineDto> Lines);

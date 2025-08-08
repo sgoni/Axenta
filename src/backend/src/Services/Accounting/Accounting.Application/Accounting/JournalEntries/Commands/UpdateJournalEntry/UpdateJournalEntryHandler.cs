@@ -21,21 +21,60 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             .Include(je => je.JournalEntryLines)
             .AsNoTracking()
             .Where(je => je.Id == JournalEntryId.Of(command.JournalEntry.Id))
-            .SingleOrDefaultAsync(cancellationToken);
+            .FirstOrDefaultAsync(cancellationToken);
 
         if (journalEntry is null)
             throw new JournalEntryNotFoundExceptions(command.JournalEntry.Id);
 
-        UpdateOrderWithNewValues(journalEntry, command.JournalEntry);
+        //Validation accounting period is Open
+        await PeriodIsOpen(command, cancellationToken);
 
-        dbContext.JournalEntries.Update(journalEntry);
+        var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
+
+        dbContext.JournalEntries.Add(newJournalEntry);
+        dbContext.JournalEntries.Remove(journalEntry);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new UpdateJournalEntryResult(true);
+        return new UpdateJournalEntryResult(journalEntry.Id.Value);
     }
 
-    private void UpdateOrderWithNewValues(JournalEntry journalEntry, JournalEntryDto commandJournalEntry)
+    private async Task PeriodIsOpen(UpdateJournalEntryCommand command, CancellationToken cancellationToken)
     {
-        journalEntry.Update(journalEntry.Description, journalEntry.Date, PeriodId.Of(journalEntry.PeriodId.Value));
+        var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
+        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
+
+        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
+
+        if (period.IsClosed)
+            throw new BadRequestException("The accounting period is closed and seats cannot be registered.");
+    }
+
+    private JournalEntry CreateNewJournalEntry(JournalEntryDto journalEntryDto)
+    {
+        var lineNumber = 1;
+
+        //Create header
+        var newJournalEntry = JournalEntry.Create(
+            JournalEntryId.Of(Guid.NewGuid()),
+            journalEntryDto.Date,
+            journalEntryDto.Description,
+            PeriodId.Of(journalEntryDto.PeriodId)
+        );
+
+        //Add details
+        foreach (var journalEntryLineDto in journalEntryDto.Lines)
+            newJournalEntry.AddLine(
+                AccountId.Of(journalEntryLineDto.AccountId),
+                journalEntryLineDto.Debit,
+                journalEntryLineDto.Credit,
+                lineNumber++
+            );
+
+        //Accounting validation Must = Have
+        newJournalEntry.ValidateBalance();
+
+        //Add document references
+
+        return newJournalEntry;
     }
 }
