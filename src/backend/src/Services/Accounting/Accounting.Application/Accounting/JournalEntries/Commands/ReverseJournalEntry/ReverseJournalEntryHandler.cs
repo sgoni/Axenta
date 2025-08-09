@@ -6,8 +6,11 @@ public class ReverseJournalEntryHandler(IApplicationDbContext dbContext)
     public async Task<ReverseJournalEntryResult> Handle(ReverseJournalEntryCommand command,
         CancellationToken cancellationToken)
     {
-        var journalEntryId = JournalEntryId.Of(command.ReversalJournalEntryId);
-        var journalEntry = await dbContext.JournalEntries.FindAsync([journalEntryId], cancellationToken);
+        var journalEntry = await dbContext.JournalEntries
+            .Include(je => je.JournalEntryLines)
+            .AsNoTracking()
+            .Where(je => je.Id == JournalEntryId.Of(command.ReversalJournalEntryId))
+            .FirstOrDefaultAsync(cancellationToken);
 
         if (journalEntry is null)
             throw new JournalEntryNotFoundExceptions(command.ReversalJournalEntryId);
@@ -17,6 +20,7 @@ public class ReverseJournalEntryHandler(IApplicationDbContext dbContext)
 
         var reversal = journalEntry.Reverse();
         dbContext.JournalEntries.Add(reversal);
+        dbContext.JournalEntries.Update(journalEntry);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new ReverseJournalEntryResult(true);

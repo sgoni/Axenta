@@ -4,6 +4,6 @@ public record JournalEntryDto(
     Guid Id,
     DateTime Date,
     string Description,
-    bool IsReversed,
+    bool IsPosted,
     Guid PeriodId,
     List<JournalEntryLineDto> Lines);

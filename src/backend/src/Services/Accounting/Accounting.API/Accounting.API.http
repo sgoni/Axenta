@@ -1,3 +1,11 @@
+# curl -X 'PUT' 
+#  'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
+#  -H 'accept: application/json'
+PUT https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse
+accept: application/json
+
+###
+
 # curl -X 'DELETE' 
 #  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
 #  -H 'accept: application/json'
@@ -117,7 +125,7 @@ Content-Type: application/json
 {
   "journalEntry": {
     "date": "2025-08-01T02:26:27.053Z",
-    "description": "Registro de ventas.",
+    "description": "Registro de ventas demo.",
     "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
     "lines": [
       {

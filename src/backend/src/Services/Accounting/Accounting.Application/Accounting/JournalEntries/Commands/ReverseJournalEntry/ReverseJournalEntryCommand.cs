@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.ReverseJournalEntry;
 
-public record ReverseJournalEntryCommand(Guid ReversalJournalEntryId) : ICommand, ICommand<ReverseJournalEntryResult>;
+public record ReverseJournalEntryCommand(Guid ReversalJournalEntryId) : ICommand<ReverseJournalEntryResult>;
 
 public record ReverseJournalEntryResult(bool IsSuccess);
 

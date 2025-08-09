@@ -13,7 +13,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public IReadOnlyCollection<DocumentReference> DocumentReferences => _documentReferences.AsReadOnly();
     public IReadOnlyCollection<JournalEntryLine> JournalEntryLines => _journalEntryLines.AsReadOnly();
 
-    public JournalEntryId ReversalJournalEntryId { get; private set; } = default;
+    public JournalEntryId ReversalJournalEntryId { get; private set; }
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
@@ -37,11 +37,11 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, bool isReversed = false)
+    public void Update(string? description, DateTime date, bool isPosted = false)
     {
         Description = description;
         Date = date;
-        IsReversed = isReversed;
+        IsPosted = isPosted;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(this));
     }
@@ -59,7 +59,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
             Description = $"Reversal of entry {Id.Value}",
             PeriodId = PeriodId,
             IsPosted = true,
-            IsReversed = true
+            IsReversed = false,
+            ReversalJournalEntryId = Id
         };
 
         // Mark original as reversed
@@ -106,9 +107,9 @@ public class JournalEntry : Aggregate<JournalEntryId>
         _journalEntryLines.Add(journalEntryLine);
     }
 
-    public void CancelSeat()
+    public void Posted()
     {
-        IsReversed = true;
+        IsPosted = true;
     }
 
     public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)

@@ -26,13 +26,27 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
         if (journalEntry is null)
             throw new JournalEntryNotFoundExceptions(command.JournalEntry.Id);
 
-        //Validation accounting period is Open
+        // Validation accounting period is Open
         await PeriodIsOpen(command, cancellationToken);
 
-        var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
+        // JournalEntry is  reversed
+        if (journalEntry.IsReversed)
+            throw new BadRequestException("The journal entry currently appears reversed.");
 
-        dbContext.JournalEntries.Add(newJournalEntry);
-        dbContext.JournalEntries.Remove(journalEntry);
+        if (!journalEntry.IsPosted)
+        {
+            var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
+            dbContext.JournalEntries.Add(newJournalEntry);
+            dbContext.JournalEntries.Remove(journalEntry);
+        }
+        else
+        {
+            journalEntry.Update(
+                command.JournalEntry.Description,
+                command.JournalEntry.Date,
+                command.JournalEntry.IsPosted);
+        }
+
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new UpdateJournalEntryResult(journalEntry.Id.Value);
