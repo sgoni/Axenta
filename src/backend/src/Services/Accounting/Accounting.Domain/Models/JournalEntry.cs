@@ -13,7 +13,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public IReadOnlyCollection<DocumentReference> DocumentReferences => _documentReferences.AsReadOnly();
     public IReadOnlyCollection<JournalEntryLine> JournalEntryLines => _journalEntryLines.AsReadOnly();
 
-    public JournalEntryId ReversalJournalEntryId { get; private set; }
+    public JournalEntryId ReversalJournalEntryId { get; private set; } = default;
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
@@ -76,7 +76,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         ReversalJournalEntryId = reversal.Id;
 
         // Fire domain event
-        AddDomainEvent(new JournalEntryReversedDomainEvent(Id, reversal.Id));
+        AddDomainEvent(new JournalEntryReversedDomainEvent(Id.Value, reversal.Id.Value));
 
         return reversal;
     }

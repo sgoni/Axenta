@@ -1,3 +1,3 @@
 ﻿namespace Accounting.Domain.Events;
 
-public record JournalEntryReversedDomainEvent(JournalEntryId Id, JournalEntryId reversalId) : IDomainEvent;
+public record JournalEntryReversedDomainEvent(Guid OriginalJournalEntryId, Guid ReversalJournalEntryId) : IDomainEvent;

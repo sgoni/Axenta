@@ -35,3 +35,4 @@ global using Accounting.Application.Accounting.DocumentReferences.Commands.Creat
 global using Accounting.Application.Accounting.JournalEntries.Queries.GetJournalEntryById;
 global using Accounting.Application.Accounting.JournalEntries.Commands.DeleteJornalEntryCommand;
 global using Accounting.Application.Accounting.Accounts.Queries.GetAccountsTree;
+global using Accounting.Application.Accounting.JournalEntries.Commands.ReverseJournalEntry;

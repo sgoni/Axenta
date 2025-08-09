@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.DeleteJornalEntryCommand;
 
-public record DeleteJournalEntryCommand(Guid journalEntryId) : IQuery<DeleteJournalEntrytResult>;
+public record DeleteJournalEntryCommand(Guid journalEntryId) : ICommand<DeleteJournalEntrytResult>;
 
 public record DeleteJournalEntrytResult(bool IsSuccess);
 

@@ -29,6 +29,13 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
             .IsRequired()
             .HasDefaultValue(true);
 
+        builder.Property(j => j.ReversalJournalEntryId)
+            .HasConversion(
+                pid => pid!.Value,
+                val => JournalEntryId.Of(val)
+            )
+            .IsRequired(false);
+
         builder.Property(j => j.PeriodId)
             .HasConversion(
                 pid => pid!.Value,

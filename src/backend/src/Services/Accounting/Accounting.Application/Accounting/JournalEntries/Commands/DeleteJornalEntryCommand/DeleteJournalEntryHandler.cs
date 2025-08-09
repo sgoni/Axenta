@@ -1,7 +1,7 @@
 ﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.DeleteJornalEntryCommand;
 
 public class DeleteJournalEntryHandler(IApplicationDbContext dbContext)
-    : IQueryHandler<DeleteJournalEntryCommand, DeleteJournalEntrytResult>
+    : ICommandHandler<DeleteJournalEntryCommand, DeleteJournalEntrytResult>
 {
     public async Task<DeleteJournalEntrytResult> Handle(DeleteJournalEntryCommand command,
         CancellationToken cancellationToken)
