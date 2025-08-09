@@ -3,7 +3,7 @@
 /// <summary>
 ///     Control of open/closed periods
 /// </summary>
-public class Period : Entity<PeriodId>
+public class Period : Aggregate<PeriodId>
 {
     public int Year { get; private set; }
     public int Month { get; private set; }
@@ -34,6 +34,8 @@ public class Period : Entity<PeriodId>
     public void Close()
     {
         IsClosed = true;
+        // Trigger event
+        AddDomainEvent(new PeriodClosedDomainEvent(Id.Value));
     }
 
     public void Open()
