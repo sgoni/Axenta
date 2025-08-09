@@ -13,6 +13,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public IReadOnlyCollection<DocumentReference> DocumentReferences => _documentReferences.AsReadOnly();
     public IReadOnlyCollection<JournalEntryLine> JournalEntryLines => _journalEntryLines.AsReadOnly();
 
+    public JournalEntryId ReversalJournalEntryId { get; private set; }
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
     public PeriodId? PeriodId { get; private set; }
@@ -42,7 +43,42 @@ public class JournalEntry : Aggregate<JournalEntryId>
         Date = date;
         IsReversed = isReversed;
 
-        AddDomainEvent(new JournalEntryUpdatedEcent(this));
+        AddDomainEvent(new JournalEntryUpdatedEvent(this));
+    }
+
+    public JournalEntry Reverse()
+    {
+        if (IsReversed)
+            throw new DomainException("The seat has already been reversed.");
+
+        // Create reverse entry
+        var reversal = new JournalEntry
+        {
+            Id = JournalEntryId.Of(Guid.NewGuid()),
+            Date = DateTime.UtcNow,
+            Description = $"Reversal of entry {Id.Value}",
+            PeriodId = PeriodId,
+            IsPosted = true,
+            IsReversed = true
+        };
+
+        // Mark original as reversed
+        foreach (var line in _journalEntryLines)
+            reversal.AddLine(
+                line.AccountId,
+                line.Credit,
+                line.Debit,
+                line.LineNumber
+            );
+
+        // Mark original as reversed
+        IsReversed = true;
+        ReversalJournalEntryId = reversal.Id;
+
+        // Fire domain event
+        AddDomainEvent(new JournalEntryReversedDomainEvent(Id, reversal.Id));
+
+        return reversal;
     }
 
     public void AddLine(AccountId accountId, decimal debit, decimal credit, int lineNumber = 1)

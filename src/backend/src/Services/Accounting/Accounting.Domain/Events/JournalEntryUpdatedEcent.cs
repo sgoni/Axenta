@@ -1,3 +1,3 @@
 ﻿namespace Accounting.Domain.Events;
 
-public record JournalEntryUpdatedEcent(JournalEntry journalEntry) : IDomainEvent;
+public record JournalEntryUpdatedEvent(JournalEntry journalEntry) : IDomainEvent;
