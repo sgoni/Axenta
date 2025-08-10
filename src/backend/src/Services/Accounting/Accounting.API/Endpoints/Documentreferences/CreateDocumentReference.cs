@@ -26,7 +26,7 @@ public class CreateDocumentReference : ICarterModule
             .WithName("CreateDocumentReference")
             .Produces<CreateDocumentReferenceResponse>(StatusCodes.Status201Created)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithSummary("See referenced documents")
-            .WithDescription("See referenced documents");
+            .WithSummary("Associate document to accounting entry")
+            .WithDescription("SAssociate document to accounting entry");
     }
 }
