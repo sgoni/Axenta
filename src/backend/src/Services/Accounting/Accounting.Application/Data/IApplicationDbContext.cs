@@ -9,6 +9,7 @@ public interface IApplicationDbContext
     DbSet<JournalEntryLine> JournalEntryLines { get; }
     DbSet<DocumentReference> DocumentReferences { get; }
     DbSet<AuditLog> AuditLogs { get; }
+    DbSet<CurrencyExchangeRate> CurrencyExchangeRates { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

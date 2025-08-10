@@ -1,0 +1,5 @@
+﻿namespace Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRateCurrent;
+
+public record GetCurrencyExchangeRateCurrentQuery : IQuery<GetCurrencyExchangeRateCurrentResult>;
+
+public record GetCurrencyExchangeRateCurrentResult(CurrencyExchangeRateDto currencyExchangeRate);

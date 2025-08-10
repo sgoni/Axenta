@@ -14,7 +14,7 @@ public class AccountingPolicyTemplate : Entity<AccountingPolicyTemplateId>
         {
             Id = id,
             Name = name,
-            Trigger = trigger,
+            Trigger = trigger
         };
 
         return accountingPolicyTemplate;
