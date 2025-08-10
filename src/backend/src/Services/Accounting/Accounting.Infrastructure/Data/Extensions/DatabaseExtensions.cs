@@ -20,6 +20,7 @@ public static class DatabaseExtensions
         await SeedPeriodsAsync(context);
         await SeedJornalEntryWithLinesAsync(context);
         await SeedDocumentReferencesAsync(context);
+        await SeedCurrencyExchangeRateAsync(context);
     }
 
     private static async Task SeedAccountTypeAsync(ApplicationDbContext context)
@@ -63,6 +64,15 @@ public static class DatabaseExtensions
         if (!await context.DocumentReferences.AnyAsync())
         {
             await context.DocumentReferences.AddRangeAsync(InitialData.DocumentReferencesRelatedToJournalEntry);
+            await context.SaveChangesAsync();
+        }
+    }
+
+    private static async Task SeedCurrencyExchangeRateAsync(ApplicationDbContext context)
+    {
+        if (!await context.CurrencyExchangeRates.AnyAsync())
+        {
+            await context.CurrencyExchangeRates.AddRangeAsync(InitialData.CurrencyExchangeRates);
             await context.SaveChangesAsync();
         }
     }

@@ -1,7 +1,50 @@
+# curl -X 'POST' 
+#  'https://localhost:5050/currencies' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "currencyExchangeRate": {
+#    "currencyCode": "USD",
+#    "date": "2025-08-10",
+#    "buyRate": 500,
+#    "sellRate": 514
+#  }
+#}
+POST https://localhost:5050/currencies
+accept: application/json
+Content-Type: application/json
+
+{
+  "currencyExchangeRate": {
+    "currencyCode": "USD",
+    "date": "2025-08-11",
+    "buyRate": 500,
+    "sellRate": 514
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/currencies/daily' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/currencies/daily
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/currencies?PageIndex=0&PageSize=10' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/currencies?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
 # curl -X 'PUT' 
 #  'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
 #  -H 'accept: application/json'
-PUT https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse
+PUT {{API_HostAddress}}/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse
 accept: application/json
 
 ###

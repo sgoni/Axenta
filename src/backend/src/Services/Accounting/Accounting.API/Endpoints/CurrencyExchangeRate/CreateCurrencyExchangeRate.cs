@@ -5,7 +5,7 @@
 //- Uses MediatR to send the command to the corresponding handler.
 //- Returns a response with the created account's ID.
 
-public record CreateCurrencyExchangeRateRequest(DocumentReferenceDto DocumentReference);
+public record CreateCurrencyExchangeRateRequest(CurrencyExchangeRateDto CurrencyExchangeRate);
 
 public record CreateCurrencyExchangeRateResponse(Guid Id);
 
@@ -13,9 +13,9 @@ public class CreateCurrencyExchangeRate : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("currency", async (CreateCurrencyExchangeRateRequest request, ISender sender) =>
+        app.MapPost("/currencies", async (CreateCurrencyExchangeRateRequest request, ISender sender) =>
             {
-                var command = request.Adapt<CreateDocumentReferenceCommand>();
+                var command = request.Adapt<CreateCurrencyExchangeRateCommand>();
 
                 var result = await sender.Send(command);
 

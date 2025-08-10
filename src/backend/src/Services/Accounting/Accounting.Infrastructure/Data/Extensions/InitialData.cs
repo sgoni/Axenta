@@ -518,4 +518,23 @@ public class InitialData
                 "123456789", "Registro de préstamo con la entidad financiera"
             )
         };
+
+    public static IEnumerable<CurrencyExchangeRate> CurrencyExchangeRates =>
+        new List<CurrencyExchangeRate>
+        {
+            // Exchange rates
+            CurrencyExchangeRate.Create(
+                CurrencyExchangeRateId.Of(new Guid("c9726881-322c-4de3-bf52-fc03ea9cea67")),
+                "USD",
+                DateOnly.FromDateTime(new DateTime(2014, 10, 01)),
+                310,
+                315),
+
+            CurrencyExchangeRate.Create(
+                CurrencyExchangeRateId.Of(new Guid("57ba3603-9249-40d3-8f07-61d67ab42b0f")),
+                "USD",
+                DateOnly.FromDateTime(DateTime.Now),
+                499,
+                513)
+        };
 }

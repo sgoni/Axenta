@@ -3,4 +3,4 @@
 public record GetCurrencyExchangeRatesQuery(PaginationRequest PaginationRequest)
     : IQuery<GetCurrencyExchangeRatesResult>;
 
-public record GetCurrencyExchangeRatesResult(PaginatedResult<CurrencyExchangeRateDto> currencyExchangeRates);
+public record GetCurrencyExchangeRatesResult(PaginatedResult<CurrencyExchangeRateDto> CurrencyExchangeRates);

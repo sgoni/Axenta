@@ -1,9 +1,9 @@
 ﻿namespace Accounting.Application.Accounting.CurrencyExchangeRate.Commands.CreateCurrencyExchangeRate;
 
-public class CurrencyExchangeRateHandler(IApplicationDbContext dbContext)
-    : ICommandHandler<CurrencyExchangeRateCommand, CurrencyExchangeRateResult>
+public class CreateCurrencyExchangeRateHandler(IApplicationDbContext dbContext)
+    : ICommandHandler<CreateCurrencyExchangeRateCommand, CreateCurrencyExchangeRateResult>
 {
-    public async Task<CurrencyExchangeRateResult> Handle(CurrencyExchangeRateCommand command,
+    public async Task<CreateCurrencyExchangeRateResult> Handle(CreateCurrencyExchangeRateCommand command,
         CancellationToken cancellationToken)
     {
         //create CurrencyExchangeRate Entry entity from command object
@@ -14,7 +14,7 @@ public class CurrencyExchangeRateHandler(IApplicationDbContext dbContext)
         dbContext.CurrencyExchangeRates.Add(currencyExchangeRate);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new CurrencyExchangeRateResult(currencyExchangeRate.Id.Value);
+        return new CreateCurrencyExchangeRateResult(currencyExchangeRate.Id.Value);
     }
 
     private Domain.Models.CurrencyExchangeRate CreateNewCurrencyExchangeRate(

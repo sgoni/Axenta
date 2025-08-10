@@ -36,3 +36,6 @@ global using Accounting.Application.Accounting.JournalEntries.Queries.GetJournal
 global using Accounting.Application.Accounting.JournalEntries.Commands.DeleteJornalEntryCommand;
 global using Accounting.Application.Accounting.Accounts.Queries.GetAccountsTree;
 global using Accounting.Application.Accounting.JournalEntries.Commands.ReverseJournalEntry;
+global using Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRateCurrent;
+global using Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRates;
+global using Accounting.Application.Accounting.CurrencyExchangeRate.Commands.CreateCurrencyExchangeRate;
