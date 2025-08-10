@@ -10,6 +10,7 @@ public interface IApplicationDbContext
     DbSet<DocumentReference> DocumentReferences { get; }
     DbSet<AuditLog> AuditLogs { get; }
     DbSet<CurrencyExchangeRate> CurrencyExchangeRates { get; }
+    DbSet<Company> Companies { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

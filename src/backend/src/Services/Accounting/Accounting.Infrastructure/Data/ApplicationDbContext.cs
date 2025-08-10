@@ -18,6 +18,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<DocumentReference> DocumentReferences => Set<DocumentReference>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
     public DbSet<CurrencyExchangeRate> CurrencyExchangeRates => Set<CurrencyExchangeRate>();
+    public DbSet<Company> Companies => Set<Company>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
