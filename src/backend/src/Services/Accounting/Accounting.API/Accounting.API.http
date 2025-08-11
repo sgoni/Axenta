@@ -1,3 +1,79 @@
+# curl -X 'PUT' 
+#  'https://localhost:5050/companies' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "company": {
+#        "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+#        "name": "Demo",
+#        "taxId": "3101268467",
+#        "country": "CR",
+#        "currencyCode": "USD",
+#        "isActive": false
+#  }
+#}'
+PUT {{API_HostAddress}}/companies
+accept: application/json
+Content-Type: application/json
+
+{
+  "company": {
+    "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+    "name": "Demo1",
+    "taxId": "3101268467",
+    "country": "CR",
+    "currencyCode": "USD",
+    "isActive": false
+  }
+}
+
+###
+
+# curl -X 'POST' 
+#  'https://localhost:5050/companies' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "account": {
+#    "name": "Demo",
+#    "taxId": "3101268467",
+#    "country": "CR",
+#    "currencyCode": "USD",
+#    "isActive": true
+#  }
+#}'
+POST {{API_HostAddress}}/companies
+accept: application/json
+Content-Type: application/json
+
+{
+  "company": {
+    "name": "Demo",
+    "taxId": "3101268467",
+    "country": "CR",
+    "currencyCode": "USD",
+    "isActive": true
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/companies?PageIndex=0&PageSize=10' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/companies?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
 # curl -X 'POST' 
 #  'https://localhost:5050/currencies' 
 #  -H 'accept: application/json' 

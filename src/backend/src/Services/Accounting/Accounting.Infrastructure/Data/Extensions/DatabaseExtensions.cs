@@ -32,7 +32,7 @@ public static class DatabaseExtensions
             await context.SaveChangesAsync();
         }
     }
-    
+
     private static async Task SeedAccountTypeAsync(ApplicationDbContext context)
     {
         if (!await context.AccountTypes.AnyAsync())

@@ -1,7 +1,8 @@
 ﻿namespace Accounting.Application.Accounting.Companies.Commands.CreateCompany;
 
-public record CreateCompanyCommand(CompanyDto Company):ICommand<CreateCompanyResult>;
-public record CreateCompanyResult(Guid CompanyId);
+public record CreateCompanyCommand(CompanyDto Company) : ICommand<CreateCompanyResult>;
+
+public record CreateCompanyResult(Guid Id);
 
 public class CreateCompanyCommandValidator : AbstractValidator<CreateCompanyCommand>
 {

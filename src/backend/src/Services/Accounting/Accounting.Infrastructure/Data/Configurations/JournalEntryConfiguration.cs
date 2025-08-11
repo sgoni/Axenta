@@ -21,17 +21,39 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
         builder.Property(j => j.Description)
             .HasMaxLength(500);
 
+        builder.Property(j => j.PeriodId)
+            .HasConversion(
+                pid => pid!.Value,
+                val => PeriodId.Of(val)
+            )
+            .HasColumnName("PeriodId");
+
+        builder.Property(j => j.CompanyId)
+            .HasConversion(
+                pid => pid!.Value,
+                val => CompanyId.Of(val)
+            )
+            .HasColumnName("CompanyId");
+
         builder.Property(j => j.CurrencyCode)
             .HasMaxLength(3)
             .IsRequired();
 
-        builder.Property(j => j.IsReversed)
-            .IsRequired()
-            .HasDefaultValue(false);
+        builder.Property(j => j.ExchangeRate)
+            .HasColumnType("decimal(18,2)")
+            .HasDefaultValue(0m)
+            .IsRequired();
+
+        builder.Property(j => j.ExchangeRateDate)
+            .IsRequired(false);
 
         builder.Property(j => j.IsPosted)
             .IsRequired()
-            .HasDefaultValue(true);
+            .HasDefaultValue(false);
+
+        builder.Property(j => j.IsReversed)
+            .IsRequired()
+            .HasDefaultValue(false);
 
         builder.Property(j => j.ReversalJournalEntryId)
             .HasConversion(
@@ -39,13 +61,6 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
                 val => JournalEntryId.Of(val)
             )
             .IsRequired(false);
-
-        builder.Property(j => j.PeriodId)
-            .HasConversion(
-                pid => pid!.Value,
-                val => PeriodId.Of(val)
-            )
-            .HasColumnName("PeriodId");
 
         builder.HasMany(j => j.DocumentReferences)
             .WithOne()

@@ -5,6 +5,7 @@
 //- Returns a success or not found response.
 
 public record ClosePeriodRequest(ClosePeriodDto Period);
+
 public record ClosePeriodResponse(bool IsSuccess);
 
 public class ClosePeriod : ICarterModule
@@ -14,7 +15,7 @@ public class ClosePeriod : ICarterModule
         app.MapPut("/periods/{id}/close", async (ClosePeriodRequest request, ISender sender) =>
                 {
                     var command = request.Adapt<ClosePeriodCommand>();
-                    
+
                     var result = await sender.Send(command);
 
                     var response = result.Adapt<ClosePeriodResponse>();

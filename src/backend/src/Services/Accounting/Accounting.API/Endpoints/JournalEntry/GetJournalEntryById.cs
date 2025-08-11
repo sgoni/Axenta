@@ -21,7 +21,7 @@ public class GetJournalEntryById : ICarterModule
                 return Results.Ok(response);
             })
             .WithName("GetJournalEntryById")
-            .Produces<GetJournalEntryById>()
+            .Produces<GetJournalEntryByIdResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("View detail of a seat.")

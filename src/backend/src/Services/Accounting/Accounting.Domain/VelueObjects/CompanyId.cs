@@ -11,8 +11,8 @@ public record CompanyId
 
     public static CompanyId Of(Guid value)
     {
-        if (value == Guid.Empty)
-            throw new DomainException("CompanyId cannot be empty");
+        ArgumentNullException.ThrowIfNull(value);
+        if (value == Guid.Empty) throw new DomainException("CompanyId cannot be empty");
 
         return new CompanyId(value);
     }

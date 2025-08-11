@@ -13,7 +13,7 @@ public class CreateCompanyHandler(IApplicationDbContext dbContext)
             command.Company.CurrencyCode);
         dbContext.Companies.Add(company);
         await dbContext.SaveChangesAsync(cancellationToken);
-        
+
         return new CreateCompanyResult(company.Id.Value);
     }
 

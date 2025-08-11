@@ -1,6 +1,9 @@
 ﻿namespace Accounting.Domain.Models;
 
-public class Company : Aggregate<CompanyId>
+/// <summary>
+///     Company
+/// </summary>
+public class Company : Entity<CompanyId>
 {
     public string Name { get; private set; }
     public string TaxId { get; private set; }
@@ -20,6 +23,7 @@ public class Company : Aggregate<CompanyId>
             Name = name,
             TaxId = taxId,
             Country = country,
+            CurrencyCode = currencyCode,
             IsActive = true
         };
 
@@ -35,6 +39,7 @@ public class Company : Aggregate<CompanyId>
         Name = name;
         TaxId = taxId;
         Country = country;
+        CurrencyCode = currencyCode;
         IsActive = isActive;
     }
 }

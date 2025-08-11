@@ -21,7 +21,7 @@ public class GetAuditLogById : ICarterModule
                 return Results.Ok(response);
             })
             .WithName("GetAuditLogById")
-            .Produces<GetAuditLogById>()
+            .Produces<GetAuditLogByIdResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("View details of a specific change.")

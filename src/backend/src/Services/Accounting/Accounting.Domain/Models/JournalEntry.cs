@@ -67,14 +67,15 @@ public class JournalEntry : Aggregate<JournalEntryId>
             Id = JournalEntryId.Of(Guid.NewGuid()),
             Date = DateTime.UtcNow,
             Description = $"Reversal of entry {Id.Value}",
+            PeriodId = PeriodId,
+            CompanyId = CompanyId,
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
-            PeriodId = PeriodId,
             IsPosted = true,
-            IsReversed = false,
-            ReversalJournalEntryId = Id
+            IsReversed = false
         };
+
 
         // Mark original as reversed
         foreach (var line in _journalEntryLines)

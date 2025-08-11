@@ -7,7 +7,7 @@
 
 public record UpdateAccountRequest(AccountDto AccountDetail);
 
-public record UpdateAccountResponse(bool IsSuccescs);
+public record UpdateAccountResponse(bool IsSuccess);
 
 public class UpdateAccount : ICarterModule
 {

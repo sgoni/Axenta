@@ -21,7 +21,7 @@ public class GetJournalEntries : ICarterModule
                 return Results.Ok(response);
             })
             .WithName("GetJournalEntries")
-            .Produces<GetJournalEntries>()
+            .Produces<GetJournalEntriesResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("List countable seats")

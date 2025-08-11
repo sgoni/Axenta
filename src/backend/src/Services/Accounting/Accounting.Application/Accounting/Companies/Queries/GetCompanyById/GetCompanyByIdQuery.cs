@@ -2,4 +2,4 @@
 
 public record GetCompanyByIdQuery(Guid companyId) : IQuery<GetCompanyByIdQueryResult>;
 
-public record GetCompanyByIdQueryResult(CompanyDto Company);
+public record GetCompanyByIdQueryResult(CompanyDto CompanyDetail);

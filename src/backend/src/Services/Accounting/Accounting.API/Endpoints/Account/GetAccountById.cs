@@ -21,7 +21,7 @@ public class GetAccountById : ICarterModule
                 return Results.Ok(response);
             })
             .WithName("GetAccountById")
-            .Produces<GetAccountById>()
+            .Produces<GetAccountByIdResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("Get a specific account.")

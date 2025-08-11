@@ -39,3 +39,6 @@ global using Accounting.Application.Accounting.JournalEntries.Commands.ReverseJo
 global using Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRateCurrent;
 global using Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRates;
 global using Accounting.Application.Accounting.CurrencyExchangeRate.Commands.CreateCurrencyExchangeRate;
+global using Accounting.Application.Accounting.Companies.Commands.CreateCompany;
+global using Accounting.Application.Accounting.Companies.Queries.GetCompanies;
+global using Accounting.Application.Accounting.Companies.Commands.UpdateCompany;
