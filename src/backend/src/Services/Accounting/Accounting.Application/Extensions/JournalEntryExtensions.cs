@@ -9,8 +9,13 @@ public static class JournalEntryExtensions
             journalEntry.Id.Value,
             journalEntry.Date,
             journalEntry.Description,
-            journalEntry.IsReversed,
             journalEntry.PeriodId.Value,
+            journalEntry.CompanyId.Value,
+            journalEntry.CurrencyCode,
+            journalEntry.ExchangeRate,
+            journalEntry.ExchangeRateDate,
+            journalEntry.IsPosted,
+            journalEntry.IsReversed,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
                     ln.Debit, ln.Credit, ln.LineNumber)).ToList()
@@ -23,8 +28,13 @@ public static class JournalEntryExtensions
             journalEntry.Id.Value,
             journalEntry.Date,
             journalEntry.Description,
-            journalEntry.IsReversed,
             journalEntry.PeriodId.Value,
+            journalEntry.CompanyId.Value,
+            journalEntry.CurrencyCode,
+            journalEntry.ExchangeRate,
+            journalEntry.ExchangeRateDate,
+            journalEntry.IsPosted,
+            journalEntry.IsReversed,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
                     ln.Debit, ln.Credit, ln.LineNumber)).ToList()

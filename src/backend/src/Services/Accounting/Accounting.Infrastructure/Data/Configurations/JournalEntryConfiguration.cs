@@ -21,6 +21,10 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
         builder.Property(j => j.Description)
             .HasMaxLength(500);
 
+        builder.Property(j => j.CurrencyCode)
+            .HasMaxLength(3)
+            .IsRequired();
+
         builder.Property(j => j.IsReversed)
             .IsRequired()
             .HasDefaultValue(false);

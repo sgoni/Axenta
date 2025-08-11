@@ -12,15 +12,20 @@ public class JournalEntry : Aggregate<JournalEntryId>
     private readonly List<JournalEntryLine> _journalEntryLines = new();
     public IReadOnlyCollection<DocumentReference> DocumentReferences => _documentReferences.AsReadOnly();
     public IReadOnlyCollection<JournalEntryLine> JournalEntryLines => _journalEntryLines.AsReadOnly();
-
-    public JournalEntryId ReversalJournalEntryId { get; private set; }
+    public PeriodId? PeriodId { get; private set; }
+    public CompanyId CompanyId { get; private set; }
     public DateTime Date { get; private set; }
     public string? Description { get; private set; }
-    public PeriodId? PeriodId { get; private set; }
+    public string? CurrencyCode { get; private set; } // null = moneda local
+    public decimal? ExchangeRate { get; private set; }
+    public DateOnly? ExchangeRateDate { get; private set; }
+
     public bool IsPosted { get; private set; } = true;
     public bool IsReversed { get; private set; }
+    public JournalEntryId ReversalJournalEntryId { get; private set; }
 
-    public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId)
+    public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
+        CompanyId companyId, string currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
     {
         var journalEntry = new JournalEntry
         {
@@ -28,6 +33,10 @@ public class JournalEntry : Aggregate<JournalEntryId>
             Date = date,
             Description = description,
             PeriodId = periodId,
+            CompanyId = companyId,
+            CurrencyCode = currencyCode,
+            ExchangeRate = exchangeRate,
+            ExchangeRateDate = exchangeRateDate,
             IsPosted = true,
             IsReversed = false
         };
@@ -37,11 +46,12 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, bool isPosted = false)
+    public void Update(string? description, DateTime date, string currencyCode, bool isPosted = false)
     {
         Description = description;
         Date = date;
         IsPosted = isPosted;
+        CurrencyCode = currencyCode;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(this));
     }
@@ -57,6 +67,9 @@ public class JournalEntry : Aggregate<JournalEntryId>
             Id = JournalEntryId.Of(Guid.NewGuid()),
             Date = DateTime.UtcNow,
             Description = $"Reversal of entry {Id.Value}",
+            CurrencyCode = CurrencyCode,
+            ExchangeRate = ExchangeRate,
+            ExchangeRateDate = ExchangeRateDate,
             PeriodId = PeriodId,
             IsPosted = true,
             IsReversed = false,

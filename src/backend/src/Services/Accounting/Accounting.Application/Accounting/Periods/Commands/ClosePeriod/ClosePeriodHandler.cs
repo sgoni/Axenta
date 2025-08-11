@@ -9,21 +9,33 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext)
         //save to database
         //return result
 
-        var periodId = PeriodId.Of(command.PeriodId);
+        // Check company
+        var companyId = CompanyId.Of(command.ClosePeriod.CompanyId);
+        var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
+
+        if (company is null || company is null)
+            throw new CompanyNotFoundException(command.ClosePeriod.CompanyId);
+
+        // Check period
+        var periodId = PeriodId.Of(command.ClosePeriod.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
         if (period is null)
-            throw new PeriodNotFoundException(command.PeriodId);
+            throw new PeriodNotFoundException(command.ClosePeriod.PeriodId);
 
         if (period.IsClosed)
-            throw new Exception($"The period id: {command.PeriodId} is now closed.");
+            throw new Exception($"The period id: {command.ClosePeriod.PeriodId} is now closed.");
 
         // 1 Generate closing entry (simplified example)
         var closingEntry = JournalEntry.Create(
             JournalEntryId.Of(Guid.NewGuid()),
             DateTime.UtcNow,
             $"Period closing entry {period.Year}-{period.Month}",
-            period.Id
+            periodId,
+            companyId,
+            company.CurrencyCode,
+            0,
+            null
         );
 
         // Here we would use templates (point 2) to define the lines

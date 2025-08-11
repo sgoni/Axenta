@@ -4,16 +4,18 @@
 //- Sends the command using MediatR.
 //- Returns a success or not found response.
 
-//public record ClosePeriodRequest(Guid Period);
+public record ClosePeriodRequest(ClosePeriodDto Period);
 public record ClosePeriodResponse(bool IsSuccess);
 
 public class ClosePeriod : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/periods/{id}/close", async (Guid Id, ISender sender) =>
+        app.MapPut("/periods/{id}/close", async (ClosePeriodRequest request, ISender sender) =>
                 {
-                    var result = await sender.Send(new ClosePeriodCommand(Id));
+                    var command = request.Adapt<ClosePeriodCommand>();
+                    
+                    var result = await sender.Send(command);
 
                     var response = result.Adapt<ClosePeriodResponse>();
 

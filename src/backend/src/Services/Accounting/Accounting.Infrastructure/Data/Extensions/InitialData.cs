@@ -2,6 +2,15 @@
 
 public class InitialData
 {
+    public static IEnumerable<Company> Companies =>
+        new List<Company>
+        {
+            Company.Create(CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")), "ABC S.A", "3101009240",
+                "CR", "CRC"),
+            Company.Create(CompanyId.Of(new Guid("d30bbc16-c7f6-458c-84fa-ffb1c7727950")), "XYZ S.A", "3101168458",
+                "CR", "CRC")
+        };
+
     public static IEnumerable<AccountType> AccountTypes =>
         new List<AccountType>
         {
@@ -352,7 +361,11 @@ public class InitialData
                 JournalEntryId.Of(new Guid("b45e75af-fe29-4c2e-9653-aad9bf5b42ef")),
                 DateTime.SpecifyKind(new DateTime(2014, 10, 01), DateTimeKind.Utc),
                 "Registro del aporte",
-                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12"))
+                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                "CRC",
+                513,
+                DateOnly.FromDateTime(new DateTime(2014, 10, 01))
             );
 
             journalEntry1.AddLine(
@@ -376,7 +389,11 @@ public class InitialData
                 JournalEntryId.Of(new Guid("0b55189d-ce04-471f-abbb-f73208be063a")),
                 DateTime.SpecifyKind(new DateTime(2014, 10, 15), DateTimeKind.Utc),
                 "Registro de préstamo con la entidad financiera",
-                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12"))
+                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                "CRC",
+                515,
+                DateOnly.FromDateTime(new DateTime(2014, 10, 15))
             );
 
             journalEntry2.AddLine(
@@ -407,7 +424,11 @@ public class InitialData
                 JournalEntryId.Of(new Guid("56cb166e-07b6-44f7-bd8b-cbc16c595946")),
                 DateTime.SpecifyKind(new DateTime(2014, 10, 20), DateTimeKind.Utc),
                 "Compra de mercadería para la venta",
-                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12"))
+                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                "CRC",
+                515,
+                DateOnly.FromDateTime(new DateTime(2014, 10, 20))
             );
 
             journalEntry3.AddLine(
@@ -431,7 +452,11 @@ public class InitialData
                 JournalEntryId.Of(new Guid("a265189a-f34a-4889-85c6-3ee500d3549b")),
                 DateTime.SpecifyKind(new DateTime(2014, 10, 22), DateTimeKind.Utc),
                 "Compra de motocicleta para mensajero",
-                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12"))
+                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                "CRC",
+                510,
+                DateOnly.FromDateTime(new DateTime(2014, 10, 22))
             );
 
             journalEntry4.AddLine(
@@ -455,7 +480,11 @@ public class InitialData
                 JournalEntryId.Of(new Guid("aacd74d4-cde3-4f54-ab34-d3843091788f")),
                 DateTime.SpecifyKind(new DateTime(2014, 10, 22), DateTimeKind.Utc),
                 "Abono a cuenta por pagar\"",
-                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12"))
+                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                "CRC",
+                508,
+                DateOnly.FromDateTime(new DateTime(2014, 10, 22))
             );
 
             journalEntry5.AddLine(
@@ -479,7 +508,11 @@ public class InitialData
                 JournalEntryId.Of(new Guid("a2386d1c-c53e-4f12-ad38-f2ea5a6c4081")),
                 DateTime.SpecifyKind(new DateTime(2014, 10, 30), DateTimeKind.Utc),
                 "Gasto por salarios",
-                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12"))
+                PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                "CRC",
+                516,
+                DateOnly.FromDateTime(new DateTime(014, 10, 30))
             );
 
             journalEntry6.AddLine(

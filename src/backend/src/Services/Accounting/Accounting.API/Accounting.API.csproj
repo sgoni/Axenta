@@ -32,4 +32,8 @@
         <ProjectReference Include="..\Accounting.Infrastructure\Accounting.Infrastructure.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Endpoints\Company\" />
+    </ItemGroup>
+
 </Project>

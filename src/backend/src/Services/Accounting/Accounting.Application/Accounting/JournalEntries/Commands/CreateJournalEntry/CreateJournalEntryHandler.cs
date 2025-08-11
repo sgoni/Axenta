@@ -41,7 +41,11 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
             JournalEntryId.Of(Guid.NewGuid()),
             journalEntryDto.Date,
             journalEntryDto.Description,
-            PeriodId.Of(journalEntryDto.PeriodId)
+            PeriodId.Of(journalEntryDto.PeriodId),
+            CompanyId.Of(journalEntryDto.CompanyId),
+            journalEntryDto.CurrencyCode,
+            journalEntryDto.ExchangeRate,
+            journalEntryDto.ExchangeRateDate
         );
 
         //Add details

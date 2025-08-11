@@ -15,6 +15,7 @@ public static class DatabaseExtensions
 
     private static async Task SeedAsync(ApplicationDbContext context)
     {
+        await SeedCompaniesAsync(context);
         await SeedAccountTypeAsync(context);
         await SeedAccountsAsync(context);
         await SeedPeriodsAsync(context);
@@ -23,6 +24,15 @@ public static class DatabaseExtensions
         await SeedCurrencyExchangeRateAsync(context);
     }
 
+    private static async Task SeedCompaniesAsync(ApplicationDbContext context)
+    {
+        if (!await context.Companies.AnyAsync())
+        {
+            await context.Companies.AddRangeAsync(InitialData.Companies);
+            await context.SaveChangesAsync();
+        }
+    }
+    
     private static async Task SeedAccountTypeAsync(ApplicationDbContext context)
     {
         if (!await context.AccountTypes.AnyAsync())

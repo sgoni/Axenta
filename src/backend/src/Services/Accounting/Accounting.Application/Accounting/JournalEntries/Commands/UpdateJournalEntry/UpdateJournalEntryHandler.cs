@@ -44,6 +44,7 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             journalEntry.Update(
                 command.JournalEntry.Description,
                 command.JournalEntry.Date,
+                command.JournalEntry.CurrencyCode,
                 command.JournalEntry.IsPosted);
         }
 
@@ -72,7 +73,11 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             JournalEntryId.Of(Guid.NewGuid()),
             journalEntryDto.Date,
             journalEntryDto.Description,
-            PeriodId.Of(journalEntryDto.PeriodId)
+            PeriodId.Of(journalEntryDto.PeriodId),
+            CompanyId.Of(journalEntryDto.CompanyId),
+            journalEntryDto.CurrencyCode,
+            journalEntryDto.ExchangeRate,
+            journalEntryDto.ExchangeRateDate
         );
 
         //Add details

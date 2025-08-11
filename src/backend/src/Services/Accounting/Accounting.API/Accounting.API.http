@@ -10,7 +10,7 @@
 #    "sellRate": 514
 #  }
 #}
-POST https://localhost:5050/currencies
+POST {{API_HostAddress}}/currencies
 accept: application/json
 Content-Type: application/json
 
