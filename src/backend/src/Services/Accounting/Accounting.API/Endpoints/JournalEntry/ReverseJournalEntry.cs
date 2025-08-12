@@ -13,7 +13,7 @@ public class ReverseJournalEntry : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/journal-entries{id}/reverse", async (Guid Id, ISender sender) =>
+        app.MapPut("/journal-entries/{id}/reverse", async (Guid Id, ISender sender) =>
             {
                 var result = await sender.Send(new ReverseJournalEntryCommand(Id));
 
