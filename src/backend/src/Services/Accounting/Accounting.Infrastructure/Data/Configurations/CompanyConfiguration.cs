@@ -29,7 +29,7 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
 
         builder.Property(a => a.CurrencyCode)
             .IsRequired()
-            .HasMaxLength(3);
+            .HasMaxLength(5);
 
         builder.Property(a => a.IsActive)
             .HasDefaultValue(true)

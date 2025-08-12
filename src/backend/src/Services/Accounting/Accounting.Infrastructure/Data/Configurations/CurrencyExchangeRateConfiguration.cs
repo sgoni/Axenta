@@ -17,7 +17,7 @@ public class CurrencyExchangeRateConfiguration : IEntityTypeConfiguration<Curren
 
         builder.Property(al => al.CurrencyCode)
             .IsRequired()
-            .HasMaxLength(3);
+            .HasMaxLength(5);
 
         builder.Property(j => j.Date)
             .IsRequired();
