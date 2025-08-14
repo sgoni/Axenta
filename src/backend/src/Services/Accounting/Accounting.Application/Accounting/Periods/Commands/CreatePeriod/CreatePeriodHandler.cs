@@ -16,17 +16,18 @@ public class CreatePeriodHandler(IApplicationDbContext dbContext)
         if (exists)
             throw new ConflictException("The period already exists.");
 
-        var period = CreateNewPeriod();
+        var period = CreateNewPeriod(command.Period.CompanyId);
         dbContext.Periods.Add(period);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new CreatePeriodResult(period.Id.Value);
     }
 
-    private Period CreateNewPeriod()
+    private Period CreateNewPeriod(Guid companyId = default)
     {
         var newPeriod =
-            Period.Create(PeriodId.Of(Guid.NewGuid()),
+            Period.Create(companyId: CompanyId.Of(companyId),
+                PeriodId.Of(Guid.NewGuid()),
                 DateTime.Now.Year,
                 DateTime.Now.Month
             );

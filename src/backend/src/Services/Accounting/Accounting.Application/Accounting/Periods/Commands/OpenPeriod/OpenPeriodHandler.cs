@@ -9,10 +9,10 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext)
         //save to database
         //return result
 
-        var periodId = PeriodId.Of(command.PeriodId);
+        var periodId = PeriodId.Of(command.Period.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period == null) throw new PeriodNotFoundException(command.PeriodId);
+        if (period == null) throw new PeriodNotFoundException(command.Period.PeriodId);
 
         period.Open();
         await dbContext.SaveChangesAsync(cancellationToken);

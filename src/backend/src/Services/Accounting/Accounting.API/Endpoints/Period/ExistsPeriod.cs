@@ -21,6 +21,6 @@ public class ExistsPeriod : ICarterModule
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithSummary("The Period Already Exists.")
-            .WithDescription("VThe Period Already Exists.");
+            .WithDescription("The Period Already Exists.");
     }
 }

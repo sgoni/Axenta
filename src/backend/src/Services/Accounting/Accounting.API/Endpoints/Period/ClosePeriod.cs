@@ -12,7 +12,7 @@ public class ClosePeriod : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/periods/{id}/close", async (ClosePeriodRequest request, ISender sender) =>
+        app.MapPut("/periods/close", async (ClosePeriodRequest request, ISender sender) =>
                 {
                     var command = request.Adapt<ClosePeriodCommand>();
 

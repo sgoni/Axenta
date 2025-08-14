@@ -9,6 +9,7 @@
 - [Error Handling](#error-handling)
 - [Rate Limiting](#rate-limiting)
 - [Endpoints](#endpoints)
+  - [Health](#health) 
   - [Periods](#periods)
   - [Journal Entries](#journal-entries)
   - [Accounts](#accounts)
@@ -87,11 +88,11 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 
 ## Base URL
 
-
-
 ```abc
 Production: https://api.example.com/v1
 Staging: https://staging-api.example.com/v1
+localhost: https://localhost:5050
+docker: https://localhost:6060
 ```
 
 ## Response Format
@@ -157,15 +158,15 @@ The API uses standard HTTP status codes and returns detailed error information:
 - **Rate Limit:** 1000 requests per hour per API key
 - **Headers:** Check `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers
 
-## Paginación
+## Pagination
 
-Todos los endpoints que retornan listas soportan paginación:
+All endpoints that return lists support pagination:
 
-**Parámetros:**
-- `PageIndex`: Número de página (base 0, por defecto: 0)
-- `PageSize`: Elementos por página (por defecto: 10, máximo: 100)
+**Parameters:**
+- `Pageindex`: page number (base 0, default: 0)
+- `Pagesize`: Elements per page (default: 10, maximum: 100)
 
-**Formato de Respuesta:**
+**Response format:**
 ```json
 {
   "pageIndex": 0,
@@ -177,6 +178,17 @@ Todos los endpoints que retornan listas soportan paginación:
 
 ## Endpoints
 
+### Health
+
+```http
+GET /health
+```
+
+**Example of application:**
+```bash
+curl -sS -H "Accept: application/json" https://localhost:5050/health
+```
+
 ### Periods
 
 Accounting periods define time windows for accounting transactions.
@@ -187,20 +199,21 @@ Accounting periods define time windows for accounting transactions.
 GET /periods
 ```
 
-**Parámetros:**
+**Parameters:**
 
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
 | `PageIndex` | integer | 0 | Page number (base 0)
 | `PageSize` | integer | 10 | Items per page (1-100)
 
-**Ejemplo de Solicitud:**
+**Example of application:**
 ```bash
-curl -X GET "[https://api.accounting.com/v1/periods?PageIndex=0&PageSize=20](https://api.accounting.com/v1/periods?PageIndex=0&PageSize=20)
+curl -X 'GET' 
+  'https://localhost:5050/periods?PageIndex=0&PageSize=10' 
+  -H 'accept: application/json'
 ```
 
-
-**Ejemplo de Respuesta:**
+**Sample Request:**
 ```json
 {
   "periods": {
@@ -227,75 +240,66 @@ Create Period
 POST /periods
 ```
 
-**Body of the Application**
-```json
-{
-"year": 2024,
-"month": 2,
-"startDate": "2024-02-01T00:00:00Z",
-"endDate": "2024-02-29T23:59:59Z"
-}
-```
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `companyId` | UUID | Yes | ID of the company
 
 **Sample Request:**
 ```bash
-curl -X POST "https://api.accounting.com/v1/periods" \
-     -H "Authorization: Bearer YOUR_API_KEY" \
-     -H "Content-Type: application/json" \
-     -d '{
-       "year": 2024,
-       "month": 2,
-       "startDate": "2024-02-01T00:00:00Z",
-       "endDate": "2024-02-29T23:59:59Z"
-     }'
+ curl -X 'POST' 
+  'https://localhost:5050/periods' 
+  -H 'accept: application/json' 
+  -H 'Content-Type: application/json' 
+  -d '{
+  "period": {
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+  }
 ```     
 
 **Sample Answer:**
 ```json
 {
-"periodId": "123e4567-e89b-12d3-a456-426614174001"
+   "periodId": "123e4567-e89b-12d3-a456-426614174001"
 }
 ```
 
 #### Closing Period
 
 ```http
-PUT /periods/{id}/close
+PUT /periods/close
 ```
 
 **Parameters:**
 
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the period to close
-
+| `periodId` | UUID | Yes | ID of the period to close
+| `companyId` | UUID | Yes | ID of the company
 
 **Sample Request:**
+
 ```bash
  curl -X 'PUT' 
-  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/close' 
-  -H 'accept: application/json'
-  -H "Authorization: Bearer YOUR_API_KEY"
+  'https://localhost:5050/periods/close' 
+  -H 'accept: application/json' 
+  -H 'Content-Type: application/json' 
+  -d '{
+  "period": {
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+  }
+}'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
 }
 ```
-
-#### Reopen Period
-
-```http
-PUT /periods/{id}/open
-```
-
-**Parameters:**
-
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the period to reopen
 
 #### Check Existence of Period
 
@@ -310,11 +314,83 @@ GET /periods/year={year}&month={month}
 | `year` | integer | Yes | Year of the period
 | `month` | integer | Yes | Month of the period (1-12)
 
+**Sample Request:**
+
+```bash
+curl -X 'GET' 
+ 'https://localhost:5050/periods/year=2025&month=7' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+
+```json
+{
+  "isSuccess": true
+}
+```
 
 #### Get Period by ID
 
 ```http
 GET /periods/{periodId}
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to get
+
+**Sample Request:**
+
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+
+```json
+{
+  "periodDetail": {
+    "id": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "year": 2014,
+    "month": 10,
+    "startDate": "2025-08-01T00:00:00Z",
+    "endDate": "2025-08-31T00:00:00Z",
+    "isClosed": true
+  }
+}
+```
+
+#### Reopen Period
+
+```http
+PUT /periods/open
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to open
+| `companyId` | UUID | Yes | ID of the company
+
+**Sample Request:**
+
+```bash
+ curl -X 'PUT' 
+  'https://localhost:5050/periods/open' 
+  -H 'accept: application/json' 
+  -H 'Content-Type: application/json' 
+  -d '{
+  "period": {
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+  }
+}'
 ```
 
 ### Journal Entries

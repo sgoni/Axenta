@@ -27,6 +27,13 @@ public class PeriodConfiguration : IEntityTypeConfiguration<Period>
         builder.Property(p => p.EndDate)
             .IsRequired();
 
+        builder.Property(p => p.CompanyId)
+            .HasConversion(
+                pid => pid.Value,
+                val => CompanyId.Of(val)
+            )
+            .IsRequired();
+
         builder.Property(p => p.IsClosed)
             .IsRequired();
 

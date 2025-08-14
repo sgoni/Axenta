@@ -9,14 +9,16 @@ public class Period : Aggregate<PeriodId>
     public int Month { get; private set; }
     public DateTime StartDate { get; private set; }
     public DateTime EndDate { get; private set; }
+    public CompanyId CompanyId { get; private set; }
     public bool IsClosed { get; private set; }
 
-    public static Period Create(PeriodId id, int year, int month)
+    public static Period Create(CompanyId companyId, PeriodId id, int year, int month)
     {
         ArgumentOutOfRangeException.ThrowIfZero(year);
         ArgumentOutOfRangeException.ThrowIfZero(month);
         ArgumentOutOfRangeException.ThrowIfLessThan(month, 1);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(month, 12);
+        ArgumentOutOfRangeException.ThrowIfNullOrEmpty(companyId.ToString());
 
         var period = new Period
         {
@@ -25,6 +27,7 @@ public class Period : Aggregate<PeriodId>
             Month = month,
             StartDate = GetFirstDayOfTheMonth(),
             EndDate = GetLastDayOfMonth(),
+            CompanyId = companyId,
             IsClosed = false
         };
 

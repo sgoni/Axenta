@@ -4,16 +4,19 @@
 //- Sends the command using MediatR.
 //- Returns a success or not found response.
 
-//public record OpenPeriodRequest(Guid Period);
+public record OpenPeriodRequest(OpenPeriodDto Period);
+
 public record OpenPeriodResponse(bool IsSuccess);
 
 public class OpenPeriod : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/periods/{id}/open", async (Guid Id, ISender sender) =>
+        app.MapPut("/periods/open", async (OpenPeriodRequest request, ISender sender) =>
                 {
-                    var result = await sender.Send(new OpenPeriodCommand(Id));
+                    var command = request.Adapt<OpenPeriodCommand>();
+
+                    var result = await sender.Send(command);
 
                     var response = result.Adapt<OpenPeriodResponse>();
 

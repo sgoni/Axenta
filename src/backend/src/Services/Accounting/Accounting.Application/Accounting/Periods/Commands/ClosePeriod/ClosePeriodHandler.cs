@@ -10,21 +10,21 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext)
         //return result
 
         // Check company
-        var companyId = CompanyId.Of(command.ClosePeriod.CompanyId);
+        var companyId = CompanyId.Of(command.Period.CompanyId);
         var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
 
         if (company is null || company is null)
-            throw new CompanyNotFoundException(command.ClosePeriod.CompanyId);
+            throw new CompanyNotFoundException(command.Period.CompanyId);
 
         // Check period
-        var periodId = PeriodId.Of(command.ClosePeriod.PeriodId);
+        var periodId = PeriodId.Of(command.Period.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
         if (period is null)
-            throw new PeriodNotFoundException(command.ClosePeriod.PeriodId);
+            throw new PeriodNotFoundException(command.Period.PeriodId);
 
         if (period.IsClosed)
-            throw new Exception($"The period id: {command.ClosePeriod.PeriodId} is now closed.");
+            throw new Exception($"The period id: {command.Period.PeriodId} is now closed.");
 
         // 1 Generate closing entry (simplified example)
         var closingEntry = JournalEntry.Create(

@@ -344,9 +344,11 @@ public class InitialData
     public static IEnumerable<Period> Periods =>
         new List<Period>
         {
-            Period.Create(PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
-                2014,
-                10
+            Period.Create(
+                companyId: CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                id: PeriodId.Of(new Guid("e44ed594-272c-4978-a3b5-11fb47e9ca12")),
+                year: 2014,
+                month: 10
             )
         };
 
