@@ -206,14 +206,14 @@ GET /periods
 | `PageIndex` | integer | 0 | Page number (base 0)
 | `PageSize` | integer | 10 | Items per page (1-100)
 
-**Example of application:**
+**Sample application:**
 ```bash
 curl -X 'GET' 
   'https://localhost:5050/periods?PageIndex=0&PageSize=10' 
   -H 'accept: application/json'
 ```
 
-**Sample Request:**
+**Sample Answer:**
 ```json
 {
   "periods": {
@@ -241,12 +241,20 @@ POST /periods
 ```
 
 **Parameters:**
-
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
 | `companyId` | UUID | Yes | ID of the company
 
-**Sample Request:**
+**Body of the Request:**
+```json
+{
+  "period": {
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+  }
+}
+```
+
+**Sample Application:**
 ```bash
  curl -X 'POST' 
   'https://localhost:5050/periods' 
@@ -272,14 +280,22 @@ PUT /periods/close
 ```
 
 **Parameters:**
-
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
 | `periodId` | UUID | Yes | ID of the period to close
 | `companyId` | UUID | Yes | ID of the company
 
-**Sample Request:**
+**Body of the Request:**
+```json
+{
+  "period": {
+    "periodId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+}
+```
 
+**Sample Application:**
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/periods/close' 
@@ -314,7 +330,7 @@ GET /periods/year={year}&month={month}
 | `year` | integer | Yes | Year of the period
 | `month` | integer | Yes | Month of the period (1-12)
 
-**Sample Request:**
+**Sample Application:**
 
 ```bash
 curl -X 'GET' 
@@ -342,7 +358,7 @@ GET /periods/{periodId}
 |-----|-----|-----|-----
 | `periodId` | UUID | Yes | ID of the period to get
 
-**Sample Request:**
+**Sample Application:**
 
 ```bash
 curl -X 'GET' \
@@ -378,8 +394,17 @@ PUT /periods/open
 | `periodId` | UUID | Yes | ID of the period to open
 | `companyId` | UUID | Yes | ID of the company
 
-**Sample Request:**
+**Body of the Request:**
+```json
+{
+  "period": {
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+  }
+}
+```
 
+**Sample Application:**
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/periods/open' 
@@ -393,6 +418,14 @@ PUT /periods/open
 }'
 ```
 
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
+
 ### Journal Entries
 
 Accounting entries record financial transactions with automatic debit = credit validation.
@@ -403,29 +436,49 @@ Accounting entries record financial transactions with automatic debit = credit v
 POST /journal-entries
 ```
 
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `date` | UUID | Yes | ID of the period to open
+| `description` | UUID | Yes | ID of the company
+| `periodId` | UUID | Yes | ID of the company
+| `companyId` | UUID | Yes | ID of the company
+| `currencyCode` | UUID | Yes | ID of the company
+| `exchangeRate` | UUID | Yes | ID of the company
+| `exchangeRateDate` | UUID | Yes | ID of the company
+| `accountId` | UUID | Yes | ID of the company
+| `debit` | UUID | Yes | ID of the company
+| `credit` | UUID | Yes | ID of the company
+| `lineNumber` | UUID | Yes | ID of the company
+
 **Body of the Request:**
 
 ```json
 {
-   "journalEntry": {
-   "date": "2024-01-15T10:30:00Z",
-   "description": "Pago de renta mensual",
-   "periodId": "123e4567-e89b-12d3-a456-426614174000",
-   "lines": [
-         {
-            "accountId": "123e4567-e89b-12d3-a456-426614174002",
-            "debit": 1500.00,
-            "credit": 0.00,
-            "lineNumber": 1
-         },
-         {
-            "accountId": "123e4567-e89b-12d3-a456-426614174003",
-            "debit": 0.00,
-            "credit": 1500.00,
-            "lineNumber": 2
-         }
-      ]
-   }
+  "journalEntry": {
+    "date": "2025-08-01T02:26:27.053Z",
+    "description": "Registro de ventas demo.",
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "currencyCode": "CRC",
+    "exchangeRate": 0,
+    "exchangeRateDate": "2025-08-14",    
+    "lines": [
+      {
+        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+        "debit": 4000,
+        "credit": 0,
+        "lineNumber": 1
+      },
+      {
+        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+        "debit": 0,
+        "credit": 4000,
+        "lineNumber": 2
+      }
+    ]
+  }
 }
 ```
 
@@ -438,30 +491,35 @@ POST /journal-entries
 
 **Sample Application:**
 ```bash
-curl -X POST "https://api.accounting.com/v1/journal-entries" \
-     -H "Authorization: Bearer YOUR_API_KEY" \
-     -H "Content-Type: application/json" \
-     -d '{
-       "journalEntry": {
-         "date": "2024-01-15T10:30:00Z",
-         "description": "Pago de renta mensual",
-         "periodId": "123e4567-e89b-12d3-a456-426614174000",
-         "lines": [
-           {
-             "accountId": "123e4567-e89b-12d3-a456-426614174002",
-             "debit": 1500.00,
-             "credit": 0.00,
-             "lineNumber": 1
-           },
-           {
-             "accountId": "123e4567-e89b-12d3-a456-426614174003",
-             "debit": 0.00,
-             "credit": 1500.00,
-             "lineNumber": 2
-           }
-         ]
-       }
-     }
+curl -X 'POST' \
+  'https://localhost:5050/journal-entries' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "journalEntry": {
+    "date": "2025-08-01T02:26:27.053Z",
+    "description": "Registro de ventas demo.",
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "currencyCode": "CRC",
+    "exchangeRate": 0,
+    "exchangeRateDate": "2025-08-14",    
+    "lines": [
+      {
+        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+        "debit": 4000,
+        "credit": 0,
+        "lineNumber": 1
+      },
+      {
+        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+        "debit": 0,
+        "credit": 4000,
+        "lineNumber": 2
+      }
+    ]
+  }
+}'
 ```     
 
 **Sample Answer:**
@@ -470,7 +528,6 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
    "id": "123e4567-e89b-12d3-a456-426614174004"
 }
 ```
-
 
 #### List Accounting Entries
 
