@@ -12,29 +12,31 @@
   - [Health](#health) 
   - [Periods](#periods)
   - [Journal Entries](#journal-entries)
+  - [Document References](#document-references)
+  - [Currency Exchange Rate](#currency-exchange-rates)
+  - [Companies](#companies)   
+  - [Audit Logs](#audit-logs)
   - [Accounts](#accounts)
   - [Account Types](#account-types)
-  - [Document References](#document-references)
-  - [Audit Logs](#audit-logs)
-  - [Currency Exchange Rate](#currency-exchange-rates)
-  - [Companies](#companies)  
 - [Data Models](#data-models)
-- [Examples](#examples)
+- [Usage Examples](#usage-examples)
 - [SDKs and Libraries](#sdks-and-libraries)
 - [Changelog](#changelog)
 
 ## Overview
 
-The Accounting API provides a comprehensive solution for managing accounting operations including periods, journal entries, accounts, and account types. This RESTful API follows standard HTTP conventions and returns JSON responses.
+The Accounting API provides a complete set of endpoints for managing enterprise accounting systems, including:
 
 ### Key Features
 
-- ✅ Accounting period management
-- ✅ Journal entry creation and validation
-- ✅ Account hierarchy management
-- ✅ Account type classification
-- ✅ Pagination support
-- ✅ Comprehensive error handling
+- ✅ Multi-company management with multi-company support
+- ✅ Accounting periods with opening/closing control
+- ✅ Accounting journal entries with automatic validation (debit = credit)
+- ✅ Hierarchical chart of accounts with account types
+- ✅ Multi-currency support with exchange rates
+- ✅ Document references for traceability
+- ✅ Full audit trail of all transactions
+- ✅ Journal entry reversals for corrections
 
 ### Proposed Software Architecture
 
@@ -441,16 +443,16 @@ POST /journal-entries
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
 | `date` | UUID | Yes | ID of the period to open
-| `description` | UUID | Yes | ID of the company
-| `periodId` | UUID | Yes | ID of the company
+| `description` | string | Yes | Journal description
+| `periodId` | UUID | Yes | ID of the period
 | `companyId` | UUID | Yes | ID of the company
-| `currencyCode` | UUID | Yes | ID of the company
-| `exchangeRate` | UUID | Yes | ID of the company
-| `exchangeRateDate` | UUID | Yes | ID of the company
+| `currencyCode` | string | Yes | CUrrency code
+| `exchangeRate` | Decimal | No | Exchange rate
+| `exchangeRateDate` | UUID | No | Exchange rate date
 | `accountId` | UUID | Yes | ID of the company
-| `debit` | UUID | Yes | ID of the company
-| `credit` | UUID | Yes | ID of the company
-| `lineNumber` | UUID | Yes | ID of the company
+| `debit` | UUID | Yes | Balance debit
+| `credit` | UUID | Yes | Balance credit
+| `lineNumber` | UUID | Yes | Line number
 
 **Body of the Request:**
 
@@ -529,6 +531,8 @@ curl -X 'POST' \
 }
 ```
 
+**Note:** Entries can only be modified if the period is open.
+
 #### List Accounting Entries
 
 ```http
@@ -539,8 +543,58 @@ GET /journal-entries
 
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Número de página
-| `PageSize` | integer | 10 | Elementos por página
+| `PageIndex` | integer | 0 | Page number
+| `PageSize` | integer | 10 | Elements per page
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "journalEntries": {
+    "pageIndex": 0,
+    "pageSize": 0,
+    "count": 0,
+    "data": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "date": "2025-08-14T21:21:36.052Z",
+        "description": "string",
+        "periodId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "currencyCode": "USD",
+        "exchangeRate": 525,
+        "exchangeRateDate": "2025-08-14",
+        "isPosted": true,
+        "isReversed": true,
+        "lines": [
+          {
+            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "journalEntryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "debit": 50000,
+            "credit": 0,
+            "lineNumber": 0
+          },
+          {
+            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "journalEntryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "debit": 0,
+            "credit": 50000,
+            "lineNumber": 0
+          }          
+        ]
+      }
+    ]
+  }
+}
+```
 
 #### Update Accounting Entry
 
@@ -548,7 +602,83 @@ GET /journal-entries
 PUT /journal-entries
 ```
 
-**Note:** Entries can only be modified if the period is open.
+**Body of the Request:**
+
+```json
+{
+  "journalEntry": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "date": "2025-08-14T21:32:31.782Z",
+    "description": "string",
+    "currencyCode": "string",
+    "exchangeRate": 0,
+    "exchangeRateDate": "2025-08-14",
+    "isPosted": true,
+    "lines": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "journalEntryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "debit": 0,
+        "credit": 0,
+        "lineNumber": 0
+      }
+    ]
+  }
+}
+```
+
+**Validation Rules:**
+- ✅ The total debits must equal the total credits
+- ✅ At least two lines are required
+- ✅ All amounts must be positive
+- ✅ Valid account IDs are required
+- ✅ The period must be open
+
+**Sample Application:**
+```bash
+ curl -X 'PUT' 
+  'https://localhost:5050/journal-entries' 
+  -H 'accept: application/json' 
+  -H 'Content-Type: application/json' 
+  -d '{
+  "journalEntry": {
+    "id": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+    "date": "2025-08-01T02:26:27.053Z",
+    "description": "Registro de ventas por contado.",
+    "currencyCode": "CRC",
+    "exchangeRate": 0,
+    "exchangeRateDate": "2025-08-14",
+    "isPosted": true,
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "lines": [
+      {
+        "id": "98723cc8-2f31-40a1-a4b0-aeb6ff085f86",
+        "journalEntryId": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+        "debit": 5000
+        "credit": 0,
+        "lineNumber": 1
+      },
+      {
+        "id": "f3d8e587-6492-490d-823d-d1bffdf390fe",
+        "journalEntryId": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+        "debit": 0,
+        "credit": 5000
+        "lineNumber": 2
+      }	  
+    ]
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
 
 #### Delete Accounting Entry
 
@@ -562,15 +692,576 @@ DELETE /journal-entries/{id}
 |-----|-----|-----|-----
 | `id` | UUID | Yes | ID of the seat to be deleted
 
+**Validation Rules:**
+- ✅ Valid account IDs are required
+- ✅ The period must be open
+- ✅ The journal entry is not posted
+
+**Sample Application:**
+```bash
+curl -X 'DELETE' 
+  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
 #### Get Seat by ID
 
 ```http
 GET /journal-entries/{journalEntryId}
 ```
 
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | ID of the seat to be deleted
+
+**Sample Application:**
+```bash
+curl -X 'GET' 
+ 'https://localhost:5050/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946' 
+ -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "journalEntryDetail": {
+    "id": "56cb166e-07b6-44f7-bd8b-cbc16c595946",
+    "date": "2014-10-20T00:00:00Z",
+    "description": "Compra de mercadería para la venta",
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "currencyCode": "CRC",
+    "exchangeRate": 515.00,
+    "exchangeRateDate": "2014-10-20",
+    "isPosted": true,
+    "isReversed": false,
+    "lines": [
+      {
+        "id": "3f9069b0-4700-4e46-a14c-289df3317419",
+        "journalEntryId": "56cb166e-07b6-44f7-bd8b-cbc16c595946",
+        "accountId": "057a93fb-c93b-4cf7-a79e-fab3583f2f13",
+        "debit": 2000000.00,
+        "credit": 0.00,
+        "lineNumber": 1
+      },
+      {
+        "id": "ca0caa52-08d6-4c4a-8b03-273a710d385c",
+        "journalEntryId": "56cb166e-07b6-44f7-bd8b-cbc16c595946",
+        "accountId": "a04ee151-03d4-4840-8697-600360d6977d",
+        "debit": 0.00,
+        "credit": 2000000.00,
+        "lineNumber": 2
+      }
+    ]
+  }
+}
+```
+#### Reverse an entry (only if the period is open)
+
+```http
+PUT /journal-entries/{id}/reverse
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | ID of the seat to be deleted
+
+**Validation Rules:**
+- ✅ Valid account IDs are required
+- ✅ The period must be open
+
+**Sample Application:**
+```bash
+curl -X 'PUT' 
+ 'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
+ -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
+### Document References
+
+Management of references to external documents associated with accounting entries.
+
+#### Create Document Reference
+
+```http
+POST /journal-entries/{id}/documents
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | Journal Entry ID
+
+**Validation Rules:**
+- ✅ The journal entry must exist
+
+**Body of the Request:**
+```json
+{
+  "documentReference": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "journalEntryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "sourceType": "string",
+    "sourceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "referenceNumber": "string",
+    "description": "string"
+  }
+}
+```
+
+**Sample Application:**
+```bash
+curl -X 'POST' \
+  'https://localhost:5050/journal-entries/{id}/documents' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "documentReference": {
+    "journalEntryId": "0b55189d-ce04-471f-abbb-f73208be063a",
+    "sourceType": "PAYMENT",
+    "sourceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "referenceNumber": "ABC123",
+    "description": "Purchase of merchandise on credit"
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "b2c6d0ca-cd5d-4154-951c-82568c4f01fd"
+}
+```
+
+#### Get References by Seat
+
+```http
+GET /journal-entries/{id}/documents
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | Journal Entry ID
+
+**Validation Rules:**
+- ✅ The journal entry must exist
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/journal-entries/3fa85f64-5717-4562-b3fc-2c963f66afa6/documents' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "documentReferences": [
+    {
+      "id": "821d2b0b-112d-4f24-804e-4d95a8697d65",
+      "journalEntryId": "0b55189d-ce04-471f-abbb-f73208be063a",
+      "sourceType": "Loan",
+      "sourceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "referenceNumber": "123456789",
+      "description": "Registro de préstamo con la entidad financiera"
+    }
+  ]
+}
+```
+
+### Currencies
+
+Administration of exchange rates and currencies.
+
+#### Create a new exchange rate
+
+```http
+POST /currencies
+```
+
+**Body of the Request:**
+```json
+{
+  "currencyExchangeRate": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "currencyCode": "string",
+    "date": "2025-08-14",
+    "buyRate": 0,
+    "sellRate": 0
+  }
+}
+```
+
+**Sample Application:**
+```bash
+curl -X 'POST' \
+  'https://localhost:5050/currencies' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "currencyExchangeRate": {
+    "currencyCode": "USD",
+    "date": "2025-08-14",
+    "buyRate": 495,
+    "sellRate": 510
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "66f63e17-b4ec-4624-a6a8-121515b47927"
+}
+```
+
+#### List exchange rates
+
+```http
+GET /currencies
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `PageIndex` | integer | 0 | Page number
+| `PageSize` | integer | 10 | Elements per page
+
+**Sample Application:**
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/currencies?PageIndex=0&PageSize=10' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "currencyExchangeRates": {
+    "pageIndex": 0,
+    "pageSize": 10,
+    "count": 3,
+    "data": [
+      {
+        "id": "c9726881-322c-4de3-bf52-fc03ea9cea67",
+        "currencyCode": "USD",
+        "date": "2014-10-01",
+        "buyRate": 310,
+        "sellRate": 315
+      }
+
+    ]
+  }
+}
+```
+
+#### Get the daily currency exchange rate
+
+```http
+GET /currencies/daily
+```
+
+**Sample Application:**
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/currencies/daily' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "currencyExchangeRate": {
+    "id": "57ba3603-9249-40d3-8f07-61d67ab42b0f",
+    "currencyCode": "USD",
+    "date": "2025-08-14",
+    "buyRate": 499,
+    "sellRate": 513
+  }
+}
+```
+
+### Companies
+
+Company administration
+
+#### Create a new company
+
+```http
+POST /companies
+```
+
+**Body of the Request:**
+```json
+{
+  "company": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string",
+    "taxId": "string",
+    "country": "string",
+    "currencyCode": "string",
+    "isActive": true
+  }
+}
+```
+
+**Sample Application:**
+```bash
+ curl -X 'POST' 
+  'https://localhost:5050/companies' 
+  -H 'accept: application/json' 
+  -H 'Content-Type: application/json' 
+  -d '{
+  "account": {
+    "name": "Demo",
+    "taxId": "3101268467",
+    "country": "CR",
+    "currencyCode": "USD",
+    "isActive": true
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "currencyExchangeRate": {
+    "id": "57ba3603-9249-40d3-8f07-61d67ab42b0f",
+    "currencyCode": "USD",
+    "date": "2025-08-14",
+    "buyRate": 499,
+    "sellRate": 513
+  }
+}
+```
+
+#### Get list of companies
+
+```http
+GET /companies
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `PageIndex` | integer | 0 | Page number
+| `PageSize` | integer | 10 | Elements per page
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/companies?PageIndex=0&PageSize=10' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "companies": {
+    "pageIndex": 0,
+    "pageSize": 10,
+    "count": 34,
+    "data": [
+      {
+        "id": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+        "name": "ABC S.A",
+        "taxId": "3101009240",
+        "country": "CR",
+        "currencyCode": "CRC",
+        "isActive": true
+      },
+      {
+        "id": "d30bbc16-c7f6-458c-84fa-ffb1c7727950",
+        "name": "XYZ S.A",
+        "taxId": "3101168458",
+        "country": "CR",
+        "currencyCode": "CRC",
+        "isActive": true
+      }
+    ]
+  }
+}
+```
+
+#### Update an existing company
+
+```http
+PUT /companies
+```
+
+**Body of the Request:**
+```json
+{
+  "company": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string",
+    "taxId": "string",
+    "country": "string",
+    "currencyCode": "string",
+    "isActive": true
+  }
+}
+```
+
+**Sample Application:**
+```bash
+ curl -X 'PUT' 
+  'https://localhost:5050/companies' 
+  -H 'accept: application/json' 
+  -H 'Content-Type: application/json' 
+  -d '{
+  "company": {
+        "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+        "name": "Demo",
+        "taxId": "3101268467",
+        "country": "CR",
+        "currencyCode": "USD",
+        "isActive": false
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+#### Get a specific company
+
+```http
+GET /companies/{companyId}
+```
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+  -H 'accept: application/json'
+```
+
+**Body of the Request:**
+```json
+{
+  "companyDetail": {
+    "id": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "name": "ABC S.A",
+    "taxId": "3101009240",
+    "country": "CR",
+    "currencyCode": "CRC",
+    "isActive": true
+  }
+}
+```
+
+### Audit Logs
+
+View the history of changes and operations performed in the system.
+
+#### Get Audit Log by ID
+
+```http
+GET /audit-logs/{id}
+```
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
+  -H 'accept: application/json'
+```
+
+**Body of the Request:**
+```json
+{
+  "auditDetail": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "entity": "string",
+    "action": "string",
+    "performedBy": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "performedAt": "2025-08-15T16:22:28.446Z",
+    "details": "string"
+  }
+}
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+
+#### List Audit Logs
+
+```http
+GET /audit-logs
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `PageIndex` | integer | 0 | Page number
+| `PageSize` | integer | 10 | Elements per page
+
+**Sample Answer:**
+```json
+{
+   "auditlogs": {
+      "pageIndex": 0,
+      "pageSize": 10,
+      "count": 150,
+      "data": [
+         {
+            "id": "123e4567-e89b-12d3-a456-426614174012",
+            "entity": "JournalEntry",
+            "action": "Create",
+            "performedBy": "123e4567-e89b-12d3-a456-426614174013",
+            "performedAt": "2024-01-15T10:30:00Z",
+            "details": "Creado asiento contable por $1,500.00"
+         }
+      ]
+   }
+}
+```
+
 ### Accounts
 
 Chart of accounts management with support for hierarchical structure.
+
+#### Activate Account
+
+```http
+PUT /accounts/{id}/activate
+```
+
+**Sample Application:**
+```bash
+ curl -X 'PUT' 
+  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate' 
+  -H 'accept: application/json'
+```
 
 #### Create Account
 
@@ -615,7 +1306,6 @@ curl -X POST "https://api.accounting.com/v1/accounts" \
 }
 ```
 
-
 #### List Accounts
 
 ```http
@@ -629,6 +1319,107 @@ GET /accounts
 | `PageIndex` | integer | 0 | Page number
 | `PageSize` | integer | 10 | Elements per page
 
+
+#### Update Account
+
+```http
+PUT /accounts
+```
+
+**Sample Application:**
+```bash
+curl -X 'PUT' 
+ 'https://localhost:5050/accounts' 
+ -H 'accept: application/json' 
+ -H 'Content-Type: application/json' 
+ -d '{
+ "account": {
+   "id": "00445bc5-6287-4b1c-8af9-76df7fb37ac2",
+   "code": "7006",
+   "name": "Gastos varios",
+   "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
+   "isActive": true
+ }
+'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
+#### Delete Account
+
+```http
+DELETE /accounts/{id}
+```
+
+Delete a phisical record account.
+
+**Sample Application:**
+```bash
+curl -X 'DELETE' 
+ 'https://localhost:5050/accounts/0065ecee-ee6b-4d42-bb8b-0e24b20c213f' 
+ -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
+#### Deactivate Account
+
+```http
+PUT /accounts/{id}/desactivate
+```
+
+**Sample Application:**
+```bash
+ curl -X 'PUT' 
+  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/desactivate' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
+#### Get Account by ID
+
+```http
+GET /accounts/{accountId}
+```
+
+**Sample Application:**
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/accounts/7573e77c-110b-4a3b-9bda-7be306bb14b4' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+
+  "accountDetail": {
+    "id": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
+    "code": "1",
+    "name": "Activo",
+    "accountTypeId": "9546c264-0869-44d9-8031-371159b76d3f",
+    "parentAccountId": null,
+    "isActive": true,
+    "level": 1,
+    "isMovable": false
+  }}
+```
+
 #### Get Account Tree
 
 ```http
@@ -636,6 +1427,13 @@ GET /accounts/tree
 ```
 
 Returns accounts in a hierarchical structure.
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/accounts/tree' 
+  -H 'accept: application/json'
+```
 
 **Sample Response:**
 ```json
@@ -663,36 +1461,6 @@ Returns accounts in a hierarchical structure.
 }
 ```
 
-#### Update Account
-
-```http
-PUT /accounts
-```
-
-#### Get Account by ID
-
-```http
-GET /accounts/{accountId}
-```
-
-#### Activate Account
-
-```http
-PUT /accounts/{id}/activate
-```
-
-#### Deactivate Account
-
-```http
-PUT /accounts/{id}/desactivate
-```
-
-#### Delete Account
-
-```http
-DELETE /accounts/{id}
-```
-
 ### Account Types
 
 Manage account types (Assets, Liabilities, Equity, etc.).
@@ -701,6 +1469,13 @@ Manage account types (Assets, Liabilities, Equity, etc.).
 
 ```http
 GET /accounts/types
+```
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:5050/accounts/tree' 
+  -H 'accept: application/json'
 ```
 
 **Sample Answer:**
@@ -726,94 +1501,64 @@ GET /accounts/types
 }
 ```
 
-### Document References
-
-Management of references to external documents associated with accounting entries.
-
-#### Create Document Reference
-
-```http
-POST /journal-entries/{id}/documents
-```
-
-**Body of the Request::**
-```json
-{
-   "documentReference": {
-      "journalEntryId": "123e4567-e89b-12d3-a456-426614174004",
-      "sourceType": "Invoice",
-      "sourceId": "123e4567-e89b-12d3-a456-426614174011",
-      "referenceNumber": "INV-2024-001",
-      "description": "Factura de compra de suministros"
-   }
-}
-```
-
-#### Get References by Seat
-
-```http
-GET /journal-entries/{id}/documents
-```
-
-### Audit Logs
-
-View the history of changes and operations performed in the system.
-
-#### List Audit Logs
-
-```http
-GET /audit-logs
-```
-
-**Parameters:**
-
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
-
-**Sample Answer:**
-```json
-{
-   "auditlogs": {
-      "pageIndex": 0,
-      "pageSize": 10,
-      "count": 150,
-      "data": [
-         {
-            "id": "123e4567-e89b-12d3-a456-426614174012",
-            "entity": "JournalEntry",
-            "action": "Create",
-            "performedBy": "123e4567-e89b-12d3-a456-426614174013",
-            "performedAt": "2024-01-15T10:30:00Z",
-            "details": "Creado asiento contable por $1,500.00"
-         }
-      ]
-   }
-}
-```
-
-#### Get Audit Log by ID
-
-```http
-GET /audit-logs/{id}
-```
-
-### Currency Exchange Rates
-
-### Companies
-
 ## Data Models
+
+### CompanyDto
+
+```json
+{
+"id": "string (UUID)",
+"name": "string",
+"taxId": "string",
+"country": "string",
+"currencyCode": "string",
+"isActive": "boolean"
+}
+```
 
 ### PeriodDto
 ```json
 {
-   "id": "string (UUID)",
-   "year": "integer",
-   "month": "integer",
-   "startDate": "string (datetime)",
-   "endDate": "string (datetime)",
-   "isClosed": "boolean"
+  "id": "string (UUID)",
+  "year": "integer",
+  "month": "integer",
+  "startDate": "string (datetime)",
+  "endDate": "string (datetime)",
+  "isClosed": "boolean"
+}
+```
+
+### CreatePeriodDto
+```json
+{
+  "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+### JournalEntryDto
+
+```json
+{
+  "id": "string (UUID)",
+  "date": "string (datetime)",
+  "description": "string",
+  "periodId": "string (UUID)",
+  "companyId": "string (UUID)",
+  "currencyCode": "string",
+  "exchangeRate": "number (double, nullable)",
+  "exchangeRateDate": "string (date, nullable)",
+  "isPosted": "boolean",
+  "isReversed": "boolean",
+  "lines": [
+    {
+      "id": "string (UUID)",
+      "journalEntryId": "string (UUID)",
+      "accountId": "string (UUID)",
+      "debit": "number (double)",
+      "credit": "number (double)",
+      "lineNumber": "integer"
+    }
+  ]
 }
 ```
 
@@ -831,25 +1576,27 @@ GET /audit-logs/{id}
 }
 ```
 
-### JournalEntryDto
+### CurrencyExchangeRateDto
 
 ```json
 {
-   "id": "string (UUID)",
-   "date": "string (datetime)",
-   "description": "string",
-   "isReversed": "boolean",
-   "periodId": "string (UUID)",
-   "lines": [
-      {
-         "id": "string (UUID)",
-         "journalEntryId": "string (UUID)",
-         "accountId": "string (UUID)",
-         "debit": "number (decimal)",
-         "credit": "number (decimal)",
-         "lineNumber": "integer"
-      }
-   ]
+"id": "string (UUID)",
+"currencyCode": "string",
+"date": "string (date)",
+"buyRate": "number (double)",
+"sellRate": "number (double)"
+}
+```
+
+### DocumentReferenceDto
+```json
+{
+  "id": "string (UUID)",
+  "journalEntryId": "string (UUID)",
+  "sourceType": "string",
+  "sourceId": "string (UUID)",
+  "referenceNumber": "string",
+  "description": "string"
 }
 ```
 
@@ -859,18 +1606,6 @@ GET /audit-logs/{id}
   "id": "string (UUID)",
   "name": "string",
   "description": "string"
-}
-```
-
-### DocumentReferenceDto
-```json
-{
-   "id": "string (UUID)",
-   "journalEntryId": "string (UUID)",
-   "sourceType": "string",
-   "sourceId": "string (UUID)",
-   "referenceNumber": "string",
-   "description": "string"
 }
 ```
 
@@ -888,79 +1623,179 @@ GET /audit-logs/{id}
 
 ## Usage Examples
 
-### Complete Workflow
-
-Here's a complete example of creating a period, accounts, and journal entries:
+### Full Multi-Company Flow
 
 ```bash
-# 1. Create an accounting period
-curl -X POST "[https://api.accounting.com/v1/periods](https://api.accounting.com/v1/periods)
-   -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{
-      "year": 2024,
-      "month": 1,
-      "startDate": "2024-01-01T00:00:00Z",
-      "endDate": "2024-01-31T23:59:59Z"
-   }'
+# 1. Create a company
+curl -X POST "https://api.accounting.com/v1/companies" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "company": {
+         "name": "Mi Empresa S.A.",
+         "taxId": "20123456789",
+         "country": "PE",
+         "currencyCode": "PEN",
+         "isActive": true
+       }
+     }'
+
+# 2. Create accounting period
+curl -X POST "https://api.accounting.com/v1/periods" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "period": {
+         "companyId": "company-id-from-step-1"
+       }
+     }'
+
+# 3. Create exchange rate
+curl -X POST "https://api.accounting.com/v1/currencies" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "currencyExchangeRate": {
+         "currencyCode": "USD",
+         "date": "2024-01-15",
+         "buyRate": 3.74,
+         "sellRate": 3.76
+       }
+     }'
+
+# 4. Create cash account
+curl -X POST "https://api.accounting.com/v1/accounts" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "account": {
+         "code": "1100",
+         "name": "Cash",
+         "accountTypeId": "asset-type-id",
+         "isActive": true,
+         "isMovable": true
+       }
+     }'
+
+# 5. Create sales account
+curl -X POST "https://api.accounting.com/v1/accounts" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "account": {
+         "code": "1200",
+         "name": "Sales",
+         "accountTypeId": "asset-type-id",
+         "isActive": true,
+         "isMovable": true
+       }
+     }'
+
+# 6. Create multi-currency accounting entry
+curl -X POST "https://api.accounting.com/v1/journal-entries" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "journalEntry": {
+         "date": "2024-01-15T10:30:00Z",
+         "description": "Venta en dólares",
+         "periodId": "period-id",
+         "companyId": "company-id",
+         "currencyCode": "USD",
+         "exchangeRate": 3.75,
+         "exchangeRateDate": "2024-01-15",
+         "isPosted": true,
+         "lines": [
+           {
+             "accountId": "cash-account-id",
+             "debit": 1000.00,
+             "credit": 0.00,
+             "lineNumber": 1
+           },
+           {
+             "accountId": "sales-account-id",
+             "debit": 0.00,
+             "credit": 1000.00,
+             "lineNumber": 2
+           }
+         ]
+       }
+     }'
+
+# 7. Associate supporting document
+curl -X POST "https://api.accounting.com/v1/journal-entries/journal-entry-id/documents" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "documentReference": {
+         "journalEntryId": "journal-entry-id",
+         "sourceType": "Invoice",
+         "sourceId": "invoice-id",
+         "referenceNumber": "INV-2024-001",
+         "description": "Factura de venta"
+       }
+     }'
+```     
+	 
+### Example of Entry Reversal
+
+```bash
+Reverse an accounting entry
+
+curl -X PUT "https://api.accounting.com/v1/journal-entries/{journal-entry-id}/reverse"
+-H "Authorization: Bearer YOUR_API_KEY"
+
+This will automatically create a reversing entry with the debits and credits reversed.
 ```
 
-```bash
-# 2. Create cash account
-curl -X POST "[https://api.accounting.com/v1/accounts](https://api.accounting.com/v1/accounts)
-   -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{
-   "account": {
-      "code": "1100",
-      "name": "Efectivo",
-      "accountTypeId": "asset-type-id",
-      "isActive": true,
-      "isMovable": true
-   }}'
-```
+## SDKs and Libraries
 
-```bash
-# 3. Create capital account
+### Official SDKs
+- **JavaScript/Node.js**: `npm install @accounting-api/client`
+- **Python**: `pip install accounting-api-client`
+- **C#/.NET**: `dotnet add package AccountingApi.Client`
 
-curl -X POST "[https://api.accounting.com/v1/accounts](https://api.accounting.com/v1/accounts)
-   -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{
-   "account": {
-      "code": "3100",
-      "name": "Capital Social",
-      "accountTypeId": "equity-type-id",
-      "isActive": true,
-      "isMovable": true
-   }}'
-```
+### Example with JavaScript SDK
 
-```bash
-# 4. Create opening entry
+```javascript
+import { AccountingApiClient } from '@accounting-api/client';
 
-curl -X POST "[https://api.accounting.com/v1/journal-entries](https://api.accounting.com/v1/journal-entries)
-   -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{
-   "journalEntry": {
-   "date": "2024-01-01T00:00:00Z",
-   "description": "Aporte inicial de capital",
-   "periodId": "period-id",
-   "lines": [
-         {
-            "accountId": "cash-account-id",
-            "debit": 10000.00,
-            "credit": 0.00,
-            "lineNumber": 1
-         },
-         {
-            "accountId": "capital-account-id",
-            "debit": 0.00,
-            "credit": 10000.00,
-            "lineNumber": 2
-         }
-       ]
-      }
-   }'
+const client = new AccountingApiClient({
+  apiKey: 'YOUR_API_KEY',
+  baseUrl: 'https://api.accounting.com/v1'
+});
+
+// Create a company
+const company = await client.companies.create({
+  name: 'ABC S.A.',
+  taxId: '20123456789',
+  country: 'PE',
+  currencyCode: 'PEN',
+  isActive: true
+});
+
+// Create multi-currency accounting entry
+const journalEntry = await client.journalEntries.create({
+  date: '2024-01-15T10:30:00Z',
+  description: 'Sale in dollars',
+  periodId: 'period-id',
+  companyId: company.id,
+  currencyCode: 'USD',
+  exchangeRate: 3.75,
+  lines: [
+    { accountId: 'account-1', debit: 1000, credit: 0, lineNumber: 1 },
+    { accountId: 'account-2', debit: 0, credit: 1000, lineNumber: 2 }
+  ]
+});
+
+// Reverse seat
+await client.journalEntries.reverse(journalEntry.id);
 ```
 
 ### Error Validation Example
 
 ```bash
-# Intento de crear asiento desbalanceado (debe ≠ haber)
+# Attempt to create unbalanced settlement (must ≠ have)
 curl -X POST "https://api.accounting.com/v1/journal-entries" \
      -H "Authorization: Bearer YOUR_API_KEY" \
      -H "Content-Type: application/json" \
@@ -996,72 +1831,28 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
 # }
 ```
 
-## SDKs and Libraries
-
-### Official SDKs
-
-- **JavaScript/Node.js**: `npm install @accounting-api/client`
-- **Python**: `pip install accounting-api-client`
-- **C#/.NET**: `dotnet add package AccountingApi.Client`
-
-
-### Community SDKs
-
-- **PHP**: Available on Packagist
-- **Ruby**: Available as a gem
-- **Go**: Available on GitHub
-
-
-### Example with JavaScript SDK
-
-```javascript
-import { AccountingApiClient } from '@accounting-api/client';
-
-const client = new AccountingApiClient({
-apiKey: 'YOUR_API_KEY',
-baseUrl: '[https://api.accounting.com/v1](https://api.accounting.com/v1)
-
-// Create period
-const period = await client.periods.create({
-      year: 2024,
-      month: 1,
-      startDate: '2024-01-01T00:00:00Z',
-      endDate: '2024-01-31T23:59:59Z'
-   });
-
-// Create accounting entry
-const journalEntry = await client.journalEntries.create({
-      date: '2024-01-15T10:30:00Z',
-      description: 'Pago de renta',
-      periodId: period.periodId,
-      lines: [
-         { accountId: 'account-1', debit: 1500, credit: 0, lineNumber: 1 },
-         { accountId: 'account-2', debit: 0, credit: 1500, lineNumber: 2 }
-      ]
-   });
-```
-
 ## Changelog
 
 ### Version 1.0 (Current)
-- ✅ Initial Release
-- ✅ Full accounting period management
-- ✅ Account journal entries with automatic validation
-- ✅ Account hierarchy support
-- ✅ Account type management
-- ✅ Full audit trail
-- ✅ Pagination support
-- ✅ Document references
+- ✅ Multi-company management with complete tax information
+- ✅ Multi-currency support with automatic exchange rates
+- ✅ Accounting periods with opening/closing control by company
+- ✅ Accounting journal entries with automatic validation and currency support
+- ✅ Journal entry reversals for accounting corrections
+- ✅ Hierarchical chart of accounts with account types
+- ✅ Document references for complete traceability
+- ✅ Audit system with detailed history
+- ✅ Pagination on all listing endpoints
+- ✅ Robust validations for accounting integrity
 
 ### Upcoming Features
-- 🔄 Financial report generation
-- 🔄 Batch transactions
-- 🔄 Webhook notifications
-- 🔄 Advanced filtering options
-- 🔄 Accounts Payable
-- 🔄 Accounts Receivable
-- 🔄 Bank reconciliation API'
-
+- 🔄 **Financial Reports** (Balance Sheet, Income Statement)
+- 🔄 **Automatic Bank Reconciliation**
+- 🔄 **Budgets** and Budget Control
+- 🔄 **Cost Centers** for Detailed Analysis
+- 🔄 **Mass Import** of Accounting Entries
+- 🔄 **Webhook Notifications** for Important Events
+- 🔄 **Reporting API** with Customizable Formats
 ---
 
 ## Support
