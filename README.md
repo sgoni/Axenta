@@ -923,7 +923,7 @@ POST /currencies
 | `id` | UUID | Yes | Company ID
 | `currencyCode` | string | Yes | Currency code
 | `date` | Date | Yes | Exchange rate date
-| `buyRate` | Decimal | Yes | exchange rate purchase
+| `buyRate` | Decimal | Yes | Exchange rate purchase
 | `sellRate` | Decimal | Yes | Exchange rate sale
 
 **Body of the Request:**
@@ -1036,6 +1036,7 @@ Company administration
 ```http
 POST /companies
 ```
+
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
@@ -1043,8 +1044,8 @@ POST /companies
 | `name` | string | Yes | Company name
 | `taxId` | string | Yes | Legal identifier of the company
 | `country` | string | Yes | Name of the country
-| `currencyCode` | string | Yes | Page number
-| `isActive` | boolean | No | Elements per page
+| `currencyCode` | string | Yes | curren cyCode
+| `isActive` | boolean | No | Company active
 
 **Body of the Request:**
 ```json
@@ -1147,12 +1148,12 @@ PUT /companies
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `id` | UUID | No | Company ID
+| `id` | UUID | Yes | Company ID
 | `name` | string | Yes | Company name
 | `taxId` | string | Yes | Legal identifier of the company
 | `country` | string | Yes | Name of the country
-| `currencyCode` | string | Yes | Page number
-| `isActive` | boolean | No | Elements per page
+| `currencyCode` | string | Yes | curren cyCode
+| `isActive` | boolean | Yes | Company active
 
 **Body of the Request:**
 ```json
@@ -1403,6 +1404,17 @@ GET /accounts
 PUT /accounts
 ```
 
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | Account ID
+| `code` | string | No | Multi-level account code
+| `name` | string | Yes | Account name
+| `accountTypeId` | string | Yes | Multi-level account code
+| `parentAccountId` | string | No | Parent account ID
+| `isActive` | boolean | No | Account is active
+| `isMovable` | boolean | No | Accepts daily seat movements
+
 **Sample Application:**
 ```bash
 curl -X 'PUT' 
@@ -1508,7 +1520,7 @@ curl -X 'GET' \
     "isActive": true,
     "level": 1,
     "isMovable": false
-  }}
+  }
 ```
 
 #### Get Account Tree
