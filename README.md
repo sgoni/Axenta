@@ -56,22 +56,22 @@ The Accounting API provides a complete set of endpoints for managing enterprise 
 ### Functional Modules of the System
 
 1. Accounting Catalog
-   1. Chart of Accounts, Account Types, Hierarchies
+   - Chart of Accounts, Account Types, Hierarchies
 2. General Accounting
-   1. Accounting Entries, Journals, General Ledger
+   - Accounting Entries, Journals, General Ledger
 3. Accounts Payable
-   1. Vendors, Invoices, Payments
+   - Vendors, Invoices, Payments
 4. Accounts Receivable
-   1. Customers, Invoices, Collections
+   - Customers, Invoices, Collections
 5. Bank Reconciliations
 6. Fixed Assets
 7. Taxes and Withholdings
 8. Financial Reports
-   1. Balance Sheet, Income Statement
+   - Balance Sheet, Income Statement
 9. User and Role Management
-   1. Authentication and Authorization
+   - Authentication and Authorization
 10. Event Audit
-    1. Logs, Critical Data Changes
+    - Logs, Critical Data Changes
 
 ### API Version
 
@@ -442,7 +442,7 @@ POST /journal-entries
 
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `date` | UUID | Yes | ID of the period to open
+| `Id` | UUID | Yes | ID of the period to open
 | `description` | string | Yes | Journal description
 | `periodId` | UUID | Yes | ID of the period
 | `companyId` | UUID | Yes | ID of the company
@@ -602,6 +602,22 @@ GET /journal-entries
 PUT /journal-entries
 ```
 
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | ID of the seat
+| `description` | string | Yes | Journal description
+| `periodId` | UUID | Yes | ID of the period
+| `companyId` | UUID | Yes | ID of the company
+| `currencyCode` | string | Yes | CUrrency code
+| `exchangeRate` | Decimal | No | Exchange rate
+| `exchangeRateDate` | UUID | No | Exchange rate date
+| `accountId` | UUID | Yes | ID of the company
+| `debit` | UUID | Yes | Balance debit
+| `credit` | UUID | Yes | Balance credit
+| `lineNumber` | UUID | Yes | Line number
+
 **Body of the Request:**
 
 ```json
@@ -721,7 +737,7 @@ GET /journal-entries/{journalEntryId}
 
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the seat to be deleted
+| `id` | UUID | Yes | ID of the seat
 
 **Sample Application:**
 ```bash
@@ -900,6 +916,16 @@ Administration of exchange rates and currencies.
 POST /currencies
 ```
 
+**Parameters:**
+
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | Company ID
+| `currencyCode` | string | Yes | Currency code
+| `date` | Date | Yes | Exchange rate date
+| `buyRate` | Decimal | Yes | exchange rate purchase
+| `sellRate` | Decimal | Yes | Exchange rate sale
+
 **Body of the Request:**
 ```json
 {
@@ -970,7 +996,6 @@ curl -X 'GET' \
         "buyRate": 310,
         "sellRate": 315
       }
-
     ]
   }
 }
@@ -1011,6 +1036,15 @@ Company administration
 ```http
 POST /companies
 ```
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | No | Company ID
+| `name` | string | Yes | Company name
+| `taxId` | string | Yes | Legal identifier of the company
+| `country` | string | Yes | Name of the country
+| `currencyCode` | string | Yes | Page number
+| `isActive` | boolean | No | Elements per page
 
 **Body of the Request:**
 ```json
@@ -1110,6 +1144,16 @@ GET /companies
 PUT /companies
 ```
 
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | No | Company ID
+| `name` | string | Yes | Company name
+| `taxId` | string | Yes | Legal identifier of the company
+| `country` | string | Yes | Name of the country
+| `currencyCode` | string | Yes | Page number
+| `isActive` | boolean | No | Elements per page
+
 **Body of the Request:**
 ```json
 {
@@ -1148,11 +1192,17 @@ PUT /companies
   "isSuccess": true
 }
 ```
+
 #### Get a specific company
 
 ```http
 GET /companies/{companyId}
 ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `companyId` | UUID | Yes | Company ID
 
 **Sample Application:**
 ```bash
@@ -1185,6 +1235,11 @@ View the history of changes and operations performed in the system.
 GET /audit-logs/{id}
 ```
 
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | Company ID
+
 **Sample Application:**
 ```bash
  curl -X 'GET' 
@@ -1211,6 +1266,7 @@ GET /audit-logs/{id}
 {
   "isSuccess": true
 }
+```
 
 #### List Audit Logs
 
@@ -1256,6 +1312,11 @@ Chart of accounts management with support for hierarchical structure.
 PUT /accounts/{id}/activate
 ```
 
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `id` | UUID | Yes | Account ID
+
 **Sample Application:**
 ```bash
  curl -X 'PUT' 
@@ -1263,11 +1324,27 @@ PUT /accounts/{id}/activate
   -H 'accept: application/json'
 ```
 
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
 #### Create Account
 
 ```http
 POST /accounts
 ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `code` | string | No | Multi-level account code
+| `name` | string | Yes | Account name
+| `accountTypeId` | string | Yes | Multi-level account code
+| `parentAccountId` | string | Yes | Parent account ID
+| `isActive` | boolean | No | Account is active
+| `isMovable` | boolean | Yes | Accepts daily seat movements
 
 **Body of the Application:**
 ```json
@@ -1355,6 +1432,10 @@ curl -X 'PUT'
 ```http
 DELETE /accounts/{id}
 ```
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `Id` | UUID | Yes | Account ID to physical delete
 
 Delete a phisical record account.
 
@@ -1378,6 +1459,11 @@ curl -X 'DELETE'
 PUT /accounts/{id}/desactivate
 ```
 
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `Id` | UUID | Yes | Account ID to deactivate
+
 **Sample Application:**
 ```bash
  curl -X 'PUT' 
@@ -1397,6 +1483,11 @@ PUT /accounts/{id}/desactivate
 ```http
 GET /accounts/{accountId}
 ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `accountId` | UUID | Yes | Account ID to get
 
 **Sample Application:**
 ```bash
@@ -1507,13 +1598,13 @@ GET /accounts/types
 
 ```json
 {
-"id": "string (UUID)",
-"name": "string",
-"taxId": "string",
-"country": "string",
-"currencyCode": "string",
-"isActive": "boolean"
-}
+  "id": "string (UUID)",
+  "name": "string",
+  "taxId": "string",
+  "country": "string",
+  "currencyCode": "string",
+  "isActive": "boolean"
+  }
 ```
 
 ### PeriodDto
@@ -1580,11 +1671,11 @@ GET /accounts/types
 
 ```json
 {
-"id": "string (UUID)",
-"currencyCode": "string",
-"date": "string (date)",
-"buyRate": "number (double)",
-"sellRate": "number (double)"
+  "id": "string (UUID)",
+  "currencyCode": "string",
+  "date": "string (date)",
+  "buyRate": "number (double)",
+  "sellRate": "number (double)"
 }
 ```
 
