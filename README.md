@@ -1044,7 +1044,7 @@ POST /companies
 | `name` | string | Yes | Company name
 | `taxId` | string | Yes | Legal identifier of the company
 | `country` | string | Yes | Name of the country
-| `currencyCode` | string | Yes | curren cyCode
+| `currencyCode` | string | Yes | Currency code
 | `isActive` | boolean | No | Company active
 
 **Body of the Request:**
@@ -1152,7 +1152,7 @@ PUT /companies
 | `name` | string | Yes | Company name
 | `taxId` | string | Yes | Legal identifier of the company
 | `country` | string | Yes | Name of the country
-| `currencyCode` | string | Yes | curren cyCode
+| `currencyCode` | string | Yes | Currency code
 | `isActive` | boolean | Yes | Company active
 
 **Body of the Request:**
@@ -1342,7 +1342,7 @@ POST /accounts
 |-----|-----|-----|-----
 | `code` | string | No | Multi-level account code
 | `name` | string | Yes | Account name
-| `accountTypeId` | string | Yes | Multi-level account code
+| `accountTypeId` | string | Yes | Account type (Liability, asset, equity, etc.)
 | `parentAccountId` | string | Yes | Parent account ID
 | `isActive` | boolean | No | Account is active
 | `isMovable` | boolean | Yes | Accepts daily seat movements
@@ -1410,7 +1410,7 @@ PUT /accounts
 | `id` | UUID | Yes | Account ID
 | `code` | string | No | Multi-level account code
 | `name` | string | Yes | Account name
-| `accountTypeId` | string | Yes | Multi-level account code
+| `accountTypeId` | string | Yes | Account type (Liability, asset, equity, etc.)
 | `parentAccountId` | string | No | Parent account ID
 | `isActive` | boolean | No | Account is active
 | `isMovable` | boolean | No | Accepts daily seat movements
