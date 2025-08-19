@@ -26,7 +26,7 @@ public class CreatePeriodHandler(IApplicationDbContext dbContext)
     private Period CreateNewPeriod(Guid companyId = default)
     {
         var newPeriod =
-            Period.Create(companyId: CompanyId.Of(companyId),
+            Period.Create(CompanyId.Of(companyId),
                 PeriodId.Of(Guid.NewGuid()),
                 DateTime.Now.Year,
                 DateTime.Now.Month

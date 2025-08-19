@@ -1,41 +1,117 @@
+using Axenta.Reports.API.Infrastructure;
+using Npgsql;
+
 var builder = WebApplication.CreateBuilder(args);
+var assembly = Assembly.GetExecutingAssembly();
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+ConfigureServices(builder.Services, builder.Configuration, assembly);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast");
-
+ConfigureMiddleware(app);
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+void ConfigureServices(IServiceCollection services, IConfiguration configuration, Assembly assembly)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    string? AccountingDb;
+
+    // Add MediatR
+    services.AddMediatR(cfg =>
+    {
+        cfg.RegisterServicesFromAssembly(assembly);
+        cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+        cfg.AddOpenBehavior(typeof(LogginBehavior<,>));
+    });
+
+    // Add Validators
+    services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+
+    // Add Carter
+    services.AddCarter();
+
+    using (var scope = builder.Services.BuildServiceProvider().CreateScope())
+    {
+        var configProvider = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+
+        // Get base configuration
+        var server = configProvider["DatabaseConfig:server"];
+        var port = configProvider["DatabaseConfig:Port"];
+        var database = configProvider["DatabaseConfig:Database"];
+
+        // Assemble the connection string
+        AccountingDb =
+            $"Server={server};Port={port};Database={database};User Id=postgres;Password=postgres;Include Error Detail=true";
+    }
+
+    // Add Exception Handler
+    services.AddExceptionHandler<CustomExceptionHandler>();
+
+    // Add Serilog
+    Log.Logger = new LoggerConfiguration()
+        .ReadFrom.Configuration(builder.Configuration)
+        .Enrich.FromLogContext()
+        .CreateLogger();
+
+    builder.Host.UseSerilog();
+
+    // Add Health Checks
+    services
+        .AddHealthChecks()
+        .AddApplicationStatus("api_status", tags: new[] { "api" })
+        .AddNpgSql(AccountingDb!,
+            name: "sql",
+            failureStatus: HealthStatus.Degraded,
+            tags: new[] { "db", "sql", "Npgsql" });
+
+    // Add Controllers
+    services.AddControllers();
+
+    // Add Swagger
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
+
+    // Add Dapper (connection string desde appsettings.json)
+    services.AddScoped<IDbConnection>(sp =>
+        new NpgsqlConnection(
+            builder.Configuration.GetConnectionString("AccountingDb"))
+    );
+
+    // Load the BD configuration from the Appsettings
+    services.Configure<DatabaseConfig>(configuration.GetSection("DatabaseConfig"));
+    services.AddSingleton<DapperContext>();
+    services.AddScoped<IReportRepository, ReportRepository>();
+
+    // Add Mapping
+    MapsterConfig.RegisterBalanceSheetMaping();
+}
+
+void ConfigureMiddleware(WebApplication app)
+{
+    // Map Carter Endpoints
+    app.MapCarter();
+
+    // Configure Swagger for Development
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    // Add Middleware
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+
+    // Map Controllers
+    app.MapControllers();
+
+    // Use Exception Handler
+    app.UseExceptionHandler(options => { });
+
+    // Add Health Checks
+    app.UseHealthChecks("/health", new HealthCheckOptions
+    {
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
 }

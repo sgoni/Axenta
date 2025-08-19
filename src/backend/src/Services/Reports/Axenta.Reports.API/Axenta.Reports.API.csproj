@@ -7,7 +7,48 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AspNetCore.HealthChecks.ApplicationStatus" Version="9.0.0"/>
+        <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="9.0.0"/>
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0"/>
+        <PackageReference Include="Carter" Version="8.0.0"/>
+        <PackageReference Include="Dapper" Version="2.1.66"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1"/>
+        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0"/>
+        <PackageReference Include="Serilog.Sinks.EventLog" Version="4.0.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="7.0.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Domain\Entities\"/>
+        <Folder Include="Endpoints\IncomeStatement\"/>
+        <Folder Include="Endpoints\TrialBalance\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\shared\Axenta.BuildingBlocks\Axenta.BuildingBlocks.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Infrastructure\Database\Sql\GetBalanceSheet.sql"/>
+        <EmbeddedResource Include="Infrastructure\Database\Sql\GetBalanceSheet.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+        <None Remove="Infrastructure\Database\Sql\GetGeneralLedger.sql"/>
+        <EmbeddedResource Include="Infrastructure\Database\Sql\GetGeneralLedger.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+        <None Remove="Infrastructure\Database\Sql\GetIncomeStatement.sql"/>
+        <EmbeddedResource Include="Infrastructure\Database\Sql\GetIncomeStatement.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+        <None Remove="Infrastructure\Database\Sql\GetTrialBalance.sql"/>
+        <EmbeddedResource Include="Infrastructure\Database\Sql\GetTrialBalance.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
     </ItemGroup>
 
 </Project>
