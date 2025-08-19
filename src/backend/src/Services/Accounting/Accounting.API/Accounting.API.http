@@ -146,7 +146,7 @@ Content-Type: application/json
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
     "currencyCode": "CRC",
     "exchangeRate": 0,
-    "exchangeRateDate": "2025-08-14",
+    "exchangeRateDate": "2025-08-14",    
     "lines": [
       {
         "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
@@ -217,7 +217,7 @@ Content-Type: application/json
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
     "currencyCode": "CRC",
     "exchangeRate": 0,
-    "exchangeRateDate": "2025-08-14",
+    "exchangeRateDate": "2025-08-14",    
     "lines": [
       {
         "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
