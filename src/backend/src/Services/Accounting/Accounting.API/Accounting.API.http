@@ -1,3 +1,6 @@
+# curl -i http://httpbin.org/ip
+GET {{API_HostAddress}}/health
+
 ###
 
 # curl -X 'GET' 
@@ -234,170 +237,6 @@ Content-Type: application/json
 
 ###
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###
-
-# curl -X 'PUT' 
-#  'https://localhost:5050/companies' 
-#  -H 'accept: application/json' 
-#  -H 'Content-Type: application/json' 
-#  -d '{
-#  "company": {
-#        "id": "9429a754-221f-45ca-aeeb-f8b443157831",
-#        "name": "Demo",
-#        "taxId": "3101268467",
-#        "country": "CR",
-#        "currencyCode": "USD",
-#        "isActive": false
-#  }
-#}'
-PUT {{API_HostAddress}}/companies
-accept: application/json
-Content-Type: application/json
-
-{
-  "company": {
-    "id": "9429a754-221f-45ca-aeeb-f8b443157831",
-    "name": "Demo1",
-    "taxId": "3101268467",
-    "country": "CR",
-    "currencyCode": "USD",
-    "isActive": false
-  }
-}
-
-###
-
-# curl -X 'POST' 
-#  'https://localhost:5050/companies' 
-#  -H 'accept: application/json' 
-#  -H 'Content-Type: application/json' 
-#  -d '{
-#  "account": {
-#    "name": "Demo",
-#    "taxId": "3101268467",
-#    "country": "CR",
-#    "currencyCode": "USD",
-#    "isActive": true
-#  }
-#}'
-POST {{API_HostAddress}}/companies
-accept: application/json
-Content-Type: application/json
-
-{
-  "company": {
-    "name": "Demo",
-    "taxId": "3101268467",
-    "country": "CR",
-    "currencyCode": "USD",
-    "isActive": true
-  }
-}
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:5050/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2
-accept: application/json
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:5050/companies?PageIndex=0&PageSize=10' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/companies?PageIndex=0&PageSize=10
-accept: application/json
-
-###
-
-# curl -X 'POST' 
-#  'https://localhost:5050/currencies' 
-#  -H 'accept: application/json' 
-#  -H 'Content-Type: application/json' 
-#  -d '{
-#  "currencyExchangeRate": {
-#    "currencyCode": "USD",
-#    "date": "2025-08-10",
-#    "buyRate": 500,
-#    "sellRate": 514
-#  }
-#}
-POST {{API_HostAddress}}/currencies
-accept: application/json
-Content-Type: application/json
-
-{
-  "currencyExchangeRate": {
-    "currencyCode": "USD",
-    "date": "2025-08-11",
-    "buyRate": 500,
-    "sellRate": 514
-  }
-}
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:5050/currencies/daily' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/currencies/daily
-accept: application/json
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:5050/currencies?PageIndex=0&PageSize=10' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/currencies?PageIndex=0&PageSize=10
-accept: application/json
-
-###
-
-# curl -X 'PUT' 
-#  'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
-#  -H 'accept: application/json'
-PUT {{API_HostAddress}}/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse
-accept: application/json
-
-###
-
-# curl -X 'DELETE' 
-#  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
-#  -H 'accept: application/json'
-DELETE {{API_HostAddress}}/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e
-accept: application/json
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:5050/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946
-accept: application/json
-
-###
-
 # curl -X 'GET' 
 #  'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10' 
 #  -H 'accept: application/json'
@@ -469,11 +308,183 @@ Content-Type: application/json
 
 ###
 
+# curl -X 'DELETE' 
+#  'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
+#  -H 'accept: application/json'
+DELETE {{API_HostAddress}}/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
+#  -H 'accept: application/json'
+PUT {{API_HostAddress}}/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse
+accept: application/json
+
+###
+ 
+ # curl -X PUT --location "https://localhost:5050/companies" 
+#    -H "accept: application/json" 
+#    -H "Content-Type: application/json" 
+#    -d '{
+#          "company": {
+#            "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+#            "name": "Demo1",
+#            "taxId": "3101268467",
+#            "country": "CR",
+#            "currencyCode": "USD",
+#            "isActive": false
+#          }
+#        }'
+PUT {{API_HostAddress}}/companies
+accept: application/json
+Content-Type: application/json
+
+{
+  "company": {
+    "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+    "name": "Demo1",
+    "taxId": "3101268467",
+    "country": "CR",
+    "currencyCode": "USD",
+    "isActive": false
+  }
+}
+
+###
 
 # curl -X 'GET' 
 #  'https://localhost:5050/journal-entries/3fa85f64-5717-4562-b3fc-2c963f66afa6/documents' 
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/journal-entries/0b55189d-ce04-471f-abbb-f73208be063a/documents
+accept: application/json
+
+###
+
+# curl -X 'POST' 
+#  'https://localhost:5050/currencies' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "currencyExchangeRate": {
+#    "currencyCode": "USD",
+#    "date": "2025-08-10",
+#    "buyRate": 500,
+#    "sellRate": 514
+#  }
+#}
+POST {{API_HostAddress}}/currencies
+accept: application/json
+Content-Type: application/json
+
+{
+  "currencyExchangeRate": {
+    "currencyCode": "USD",
+    "date": "2025-08-11",
+    "buyRate": 500,
+    "sellRate": 514
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/currencies?PageIndex=0&PageSize=10' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/currencies?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/currencies/daily' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/currencies/daily
+accept: application/json
+
+###
+
+# curl -X 'POST' 
+#  'https://localhost:5050/companies' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "account": {
+#    "name": "Demo",
+#    "taxId": "3101268467",
+#    "country": "CR",
+#    "currencyCode": "USD",
+#    "isActive": true
+#  }
+#}'
+POST {{API_HostAddress}}/companies
+accept: application/json
+Content-Type: application/json
+
+{
+  "company": {
+    "name": "Demo",
+    "taxId": "3101268467",
+    "country": "CR",
+    "currencyCode": "USD",
+    "isActive": true
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/companies?PageIndex=0&PageSize=10' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/companies?PageIndex=0&PageSize=10
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/companies' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "company": {
+#        "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+#        "name": "Demo",
+#        "taxId": "3101268467",
+#        "country": "CR",
+#        "currencyCode": "USD",
+#        "isActive": false
+#  }
+#}'
+PUT {{API_HostAddress}}/companies
+accept: application/json
+Content-Type: application/json
+
+{
+  "company": {
+    "id": "9429a754-221f-45ca-aeeb-f8b443157831",
+    "name": "Demo1",
+    "taxId": "3101268467",
+    "country": "CR",
+    "currencyCode": "USD",
+    "isActive": false
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###
@@ -490,6 +501,47 @@ accept: application/json
 #  'https://localhost:5050/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate' 
+#  -H 'accept: application/json'
+PUT {{API_HostAddress}}/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate
+accept: application/json
+
+###
+
+# curl -X 'POST' 
+#  'https://localhost:5050/accounts' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "account": {
+#    "code": "7001",
+#    "name": "Gastos varios",
+#    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08"
+#  }
+#}'
+POST {{API_HostAddress}}/accounts
+accept: application/json
+Content-Type: application/json
+
+{
+  "account": {
+    "name": "Patentes y permisos municipales",
+    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
+    "ParentAccountId": "15165f65-a55a-4f7c-8d87-9275301217af"
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/accounts?PageIndex=1&PageSize=10' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/accounts?PageIndex=0&PageSize=10
 accept: application/json
 
 ###
@@ -532,39 +584,6 @@ accept: application/json
 
 ###
 
-# curl -X 'POST' 
-#  'https://localhost:5050/accounts' 
-#  -H 'accept: application/json' 
-#  -H 'Content-Type: application/json' 
-#  -d '{
-#  "account": {
-#    "code": "7001",
-#    "name": "Gastos varios",
-#    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08"
-#  }
-#}'
-POST {{API_HostAddress}}/accounts
-accept: application/json
-Content-Type: application/json
-
-{
-  "account": {
-    "name": "Patentes y permisos municipales",
-    "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
-    "ParentAccountId": "15165f65-a55a-4f7c-8d87-9275301217af"
-  }
-}
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:5050/accounts?PageIndex=1&PageSize=10' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/accounts?PageIndex=0&PageSize=10
-accept: application/json
-
-###
-
 # curl -X 'PUT' 
 #  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/desactivate' 
 #  -H 'accept: application/json'
@@ -573,18 +592,10 @@ accept: application/json
 
 ###
 
-# curl -X 'PUT' 
-#  'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate' 
-#  -H 'accept: application/json'
-PUT {{API_HostAddress}}/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate
-accept: application/json
-
-###
-
 # curl -X 'GET' 
-#  'https://localhost:5050/accounts/types' 
+#  'https://localhost:5050/accounts/7573e77c-110b-4a3b-9bda-7be306bb14b4' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/accounts/types
+GET https://localhost:5050/accounts/7573e77c-110b-4a3b-9bda-7be306bb14b4
 accept: application/json
 
 ###
@@ -597,7 +608,8 @@ accept: application/json
 
 ###
 
-# curl -i http://httpbin.org/ip
-GET {{API_HostAddress}}/health
-
-###
+# curl -X 'GET' 
+#  'https://localhost:5050/accounts/types' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/accounts/types
+accept: application/json
