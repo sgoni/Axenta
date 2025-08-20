@@ -20,6 +20,18 @@ public class ReportRepository : IReportRepository
             .ToList();
     }
 
+    public async Task<IEnumerable<IncomeStatementDto>> GetIncomeStatementAsync(Guid periodId, Guid companyId)
+    {
+        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".",
+            "Infrastructure.Database.Sql.GetIncomeStatement.sql");
+        var sql = SqlLoader.LoadSql(nameSpace);
+        var result =
+            await _db.QueryAsync<dynamic>(sql, new { PeriodId = periodId, CompanyId = companyId });
+        return result
+            .Select(x => ((IDictionary<string, object>)x).Adapt<IncomeStatementDto>())
+            .ToList();
+    }
+
     public async Task<IEnumerable<GeneralLedgerDto>> GetGeneralLedgerAsync(Guid periodId, Guid companyId,
         Guid accountId)
     {

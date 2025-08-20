@@ -1,4 +1,5 @@
 SELECT a."Code",
+       a."Name",
        at."Name"                     AS "AccountType",
        SUM(jl."Credit" - jl."Debit") AS "Balance"
 FROM "JournalEntries" je
@@ -9,5 +10,5 @@ FROM "JournalEntries" je
 WHERE je."PeriodId" = @PeriodId
   AND je."CompanyId" = @CompanyId
   AND je."IsReversed" = false
-  AND at."Name" IN ('Ingresos', 'Gastos')
-GROUP BY a."Code", at."Name";
+  AND at."Name" IN ('Ingreso', 'Gasto')
+GROUP BY a."Code", a."Name", at."Name";

@@ -19,7 +19,7 @@ public class GetGeneralLedgerEndpoint : ICarterModule
             .WithName("GetGeneralLedger")
             .Produces<GetGeneralLedgerResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithSummary("Detailed movements of an account:")
-            .WithDescription("Detailed movements of an account:");
+            .WithSummary("Detailed movements of an account")
+            .WithDescription("Detailed movements of an account");
     }
 }
