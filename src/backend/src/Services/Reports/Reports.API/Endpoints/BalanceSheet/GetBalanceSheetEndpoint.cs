@@ -1,4 +1,6 @@
-﻿namespace Axenta.Reports.API.Endpoints.GetBalanceSheet;
+﻿using Reports.API.Endpoints.BalanceSheet;
+
+namespace Axenta.Reports.API.Endpoints.GetBalanceSheet;
 
 //public record GetBalanceSheetRequest(Guid periodId, Guid companyId);
 public record GetBalanceSheetResponse(IEnumerable<BalanceSheetDto> balanceSheet);
@@ -19,7 +21,7 @@ public class GetBalanceSheetEndpoint : ICarterModule
             .WithName("GetBalanceSheet")
             .Produces<GetBalanceSheetResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithSummary("Get Balance Sheet")
-            .WithDescription("Get Balance Sheet");
+            .WithSummary("Group by type of active / liabilities / heritage account:")
+            .WithDescription("Group by type of active / liabilities / heritage account:");
     }
 }

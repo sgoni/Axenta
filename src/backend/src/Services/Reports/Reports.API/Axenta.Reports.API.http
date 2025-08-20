@@ -4,9 +4,21 @@ GET {{API_HostAddress}}/health
 ###
 
 # curl -X 'GET' 
+#  'https://localhost:6060/reports/general-ledger?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2&accountID=a91a4d34-c88e-4f29-8e31-03986820bada' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/reports/general-ledger?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
+    companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2&accountID=a04ee151-03d4-4840-8697-600360d6977dc
+accept: application/json
+
+###
+
+
+
+# curl -X 'GET' 
 #  'https://localhost:6060/reports/balance-sheet?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/reports/balance-sheet?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
+GET {{API_HostAddress}}/reports/balance-sheet?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
+    companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###

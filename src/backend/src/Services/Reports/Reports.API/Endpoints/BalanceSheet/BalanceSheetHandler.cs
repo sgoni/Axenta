@@ -1,4 +1,4 @@
-﻿namespace Axenta.Reports.API.Endpoints.GetBalanceSheet;
+﻿namespace Reports.API.Endpoints.BalanceSheet;
 
 public record GetBalanceSheetQuery(Guid periodId, Guid companyId) : IQuery<GetBalanceSheetResult>;
 

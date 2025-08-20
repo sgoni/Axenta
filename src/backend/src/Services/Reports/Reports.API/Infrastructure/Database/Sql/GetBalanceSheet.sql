@@ -10,6 +10,8 @@ ON a."AccountTypeId" = at."Id"
 WHERE je."PeriodId" = @PeriodId
   AND je."CompanyId" = @CompanyId
   AND je."IsReversed" = false
-  AND at."Name" IN ('Activo', 'Pasivo', 'Patrimonio')
+  AND at."Name" IN ('Activo'
+    , 'Pasivo'
+    , 'Patrimonio')
 GROUP BY a."Code", a."Name", at."Name"
 ORDER BY a."Code";

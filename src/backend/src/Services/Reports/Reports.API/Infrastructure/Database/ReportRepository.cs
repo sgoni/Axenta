@@ -14,9 +14,22 @@ public class ReportRepository : IReportRepository
         var nameSpace = string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetBalanceSheet.sql");
         var sql = SqlLoader.LoadSql(nameSpace);
         var result =
-            await _db.QueryAsync<dynamic>(sql, param: new { PeriodId = periodId, CompanyId = companyId });
+            await _db.QueryAsync<dynamic>(sql, new { PeriodId = periodId, CompanyId = companyId });
         return result
             .Select(x => ((IDictionary<string, object>)x).Adapt<BalanceSheetDto>())
+            .ToList();
+    }
+
+    public async Task<IEnumerable<GeneralLedgerDto>> GetGeneralLedgerAsync(Guid periodId, Guid companyId,
+        Guid accountId)
+    {
+        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetGeneralLedger.sql");
+        var sql = SqlLoader.LoadSql(nameSpace);
+        var result =
+            await _db.QueryAsync<dynamic>(sql,
+                new { PeriodId = periodId, CompanyId = companyId, AccountId = accountId });
+        return result
+            .Select(x => ((IDictionary<string, object>)x).Adapt<GeneralLedgerDto>())
             .ToList();
     }
 }

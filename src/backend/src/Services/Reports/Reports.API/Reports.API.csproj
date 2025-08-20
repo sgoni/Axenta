@@ -25,7 +25,6 @@
 
     <ItemGroup>
         <Folder Include="Domain\Entities\"/>
-        <Folder Include="Endpoints\IncomeStatement\"/>
         <Folder Include="Endpoints\TrialBalance\"/>
     </ItemGroup>
 

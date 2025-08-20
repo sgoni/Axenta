@@ -1,4 +1,3 @@
-using Axenta.Reports.API.Infrastructure;
 using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -77,7 +76,9 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddScoped<IReportRepository, ReportRepository>();
 
     // Add Mapping
-    MapsterConfig.RegisterBalanceSheetMaping();
+    MapsterConfig.RegisterGeneralLedgerMapping();
+    MapsterConfig.RegisterIncomeStatementMapping();
+    MapsterConfig.RegisterBalanceSheetMapping();
 }
 
 void ConfigureMiddleware(WebApplication app)

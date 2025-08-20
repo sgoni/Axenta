@@ -2,7 +2,6 @@
 global using Axenta.BuildingBlocks.CQRS;
 global using Axenta.BuildingBlocks.Exceptions.Handler;
 global using Axenta.Reports.API.Application.Abstractions;
-global using Axenta.Reports.API.Dto;
 global using Axenta.Reports.API.Extensions;
 global using Axenta.Reports.API.Infrastructure.Database;
 global using Axenta.Reports.API.Mapping;
@@ -15,7 +14,7 @@ global using Mapster;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
-global using Microsoft.Extensions.Options;
+global using Reports.API.Dtos;
 global using Serilog;
 global using System.Data;
 global using System.Reflection;
