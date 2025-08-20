@@ -14,7 +14,6 @@ global using HealthChecks.UI.Client;
 global using Mapster;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-global using Microsoft.Data.SqlClient;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Options;
 global using Serilog;

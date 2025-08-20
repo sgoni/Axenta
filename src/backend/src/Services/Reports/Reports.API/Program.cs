@@ -72,14 +72,8 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddSwaggerGen();
 
     // Add Dapper (connection string desde appsettings.json)
-    services.AddScoped<IDbConnection>(sp =>
-        new NpgsqlConnection(
-            builder.Configuration.GetConnectionString("AccountingDb"))
-    );
+    services.AddScoped<IDbConnection>(sp => new NpgsqlConnection(AccountingDb));
 
-    // Load the BD configuration from the Appsettings
-    services.Configure<DatabaseConfig>(configuration.GetSection("DatabaseConfig"));
-    services.AddSingleton<DapperContext>();
     services.AddScoped<IReportRepository, ReportRepository>();
 
     // Add Mapping

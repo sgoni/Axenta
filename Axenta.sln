@@ -28,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axenta.Tests", "src\backend
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{80A9F8E7-B01C-4556-B406-CE3FE0151666}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axenta.Reports.API", "src\backend\src\Services\Reports\Axenta.Reports.API\Axenta.Reports.API.csproj", "{4F9B737F-7109-4BC6-A2BF-E688F2C9EFF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.API", "src\backend\src\Services\Reports\Reports.API\Reports.API.csproj", "{4F9B737F-7109-4BC6-A2BF-E688F2C9EFF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
