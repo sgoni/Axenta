@@ -1,5 +1,3 @@
-
-
 # curl -i http://httpbin.org/ip
 GET {{API_HostAddress}}/health
 
@@ -36,15 +34,6 @@ accept: application/json
 #  -H 'accept: application/json'
 GET https://localhost:6060/reports/account-balance/period?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
     accountId=a04ee151-03d4-4840-8697-600360d6977d
-accept: application/json
-
-###
-
-# curl -X 'GET' 
-#  'https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=23b79d9f-96d3-4c20-ac8e-4387a70152b3' 
-#  -H 'accept: application/json'
-GET https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
-    accountId=23b79d9f-96d3-4c20-ac8e-4387a70152b3
 accept: application/json
 
 ###

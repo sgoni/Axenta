@@ -1707,7 +1707,7 @@ GET /reports/trial-balance?periodId={periodId}&companyId={companyId}
 #### Account balance
 
 ```http
-GET /reports/account-balance?accountId={accountId}
+GET /reports/account-balance/{accountId}
  ```
 
 **Parameters:**
