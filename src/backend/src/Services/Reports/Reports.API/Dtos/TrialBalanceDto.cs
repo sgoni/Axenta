@@ -1,7 +1,8 @@
 ﻿namespace Reports.API.Dtos;
 
-public record BalanceSheetDto(
+public record TrialBalanceDto(
     string Code,
     string Name,
-    string AccountType,
+    decimal TotalDebit,
+    decimal TotalCredit,
     decimal Balance);

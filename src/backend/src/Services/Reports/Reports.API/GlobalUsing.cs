@@ -15,6 +15,7 @@ global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Reports.API.Dtos;
+global using Reports.API.Endpoints.BalanceSheet;
 global using Serilog;
 global using System.Data;
 global using System.Reflection;

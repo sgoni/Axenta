@@ -9,9 +9,30 @@ public class ReportRepository : IReportRepository
         _db = db;
     }
 
+    public async Task<decimal?> GetAccountBalanceAsync(Guid accountId)
+    {
+        var nameSpace =
+            string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetAccountBalance.sql");
+        var sql = SqlLoader.LoadSql(nameSpace);
+        return await _db.ExecuteScalarAsync<decimal>(sql, new { AccountId = accountId });
+    }
+
+    public async Task<decimal?> GetAccountBalanceByPeriodAsync(Guid accountId, Guid periodId)
+    {
+        var nameSpace =
+            string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetAccountBalanceByPeriod.sql");
+        var sql = SqlLoader.LoadSql(nameSpace);
+        var result = await _db.ExecuteScalarAsync<decimal?>(
+            sql,
+            new { AccountId = accountId, PeriodId = periodId }
+        );
+        return result.GetValueOrDefault();
+    }
+
     public async Task<IEnumerable<BalanceSheetDto>> GetBalanceSheetAsync(Guid periodId, Guid companyId)
     {
-        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetBalanceSheet.sql");
+        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".",
+            "Infrastructure.Database.Sql.GetBalanceSheet.sql");
         var sql = SqlLoader.LoadSql(nameSpace);
         var result =
             await _db.QueryAsync<dynamic>(sql, new { PeriodId = periodId, CompanyId = companyId });
@@ -35,13 +56,27 @@ public class ReportRepository : IReportRepository
     public async Task<IEnumerable<GeneralLedgerDto>> GetGeneralLedgerAsync(Guid periodId, Guid companyId,
         Guid accountId)
     {
-        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetGeneralLedger.sql");
+        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".",
+            "Infrastructure.Database.Sql.GetGeneralLedger.sql");
         var sql = SqlLoader.LoadSql(nameSpace);
         var result =
             await _db.QueryAsync<dynamic>(sql,
                 new { PeriodId = periodId, CompanyId = companyId, AccountId = accountId });
         return result
             .Select(x => ((IDictionary<string, object>)x).Adapt<GeneralLedgerDto>())
+            .ToList();
+    }
+
+    public async Task<IEnumerable<TrialBalanceDto>> GetTrialBalanceAsync(Guid periodId, Guid companyId)
+    {
+        var nameSpace = string.Concat(SqlLoader.ProjectName(), ".",
+            "Infrastructure.Database.Sql.GetTrialBalance.sql");
+        var sql = SqlLoader.LoadSql(nameSpace);
+        var result =
+            await _db.QueryAsync<dynamic>(sql,
+                new { PeriodId = periodId, CompanyId = companyId });
+        return result
+            .Select(x => ((IDictionary<string, object>)x).Adapt<TrialBalanceDto>())
             .ToList();
     }
 }

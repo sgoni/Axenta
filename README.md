@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [Built With](#built-with)
 - [Overview](#overview)
 - [Authentication](#authentication)
 - [Base URL](#base-url)
@@ -18,10 +19,17 @@
   - [Audit Logs](#audit-logs)
   - [Accounts](#accounts)
   - [Account Types](#account-types)
+  - [Reports](#reports)  
 - [Data Models](#data-models)
 - [Usage Examples](#usage-examples)
 - [SDKs and Libraries](#sdks-and-libraries)
 - [Changelog](#changelog)
+
+### Built With
+
+* ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
+* ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+* ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
 ## Overview
 
@@ -177,6 +185,13 @@ All endpoints that return lists support pagination:
   "data": [...]
 }
 ```
+
+## Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/sgoni/Axenta.git
+   ```
 
 ## Endpoints
 
@@ -1604,6 +1619,209 @@ GET /accounts/types
 }
 ```
 
+### Reports
+
+Generation of accounting reports.
+
+#### Income statament report
+
+```http
+GET /reports/income-statement?periodId={periodId}&companyId={companyId}
+ ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to close
+| `companyId` | UUID | Yes | ID of the company
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:6060/reports/income-statement?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "incomeStatementDto": [
+    {
+      "code": "5.02.01",
+      "name": "Sueldos y Salarios",
+      "accountType": "Gasto",
+      "balance": -800000.00
+    },
+    {
+      "code": "5.02.02",
+      "name": "Servicios Públicos",
+      "accountType": "Gasto",
+      "balance": -500000.00
+    }
+  ]
+}
+```
+
+#### Trial balance report
+
+```http
+GET /reports/trial-balance?periodId={periodId}&companyId={companyId}
+ ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to close
+| `companyId` | UUID | Yes | ID of the company
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:6060/reports/trial-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+
+```json
+{
+  "trialBalanceDto": [
+    {
+      "code": "1",
+      "name": "Activo",
+      "totalDebit": 4000.00,
+      "totalCredit": 0.00,
+      "balance": 4000.00
+    },
+    {
+      "code": "1.01",
+      "name": "Activo Corriente",
+      "totalDebit": 0.00,
+      "totalCredit": 4000.00,
+      "balance": -4000.00
+    }
+  ]
+}
+```
+
+#### Account balance
+
+```http
+GET /reports/account-balance?accountId={accountId}
+ ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `accountId` | UUID | Yes | ID account
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:6060/reports/account-balance/a04ee151-03d4-4840-8697-600360d6977d' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+
+```json
+{
+  "balance": -1000000.00
+}
+```
+
+#### Account balance by period
+
+```http
+GET /reports/account-balance/period?periodId={periodId}&accountId={accountId}
+ ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to close
+| `accountId` | UUID | Yes | ID account
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=a04ee151-03d4-4840-8697-600360d6977d' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+
+```json
+{
+  "balance": -1000000.00
+}
+
+```
+
+#### General ledger report
+```http
+GET /reports/general-ledger?periodId={periodId}&companyId={companyId}
+ ```
+
+**Parameters:**
+Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to close
+| `companyId` | UUID | Yes | ID of the company
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=23b79d9f-96d3-4c20-ac8e-4387a70152b3' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "balance": -1000000.00
+}
+```
+
+#### Balance sheet report
+
+```http
+GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
+ ```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `periodId` | UUID | Yes | ID of the period to close
+| `companyId` | UUID | Yes | ID of the company
+
+**Sample Application:**
+```bash
+ curl -X 'GET' 
+  'https://localhost:6060/reports/balance-sheet?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "balanceSheet": [
+    {
+      "code": "1",
+      "name": "Activo",
+      "accountType": "Activo",
+      "balance": 4000.00
+    },
+    {
+      "code": "1.01",
+      "name": "Activo Corriente",
+      "accountType": "Activo",
+      "balance": -4000.00
+    }
+  ]
+}
+```
+
 ## Data Models
 
 ### CompanyDto
@@ -1721,6 +1939,48 @@ GET /accounts/types
   "performedBy": "string (UUID)",
   "performedAt": "string (datetime)",
   "details": "string"
+}
+```
+
+### BalanceSheetDto
+```json
+{
+  "code": "string",
+  "name": "string",
+  "accountType": "string",
+  "balance": 0
+}
+```
+
+### IncomeStatementDto
+```json
+{
+  "code": "string",
+  "name": "string",
+  "accountType": "string",
+  "balance": 0
+}
+```
+
+### GeneralLedgerDto
+```json
+{
+  "date": "2025-08-21T03:54:09.061Z",
+  "description": "string",
+  "debit": 0,
+  "credit": 0,
+  "movement": 0
+}
+```
+
+### TrialBalanceDto
+```json
+{
+  "code": "string",
+  "name": "string",
+  "totalDebit": 0,
+  "totalCredit": 0,
+  "balance": 0
 }
 ```
 

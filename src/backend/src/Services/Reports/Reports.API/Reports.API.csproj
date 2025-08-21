@@ -25,7 +25,6 @@
 
     <ItemGroup>
         <Folder Include="Domain\Entities\"/>
-        <Folder Include="Endpoints\TrialBalance\"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -49,6 +48,12 @@
         <EmbeddedResource Include="Infrastructure\Database\Sql\GetTrialBalance.sql">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </EmbeddedResource>
+        <None Remove="Infrastructure\Database\Sql\GetAccountBalanceByPeriod.sql"/>
+        <EmbeddedResource Include="Infrastructure\Database\Sql\GetAccountBalanceByPeriod.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+        <None Remove="Infrastructure\Database\Sql\GetAccountBalance.sql"/>
+        <EmbeddedResource Include="Infrastructure\Database\Sql\GetAccountBalance.sql"/>
     </ItemGroup>
 
 </Project>
