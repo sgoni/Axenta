@@ -117,7 +117,7 @@
         }
       }
     },
-    "/periods/{id}/close": {
+    "/periods/close": {
       "put": {
         "tags": [
           "Accounting.API"
@@ -125,17 +125,16 @@
         "summary": "Close period (no further movements allowed.",
         "description": "Close period (no further movements allowed.",
         "operationId": "ClosePeriod",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClosePeriodRequest"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -166,7 +165,7 @@
           "Accounting.API"
         ],
         "summary": "The Period Already Exists.",
-        "description": "VThe Period Already Exists.",
+        "description": "The Period Already Exists.",
         "operationId": "ExistsPeriod",
         "parameters": [
           {
@@ -275,7 +274,7 @@
         }
       }
     },
-    "/periods/{id}/open": {
+    "/periods/open": {
       "put": {
         "tags": [
           "Accounting.API"
@@ -283,17 +282,16 @@
         "summary": "Reopen a closed period (if applicable.",
         "description": "Reopen a closed period (if applicable).",
         "operationId": "OpenPeriod",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpenPeriodRequest"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -392,7 +390,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetJournalEntries"
+                  "$ref": "#/components/schemas/GetJournalEntriesResponse"
                 }
               }
             }
@@ -538,7 +536,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetJournalEntryById"
+                  "$ref": "#/components/schemas/GetJournalEntryByIdResponse"
                 }
               }
             }
@@ -566,13 +564,56 @@
         }
       }
     },
+    "/journal-entries/{id}/reverse": {
+      "put": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Reverse an entry (only if the period is open)",
+        "description": "Reverse an entry (only if the period is open)",
+        "operationId": "ReverseJournalEntry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReverseJournalEntryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/journal-entries/{id}/documents": {
       "post": {
         "tags": [
           "Accounting.API"
         ],
-        "summary": "See referenced documents",
-        "description": "See referenced documents",
+        "summary": "Associate document to accounting entry",
+        "description": "SAssociate document to accounting entry",
         "operationId": "CreateDocumentReference",
         "requestBody": {
           "content": {
@@ -659,6 +700,345 @@
         }
       }
     },
+    "/currencies": {
+      "post": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Create a new exchange rate",
+        "description": "Create a new exchange rate",
+        "operationId": "CreateCurrencyExchangeRate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCurrencyExchangeRateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCurrencyExchangeRateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "List exchange rates",
+        "description": "List exchange rates",
+        "operationId": "GetCurrencyExchangeRates",
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCurrencyExchangeRatesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currencies/daily": {
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Get the daily currency exchange rate",
+        "description": "Get the daily currency exchange rate",
+        "operationId": "GetDailyCurrencyExchangeRate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDailyCurrencyExchangeRatesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies": {
+      "post": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Create a new company",
+        "description": "Create a new company",
+        "operationId": "CreateCompany",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatCompanyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCompanyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Get list of companies",
+        "description": "Get list of companies",
+        "operationId": "GetCompanies",
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCompaniesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Update an existing company",
+        "description": "Update an existing company",
+        "operationId": "UpdateCompany",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCompanyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies/{companyId}": {
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Get a specific company.",
+        "description": "Get a specific company.",
+        "operationId": "GetCompanyById",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCompanyByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/audit-logs/{id}": {
       "get": {
         "tags": [
@@ -684,7 +1064,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAuditLogById"
+                  "$ref": "#/components/schemas/GetAuditLogByIdResponse"
                 }
               }
             }
@@ -1080,7 +1460,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAccountById"
+                  "$ref": "#/components/schemas/GetAccountByIdResponse"
                 }
               }
             }
@@ -1373,11 +1753,97 @@
         },
         "additionalProperties": false
       },
+      "ClosePeriodDto": {
+        "type": "object",
+        "properties": {
+          "periodId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClosePeriodRequest": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/ClosePeriodDto"
+          }
+        },
+        "additionalProperties": false
+      },
       "ClosePeriodResponse": {
         "type": "object",
         "properties": {
           "isSuccess": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxId": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyDtoPaginatedResult": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompanyDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatCompanyRequest": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "$ref": "#/components/schemas/CompanyDto"
           }
         },
         "additionalProperties": false
@@ -1392,6 +1858,35 @@
         "additionalProperties": false
       },
       "CreateAccountResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCompanyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCurrencyExchangeRateRequest": {
+        "type": "object",
+        "properties": {
+          "currencyExchangeRate": {
+            "$ref": "#/components/schemas/CurrencyExchangeRateDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCurrencyExchangeRateResponse": {
         "type": "object",
         "properties": {
           "id": {
@@ -1439,8 +1934,23 @@
         },
         "additionalProperties": false
       },
+      "CreatePeriodDto": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreatePeriodRequest": {
         "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/CreatePeriodDto"
+          }
+        },
         "additionalProperties": false
       },
       "CreatePeriodResponse": {
@@ -1449,6 +1959,57 @@
           "periodId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurrencyExchangeRateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "buyRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellRate": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurrencyExchangeRateDtoPaginatedResult": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyExchangeRateDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1514,8 +2075,13 @@
         "type": "object",
         "additionalProperties": false
       },
-      "GetAccountById": {
+      "GetAccountByIdResponse": {
         "type": "object",
+        "properties": {
+          "accountDetail": {
+            "$ref": "#/components/schemas/AccountDto"
+          }
+        },
         "additionalProperties": false
       },
       "GetAccountTypesResponse": {
@@ -1553,8 +2119,13 @@
         },
         "additionalProperties": false
       },
-      "GetAuditLogById": {
+      "GetAuditLogByIdResponse": {
         "type": "object",
+        "properties": {
+          "auditDetail": {
+            "$ref": "#/components/schemas/AuditLogDto"
+          }
+        },
         "additionalProperties": false
       },
       "GetAuditlogsResponse": {
@@ -1562,6 +2133,42 @@
         "properties": {
           "auditlogs": {
             "$ref": "#/components/schemas/AuditLogDtoPaginatedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCompaniesResponse": {
+        "type": "object",
+        "properties": {
+          "companies": {
+            "$ref": "#/components/schemas/CompanyDtoPaginatedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCompanyByIdResponse": {
+        "type": "object",
+        "properties": {
+          "companyDetail": {
+            "$ref": "#/components/schemas/CompanyDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCurrencyExchangeRatesResponse": {
+        "type": "object",
+        "properties": {
+          "currencyExchangeRates": {
+            "$ref": "#/components/schemas/CurrencyExchangeRateDtoPaginatedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetDailyCurrencyExchangeRatesResponse": {
+        "type": "object",
+        "properties": {
+          "currencyExchangeRate": {
+            "$ref": "#/components/schemas/CurrencyExchangeRateDto"
           }
         },
         "additionalProperties": false
@@ -1579,12 +2186,22 @@
         },
         "additionalProperties": false
       },
-      "GetJournalEntries": {
+      "GetJournalEntriesResponse": {
         "type": "object",
+        "properties": {
+          "journalEntries": {
+            "$ref": "#/components/schemas/JournalEntryDtoPaginatedResult"
+          }
+        },
         "additionalProperties": false
       },
-      "GetJournalEntryById": {
+      "GetJournalEntryByIdResponse": {
         "type": "object",
+        "properties": {
+          "journalEntryDetail": {
+            "$ref": "#/components/schemas/JournalEntryDto"
+          }
+        },
         "additionalProperties": false
       },
       "GetPeriodById": {
@@ -1615,17 +2232,63 @@
             "type": "string",
             "nullable": true
           },
-          "isReversed": {
-            "type": "boolean"
-          },
           "periodId": {
             "type": "string",
             "format": "uuid"
+          },
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "exchangeRate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "exchangeRateDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "isPosted": {
+            "type": "boolean"
+          },
+          "isReversed": {
+            "type": "boolean"
           },
           "lines": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/JournalEntryLineDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JournalEntryDtoPaginatedResult": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JournalEntryDto"
             },
             "nullable": true
           }
@@ -1658,6 +2321,29 @@
           "lineNumber": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenPeriodDto": {
+        "type": "object",
+        "properties": {
+          "periodId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OpenPeriodRequest": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/OpenPeriodDto"
           }
         },
         "additionalProperties": false
@@ -1752,6 +2438,15 @@
         },
         "additionalProperties": { }
       },
+      "ReverseJournalEntryResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateAccountRequest": {
         "type": "object",
         "properties": {
@@ -1764,7 +2459,25 @@
       "UpdateAccountResponse": {
         "type": "object",
         "properties": {
-          "isSuccescs": {
+          "isSuccess": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCompanyRequest": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "$ref": "#/components/schemas/CompanyDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCompanyResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
             "type": "boolean"
           }
         },

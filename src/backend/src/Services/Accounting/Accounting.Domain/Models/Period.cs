@@ -41,9 +41,21 @@ public class Period : Aggregate<PeriodId>
         AddDomainEvent(new PeriodClosedDomainEvent(Id.Value));
     }
 
-    public void Open()
+    public void Reopen(IEnumerable<JournalEntry> closingEntries)
     {
+        if (!IsClosed)
+            throw new DomainException("The period is now open");
+
+        // Reverse all closing entries
+        foreach (var entry in closingEntries.Where(e => e.IsPosted))
+        {
+            var reversal = entry.Reverse();
+            // Here you must persist the reversal in the application handler
+            AddDomainEvent(new JournalEntryReversedDomainEvent(reversal.Id.Value, reversal.Id.Value));
+        }
+
         IsClosed = false;
+        AddDomainEvent(new PeriodReopenedDomainEvent(Id.Value));
     }
 
     private static DateTime GetFirstDayOfTheMonth()

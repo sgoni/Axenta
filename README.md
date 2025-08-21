@@ -101,8 +101,11 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 ```abc
 Production: https://api.example.com/v1
 Staging: https://staging-api.example.com/v1
-localhost: https://localhost:5050
-docker: https://localhost:6060
+```
+## Development URL
+```abc
+Accounting.Api: https://localhost:5050
+Report.Api: https://localhost:6060
 ```
 
 ## Response Format
@@ -1632,7 +1635,7 @@ GET /reports/income-statement?periodId={periodId}&companyId={companyId}
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to close
+| `periodId` | UUID | Yes | ID of the period
 | `companyId` | UUID | Yes | ID of the company
 
 **Sample Application:**
@@ -1671,7 +1674,7 @@ GET /reports/trial-balance?periodId={periodId}&companyId={companyId}
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to close
+| `periodId` | UUID | Yes | ID of the period
 | `companyId` | UUID | Yes | ID of the company
 
 **Sample Application:**
@@ -1739,7 +1742,7 @@ GET /reports/account-balance/period?periodId={periodId}&accountId={accountId}
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to close
+| `periodId` | UUID | Yes | ID of the period
 | `accountId` | UUID | Yes | ID account
 
 **Sample Application:**
@@ -1766,7 +1769,7 @@ GET /reports/general-ledger?periodId={periodId}&companyId={companyId}
 **Parameters:**
 Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to close
+| `periodId` | UUID | Yes | ID of the period
 | `companyId` | UUID | Yes | ID of the company
 
 **Sample Application:**
@@ -1792,7 +1795,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to close
+| `periodId` | UUID | Yes | ID of the period
 | `companyId` | UUID | Yes | ID of the company
 
 **Sample Application:**
@@ -2207,9 +2210,9 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
 - ✅ Audit system with detailed history
 - ✅ Pagination on all listing endpoints
 - ✅ Robust validations for accounting integrity
-
+- ✅ **Financial Reports** (Balance Sheet, Income Statement)
+- 
 ### Upcoming Features
-- 🔄 **Financial Reports** (Balance Sheet, Income Statement)
 - 🔄 **Automatic Bank Reconciliation**
 - 🔄 **Budgets** and Budget Control
 - 🔄 **Cost Centers** for Detailed Analysis

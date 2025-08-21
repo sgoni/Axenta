@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "87f4ef1d-2925-41cd-95f2-071b450d06fc",
+		"_postman_id": "018d6670-ea52-451f-805b-6442000c63de",
 		"name": "Accounting.API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25334165"
@@ -10,239 +10,138 @@
 			"name": "periods",
 			"item": [
 				{
-					"name": "{id}",
+					"name": "close",
 					"item": [
 						{
-							"name": "close",
-							"item": [
+							"name": "Close period (no further movements allowed.",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/periods/close",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods",
+										"close"
+									]
+								},
+								"description": "Close period (no further movements allowed."
+							},
+							"response": [
 								{
-									"name": "Close period (no further movements allowed.",
-									"request": {
+									"name": "OK",
+									"originalRequest": {
 										"method": "PUT",
 										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
 											{
 												"key": "Accept",
 												"value": "application/json"
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
 										"url": {
-											"raw": "{{scheme}}://{{host}}{{base_path}}/periods/:id/close",
-											"protocol": "{{scheme}}",
+											"raw": "{{baseUrl}}/periods/close",
 											"host": [
-												"{{host}}{{base_path}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"periods",
-												":id",
 												"close"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
-													"description": "(Required) "
-												}
 											]
-										},
-										"description": "Close period (no further movements allowed."
-									},
-									"response": [
-										{
-											"name": "OK",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/periods/:id/close",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"periods",
-														":id",
-														"close"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n  \"isSuccess\": false\n}"
-										},
-										{
-											"name": "Bad Request",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/problem+json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/periods/:id/close",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"periods",
-														":id",
-														"close"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Bad Request",
-											"code": 400,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/problem+json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
 										}
-									]
-								}
-							]
-						},
-						{
-							"name": "open",
-							"item": [
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"isSuccess\": true\n}"
+								},
 								{
-									"name": "Reopen a closed period (if applicable.",
-									"request": {
+									"name": "Bad Request",
+									"originalRequest": {
 										"method": "PUT",
 										"header": [
 											{
-												"key": "Accept",
+												"key": "Content-Type",
 												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
 										"url": {
-											"raw": "{{scheme}}://{{host}}{{base_path}}/periods/:id/open",
-											"protocol": "{{scheme}}",
+											"raw": "{{baseUrl}}/periods/close",
 											"host": [
-												"{{host}}{{base_path}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"periods",
-												":id",
-												"open"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
-													"description": "(Required) "
-												}
+												"close"
 											]
-										},
-										"description": "Reopen a closed period (if applicable)."
-									},
-									"response": [
-										{
-											"name": "OK",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/periods/:id/open",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"periods",
-														":id",
-														"open"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n  \"isSuccess\": false\n}"
-										},
-										{
-											"name": "Bad Request",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/problem+json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/periods/:id/open",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"periods",
-														":id",
-														"open"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Bad Request",
-											"code": 400,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/problem+json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
 										}
-									]
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -262,17 +161,16 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/periods/year={{year}}&month={{month}}",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/periods/year={{year}}&month={{month}}",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"periods",
 										"year={{year}}&month={{month}}"
 									]
 								},
-								"description": "VThe Period Already Exists."
+								"description": "The Period Already Exists."
 							},
 							"response": [
 								{
@@ -339,7 +237,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -372,7 +270,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -392,10 +290,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/periods/:periodId",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/periods/:periodId",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"periods",
@@ -404,7 +301,7 @@
 									"variable": [
 										{
 											"key": "periodId",
-											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 											"description": "(Required) "
 										}
 									]
@@ -486,7 +383,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -524,7 +421,145 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "open",
+					"item": [
+						{
+							"name": "Reopen a closed period (if applicable.",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/periods/open",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"periods",
+										"open"
+									]
+								},
+								"description": "Reopen a closed period (if applicable)."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/periods/open",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												"open"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"isSuccess\": true\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/periods/open",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"periods",
+												"open"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -541,10 +576,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/periods?PageIndex=0&PageSize=10",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/periods?PageIndex=0&PageSize=10",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"periods"
@@ -603,7 +637,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"periods\": {\n    \"pageIndex\": -69658708,\n    \"pageSize\": -65422373,\n    \"count\": 38330331,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:81e2d532-b2cd-0249-9477-f5370a34de00\",\n        \"year\": -19887364,\n        \"month\": 22755762,\n        \"startDate\": \"2013-05-12T07:03:42.923Z\",\n        \"endDate\": \"1969-10-19T19:25:04.003Z\",\n        \"isClosed\": true\n      },\n      {\n        \"id\": \"01a269b9-062b-a526-d1b3-939ad3b4b65f\",\n        \"year\": 96443057,\n        \"month\": -92462875,\n        \"startDate\": \"1961-02-10T01:42:56.823Z\",\n        \"endDate\": \"1969-08-03T18:10:13.184Z\",\n        \"isClosed\": true\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"periods\": {\n    \"pageIndex\": 6076,\n    \"pageSize\": 4296,\n    \"count\": 6987,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:e5f09c9e-8351-db07-5fa9-e445e5e26ee8\",\n        \"year\": 6628,\n        \"month\": 7978,\n        \"startDate\": \"1969-02-25T18:26:23.287Z\",\n        \"endDate\": \"1959-01-15T16:00:48.206Z\",\n        \"isClosed\": true\n      },\n      {\n        \"id\": \"5b4e5c6a-7950-c775-5f36-ec0d2b03a14b\",\n        \"year\": 2016,\n        \"month\": 606,\n        \"startDate\": \"1988-01-07T10:21:13.648Z\",\n        \"endDate\": \"2007-01-25T00:35:15.958Z\",\n        \"isClosed\": false\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -645,7 +679,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -687,7 +721,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -707,7 +741,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{}",
+							"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -716,10 +750,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/periods",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/periods",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"periods"
@@ -744,7 +777,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{}",
+									"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -772,7 +805,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"periodId\": \"urn:uuid:49c445ff-a6a1-846f-1234-0cc05c531001\"\n}"
+							"body": "{\n  \"periodId\": \"76d404f6-7e25-e187-7259-1f492171c8df\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -790,7 +823,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{}",
+									"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -818,7 +851,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Conflict",
@@ -836,7 +869,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{}",
+									"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -864,7 +897,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -877,10 +910,126 @@
 					"name": "{id}",
 					"item": [
 						{
+							"name": "reverse",
+							"item": [
+								{
+									"name": "Reverse an entry (only if the period is open)",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/journal-entries/:id/reverse",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"journal-entries",
+												":id",
+												"reverse"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Reverse an entry (only if the period is open)"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/reverse",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"reverse"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": true\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/journal-entries/:id/reverse",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"journal-entries",
+														":id",
+														"reverse"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
 							"name": "documents",
 							"item": [
 								{
-									"name": "See referenced documents",
+									"name": "Associate document to accounting entry",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -895,7 +1044,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"documentReference\": {\n    \"id\": \"6fd97569-b024-73ac-ba38-08a6890ffe77\",\n    \"journalEntryId\": \"669e1a3a-dbc1-c300-df8d-db59b1a0c3ca\",\n    \"sourceType\": \"culpa dolore dolor\",\n    \"sourceId\": \"urn:uuid:bc18a10d-039c-8af9-73d0-764c0dbda304\",\n    \"referenceNumber\": \"sunt elit\",\n    \"description\": \"ea Duis fugiat\"\n  }\n}",
+											"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:f5c03162-ac89-9db8-1c6a-cba64c48fdbc\",\n    \"journalEntryId\": \"edf8e814-17e4-f812-ac9d-fda2905aed19\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"3213191e-2ef1-e39e-d2bc-9524de7645c5\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -904,10 +1053,9 @@
 											}
 										},
 										"url": {
-											"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:id/documents",
-											"protocol": "{{scheme}}",
+											"raw": "{{baseUrl}}/journal-entries/:id/documents",
 											"host": [
-												"{{host}}{{base_path}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"journal-entries",
@@ -920,7 +1068,7 @@
 												}
 											]
 										},
-										"description": "See referenced documents"
+										"description": "SAssociate document to accounting entry"
 									},
 									"response": [
 										{
@@ -939,7 +1087,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"documentReference\": {\n    \"id\": \"6fd97569-b024-73ac-ba38-08a6890ffe77\",\n    \"journalEntryId\": \"669e1a3a-dbc1-c300-df8d-db59b1a0c3ca\",\n    \"sourceType\": \"culpa dolore dolor\",\n    \"sourceId\": \"urn:uuid:bc18a10d-039c-8af9-73d0-764c0dbda304\",\n    \"referenceNumber\": \"sunt elit\",\n    \"description\": \"ea Duis fugiat\"\n  }\n}",
+													"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:f5c03162-ac89-9db8-1c6a-cba64c48fdbc\",\n    \"journalEntryId\": \"edf8e814-17e4-f812-ac9d-fda2905aed19\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"3213191e-2ef1-e39e-d2bc-9524de7645c5\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -974,7 +1122,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+											"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
 										},
 										{
 											"name": "Bad Request",
@@ -992,7 +1140,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"documentReference\": {\n    \"id\": \"6fd97569-b024-73ac-ba38-08a6890ffe77\",\n    \"journalEntryId\": \"669e1a3a-dbc1-c300-df8d-db59b1a0c3ca\",\n    \"sourceType\": \"culpa dolore dolor\",\n    \"sourceId\": \"urn:uuid:bc18a10d-039c-8af9-73d0-764c0dbda304\",\n    \"referenceNumber\": \"sunt elit\",\n    \"description\": \"ea Duis fugiat\"\n  }\n}",
+													"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:f5c03162-ac89-9db8-1c6a-cba64c48fdbc\",\n    \"journalEntryId\": \"edf8e814-17e4-f812-ac9d-fda2905aed19\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"3213191e-2ef1-e39e-d2bc-9524de7645c5\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1027,7 +1175,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								},
@@ -1042,10 +1190,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:id/documents",
-											"protocol": "{{scheme}}",
+											"raw": "{{baseUrl}}/journal-entries/:id/documents",
 											"host": [
-												"{{host}}{{base_path}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"journal-entries",
@@ -1055,7 +1202,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 													"description": "(Required) "
 												}
 											]
@@ -1100,7 +1247,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"documentReferences\": [\n    {\n      \"id\": \"urn:uuid:33e265b6-9076-e6a5-c7dd-a34e680fbf62\",\n      \"journalEntryId\": \"73c47cad-3575-e9d5-3a32-5ee813fa78e4\",\n      \"sourceType\": \"occaecat sit in ullamc\",\n      \"sourceId\": \"urn:uuid:b9915e66-8227-fb7c-b29e-3d420e01a335\",\n      \"referenceNumber\": \"id ad sint\",\n      \"description\": \"in dolor quis ipsum\"\n    },\n    {\n      \"id\": \"9a736896-ac8b-7e97-f0c8-0472b7e3f25b\",\n      \"journalEntryId\": \"urn:uuid:5317d421-6508-75d8-1f50-6d9f9b3737cc\",\n      \"sourceType\": \"consectetur magna\",\n      \"sourceId\": \"aa413f23-a36a-24f3-6d32-35317fdca809\",\n      \"referenceNumber\": \"sint do ull\",\n      \"description\": \"ullamco exercitation magna\"\n    }\n  ]\n}"
+											"body": "{\n  \"documentReferences\": [\n    {\n      \"id\": \"urn:uuid:71e98715-96a4-4ed0-2c2c-a64314a85ac6\",\n      \"journalEntryId\": \"urn:uuid:a169a2e7-4c3a-0e66-c69e-0d54cd8280a0\",\n      \"sourceType\": \"string\",\n      \"sourceId\": \"3c501545-05a0-5281-e98e-0f4e3dc02d9a\",\n      \"referenceNumber\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"976bafa1-088c-1e42-334f-66932409c397\",\n      \"journalEntryId\": \"urn:uuid:a36dd01b-2ee7-73aa-10ee-81add993747b\",\n      \"sourceType\": \"string\",\n      \"sourceId\": \"4b741e3c-8efa-f628-0999-385ee412f18d\",\n      \"referenceNumber\": \"string\",\n      \"description\": \"stri\"\n    }\n  ]\n}"
 										},
 										{
 											"name": "Bad Request",
@@ -1139,7 +1286,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										},
 										{
 											"name": "Not Found",
@@ -1178,7 +1325,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -1195,10 +1342,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:id",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/journal-entries/:id",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"journal-entries",
@@ -1207,7 +1353,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 											"description": "(Required) "
 										}
 									]
@@ -1251,7 +1397,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"isSuccess\": false\n}"
+									"body": "{\n  \"isSuccess\": true\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -1289,7 +1435,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -1327,7 +1473,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -1347,10 +1493,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries/:journalEntryId",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/journal-entries/:journalEntryId",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"journal-entries",
@@ -1359,7 +1504,7 @@
 									"variable": [
 										{
 											"key": "journalEntryId",
-											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 											"description": "(Required) "
 										}
 									]
@@ -1403,7 +1548,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{}"
+									"body": "{\n  \"journalEntryDetail\": {\n    \"id\": \"urn:uuid:301ca5e5-4149-bbec-307f-688e3f019b08\",\n    \"date\": \"1993-03-14T02:29:58.895Z\",\n    \"description\": \"string\",\n    \"periodId\": \"e714f688-e9dd-f34f-8a60-4d7bdeba322c\",\n    \"companyId\": \"6bb1592e-b96e-0b4b-77d1-e22d64236c14\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 656.5998003446572,\n    \"exchangeRateDate\": \"1953-09-01\",\n    \"isPosted\": false,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"urn:uuid:1a1392da-6318-20e7-5959-a99c09a19b47\",\n        \"journalEntryId\": \"8867108b-7af2-9de1-a7ff-594ab8e58032\",\n        \"accountId\": \"4e6aaebc-213f-412d-cf39-1f1beecc5e4e\",\n        \"debit\": 2301.750137785079,\n        \"credit\": 5993.62449531357,\n        \"lineNumber\": 3435\n      },\n      {\n        \"id\": \"5f52ce81-1c87-2343-0a47-c00f5a576fea\",\n        \"journalEntryId\": \"fda15496-e641-ac19-2535-9a6159916f34\",\n        \"accountId\": \"urn:uuid:b7e0ae3f-7e79-0fe0-4506-9b9e063adfa2\",\n        \"debit\": 5002.392933799473,\n        \"credit\": 2584.5563798005464,\n        \"lineNumber\": 9226\n      }\n    ]\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -1441,7 +1586,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -1479,7 +1624,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -1501,7 +1646,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1510,10 +1655,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/journal-entries",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"journal-entries"
@@ -1538,7 +1682,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1566,7 +1710,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -1584,7 +1728,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1612,7 +1756,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -1627,10 +1771,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries?PageIndex=0&PageSize=10",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"journal-entries"
@@ -1689,7 +1832,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{}"
+							"body": "{\n  \"journalEntries\": {\n    \"pageIndex\": 6451,\n    \"pageSize\": 1104,\n    \"count\": 7159,\n    \"data\": [\n      {\n        \"id\": \"b4df8940-4dc2-3ebb-e40f-8e179851e601\",\n        \"date\": \"2023-06-20T17:40:09.056Z\",\n        \"description\": \"string\",\n        \"periodId\": \"urn:uuid:27a7912c-7106-c51d-0ea6-28cc1110ea20\",\n        \"companyId\": \"4e028afd-9b10-fc45-59f9-1bb02b5f7270\",\n        \"currencyCode\": \"string\",\n        \"exchangeRate\": 7992.2549759078665,\n        \"exchangeRateDate\": \"1972-10-27\",\n        \"isPosted\": true,\n        \"isReversed\": true,\n        \"lines\": [\n          {\n            \"id\": \"96c4d24b-3b88-ee8e-716e-b2e6cd39e851\",\n            \"journalEntryId\": \"7241792c-05e2-2495-e828-d5a7174f0b62\",\n            \"accountId\": \"3f48e0d9-df32-f872-3b62-30a9c77b203b\",\n            \"debit\": 8075.647439979328,\n            \"credit\": 244.02240285269937,\n            \"lineNumber\": 6500\n          },\n          {\n            \"id\": \"urn:uuid:89a87662-279c-1aa1-adae-99ae9c7354d7\",\n            \"journalEntryId\": \"urn:uuid:817e2e0e-79f4-a590-d271-8c0e26269575\",\n            \"accountId\": \"f5f6f262-bec8-b085-fc7c-b08cdaab92fa\",\n            \"debit\": 5266.853860451619,\n            \"credit\": 2319.9773192289117,\n            \"lineNumber\": 5395\n          }\n        ]\n      },\n      {\n        \"id\": \"urn:uuid:f2ea8b96-6484-fc6e-8636-ac038394f34f\",\n        \"date\": \"1954-12-01T12:53:29.927Z\",\n        \"description\": \"string\",\n        \"periodId\": \"urn:uuid:f1962b2c-1aa6-1ce5-f4cd-9620e119c2f5\",\n        \"companyId\": \"urn:uuid:e661e90f-6289-e121-b593-9d5059200db5\",\n        \"currencyCode\": \"string\",\n        \"exchangeRate\": 6517.018221614377,\n        \"exchangeRateDate\": \"1980-05-25\",\n        \"isPosted\": false,\n        \"isReversed\": true,\n        \"lines\": [\n          {\n            \"id\": \"urn:uuid:4e2966c2-5fbc-d3df-4874-98340cc53b5a\",\n            \"journalEntryId\": \"urn:uuid:4665a77f-aa06-3073-5c03-ca320eb71968\",\n            \"accountId\": \"7eb1aba7-c521-271e-ae94-fefcb74e75b4\",\n            \"debit\": 7196.258907017858,\n            \"credit\": 4658.534237667757,\n            \"lineNumber\": 3372\n          },\n          {\n            \"id\": \"56269b7a-93bf-1447-611f-7a8d8ffc439c\",\n            \"journalEntryId\": \"a6679f6d-bdf1-5330-36c8-c1840cf008af\",\n            \"accountId\": \"8bc6547a-e97a-0fd2-c988-c4ab653bbf0f\",\n            \"debit\": 9411.64332812355,\n            \"credit\": 7660.179102726765,\n            \"lineNumber\": 3422\n          }\n        ]\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -1731,7 +1874,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -1773,7 +1916,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -1793,7 +1936,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1802,10 +1945,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/journal-entries",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/journal-entries",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"journal-entries"
@@ -1830,7 +1972,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1858,7 +2000,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -1876,7 +2018,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"1292197a-1fc2-52b3-cfff-e705b7c220f6\",\n    \"date\": \"2022-02-08T05:11:04.784Z\",\n    \"description\": \"nostrud ullamco rep\",\n    \"isReversed\": true,\n    \"periodId\": \"urn:uuid:8dfd87a4-056e-d5b0-cade-c278b95a5385\",\n    \"lines\": [\n      {\n        \"id\": \"99a1ecd7-037d-6f85-015b-3b08ad107500\",\n        \"journalEntryId\": \"urn:uuid:54698c87-b882-54ce-9c05-d22623a9a5d5\",\n        \"accountId\": \"0e154603-7029-0920-d542-bf78f27ff3e5\",\n        \"debit\": -36252452.440337725,\n        \"credit\": -64575967.193614446,\n        \"lineNumber\": 28193321\n      },\n      {\n        \"id\": \"urn:uuid:0028f3f6-2929-9724-d2ef-d9a599dd8ed1\",\n        \"journalEntryId\": \"urn:uuid:9a2a4ee6-d14e-e7e1-6c24-c33fdc4a76e6\",\n        \"accountId\": \"urn:uuid:0d2a1971-3e27-aa94-2e8d-3ee608f11bd5\",\n        \"debit\": 36382919.93163413,\n        \"credit\": 40615872.16050407,\n        \"lineNumber\": -23048091\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1904,7 +2046,1007 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "currencies",
+			"item": [
+				{
+					"name": "daily",
+					"item": [
+						{
+							"name": "Get the daily currency exchange rate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/currencies/daily",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies",
+										"daily"
+									]
+								},
+								"description": "Get the daily currency exchange rate"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/daily",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"daily"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/daily",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"daily"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/daily",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"daily"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create a new exchange rate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/currencies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies"
+							]
+						},
+						"description": "Create a new exchange rate"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/currencies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/currencies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List exchange rates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/currencies?PageIndex=0&PageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "List exchange rates"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/currencies?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"currencyExchangeRates\": {\n    \"pageIndex\": 5173,\n    \"pageSize\": 6964,\n    \"count\": 7320,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:3b64fe3a-22d5-3e2c-560a-3adea8639123\",\n        \"currencyCode\": \"string\",\n        \"date\": \"1953-05-11\",\n        \"buyRate\": 370.1392755594224,\n        \"sellRate\": 9584.115905095983\n      },\n      {\n        \"id\": \"688e48f1-30df-70f0-7f71-4d71729f4d90\",\n        \"currencyCode\": \"string\",\n        \"date\": \"2004-11-04\",\n        \"buyRate\": 5341.882511737374,\n        \"sellRate\": 2755.370864282265\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/currencies?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/currencies?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "companies",
+			"item": [
+				{
+					"name": "{companyId}",
+					"item": [
+						{
+							"name": "Get a specific company.",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/companies/:companyId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies",
+										":companyId"
+									],
+									"variable": [
+										{
+											"key": "companyId",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Get a specific company."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/companies/:companyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"companies",
+												":companyId"
+											],
+											"variable": [
+												{
+													"key": "companyId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"companyDetail\": {\n    \"id\": \"urn:uuid:8d5dd367-0ec6-ef60-8551-4449c8ad9055\",\n    \"name\": \"stri\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/companies/:companyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"companies",
+												":companyId"
+											],
+											"variable": [
+												{
+													"key": "companyId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/companies/:companyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"companies",
+												":companyId"
+											],
+											"variable": [
+												{
+													"key": "companyId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create a new company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/companies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies"
+							]
+						},
+						"description": "Create a new company"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/companies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/companies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get list of companies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/companies?PageIndex=0&PageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get list of companies"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/companies?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"companies\": {\n    \"pageIndex\": 9050,\n    \"pageSize\": 4739,\n    \"count\": 8918,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:79589118-8eb6-3bab-42ff-2bfce7da6848\",\n        \"name\": \"string\",\n        \"taxId\": \"string\",\n        \"country\": \"string\",\n        \"currencyCode\": \"string\",\n        \"isActive\": false\n      },\n      {\n        \"id\": \"urn:uuid:b41dcc5f-7fec-8b88-a3ca-5c5fdf343148\",\n        \"name\": \"string\",\n        \"taxId\": \"string\",\n        \"country\": \"string\",\n        \"currencyCode\": \"string\",\n        \"isActive\": false\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/companies?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/companies?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an existing company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/companies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies"
+							]
+						},
+						"description": "Update an existing company"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/companies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"isSuccess\": true\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/companies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -1927,10 +3069,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/audit-logs/:id",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/audit-logs/:id",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"audit-logs",
@@ -1939,7 +3080,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 											"description": "(Required) "
 										}
 									]
@@ -1983,7 +3124,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{}"
+									"body": "{\n  \"auditDetail\": {\n    \"id\": \"urn:uuid:82e5ba31-2afc-f0cc-5cba-d9ff6d2a0508\",\n    \"entity\": \"string\",\n    \"action\": \"string\",\n    \"performedBy\": \"urn:uuid:e61b8b8b-9d7a-9c29-0c54-345dbaeb1c06\",\n    \"performedAt\": \"2019-02-12T05:34:36.712Z\",\n    \"details\": \"string\"\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2021,7 +3162,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -2059,7 +3200,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -2076,10 +3217,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/audit-logs?PageIndex=0&PageSize=10",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/audit-logs?PageIndex=0&PageSize=10",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"audit-logs"
@@ -2138,7 +3278,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"auditlogs\": {\n    \"pageIndex\": -17044031,\n    \"pageSize\": 24740553,\n    \"count\": 87375037,\n    \"data\": [\n      {\n        \"id\": \"9335eb42-255d-8e26-cf46-35acd87dfb51\",\n        \"entity\": \"Excepteur anim minim\",\n        \"action\": \"commodo dolor\",\n        \"performedBy\": \"0ab9b0aa-a8ac-dd11-e64c-e3e184f79410\",\n        \"performedAt\": \"2013-10-12T12:49:57.390Z\",\n        \"details\": \"et irure nulla\"\n      },\n      {\n        \"id\": \"d40b36b3-e5bb-ba83-ded3-d09761836821\",\n        \"entity\": \"non ullamco ut\",\n        \"action\": \"labore est\",\n        \"performedBy\": \"urn:uuid:138700f6-9d47-0805-8313-c60c07cda84a\",\n        \"performedAt\": \"2001-11-26T05:39:47.516Z\",\n        \"details\": \"ea veniam amet\"\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"auditlogs\": {\n    \"pageIndex\": 5173,\n    \"pageSize\": 8809,\n    \"count\": 2878,\n    \"data\": [\n      {\n        \"id\": \"da334671-0777-2501-0a9a-ac42e32c651a\",\n        \"entity\": \"string\",\n        \"action\": \"string\",\n        \"performedBy\": \"urn:uuid:73181b77-6546-6851-624f-20c852a03358\",\n        \"performedAt\": \"1985-03-01T21:29:38.792Z\",\n        \"details\": \"string\"\n      },\n      {\n        \"id\": \"urn:uuid:875b4e88-21e4-7ddb-8bba-d29b0a432d4d\",\n        \"entity\": \"string\",\n        \"action\": \"string\",\n        \"performedBy\": \"urn:uuid:b5522319-8b83-e8e0-ede6-f8bdc4e3005d\",\n        \"performedAt\": \"1998-04-13T04:42:44.545Z\",\n        \"details\": \"strin\"\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -2180,7 +3320,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -2222,7 +3362,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -2248,10 +3388,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:id/activate",
-											"protocol": "{{scheme}}",
+											"raw": "{{baseUrl}}/accounts/:id/activate",
 											"host": [
-												"{{host}}{{base_path}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"accounts",
@@ -2261,7 +3400,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 													"description": "(Required) "
 												}
 											]
@@ -2306,7 +3445,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"isSuccess\": false\n}"
+											"body": "{\n  \"isSuccess\": true\n}"
 										},
 										{
 											"name": "Bad Request",
@@ -2345,7 +3484,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -2365,10 +3504,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:id/desactivate",
-											"protocol": "{{scheme}}",
+											"raw": "{{baseUrl}}/accounts/:id/desactivate",
 											"host": [
-												"{{host}}{{base_path}}"
+												"{{baseUrl}}"
 											],
 											"path": [
 												"accounts",
@@ -2378,7 +3516,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 													"description": "(Required) "
 												}
 											]
@@ -2423,7 +3561,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"isSuccess\": false\n}"
+											"body": "{\n  \"isSuccess\": true\n}"
 										},
 										{
 											"name": "Bad Request",
@@ -2462,7 +3600,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -2479,10 +3617,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:id",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/accounts/:id",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -2491,7 +3628,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "urn:uuid:cf8089c7-f28e-87d6-fd64-d4d51db5efc1",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 											"description": "(Required) "
 										}
 									]
@@ -2535,7 +3672,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"isSuccess\": false\n}"
+									"body": "{\n  \"isSuccess\": true\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2573,7 +3710,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -2611,7 +3748,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -2631,10 +3768,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/:accountId",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/accounts/:accountId",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -2643,7 +3779,7 @@
 									"variable": [
 										{
 											"key": "accountId",
-											"value": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
 											"description": "(Required) "
 										}
 									]
@@ -2687,7 +3823,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{}"
+									"body": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2725,7 +3861,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -2763,7 +3899,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -2783,10 +3919,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/tree",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/accounts/tree",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -2827,7 +3962,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"accountTree\": [\n    {\n      \"id\": \"c2f70870-182c-cfbf-363e-b783d635f6b6\",\n      \"code\": \"et adipisicing u\",\n      \"name\": \"amet exercitation\",\n      \"accountTypeId\": \"0899253e-a219-0615-0659-dd119fc149fe\",\n      \"parentAccountId\": \"urn:uuid:fd0b6736-8a14-33c4-5e88-ae65490e5316\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"urn:uuid:f4a4a8b2-2fce-0e7b-e164-4345a4711265\",\n      \"code\": \"commodo nostrud\",\n      \"name\": \"nulla ad velit nostrud\",\n      \"accountTypeId\": \"d535e5af-438a-7e09-e71e-19f887047cd6\",\n      \"parentAccountId\": \"urn:uuid:4f8de9b8-174d-bcda-16eb-0bf78887e881\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    }\n  ]\n}"
+									"body": "{\n  \"accountTree\": [\n    {\n      \"id\": \"urn:uuid:320a4ed1-89d0-fd34-e787-8235643b5eb3\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"accountTypeId\": \"urn:uuid:c074a530-4eaf-489d-6b04-e59f02a36fe1\",\n      \"parentAccountId\": \"urn:uuid:ff068109-189b-5d80-bef8-8248cb3fe719\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"61665715-610c-4431-baea-94074313ee25\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"accountTypeId\": \"5c4a1603-4369-3e7c-51e5-bf4ccb8e8752\",\n      \"parentAccountId\": \"urn:uuid:2766392f-69f6-4efe-1045-39c1ebd9ce7b\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    }\n  ]\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2860,7 +3995,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -2893,7 +4028,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -2913,10 +4048,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{scheme}}://{{host}}{{base_path}}/accounts/types",
-									"protocol": "{{scheme}}",
+									"raw": "{{baseUrl}}/accounts/types",
 									"host": [
-										"{{host}}{{base_path}}"
+										"{{baseUrl}}"
 									],
 									"path": [
 										"accounts",
@@ -2957,7 +4091,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"accountTypes\": [\n    {\n      \"id\": \"urn:uuid:6e5dc5aa-a78c-9d97-eca5-28a21aa2870f\",\n      \"name\": \"Lorem ex officia nisi\",\n      \"description\": \"eiusmod nostrud\"\n    },\n    {\n      \"id\": \"b8e19a28-53e6-0a06-db0d-d7c3053dd7d4\",\n      \"name\": \"tempor \",\n      \"description\": \"sed do occaecat\"\n    }\n  ]\n}"
+									"body": "{\n  \"accountTypes\": [\n    {\n      \"id\": \"urn:uuid:785f2086-dfc1-a519-41d9-954473cd8e5f\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"2b70a4b1-2e44-c14c-a93b-df5297e96557\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2990,7 +4124,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -3023,7 +4157,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -3045,7 +4179,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"account\": {\n    \"name\": \"Patentes y permisos municipales\",\n    \"accountTypeId\": \"71bbd6e0-abf4-4f2a-afec-9199bb404b08\",\n    \"ParentAccountId\": \"15165f65-a55a-4f7c-8d87-9275301217af\"\n  }\n}",
+							"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:d006a0ec-8e87-a239-1550-7500d61ef93c\",\n    \"code\": \"str\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"urn:uuid:ffb0cad1-5698-e1c8-bd8c-70b4872d2304\",\n    \"parentAccountId\": \"f1b90f51-36cd-fd3d-62cd-47140344dca8\",\n    \"isActive\": true,\n    \"level\": 3708,\n    \"isMovable\": true\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -3054,10 +4188,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/accounts",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/accounts",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"accounts"
@@ -3082,7 +4215,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:64e8d550-1d86-2587-d591-f0554333f3ac\",\n    \"code\": \"aliquip sint\",\n    \"name\": \"officia esse ut labore\",\n    \"accountTypeId\": \"urn:uuid:3f66e2d8-d3e0-4ac2-cde4-ddff437ae55e\",\n    \"parentAccountId\": \"urn:uuid:f558bac5-f783-ecba-7f56-535be6d7f681\",\n    \"isActive\": false,\n    \"level\": 11225955,\n    \"isMovable\": false\n  }\n}",
+									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:d006a0ec-8e87-a239-1550-7500d61ef93c\",\n    \"code\": \"str\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"urn:uuid:ffb0cad1-5698-e1c8-bd8c-70b4872d2304\",\n    \"parentAccountId\": \"f1b90f51-36cd-fd3d-62cd-47140344dca8\",\n    \"isActive\": true,\n    \"level\": 3708,\n    \"isMovable\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3110,7 +4243,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"e0e425e9-c895-e40f-0bad-f209157da45f\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -3128,7 +4261,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:64e8d550-1d86-2587-d591-f0554333f3ac\",\n    \"code\": \"aliquip sint\",\n    \"name\": \"officia esse ut labore\",\n    \"accountTypeId\": \"urn:uuid:3f66e2d8-d3e0-4ac2-cde4-ddff437ae55e\",\n    \"parentAccountId\": \"urn:uuid:f558bac5-f783-ecba-7f56-535be6d7f681\",\n    \"isActive\": false,\n    \"level\": 11225955,\n    \"isMovable\": false\n  }\n}",
+									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:d006a0ec-8e87-a239-1550-7500d61ef93c\",\n    \"code\": \"str\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"urn:uuid:ffb0cad1-5698-e1c8-bd8c-70b4872d2304\",\n    \"parentAccountId\": \"f1b90f51-36cd-fd3d-62cd-47140344dca8\",\n    \"isActive\": true,\n    \"level\": 3708,\n    \"isMovable\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3156,7 +4289,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -3171,10 +4304,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/accounts?PageIndex=0&PageSize=10",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/accounts?PageIndex=0&PageSize=10",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"accounts"
@@ -3233,7 +4365,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"accounts\": {\n    \"pageIndex\": 83476983,\n    \"pageSize\": -90939378,\n    \"count\": -9039812,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:676a7110-26d5-1259-da83-b50e0722c45e\",\n        \"code\": \"minim adipisicing\",\n        \"name\": \"irure\",\n        \"accountTypeId\": \"urn:uuid:cdd7f298-ef49-9a27-8f6f-d68a5ec57168\",\n        \"parentAccountId\": \"8dcfbb64-2537-8e64-ccd6-37342d2a9358\",\n        \"isActive\": false,\n        \"level\": 82295719,\n        \"isMovable\": false\n      },\n      {\n        \"id\": \"75ec9611-8765-16f5-a57d-09ae00c83824\",\n        \"code\": \"cillum in id sit\",\n        \"name\": \"nostrud magna\",\n        \"accountTypeId\": \"54c97112-a935-4ed0-ab8c-09f75a26b305\",\n        \"parentAccountId\": \"7edafe3e-e872-8aca-4c6f-6c86087eb652\",\n        \"isActive\": false,\n        \"level\": 89265334,\n        \"isMovable\": false\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"accounts\": {\n    \"pageIndex\": 1287,\n    \"pageSize\": 5321,\n    \"count\": 8131,\n    \"data\": [\n      {\n        \"id\": \"f837c9a7-58f1-9a8b-508e-e0dd05fa2ee4\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"accountTypeId\": \"urn:uuid:5543ee50-8464-51ab-690a-1cd1002c449e\",\n        \"parentAccountId\": \"urn:uuid:9ea947c2-3273-022e-9c47-b730c3b376b8\",\n        \"isActive\": true,\n        \"level\": 5035,\n        \"isMovable\": true\n      },\n      {\n        \"id\": \"86798888-f58d-7db4-89ef-fb7de6beaca2\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"accountTypeId\": \"urn:uuid:67e4daed-3072-ef37-46ab-7d6ab4015f62\",\n        \"parentAccountId\": \"1ba7d77e-2c15-e92e-ab7d-d9cc41c1b32d\",\n        \"isActive\": true,\n        \"level\": 460,\n        \"isMovable\": false\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -3275,7 +4407,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -3317,7 +4449,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -3337,7 +4469,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"accountDetail\": {\n    \"id\": \"00445bc5-6287-4b1c-8af9-76df7fb37ac2\",\n    \"code\": \"7006\",\n    \"name\": \"Gastos varios de segundo nivel\",\n    \"accountTypeId\": \"71bbd6e0-abf4-4f2a-afec-9199bb404b08\",\n    \"parentAccountId\": \"8c597200-7580-4494-87b2-4661becf8690\",\n    \"isActive\": false\n  }\n}",
+							"raw": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -3346,10 +4478,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{scheme}}://{{host}}{{base_path}}/accounts",
-							"protocol": "{{scheme}}",
+							"raw": "{{baseUrl}}/accounts",
 							"host": [
-								"{{host}}{{base_path}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"accounts"
@@ -3374,7 +4505,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"b81eeb92-4315-0e60-8e88-021666d49c6c\",\n    \"code\": \"quis ut dolor ut\",\n    \"name\": \"aute d\",\n    \"accountTypeId\": \"urn:uuid:4afecc3c-4b2e-3b30-91cf-75f91e9d310d\",\n    \"parentAccountId\": \"8b274edd-f9f6-cc5f-d94e-4df2c79869e9\",\n    \"isActive\": true,\n    \"level\": 28662052,\n    \"isMovable\": false\n  }\n}",
+									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3402,7 +4533,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"isSuccescs\": true\n}"
+							"body": "{\n  \"isSuccess\": true\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -3420,7 +4551,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"b81eeb92-4315-0e60-8e88-021666d49c6c\",\n    \"code\": \"quis ut dolor ut\",\n    \"name\": \"aute d\",\n    \"accountTypeId\": \"urn:uuid:4afecc3c-4b2e-3b30-91cf-75f91e9d310d\",\n    \"parentAccountId\": \"8b274edd-f9f6-cc5f-d94e-4df2c79869e9\",\n    \"isActive\": true,\n    \"level\": 28662052,\n    \"isMovable\": false\n  }\n}",
+									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3448,29 +4579,11 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"sint eu\",\n  \"title\": \"adipisicing velit veniam tempor nostrud\",\n  \"status\": -41890527,\n  \"detail\": \"in adipisicing mollit aliquip magna\",\n  \"instance\": \"sint officia velit ut\",\n  \"veniamf1e\": {}\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
 			]
-		},
-		{
-			"name": "Health",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{scheme}}://{{host}}{{base_path}}/Health",
-					"protocol": "{{scheme}}",
-					"host": [
-						"{{host}}{{base_path}}"
-					],
-					"path": [
-						"Health"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"variable": [
@@ -3480,11 +4593,11 @@
 		},
 		{
 			"key": "year",
-			"value": "-4674247"
+			"value": "1961"
 		},
 		{
 			"key": "month",
-			"value": "-4674247"
+			"value": "1961"
 		}
 	]
 }
