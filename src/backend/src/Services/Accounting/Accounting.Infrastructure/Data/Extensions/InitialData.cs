@@ -406,15 +406,15 @@ public class InitialData
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("7446ddcb-7be6-46e4-94de-1b5275cd8b0f")),
-                15000000,
+                35000000,
                 0,
                 2
             );
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("f4c0eb3c-eefa-49e2-b72b-01b55105d7b7")),
-                50000000,
                 0,
+                50000000,
                 3
             );
 
