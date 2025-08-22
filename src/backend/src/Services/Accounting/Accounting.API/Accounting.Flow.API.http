@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "period": {
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592"
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6"
   }
 }
 
@@ -55,8 +55,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-01T02:26:27.053Z",
     "description": "Aporte de capital de tres socios e la empresa.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-14",
@@ -87,8 +87,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-02T02:26:27.053Z",
     "description": "Pago de alquiler de tres meses de la empresa.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-02",
@@ -96,14 +96,12 @@ Content-Type: application/json
       {
         "accountId": "043c84a8-3590-4b89-b439-7d3e540afba9",
         "debit": 600000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 0,
-        "credit": 600000,
-        "lineNumber": 2
+        "credit": 600000
       }
     ]
   }
@@ -117,10 +115,10 @@ Content-Type: application/json
 
 {
   "journalEntry": {
-    "date": "2025-08-15T02:26:27.053Z",
+    "date": "2025-08-05T02:26:27.053Z",
     "description": "Compra de insumos al contado y al credito.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-02",
@@ -128,21 +126,18 @@ Content-Type: application/json
       {
         "accountId": "d29ece51-323d-4c36-9193-9bbf3b04b962",
         "debit": 2000000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 0,
-        "credit": 600000,
-        "lineNumber": 2
+        "credit": 600000
       },
       {
-        "accountId": "a04ee151-03d4-4840-8697-600360d6977d3",
+        "accountId": "a04ee151-03d4-4840-8697-600360d6977d",
         "debit": 0,
-        "credit": 1400000,
-        "lineNumber": 3
-      }
+        "credit": 1400000
+      }      
     ]
   }
 }
@@ -157,8 +152,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-15T02:26:27.053Z",
     "description": "Pago primera quincena de salario.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-15",
@@ -166,14 +161,12 @@ Content-Type: application/json
       {
         "accountId": "e769d46b-268d-463c-8074-71983ead323f",
         "debit": 500000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 0,
-        "credit": 500000,
-        "lineNumber": 2
+        "credit": 500000
       }
     ]
   }
@@ -189,8 +182,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-19T02:26:27.053Z",
     "description": "Pago de servicios publicos del mes.",
-    "periodId": "d83d7326-679b-435e-98b0-bbe407069ed6",
-    "companyId": "3d384188-e6e6-494e-8959-d02c44ae8db7",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-19",
@@ -198,14 +191,12 @@ Content-Type: application/json
       {
         "accountId": "e19f4576-6224-40e3-8b03-01343b413df7",
         "debit": 150000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 0,
-        "credit": 150000,
-        "lineNumber": 2
+        "credit": 150000
       }
     ]
   }
@@ -221,8 +212,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-26T02:26:27.053Z",
     "description": "Venta de servicios de jardineria por un 30% contado y el resto al credito.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-26",
@@ -230,20 +221,17 @@ Content-Type: application/json
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 320000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "797cc7bd-99f4-4f77-a8d6-9a0e30c152bf",
         "debit": 480000,
-        "credit": 0,
-        "lineNumber": 2
+        "credit": 0
       },
       {
         "accountId": "b33d3d96-4b34-44ae-9fe5-2fc8d657b115",
         "debit": 0,
-        "credit": 800000,
-        "lineNumber": 3
+        "credit": 800000
       }
     ]
   }
@@ -259,8 +247,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-27T02:26:27.053Z",
     "description": "Abono a la cuenta por pagar.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-27",
@@ -268,14 +256,12 @@ Content-Type: application/json
       {
         "accountId": "a04ee151-03d4-4840-8697-600360d6977d",
         "debit": 500000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 0,
-        "credit": 500000,
-        "lineNumber": 2
+        "credit": 500000
       }
     ]
   }
@@ -291,8 +277,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-28T02:26:27.053Z",
     "description": "Abono de cliente a la cuenta por cobrar.",
-    "periodId": "baf079e3-92d9-4e1e-8ce7-72b47b8e6cef",
-    "companyId": "f2edb195-cbbc-4584-9908-c55629a3b592",
+    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
+    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-28",
@@ -300,15 +286,19 @@ Content-Type: application/json
       {
         "accountId": "23b79d9f-96d3-4c20-ac8e-4387a70152b3",
         "debit": 150000,
-        "credit": 0,
-        "lineNumber": 1
+        "credit": 0
       },
       {
         "accountId": "797cc7bd-99f4-4f77-a8d6-9a0e30c152bf",
         "debit": 0,
-        "credit": 150000,
-        "lineNumber": 2
+        "credit": 150000
       }
     ]
   }
 }
+
+###
+
+# 5. Reversal
+PUT {{API_HostAddress}}/journal-entries/b5b78718-127d-40cd-bbaa-7d34a2d625b3/reverse
+accept: application/json
