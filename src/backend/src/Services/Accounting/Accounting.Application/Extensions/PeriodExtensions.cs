@@ -7,6 +7,7 @@ public static class PeriodExtensions
         return periods.Select(period =>
             new PeriodDto(
                 period.Id.Value,
+                period.CompanyId.Value,
                 period.Year,
                 period.Month,
                 period.StartDate,
@@ -19,6 +20,7 @@ public static class PeriodExtensions
     {
         return new PeriodDto(
             period.Id.Value,
+            period.CompanyId.Value,
             period.Year,
             period.Month,
             period.StartDate,

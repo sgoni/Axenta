@@ -17,7 +17,7 @@ accept: application/json
 #  -H 'Content-Type: application/json' 
 #  -d '{
 #  "period": {
-#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+#    "companyId": "11f97a67-d41e-4e97-9340-5c4d5af1a9f7"
 #  }
 #}'
 POST {{API_HostAddress}}/periods
@@ -25,7 +25,9 @@ accept: application/json
 Content-Type: application/json
 
 {
-  "periodId": "b4bc65ca-0879-4014-bc42-2ed747619529"
+  "period": {
+    "companyId": "d83d7326-679b-435e-98b0-bbe407069ed6"
+  }
 }
 
 ###
@@ -56,7 +58,7 @@ Content-Type: application/json
 # curl -X 'GET' 
 #  'https://localhost:5050/periods/year=2025&month=7' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/periods/year=2025&month=8
+GET {{API_HostAddress}}/periods/year=2014&month=10
 accept: application/json
 
 ###
@@ -166,14 +168,6 @@ Content-Type: application/json
 
 ###
 
-# curl -X 'GET' 
-#  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
-#  -H 'accept: application/json'
-GET {{API_HostAddress}}/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12
-accept: application/json
-
-###
-
 # curl -X 'POST' 
 #  'https://localhost:5050/journal-entries' 
 #  -H 'accept: application/json' 
@@ -238,9 +232,9 @@ Content-Type: application/json
 ###
 
 # curl -X 'GET' 
-#  'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10' 
+#  'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/journal-entries?PageIndex=0&PageSize=10
+GET https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###
@@ -325,9 +319,9 @@ accept: application/json
 ###
 
 # curl -X 'PUT' 
-#  'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
+#  'https://localhost:5050/journal-entries/3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
 #  -H 'accept: application/json'
-PUT {{API_HostAddress}}/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse
+PUT {{API_HostAddress}}/journal-entries/a2386d1c-c53e-4f12-ad38-f2ea5a6c4081/reverse
 accept: application/json
 
 ###
@@ -530,7 +524,7 @@ Content-Type: application/json
 
 {
   "account": {
-    "name": "Patentes y permisos municipales",
+    "name": "Gasto por alquiler",
     "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
     "ParentAccountId": "15165f65-a55a-4f7c-8d87-9275301217af"
   }

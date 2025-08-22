@@ -23,7 +23,7 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext)
 
         // The revert logic is executed in the domain
         period.Reopen(closingEntries);
-        
+
         // We persist returned reversals
         foreach (var entry in closingEntries.Where(e => e.IsPosted))
         {
@@ -31,7 +31,7 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext)
             dbContext.JournalEntries.Add(reversal);
             dbContext.JournalEntries.Update(entry);
         }
-        
+
         //period.Open();
         await dbContext.SaveChangesAsync(cancellationToken);
 

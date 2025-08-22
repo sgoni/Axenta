@@ -13,6 +13,7 @@ public class GetJournalEntriesHandler(IApplicationDbContext dbContext)
         var journalEntries = await dbContext.JournalEntries
             .Include(je => je.JournalEntryLines)
             .AsNoTracking()
+            .Where(je => je.PeriodId == PeriodId.Of(query.PeriodId) && je.CompanyId == CompanyId.Of(query.CompanyId))
             .OrderBy(je => je.Date)
             .Skip(pageIndex * pageSize)
             .Take(pageSize)

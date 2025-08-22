@@ -10,6 +10,13 @@ public class CreatePeriodHandler(IApplicationDbContext dbContext)
         //Save to database
         //return result
 
+        //Exists company
+        var companyId = CompanyId.Of(command.Period.CompanyId);
+        var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
+
+        if (company is null)
+            throw new CompanyNotFoundException(command.Period.CompanyId);
+
         var exists = await dbContext.Periods
             .AnyAsync(p => p.Year == DateTime.Now.Year && p.Month == DateTime.Now.Month);
 
