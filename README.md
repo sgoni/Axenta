@@ -563,12 +563,14 @@ GET /journal-entries
 |-----|-----|-----|-----
 | `PageIndex` | integer | 0 | Page number
 | `PageSize` | integer | 10 | Elements per page
+| `periodId` | UUID | Yes | ID of the period
+| `companyId` | UUID | Yes | ID of the company
 
 **Sample Application:**
 ```bash
- curl -X 'GET' 
-  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
-  -H 'accept: application/json'
+ curl -X 'GET' \
+   'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
+   -H 'accept: application/json'
 ```
 
 **Sample Answer:**
@@ -1844,6 +1846,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```json
 {
   "id": "string (UUID)",
+  "companyId": "string (UUID)",
   "year": "integer",
   "month": "integer",
   "startDate": "string (datetime)",

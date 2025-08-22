@@ -2,6 +2,7 @@
 
 public record PeriodDto(
     Guid Id,
+    Guid CompanyId,
     int Year,
     int Month,
     DateTime StartDate,
