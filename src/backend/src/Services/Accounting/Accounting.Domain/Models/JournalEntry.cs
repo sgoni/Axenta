@@ -72,10 +72,9 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
-            IsPosted = true,
+            IsPosted = false,
             IsReversed = false
         };
-
 
         // Mark original as reversed
         foreach (var line in _journalEntryLines)
