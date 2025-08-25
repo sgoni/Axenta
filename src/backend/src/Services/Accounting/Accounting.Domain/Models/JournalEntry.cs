@@ -25,7 +25,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public JournalEntryId ReversalJournalEntryId { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
-        CompanyId companyId, string currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
+        CompanyId companyId, string? currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
     {
         var journalEntry = new JournalEntry
         {
@@ -48,12 +48,15 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
     public void Update(string? description, DateTime date, string currencyCode, bool isPosted = false)
     {
+        // Original seat before update
+        var journalEntryBeforeUpdate = this;
+
         Description = description;
         Date = date;
         IsPosted = isPosted;
         CurrencyCode = currencyCode;
 
-        AddDomainEvent(new JournalEntryUpdatedEvent(this));
+        AddDomainEvent(new JournalEntryUpdatedEvent(journalEntryBeforeUpdate, this));
     }
 
     public JournalEntry Reverse()
@@ -61,7 +64,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         if (IsReversed)
             throw new DomainException("The seat has already been reversed.");
 
-        // Create reverse entry
+        // Create a reverse entry
         var reversal = new JournalEntry
         {
             Id = JournalEntryId.Of(Guid.NewGuid()),

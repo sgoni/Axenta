@@ -10,4 +10,18 @@ public static class AccountTypesExtensions
             accountTypes.Description
         ));
     }
+
+    public static AccountTypeDto ToAccountTypeDto(this AccountType accountType)
+    {
+        return DtoFromAccountType(accountType);
+    }
+
+    public static AccountTypeDto DtoFromAccountType(AccountType accountType)
+    {
+        return new AccountTypeDto(
+            accountType.Id.Value,
+            accountType.Name,
+            accountType.Description
+        );
+    }
 }

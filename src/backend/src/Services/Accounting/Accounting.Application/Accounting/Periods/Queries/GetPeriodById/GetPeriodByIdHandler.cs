@@ -13,6 +13,6 @@ public class GetPeriodByIdHandler(IApplicationDbContext dbContext)
 
         if (period == null) throw new PeriodNotFoundException(query.PeriodId);
 
-        return new GetPeriodByIdQueryResult(period.DtoFromPeriod());
+        return new GetPeriodByIdQueryResult(period.ToPeriodDto());
     }
 }

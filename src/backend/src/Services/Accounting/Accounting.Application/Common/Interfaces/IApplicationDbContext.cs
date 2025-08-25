@@ -1,4 +1,4 @@
-﻿namespace Accounting.Application.Data;
+﻿namespace Accounting.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {

@@ -16,7 +16,12 @@ public static class PeriodExtensions
             ));
     }
 
-    public static PeriodDto DtoFromPeriod(this Period period)
+    public static PeriodDto ToPeriodDto(this Period period)
+    {
+        return DtoFromPeriod(period);
+    }
+
+    public static PeriodDto DtoFromPeriod(Period period)
     {
         return new PeriodDto(
             period.Id.Value,

@@ -16,7 +16,12 @@ public static class AccountExtensions
         ));
     }
 
-    public static AccountDto DtoFromAccount(this Account account)
+    public static AccountDto ToAccountDto(this Account account)
+    {
+        return DtoFromAccount(account);
+    }
+
+    public static AccountDto DtoFromAccount(Account account)
     {
         return new AccountDto(
             account.Id.Value,

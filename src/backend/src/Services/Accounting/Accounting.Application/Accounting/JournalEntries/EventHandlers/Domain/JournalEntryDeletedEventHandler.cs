@@ -1,13 +1,12 @@
 ﻿namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
 
-public class JournalEntryCreatedEventHandler(
+public class JournalEntryDeletedEventHandler(
     IApplicationDbContext dbContext,
     ICurrentUserService currentUserService,
-    ILogger<JournalEntryCreatedEventHandler> logger)
-    : INotificationHandler<JournalEntryCreatedEvent>
+    ILogger<JournalEntryDeletedEventHandler> logger)
+    : INotificationHandler<JournalEntryDeletedEvent>
 {
-    public Task Handle(JournalEntryCreatedEvent domainEvent,
-        CancellationToken cancellationToken)
+    public Task Handle(JournalEntryDeletedEvent domainEvent, CancellationToken cancellationToken)
     {
         logger.LogInformation("Domain Event handled: {DomainEvent}", domainEvent.GetType().Name);
         var journalEntryDomainEvent = domainEvent.journalEntry.ToJournalEntryDto();

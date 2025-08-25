@@ -137,7 +137,7 @@ Content-Type: application/json
         "accountId": "a04ee151-03d4-4840-8697-600360d6977d",
         "debit": 0,
         "credit": 1400000
-      }      
+      }
     ]
   }
 }

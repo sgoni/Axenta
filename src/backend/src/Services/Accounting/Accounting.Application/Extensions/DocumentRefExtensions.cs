@@ -15,7 +15,12 @@ public static class DocumentRefExtensions
         ));
     }
 
-    public static DocumentReferenceDto DtoFromDocumentReference(this DocumentReference documentReference)
+    public static DocumentReferenceDto ToDocumentReferenceDto(this DocumentReference documentReference)
+    {
+        return DtoFromDocumentReference(documentReference);
+    }
+
+    public static DocumentReferenceDto DtoFromDocumentReference(DocumentReference documentReference)
     {
         return new DocumentReferenceDto(
             documentReference.Id.Value,

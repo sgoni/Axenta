@@ -14,7 +14,12 @@ public static class CompanyExtensions
         ));
     }
 
-    public static CompanyDto DtoFromCompany(this Company company)
+    public static CompanyDto ToCompanyDto(this Company company)
+    {
+        return DtoFromCompany(company);
+    }
+
+    public static CompanyDto DtoFromCompany(Company company)
     {
         return new CompanyDto(
             company.Id.Value,

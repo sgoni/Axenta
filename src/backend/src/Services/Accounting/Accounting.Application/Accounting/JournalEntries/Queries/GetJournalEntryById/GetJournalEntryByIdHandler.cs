@@ -12,6 +12,6 @@ public class GetJournalEntryByIdHandler(IApplicationDbContext dbContext)
             .Where(je => je.Id == JournalEntryId.Of(query.JournalEntryId))
             .SingleOrDefaultAsync(cancellationToken);
 
-        return new GetJournalEntryByIdResult(journalEntry.DtoFromJournalEntry());
+        return new GetJournalEntryByIdResult(journalEntry.ToJournalEntryDto());
     }
 }

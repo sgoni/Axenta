@@ -1,8 +1,4 @@
-﻿using System.Reflection;
-using Axenta.BuildingBlocks.Behaviors;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Accounting.Application;
+﻿namespace Accounting.Application;
 
 public static class DependencyInjection
 {
