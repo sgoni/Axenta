@@ -1,4 +1,4 @@
-﻿namespace Accounting.Application.Accounting.Periods.Commands.EventHandlers.IntegrationEvent;
+﻿namespace Accounting.Application.Accounting.Periods.EventHandlers.IntegrationEvent;
 
 public class PeriodReopenedIntegrationEventConsumer(
     IApplicationDbContext dbContext,

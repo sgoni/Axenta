@@ -41,7 +41,7 @@ public static class Extensions
                 {
                     rd.Intervals(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(2));
                 });
-                
+
                 // Error / Dead-Letter that are by default:
                 // - <Queue> _error for messages that definitely fail
                 // - <Queue> _Skipped for discarded messages by topology
