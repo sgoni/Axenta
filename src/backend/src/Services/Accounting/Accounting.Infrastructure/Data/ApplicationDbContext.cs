@@ -1,6 +1,4 @@
-﻿using Accounting.Application.Data;
-
-namespace Accounting.Infrastructure.Data;
+﻿namespace Accounting.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {

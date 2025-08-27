@@ -8,12 +8,12 @@ public class AuditLog : Entity<AuditLogId>
     public string Entity { get; private set; } = default!;
     public EntityId EntityId { get; private set; } = default!;
     public string Action { get; private set; } = default!; // Insert, Update, Delete
-    public PerformedBy PerformedBy { get; private set; } = default!;
+    public PerformedBy? PerformedBy { get; private set; }
     public DateTime PerformedAt { get; private set; }
     public string? Details { get; private set; }
 
     public static AuditLog Create(AuditLogId id, string entity, EntityId entityId, string action,
-        PerformedBy performedBy, string? details = null)
+        PerformedBy? performedBy, string? details = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(entity);
         ArgumentNullException.ThrowIfNull(entityId);

@@ -25,7 +25,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public JournalEntryId ReversalJournalEntryId { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
-        CompanyId companyId, string currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
+        CompanyId companyId, string? currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
     {
         var journalEntry = new JournalEntry
         {
@@ -46,14 +46,30 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, string currencyCode, bool isPosted = false)
+    public void Update(string? description, DateTime date, string currencyCode, decimal? exchangeRate,
+        DateOnly? exchangeRateDate)
     {
+        JournalEntry before = new JournalEntry
+        {
+            Id = Id,
+            PeriodId = PeriodId,
+            CompanyId = CompanyId,
+            Description = Description,
+            Date = Date,
+            IsPosted = true,
+            CurrencyCode = currencyCode,
+            ExchangeRate = exchangeRate,
+            ExchangeRateDate = exchangeRateDate,
+            IsReversed = IsReversed,
+            ReversalJournalEntryId = ReversalJournalEntryId
+        };
+
         Description = description;
         Date = date;
-        IsPosted = isPosted;
+        IsPosted = true;
         CurrencyCode = currencyCode;
 
-        AddDomainEvent(new JournalEntryUpdatedEvent(this));
+        AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
     }
 
     public JournalEntry Reverse()
@@ -61,7 +77,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         if (IsReversed)
             throw new DomainException("The seat has already been reversed.");
 
-        // Create reverse entry
+        // Create a reverse entry
         var reversal = new JournalEntry
         {
             Id = JournalEntryId.Of(Guid.NewGuid()),

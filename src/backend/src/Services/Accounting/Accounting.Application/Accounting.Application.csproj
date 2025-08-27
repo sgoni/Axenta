@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\shared\Axenta.BuildingBlocks.Messaging\Axenta.BuildingBlocks.Messaging.csproj"/>
         <ProjectReference Include="..\..\..\shared\Axenta.BuildingBlocks\Axenta.BuildingBlocks.csproj"/>
         <ProjectReference Include="..\Accounting.Domain\Accounting.Domain.csproj"/>
     </ItemGroup>
@@ -17,6 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7"/>
+        <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="4.1.0"/>
     </ItemGroup>
 
 </Project>

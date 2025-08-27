@@ -14,6 +14,6 @@ public class GetAuditLogByIdHandler(IApplicationDbContext dbContext)
 
         if (auditLog == null) throw new AuditlogNotFoundException(query.AuditLogId);
 
-        return new GetAuditLogByIdQueryResult(auditLog.DtoFromAuditLog());
+        return new GetAuditLogByIdQueryResult(auditLog.ToAuditLogDto());
     }
 }

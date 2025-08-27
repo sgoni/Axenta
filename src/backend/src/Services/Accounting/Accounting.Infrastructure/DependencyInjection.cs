@@ -1,5 +1,4 @@
-﻿using Accounting.Application.Data;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 
 namespace Accounting.Infrastructure;

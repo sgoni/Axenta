@@ -22,7 +22,12 @@ public static class JournalEntryExtensions
         ));
     }
 
-    public static JournalEntryDto DtoFromJournalEntry(this JournalEntry journalEntry)
+    public static JournalEntryDto ToJournalEntryDto(this JournalEntry journalEntry)
+    {
+        return DtoFromJournalEntry(journalEntry);
+    }
+
+    public static JournalEntryDto DtoFromJournalEntry(JournalEntry journalEntry)
     {
         return new JournalEntryDto(
             journalEntry.Id.Value,

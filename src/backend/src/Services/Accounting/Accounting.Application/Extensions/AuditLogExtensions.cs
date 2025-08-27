@@ -15,7 +15,12 @@ public static class AuditLogExtensions
             ));
     }
 
-    public static AuditLogDto DtoFromAuditLog(this AuditLog auditLog)
+    public static AuditLogDto ToAuditLogDto(this AuditLog auditLogDto)
+    {
+        return DtoFromAuditLog(auditLogDto);
+    }
+
+    public static AuditLogDto DtoFromAuditLog(AuditLog auditLog)
     {
         return new AuditLogDto(
             auditLog.Id.Value,

@@ -10,6 +10,6 @@ public class GetCompanyByIdHandler(IApplicationDbContext dbContext)
 
         if (company is null) throw new CompanyNotFoundException(query.companyId);
 
-        return new GetCompanyByIdQueryResult(company.DtoFromCompany());
+        return new GetCompanyByIdQueryResult(company.ToCompanyDto());
     }
 }

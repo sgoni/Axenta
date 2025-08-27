@@ -12,6 +12,6 @@ public class GetAccountByIdHandler(IApplicationDbContext dbContext)
 
         if (account is null) throw new AccountNotFoundException(query.AccountId);
 
-        return new GetAccountByIdQueryResult(account.DtoFromAccount());
+        return new GetAccountByIdQueryResult(account.ToAccountDto());
     }
 }

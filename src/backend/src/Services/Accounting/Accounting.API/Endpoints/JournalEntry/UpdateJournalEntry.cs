@@ -9,7 +9,7 @@ namespace Accounting.API.Endpoints.JournalEntry;
 
 public record UpdateJournalEntryRequest(JournalEntryDto JournalEntry);
 
-public record UpdateJournalEntryResponse(Guid Id);
+public record UpdateJournalEntryResponse(bool IsSuccess);
 
 public class UpdateJournalEntry : ICarterModule
 {
@@ -23,7 +23,7 @@ public class UpdateJournalEntry : ICarterModule
 
                 var response = result.Adapt<UpdateJournalEntryResponse>();
 
-                return Results.Created($"/journal-entries/{response.Id}", response);
+                return Results.Created($"/journal-entries/{response.IsSuccess}", response);
             })
             .WithName("UpdateJournalEntry")
             .Produces<UpdateJournalEntryResponse>()

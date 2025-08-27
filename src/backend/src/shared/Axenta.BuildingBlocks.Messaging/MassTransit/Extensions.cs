@@ -1,0 +1,57 @@
+﻿using System.Reflection;
+using MassTransit;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Axenta.BuildingBlocks.Messaging.MassTransit;
+
+public static class Extensions
+{
+    public static IServiceCollection AddMessageBroker(this IServiceCollection services, IConfiguration configuration,
+        Assembly? assembly = null)
+    {
+        // Implement RabbitMQ MassTransit configuration
+        services.AddMassTransit(config =>
+        {
+            config.SetKebabCaseEndpointNameFormatter();
+
+            if (assembly != null)
+                config.AddConsumers(assembly);
+
+            config.UsingRabbitMq((context, configurator) =>
+            {
+                configurator.Host(new Uri(configuration["MessageBroker:Host"]!), host =>
+                {
+                    host.Username(configuration["MessageBroker:Username"]);
+                    host.Password(configuration["MessageBroker:Password"]);
+                });
+
+                // Enable to schedule deferred messages (delayed reset)
+                configurator.UseMessageRetry(r =>
+                {
+                    // Exponential: 5 attempts, base 1s, max 30s, factor 2
+                    r.Exponential(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(2));
+                    // Ignore Reintento for Business Errors
+                    //r.Ignore<BusinessRuleValidationException>();
+                    //r.Ignore<ValidationException>();
+                });
+
+                // Deferred Redelivery (if the handler explicitly asks for Delay)
+                configurator.UseScheduledRedelivery(rd =>
+                {
+                    rd.Intervals(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(2));
+                });
+
+                // Error / Dead-Letter that are by default:
+                // - <Queue> _error for messages that definitely fail
+                // - <Queue> _Skipped for discarded messages by topology
+
+                configurator.ConfigureEndpoints(context);
+            });
+        });
+
+        // Optional: Hostened Service for Health
+        services.AddMassTransitHostedService();
+        return services;
+    }
+}

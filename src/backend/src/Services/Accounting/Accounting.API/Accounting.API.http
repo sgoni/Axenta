@@ -71,27 +71,14 @@ accept: application/json
 
 ###
 
-GET {{API_HostAddress}}/periods/open
-accept: application/json
-
-###
-
-# curl -X 'PUT' 
-#  'https://localhost:5050/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/close' 
-#  -H 'accept: application/json'
-PUT {{API_HostAddress}}/periods/e44ed594-272c-4978-a3b5-11fb47e9ca12/close
-accept: application/json
-
-###
-
 # curl -X 'PUT' 
 #  'https://localhost:5050/periods/open' 
 #  -H 'accept: application/json' 
 #  -H 'Content-Type: application/json' 
 #  -d '{
 #  "period": {
-#    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
-#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
+#    "periodId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+#    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 #  }
 #}'
 PUT {{API_HostAddress}}/periods/open
@@ -100,69 +87,8 @@ Content-Type: application/json
 
 {
   "period": {
-    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
-    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
-  }
-}
-
-###
-
-# curl -X 'POST' 
-#  'https://localhost:5050/journal-entries' 
-#  -H 'accept: application/json' 
-#  -H 'Content-Type: application/json' 
-#  -d '{
-#  "journalEntry": {
-#    "date": "2025-08-01T02:26:27.053Z",
-#    "description": "Registro de ventas demo.",
-#    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
-#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
-#    "currencyCode": "CRC",
-#    "exchangeRate": 0,
-#    "exchangeRateDate": "2025-08-14",    
-#    "lines": [
-#      {
-#        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
-#        "debit": 4000,
-#        "credit": 0,
-#        "lineNumber": 1
-##      },
-##      {
-##        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
-##        "debit": 0,
-##        "credit": 4000,
-##        "lineNumber": 2
-##      }
-##    ]
-##  }
-#}'
-POST https://localhost:5050/journal-entries
-accept: application/json
-Content-Type: application/json
-
-{
-  "journalEntry": {
-    "date": "2025-08-01T02:26:27.053Z",
-    "description": "Registro de ventas demo.",
-    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
-    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
-    "currencyCode": "CRC",
-    "exchangeRate": 0,
-    "exchangeRateDate": "2025-08-14",
-    "lines": [
-      {
-        "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
-        "debit": 4000,
-        "credit": 0,
-        "lineNumber": 1
-      },
-      {
-        "accountId": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
-        "debit": 0,
-        "credit": 4000,
-        "lineNumber": 2
-      }
-    ]
+    "periodId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
   }
 }
 
@@ -234,7 +160,8 @@ Content-Type: application/json
 # curl -X 'GET' 
 #  'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
+GET https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
+    CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###
@@ -245,11 +172,14 @@ accept: application/json
 #  -H 'Content-Type: application/json' 
 #  -d '{
 #  "journalEntry": {
-#    "id": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+#    "id": "e54a6c12-08a6-4e05-b5b8-62d51afb2dc4",
 #    "date": "2025-08-01T02:26:27.053Z",
-#    "description": "Registro de ventas por contado.",
-#    "isReversed": true,
+#    "description": "Registro de ventas por contado demo.",
 #    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+#    "currencyCode": "CRC",
+#    "exchangeRate": 0,
+#    "exchangeRateDate": "2025-08-14",
 #    "lines": [
 #      {
 #        "id": "98723cc8-2f31-40a1-a4b0-aeb6ff085f86",
@@ -276,11 +206,14 @@ Content-Type: application/json
 
 {
   "journalEntry": {
-    "id": "31c86b11-a2ca-40c3-8312-493c874d9c18",
+    "id": "0a522347-f05d-47dc-884b-c0d469c842eb",
     "date": "2025-08-01T02:26:27.053Z",
-    "description": "Registro de ventas por contado demo.",
-    "isReversed": true,
-    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "description": "Registro de ventas por contado demo mas pruebas #3.",
+    "periodId": "3c917011-9b7e-4e22-8ab1-9693c4a91c39",
+    "companyId": "77ed9118-b8ce-4490-88e1-6dfb9ab365c8",
+    "currencyCode": "CRC",
+    "exchangeRate": 0,
+    "exchangeRateDate": "2025-08-14",
     "lines": [
       {
         "journalEntryId": "31c86b11-a2ca-40c3-8312-493c874d9c18",
@@ -321,38 +254,8 @@ accept: application/json
 # curl -X 'PUT' 
 #  'https://localhost:5050/journal-entries/3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
 #  -H 'accept: application/json'
-PUT {{API_HostAddress}}/journal-entries/a2386d1c-c53e-4f12-ad38-f2ea5a6c4081/reverse
+PUT {{API_HostAddress}}/journal-entries/b5b78718-127d-40cd-bbaa-7d34a2d625b3/reverse
 accept: application/json
-
-###
- 
- # curl -X PUT --location "https://localhost:5050/companies" 
-#    -H "accept: application/json" 
-#    -H "Content-Type: application/json" 
-#    -d '{
-#          "company": {
-#            "id": "9429a754-221f-45ca-aeeb-f8b443157831",
-#            "name": "Demo1",
-#            "taxId": "3101268467",
-#            "country": "CR",
-#            "currencyCode": "USD",
-#            "isActive": false
-#          }
-#        }'
-PUT {{API_HostAddress}}/companies
-accept: application/json
-Content-Type: application/json
-
-{
-  "company": {
-    "id": "9429a754-221f-45ca-aeeb-f8b443157831",
-    "name": "Demo1",
-    "taxId": "3101268467",
-    "country": "CR",
-    "currencyCode": "USD",
-    "isActive": false
-  }
-}
 
 ###
 
@@ -464,8 +367,8 @@ Content-Type: application/json
 
 {
   "company": {
-    "id": "9429a754-221f-45ca-aeeb-f8b443157831",
-    "name": "Demo1",
+    "id": "33474ae5-2399-4930-84a9-1f03dc431750",
+    "name": "Demo 1",
     "taxId": "3101268467",
     "country": "CR",
     "currencyCode": "USD",
@@ -559,7 +462,7 @@ Content-Type: application/json
 
 {
   "accountDetail": {
-    "id": "00445bc5-6287-4b1c-8af9-76df7fb37ac2",
+    "id": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
     "code": "7006",
     "name": "Gastos varios de segundo nivel",
     "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
@@ -573,7 +476,7 @@ Content-Type: application/json
 # curl -X 'DELETE' 
 #  'https://localhost:5050/accounts/0065ecee-ee6b-4d42-bb8b-0e24b20c213f' 
 #  -H 'accept: application/json'
-DELETE {{API_HostAddress}}/accounts/12bc88ce-fb30-4107-8da8-de6cbe4a5300
+DELETE {{API_HostAddress}}/accounts/420f089c-d4a1-4af8-ac9d-918bed41d969
 accept: application/json
 
 ###
@@ -589,7 +492,7 @@ accept: application/json
 # curl -X 'GET' 
 #  'https://localhost:5050/accounts/7573e77c-110b-4a3b-9bda-7be306bb14b4' 
 #  -H 'accept: application/json'
-GET https://localhost:5050/accounts/7573e77c-110b-4a3b-9bda-7be306bb14b4
+GET https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03
 accept: application/json
 
 ###
@@ -607,3 +510,4 @@ accept: application/json
 #  -H 'accept: application/json'
 GET {{API_HostAddress}}/accounts/types
 accept: application/json
+c

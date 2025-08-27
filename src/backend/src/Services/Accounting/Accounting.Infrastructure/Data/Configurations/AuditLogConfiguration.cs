@@ -27,7 +27,7 @@ public class AuditLogConfiguration : IEntityTypeConfiguration<AuditLog>
             .IsRequired();
 
         builder.Property(al => al.Details)
-            .HasMaxLength(500);
+            .HasMaxLength(5000);
 
         builder.Property(al => al.EntityId)
             .HasConversion(

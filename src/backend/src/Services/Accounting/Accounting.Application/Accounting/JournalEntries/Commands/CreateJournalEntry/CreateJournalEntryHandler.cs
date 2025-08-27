@@ -34,8 +34,6 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
 
     private JournalEntry CreateNewJournalEntry(JournalEntryDto journalEntryDto)
     {
-        var lineNumber = 1;
-
         //Create header
         var newJournalEntry = JournalEntry.Create(
             JournalEntryId.Of(Guid.NewGuid()),
@@ -49,6 +47,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         );
 
         //Add details
+        var lineNumber = 1;
         foreach (var journalEntryLineDto in journalEntryDto.Lines)
             newJournalEntry.AddLine(
                 AccountId.Of(journalEntryLineDto.AccountId),

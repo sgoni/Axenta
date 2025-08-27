@@ -1,12 +1,9 @@
-﻿using System.Reflection;
-using Axenta.BuildingBlocks.Behaviors;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Accounting.Application;
+﻿namespace Accounting.Application;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddApplicationServices
+        (this IServiceCollection services, IConfiguration configuration)
     {
         services.AddMediatR(config =>
         {
@@ -15,6 +12,8 @@ public static class DependencyInjection
             config.AddOpenBehavior(typeof(LogginBehavior<,>));
         });
 
+        services.AddFeatureManagement();
+        services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
         return services;
     }
 }

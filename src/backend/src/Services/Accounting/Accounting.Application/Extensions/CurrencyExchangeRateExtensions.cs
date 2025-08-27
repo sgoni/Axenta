@@ -14,7 +14,12 @@ public static class CurrencyExchangeRateExtensions
         ));
     }
 
-    public static CurrencyExchangeRateDto DtoFromCurrencyExchangeRate(this CurrencyExchangeRate currencyExchangeRate)
+    public static CurrencyExchangeRateDto ToCurrencyExchangeRateDto(this CurrencyExchangeRate currencyExchangeRate)
+    {
+        return DtoFromCurrencyExchangeRate(currencyExchangeRate);
+    }
+
+    public static CurrencyExchangeRateDto DtoFromCurrencyExchangeRate(CurrencyExchangeRate currencyExchangeRate)
     {
         return new CurrencyExchangeRateDto(
             currencyExchangeRate.Id.Value,

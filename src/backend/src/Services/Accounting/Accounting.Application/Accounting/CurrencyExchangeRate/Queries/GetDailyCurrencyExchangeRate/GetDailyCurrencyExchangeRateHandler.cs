@@ -14,6 +14,6 @@ public class GetDailyCurrencyExchangeRateHandler(IApplicationDbContext dbContext
             .OrderBy(cx => cx.Date)
             .LastOrDefaultAsync(cancellationToken);
 
-        return new GetDailyCurrencyExchangeRatResult(currencyExchangeRate.DtoFromCurrencyExchangeRate());
+        return new GetDailyCurrencyExchangeRatResult(currencyExchangeRate.ToCurrencyExchangeRateDto());
     }
 }
