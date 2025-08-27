@@ -172,11 +172,14 @@ accept: application/json
 #  -H 'Content-Type: application/json' 
 #  -d '{
 #  "journalEntry": {
-#    "id": "b2d06aa7-3ae6-4741-93ac-68e1d900a262",
+#    "id": "e54a6c12-08a6-4e05-b5b8-62d51afb2dc4",
 #    "date": "2025-08-01T02:26:27.053Z",
-#    "description": "Registro de ventas por contado.",
-#    "isReversed": true,
+#    "description": "Registro de ventas por contado demo.",
 #    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+#    "currencyCode": "CRC",
+#    "exchangeRate": 0,
+#    "exchangeRateDate": "2025-08-14",
 #    "lines": [
 #      {
 #        "id": "98723cc8-2f31-40a1-a4b0-aeb6ff085f86",
@@ -203,11 +206,14 @@ Content-Type: application/json
 
 {
   "journalEntry": {
-    "id": "31c86b11-a2ca-40c3-8312-493c874d9c18",
+    "id": "0a522347-f05d-47dc-884b-c0d469c842eb",
     "date": "2025-08-01T02:26:27.053Z",
-    "description": "Registro de ventas por contado demo.",
-    "isReversed": true,
-    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "description": "Registro de ventas por contado demo mas pruebas #3.",
+    "periodId": "3c917011-9b7e-4e22-8ab1-9693c4a91c39",
+    "companyId": "77ed9118-b8ce-4490-88e1-6dfb9ab365c8",
+    "currencyCode": "CRC",
+    "exchangeRate": 0,
+    "exchangeRateDate": "2025-08-14",
     "lines": [
       {
         "journalEntryId": "31c86b11-a2ca-40c3-8312-493c874d9c18",

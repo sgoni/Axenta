@@ -46,17 +46,30 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, string currencyCode, bool isPosted = false)
+    public void Update(string? description, DateTime date, string currencyCode, decimal? exchangeRate,
+        DateOnly? exchangeRateDate)
     {
-        // Original seat before update
-        var journalEntryBeforeUpdate = this;
+        JournalEntry before = new JournalEntry
+        {
+            Id = Id,
+            PeriodId = PeriodId,
+            CompanyId = CompanyId,
+            Description = Description,
+            Date = Date,
+            IsPosted = true,
+            CurrencyCode = currencyCode,
+            ExchangeRate = exchangeRate,
+            ExchangeRateDate = exchangeRateDate,
+            IsReversed = IsReversed,
+            ReversalJournalEntryId = ReversalJournalEntryId
+        };
 
         Description = description;
         Date = date;
-        IsPosted = isPosted;
+        IsPosted = true;
         CurrencyCode = currencyCode;
 
-        AddDomainEvent(new JournalEntryUpdatedEvent(journalEntryBeforeUpdate, this));
+        AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
     }
 
     public JournalEntry Reverse()

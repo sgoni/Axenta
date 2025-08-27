@@ -121,8 +121,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Details")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasMaxLength(5000)
+                        .HasColumnType("character varying(5000)");
 
                     b.Property<string>("Entity")
                         .IsRequired()

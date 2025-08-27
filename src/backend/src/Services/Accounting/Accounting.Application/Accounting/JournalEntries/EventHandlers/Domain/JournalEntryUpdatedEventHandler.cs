@@ -6,13 +6,20 @@ public class JournalEntryUpdatedEventHandler(
     ILogger<JournalEntryUpdatedEventHandler> logger)
     : INotificationHandler<JournalEntryUpdatedEvent>
 {
-    public Task Handle(JournalEntryUpdatedEvent domainEvent, CancellationToken cancellationToken)
+    public async Task Handle(JournalEntryUpdatedEvent domainEvent, CancellationToken cancellationToken)
     {
         logger.LogInformation("Domain Event handled: {DomainEvent}", domainEvent.GetType().Name);
 
-        var before = domainEvent.Before.ToJournalEntryDto();
-        var after = domainEvent.After.ToJournalEntryDto();
+        var beforeDomainEvent = domainEvent.Before.ToJournalEntryDto();
+        var afterDomainEvent = domainEvent.After.ToJournalEntryDto();
+        var auditLog = CreateNewAuditLog(beforeDomainEvent, afterDomainEvent);
 
+        dbContext.AuditLogs.Add(auditLog);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    private AuditLog CreateNewAuditLog(JournalEntryDto before, JournalEntryDto after)
+    {
         var details = JsonSerializer.Serialize(new
         {
             Before = new
@@ -20,14 +27,28 @@ public class JournalEntryUpdatedEventHandler(
                 before.Id,
                 before.Date,
                 before.Description,
-                before.Lines
+                before.ExchangeRate,
+                before.ExchangeRateDate,
+                before.CurrencyCode,
+                before.PeriodId,
+                before.CompanyId,
+                before.IsPosted,
+                before.IsReversed
+                //before.Lines
             },
             After = new
             {
                 after.Id,
                 after.Date,
                 after.Description,
-                after.Lines
+                after.ExchangeRate,
+                after.ExchangeRateDate,
+                after.CurrencyCode,
+                after.PeriodId,
+                after.CompanyId,
+                after.IsPosted,
+                after.IsReversed
+                //after.Lines
             }
         });
 
@@ -36,10 +57,10 @@ public class JournalEntryUpdatedEventHandler(
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(after.Id).Value),
             "Update",
-            PerformedBy.Of(currentUserService.UserId.Value),
+            PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
             details
         );
 
-        return Task.CompletedTask;
+        return auditLog;
     }
 }

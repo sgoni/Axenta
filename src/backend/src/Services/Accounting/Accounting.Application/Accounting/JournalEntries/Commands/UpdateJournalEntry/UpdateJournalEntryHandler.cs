@@ -38,19 +38,21 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
             dbContext.JournalEntries.Add(newJournalEntry);
             dbContext.JournalEntries.Remove(journalEntry);
-        }
+        } 
         else
         {
             journalEntry.Update(
                 command.JournalEntry.Description,
                 command.JournalEntry.Date,
                 command.JournalEntry.CurrencyCode,
-                command.JournalEntry.IsPosted);
+                command.JournalEntry.ExchangeRate,
+                command.JournalEntry.ExchangeRateDate);
+            dbContext.JournalEntries.Update(journalEntry);
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new UpdateJournalEntryResult(journalEntry.Id.Value);
+        return new UpdateJournalEntryResult(true);
     }
 
     private async Task PeriodIsOpen(UpdateJournalEntryCommand command, CancellationToken cancellationToken)

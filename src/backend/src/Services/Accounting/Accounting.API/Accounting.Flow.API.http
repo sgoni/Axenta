@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "period": {
-    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6"
+    "companyId": "77ed9118-b8ce-4490-88e1-6dfb9ab365c8"
   }
 }
 
@@ -55,8 +55,8 @@ Content-Type: application/json
   "journalEntry": {
     "date": "2025-08-01T02:26:27.053Z",
     "description": "Aporte de capital de tres socios e la empresa.",
-    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
-    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
+    "periodId": "3c917011-9b7e-4e22-8ab1-9693c4a91c39",
+    "companyId": "77ed9118-b8ce-4490-88e1-6dfb9ab365c8",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-14",
@@ -86,9 +86,9 @@ Content-Type: application/json
 {
   "journalEntry": {
     "date": "2025-08-02T02:26:27.053Z",
-    "description": "Pago de alquiler de tres meses de la empresa.",
-    "periodId": "b1b451fc-28e2-44a1-b283-7dfe8957c839",
-    "companyId": "b8420596-1834-41b5-a3f6-621e5a0a42c6",
+    "description": "Pago de alquiler de cinco meses de la empresa.",
+    "periodId": "1fa8eccf-fc6a-4688-863a-8bd79094eb51",
+    "companyId": "04b02a65-a0bc-4eed-8765-33ba0453fe68",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-02",
