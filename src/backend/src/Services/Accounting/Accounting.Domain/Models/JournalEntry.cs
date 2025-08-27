@@ -106,7 +106,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         ReversalJournalEntryId = reversal.Id;
 
         // Fire domain event
-        AddDomainEvent(new JournalEntryReversedDomainEvent(Id.Value, reversal.Id.Value));
+        AddDomainEvent(new JournalEntryReversedDomainEvent(Id.Value));
 
         return reversal;
     }
