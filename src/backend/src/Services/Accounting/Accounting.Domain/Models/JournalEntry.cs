@@ -49,7 +49,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public void Update(string? description, DateTime date, string currencyCode, decimal? exchangeRate,
         DateOnly? exchangeRateDate)
     {
-        JournalEntry before = new JournalEntry
+        var before = new JournalEntry
         {
             Id = Id,
             PeriodId = PeriodId,
@@ -88,7 +88,6 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
-            IsPosted = false,
             IsReversed = false
         };
 

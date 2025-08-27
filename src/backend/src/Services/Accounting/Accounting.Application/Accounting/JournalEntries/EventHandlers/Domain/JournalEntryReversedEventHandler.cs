@@ -21,9 +21,9 @@ public class JournalEntryReversedEventHandler(
             AuditLogId.Of(Guid.NewGuid()),
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(journalEntryId).Value),
-            "Reverse",
+            JournalEntryType.Reversal.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
-            ""
+            $"Reversal of entry {journalEntryId}"
         );
 
         return auditLog;

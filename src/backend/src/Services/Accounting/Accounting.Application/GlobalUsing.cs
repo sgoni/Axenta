@@ -5,6 +5,7 @@ global using Accounting.Application.Common.Interfaces;
 global using Accounting.Application.Dtos;
 global using Accounting.Application.Exceptions;
 global using Accounting.Application.Extensions;
+global using Accounting.Domain.Enums;
 global using Accounting.Domain.Events;
 global using Accounting.Domain.Models;
 global using Accounting.Domain.VelueObjects;

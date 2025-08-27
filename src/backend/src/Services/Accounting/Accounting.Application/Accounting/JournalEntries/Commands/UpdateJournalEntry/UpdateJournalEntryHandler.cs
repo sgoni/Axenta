@@ -38,7 +38,7 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
             dbContext.JournalEntries.Add(newJournalEntry);
             dbContext.JournalEntries.Remove(journalEntry);
-        } 
+        }
         else
         {
             journalEntry.Update(

@@ -56,7 +56,7 @@ public class JournalEntryUpdatedEventHandler(
             AuditLogId.Of(Guid.NewGuid()),
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(after.Id).Value),
-            "Update",
+            JournalEntryType.Adjustment.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
             details
         );
