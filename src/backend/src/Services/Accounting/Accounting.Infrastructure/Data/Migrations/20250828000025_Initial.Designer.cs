@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Accounting.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250826232149_Initial")]
+    [Migration("20250828000025_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -284,6 +284,34 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("DocumentReferences", (string)null);
+                });
+
+            modelBuilder.Entity("Accounting.Domain.Models.EventLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("MessageId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventLogs", (string)null);
                 });
 
             modelBuilder.Entity("Accounting.Domain.Models.JournalEntry", b =>

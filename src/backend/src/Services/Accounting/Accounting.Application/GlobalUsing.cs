@@ -1,7 +1,9 @@
 ﻿global using Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
 global using Accounting.Application.Accounting.DocumentReferences.Queries.GetDocumentReferenceByJournalEntryId;
+global using Accounting.Application.Accounting.JournalEntries.Commands.ReverseJournalEntry;
 global using Accounting.Application.Accounting.JournalEntries.Validators;
 global using Accounting.Application.Common.Interfaces;
+global using Accounting.Application.Common.Repositories;
 global using Accounting.Application.Dtos;
 global using Accounting.Application.Exceptions;
 global using Accounting.Application.Extensions;

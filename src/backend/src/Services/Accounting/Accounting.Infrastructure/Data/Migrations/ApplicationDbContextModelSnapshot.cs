@@ -283,6 +283,34 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.ToTable("DocumentReferences", (string)null);
                 });
 
+            modelBuilder.Entity("Accounting.Domain.Models.EventLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("MessageId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventLogs", (string)null);
+                });
+
             modelBuilder.Entity("Accounting.Domain.Models.JournalEntry", b =>
                 {
                     b.Property<Guid>("Id")

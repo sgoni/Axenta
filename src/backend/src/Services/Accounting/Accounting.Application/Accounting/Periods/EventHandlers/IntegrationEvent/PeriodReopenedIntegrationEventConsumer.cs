@@ -2,6 +2,8 @@
 
 public class PeriodReopenedIntegrationEventConsumer(
     IApplicationDbContext dbContext,
+    IEventLogRepository eventLogRepository,
+    IJournalEntryRepository journalEntryRepository,
     ISender sender,
     ILogger<PeriodReopenedIntegrationEventConsumer> logger) : IConsumer<PeriodReopenedIntegrationEvent>
 {
@@ -13,7 +15,18 @@ public class PeriodReopenedIntegrationEventConsumer(
         // Avoid processing the same event twice (if the rententred broker). 
         // Options: 
         // 1) keep a "eventlog" with Messageid (context.messageid) processed. 
+        if (await eventLogRepository.AlreadyProcessedAsync(@event.PeriodId))
+        {
+            // We already process it → Ignore
+            return;
+        }
+
         // 2) Verify if there are already the reversals of the period.
+        if (await journalEntryRepository.PeriodAlreadyReversedAsync(@event.PeriodId))
+        {
+            // There is already reverse → Ignore
+            return;
+        }
 
         // We obtain the closing entries of the infrastructure
         var closingEntries = await dbContext.JournalEntries
@@ -24,12 +37,16 @@ public class PeriodReopenedIntegrationEventConsumer(
 
         foreach (var entry in closingEntries.Where(e => e.IsPosted))
         {
-            var reversal = entry.Reverse();
-            dbContext.JournalEntries.Add(reversal);
-            dbContext.JournalEntries.Update(entry);
+            var command = MapToReverseJournalEntryCommand(entry.Id.Value);
+            await sender.Send(command);
         }
 
         // Redelivery with Delay due to external dependence not available:
         // throw new DelayedRedeliveryException(TimeSpan.FromSeconds(30));
+    }
+
+    private ReverseJournalEntryCommand MapToReverseJournalEntryCommand(Guid message)
+    {
+        return new ReverseJournalEntryCommand(message);
     }
 }

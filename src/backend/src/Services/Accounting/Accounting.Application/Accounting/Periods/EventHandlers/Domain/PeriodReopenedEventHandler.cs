@@ -1,11 +1,11 @@
 ﻿namespace Accounting.Application.Accounting.Periods.EventHandlers.Domain;
 
-public class PeriodClosedEventHandler(
+public class PeriodReopenedEventHandler(
     IApplicationDbContext dbContext,
     ICurrentUserService currentUserService,
-    ILogger<PeriodClosedEventHandler> logger) : INotificationHandler<PeriodClosedDomainEvent>
+    ILogger<PeriodReopenedEventHandler> logger) : INotificationHandler<PeriodReopenedDomainEvent>
 {
-    public async Task Handle(PeriodClosedDomainEvent domainEvent, CancellationToken cancellationToken)
+    public async Task Handle(PeriodReopenedDomainEvent domainEvent, CancellationToken cancellationToken)
     {
         logger.LogInformation("Domain Event handled: {DomainEvent}", domainEvent.GetType().Name);
         var periodDomainEvent = domainEvent.PeriodId;
@@ -21,7 +21,7 @@ public class PeriodClosedEventHandler(
             AuditLogId.Of(Guid.NewGuid()),
             "Period",
             EntityId.Of(PeriodId.Of(periodId).Value),
-            JournalEntryType.Closing.Name,
+            JournalEntryType.Reversal.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
             $"Period closure {periodId}"
         );
