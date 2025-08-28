@@ -12,6 +12,7 @@ public class JournalEntryRepository : IJournalEntryRepository
     public async Task<bool> PeriodAlreadyReversedAsync(Guid periodId)
     {
         return await _dbContext.JournalEntries
-            .AnyAsync(e => e.PeriodId == PeriodId.Of(periodId) && e.IsReversed == true);
+            .AnyAsync(e =>
+                e.PeriodId == PeriodId.Of(periodId) && e.JournalEntryType.Equals(JournalEntryType.Reversal.Name));
     }
 }

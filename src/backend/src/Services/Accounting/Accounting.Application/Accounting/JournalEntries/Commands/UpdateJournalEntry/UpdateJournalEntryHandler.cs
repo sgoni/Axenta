@@ -30,10 +30,10 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
         await PeriodIsOpen(command, cancellationToken);
 
         // JournalEntry is  reversed
-        if (journalEntry.IsReversed)
+        if (journalEntry.JournalEntryType.Equals(JournalEntryType.Reversal.Name))
             throw new BadRequestException("The journal entry currently appears reversed.");
 
-        if (!journalEntry.IsPosted)
+        if (!journalEntry.JournalEntryType.Equals(JournalEntryType.Adjustment.Name))
         {
             var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
             dbContext.JournalEntries.Add(newJournalEntry);

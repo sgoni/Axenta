@@ -19,11 +19,11 @@ public class DeleteJournalEntryHandler(IApplicationDbContext dbContext)
         await PeriodIsOpen(journalEntry.PeriodId, cancellationToken);
 
         // JournalEntry is reversed
-        if (journalEntry.IsReversed)
+        if (journalEntry.JournalEntryType.Equals(JournalEntryType.Reversal.Name))
             throw new BadRequestException("The journal entry is now reversed.");
 
-        // JournalEntry is posted
-        if (journalEntry.IsPosted)
+        // JournalEntry is close
+        if (journalEntry.JournalEntryType.Equals(JournalEntryType.Closing.Name))
             throw new BadRequestException(
                 "The journal entry appears verified and cannot be physically deleted, please proceed to reverse it.");
 

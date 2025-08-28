@@ -35,7 +35,7 @@ public class PeriodReopenedIntegrationEventConsumer(
             .Where(je => je.PeriodId == PeriodId.Of(@event.PeriodId))
             .ToListAsync();
 
-        foreach (var entry in closingEntries.Where(e => e.IsPosted))
+        foreach (var entry in closingEntries.Where(e => e.JournalEntryType.Equals(JournalEntryType.Normal.Name)))
         {
             var command = MapToReverseJournalEntryCommand(entry.Id.Value);
             await sender.Send(command);

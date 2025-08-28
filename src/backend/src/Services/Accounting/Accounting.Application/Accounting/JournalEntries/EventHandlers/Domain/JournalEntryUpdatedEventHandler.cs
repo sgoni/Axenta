@@ -32,8 +32,7 @@ public class JournalEntryUpdatedEventHandler(
                 before.CurrencyCode,
                 before.PeriodId,
                 before.CompanyId,
-                before.IsPosted,
-                before.IsReversed
+                before.JournalEntryType
                 //before.Lines
             },
             After = new
@@ -46,8 +45,7 @@ public class JournalEntryUpdatedEventHandler(
                 after.CurrencyCode,
                 after.PeriodId,
                 after.CompanyId,
-                after.IsPosted,
-                after.IsReversed
+                after.JournalEntryType
                 //after.Lines
             }
         });

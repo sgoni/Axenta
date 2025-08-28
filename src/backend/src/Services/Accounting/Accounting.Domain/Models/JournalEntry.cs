@@ -19,9 +19,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public string? CurrencyCode { get; private set; } // null = moneda local
     public decimal? ExchangeRate { get; private set; }
     public DateOnly? ExchangeRateDate { get; private set; }
-
-    public bool IsPosted { get; private set; } = true;
-    public bool IsReversed { get; private set; }
+    public string JournalEntryType { get; private set; } = Enums.JournalEntryType.Normal.Name;
     public JournalEntryId ReversalJournalEntryId { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
@@ -37,8 +35,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = currencyCode,
             ExchangeRate = exchangeRate,
             ExchangeRateDate = exchangeRateDate,
-            IsPosted = true,
-            IsReversed = false
+            JournalEntryType = Enums.JournalEntryType.Reversal.Name
         };
 
         journalEntry.AddDomainEvent(new JournalEntryCreatedEvent(journalEntry));
@@ -46,7 +43,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, string currencyCode, decimal? exchangeRate,
+    public void Update(string? description, DateTime date, string? currencyCode, decimal? exchangeRate,
         DateOnly? exchangeRateDate)
     {
         var before = new JournalEntry
@@ -56,17 +53,16 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CompanyId = CompanyId,
             Description = Description,
             Date = Date,
-            IsPosted = true,
             CurrencyCode = currencyCode,
             ExchangeRate = exchangeRate,
             ExchangeRateDate = exchangeRateDate,
-            IsReversed = IsReversed,
+            JournalEntryType = Enums.JournalEntryType.Normal.Name,
             ReversalJournalEntryId = ReversalJournalEntryId
         };
 
         Description = description;
+        JournalEntryType = Enums.JournalEntryType.Adjustment.Name;
         Date = date;
-        IsPosted = true;
         CurrencyCode = currencyCode;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
@@ -74,7 +70,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
     public JournalEntry Reverse()
     {
-        if (IsReversed)
+        if (JournalEntryType.Equals(Enums.JournalEntryType.Reversal.Name))
             throw new DomainException("The seat has already been reversed.");
 
         // Create a reverse entry
@@ -88,7 +84,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
-            IsReversed = false
+            JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 
         // Mark original as reversed
@@ -101,7 +97,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             );
 
         // Mark original as reversed
-        IsReversed = true;
+        JournalEntryType = Enums.JournalEntryType.Reversal.Name;
         ReversalJournalEntryId = reversal.Id;
 
         // Fire domain event
@@ -133,11 +129,6 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
         var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
-    }
-
-    public void Posted()
-    {
-        IsPosted = true;
     }
 
     public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)

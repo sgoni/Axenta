@@ -346,15 +346,10 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.Property<DateOnly?>("ExchangeRateDate")
                         .HasColumnType("date");
 
-                    b.Property<bool>("IsPosted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
-
-                    b.Property<bool>("IsReversed")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
+                    b.Property<string>("JournalEntryType")
+                        .IsRequired()
+                        .HasMaxLength(55)
+                        .HasColumnType("character varying(55)");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
