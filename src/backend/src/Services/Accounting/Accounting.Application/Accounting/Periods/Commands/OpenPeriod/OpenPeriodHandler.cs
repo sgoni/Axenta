@@ -31,8 +31,5 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext, IPublishEndpoint
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
         if (period is null) throw new PeriodNotFoundException(id);
-
-        // Domain rule (does not persist, does not touch infra)
-        period.Reopen(Array.Empty<JournalEntry>());
     }
 }

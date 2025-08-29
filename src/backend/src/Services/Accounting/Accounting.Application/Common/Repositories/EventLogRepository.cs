@@ -23,6 +23,6 @@ public class EventLogRepository : IEventLogRepository
             ProcessedAt = DateTime.UtcNow
         });
 
-        await _dbContext.SaveChangesAsync(cancellationToken: default);
+        await _dbContext.SaveChangesAsync(default);
     }
 }

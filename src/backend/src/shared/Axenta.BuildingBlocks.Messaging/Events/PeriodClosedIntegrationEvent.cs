@@ -1,15 +1,15 @@
 ﻿namespace Axenta.BuildingBlocks.Messaging.Events;
 
-public class PeriodClosedIntegrationEvent
+public record PeriodClosedIntegrationEvent : IntegrationEvent
 {
-    public PeriodClosedIntegrationEvent(Guid periodId, Guid companyId, DateTime reopenedAt)
+    public PeriodClosedIntegrationEvent(Guid periodId, Guid companyId, DateTime closedAt)
     {
         PeriodId = periodId;
         CompanyId = companyId;
-        ReopenedAt = reopenedAt;
+        ClosedAt = closedAt;
     }
 
     public Guid PeriodId { get; set; }
     public Guid CompanyId { get; set; }
-    public DateTime ReopenedAt { get; set; }
+    public DateTime ClosedAt { get; set; }
 }

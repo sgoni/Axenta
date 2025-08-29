@@ -15,4 +15,11 @@ public class JournalEntryRepository : IJournalEntryRepository
             .AnyAsync(e =>
                 e.PeriodId == PeriodId.Of(periodId) && e.JournalEntryType.Equals(JournalEntryType.Reversal.Name));
     }
+
+    public async Task<bool> PeriodAlreadyClosedAsync(Guid periodId)
+    {
+        return await _dbContext.JournalEntries
+            .AnyAsync(e =>
+                e.PeriodId == PeriodId.Of(periodId) && e.JournalEntryType.Equals(JournalEntryType.Closing.Name));
+    }
 }

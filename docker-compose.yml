@@ -5,11 +5,11 @@
   messagebroker:
     image: rabbitmq:management
   
- #accounting.api:
- #  image: accounting.api
- #  build:
- #    context: .
- #    dockerfile: src/backend/src/Services/Accounting/Accounting.API/Dockerfile
+  #accounting.api:
+  #  image: accounting.api
+  #  build:
+  #    context: .
+  #    dockerfile: src/backend/src/Services/Accounting/Accounting.API/Dockerfile
 
 volumes:
   postgres_axenta:

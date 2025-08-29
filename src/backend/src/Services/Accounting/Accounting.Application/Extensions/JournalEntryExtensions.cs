@@ -39,7 +39,7 @@ public static class JournalEntryExtensions
             journalEntry.ExchangeRate,
             journalEntry.ExchangeRateDate,
             journalEntry.JournalEntryType,
-            journalEntry.ReversalJournalEntryId.Value,
+            journalEntry.ReversalJournalEntryId?.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
                     ln.Debit, ln.Credit, ln.LineNumber)).ToList()

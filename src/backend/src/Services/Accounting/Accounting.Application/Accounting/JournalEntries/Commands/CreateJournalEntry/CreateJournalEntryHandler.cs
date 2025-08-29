@@ -41,7 +41,6 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
             journalEntryDto.Description,
             PeriodId.Of(journalEntryDto.PeriodId),
             CompanyId.Of(journalEntryDto.CompanyId),
-            
             journalEntryDto.CurrencyCode,
             journalEntryDto.ExchangeRate,
             journalEntryDto.ExchangeRateDate

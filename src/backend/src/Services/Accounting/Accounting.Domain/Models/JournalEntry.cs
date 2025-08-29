@@ -20,7 +20,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public decimal? ExchangeRate { get; private set; }
     public DateOnly? ExchangeRateDate { get; private set; }
     public string JournalEntryType { get; private set; } = Enums.JournalEntryType.Normal.Name;
-    public JournalEntryId ReversalJournalEntryId { get; private set; }
+    public JournalEntryId? ReversalJournalEntryId { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
         CompanyId companyId, string? currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
@@ -35,7 +35,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = currencyCode,
             ExchangeRate = exchangeRate,
             ExchangeRateDate = exchangeRateDate,
-            JournalEntryType = Enums.JournalEntryType.Reversal.Name
+            JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 
         journalEntry.AddDomainEvent(new JournalEntryCreatedEvent(journalEntry));
@@ -44,7 +44,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     }
 
     public void Update(string? description, DateTime date, string? currencyCode, decimal? exchangeRate,
-        DateOnly? exchangeRateDate)
+        DateOnly? exchangeRateDate, string journalEntryType)
     {
         var before = new JournalEntry
         {
@@ -53,17 +53,19 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CompanyId = CompanyId,
             Description = Description,
             Date = Date,
-            CurrencyCode = currencyCode,
-            ExchangeRate = exchangeRate,
-            ExchangeRateDate = exchangeRateDate,
-            JournalEntryType = Enums.JournalEntryType.Normal.Name,
+            CurrencyCode = CurrencyCode,
+            ExchangeRate = ExchangeRate,
+            ExchangeRateDate = ExchangeRateDate,
+            JournalEntryType = JournalEntryType,
             ReversalJournalEntryId = ReversalJournalEntryId
         };
 
         Description = description;
-        JournalEntryType = Enums.JournalEntryType.Adjustment.Name;
         Date = date;
         CurrencyCode = currencyCode;
+        ExchangeRate = exchangeRate;
+        ExchangeRateDate = exchangeRateDate;
+        JournalEntryType = journalEntryType;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
     }
@@ -84,6 +86,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
+            ReversalJournalEntryId = Id,
             JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 

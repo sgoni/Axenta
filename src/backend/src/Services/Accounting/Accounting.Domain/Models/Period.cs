@@ -1,4 +1,6 @@
-﻿namespace Accounting.Domain.Models;
+﻿using Accounting.Domain.Enums;
+
+namespace Accounting.Domain.Models;
 
 /// <summary>
 ///     Control of open/closed periods
@@ -47,7 +49,7 @@ public class Period : Aggregate<PeriodId>
             throw new DomainException("The period is now open");
 
         // Reverse all closing entries
-        foreach (var entry in closingEntries.Where(e => e.JournalEntryType == Enums.JournalEntryType.Normal.Name))
+        foreach (var entry in closingEntries.Where(e => e.JournalEntryType == JournalEntryType.Normal.Name))
         {
             var reversal = entry.Reverse();
             // Here you must persist the reversal in the application handler
