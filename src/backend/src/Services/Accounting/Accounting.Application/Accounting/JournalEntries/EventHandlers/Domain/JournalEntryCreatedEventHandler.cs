@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
+﻿namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
 
 public class JournalEntryCreatedEventHandler(
     IApplicationDbContext dbContext,
@@ -42,7 +40,7 @@ public class JournalEntryCreatedEventHandler(
             AuditLogId.Of(Guid.NewGuid()),
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(journalEntry.Id).Value),
-            "Create",
+            JournalEntryType.Normal.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
             details
         );

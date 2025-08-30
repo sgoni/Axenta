@@ -12,8 +12,11 @@ public static class DependencyInjection
             config.AddOpenBehavior(typeof(LogginBehavior<,>));
         });
 
+        services.AddScoped<IEventLogRepository, EventLogRepository>();
+        services.AddScoped<IJournalEntryRepository, JournalEntryRepository>();
         services.AddFeatureManagement();
         services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
+
         return services;
     }
 }

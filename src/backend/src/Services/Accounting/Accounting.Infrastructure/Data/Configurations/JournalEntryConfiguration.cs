@@ -47,13 +47,9 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
         builder.Property(j => j.ExchangeRateDate)
             .IsRequired(false);
 
-        builder.Property(j => j.IsPosted)
-            .IsRequired()
-            .HasDefaultValue(false);
-
-        builder.Property(j => j.IsReversed)
-            .IsRequired()
-            .HasDefaultValue(false);
+        builder.Property(j => j.JournalEntryType)
+            .HasMaxLength(55)
+            .IsRequired();
 
         builder.Property(j => j.ReversalJournalEntryId)
             .HasConversion(

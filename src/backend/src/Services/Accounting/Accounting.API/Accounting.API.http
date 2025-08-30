@@ -26,7 +26,7 @@ Content-Type: application/json
 
 {
   "period": {
-    "companyId": "d83d7326-679b-435e-98b0-bbe407069ed6"
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
   }
 }
 
@@ -87,8 +87,8 @@ Content-Type: application/json
 
 {
   "period": {
-    "periodId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
   }
 }
 

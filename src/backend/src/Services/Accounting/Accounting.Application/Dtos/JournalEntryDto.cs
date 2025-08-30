@@ -9,6 +9,6 @@ public record JournalEntryDto(
     string? CurrencyCode,
     decimal? ExchangeRate,
     DateOnly? ExchangeRateDate,
-    bool IsPosted,
-    bool IsReversed,
+    string JournalEntryType,
+    Guid? ReversalJournalEntryId,
     List<JournalEntryLineDto> Lines);

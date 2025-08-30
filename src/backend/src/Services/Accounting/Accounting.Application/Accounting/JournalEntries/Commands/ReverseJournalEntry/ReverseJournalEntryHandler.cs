@@ -32,7 +32,7 @@ public class ReverseJournalEntryHandler(IApplicationDbContext dbContext)
 
         if (period is null) throw new PeriodNotFoundException(period.Id.Value);
 
-        if (period.IsClosed)
-            throw new BadRequestException("The accounting period is closed, it cannot be reversed.");
+        //if (period.IsClosed)
+        //    throw new BadRequestException("The accounting period is closed, it cannot be reversed.");
     }
 }

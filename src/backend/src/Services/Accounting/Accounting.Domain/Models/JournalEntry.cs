@@ -19,10 +19,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public string? CurrencyCode { get; private set; } // null = moneda local
     public decimal? ExchangeRate { get; private set; }
     public DateOnly? ExchangeRateDate { get; private set; }
-
-    public bool IsPosted { get; private set; } = true;
-    public bool IsReversed { get; private set; }
-    public JournalEntryId ReversalJournalEntryId { get; private set; }
+    public string JournalEntryType { get; private set; } = Enums.JournalEntryType.Normal.Name;
+    public JournalEntryId? ReversalJournalEntryId { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
         CompanyId companyId, string? currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
@@ -37,8 +35,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = currencyCode,
             ExchangeRate = exchangeRate,
             ExchangeRateDate = exchangeRateDate,
-            IsPosted = true,
-            IsReversed = false
+            JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 
         journalEntry.AddDomainEvent(new JournalEntryCreatedEvent(journalEntry));
@@ -46,35 +43,36 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, string currencyCode, decimal? exchangeRate,
-        DateOnly? exchangeRateDate)
+    public void Update(string? description, DateTime date, string? currencyCode, decimal? exchangeRate,
+        DateOnly? exchangeRateDate, string journalEntryType)
     {
-        JournalEntry before = new JournalEntry
+        var before = new JournalEntry
         {
             Id = Id,
             PeriodId = PeriodId,
             CompanyId = CompanyId,
             Description = Description,
             Date = Date,
-            IsPosted = true,
-            CurrencyCode = currencyCode,
-            ExchangeRate = exchangeRate,
-            ExchangeRateDate = exchangeRateDate,
-            IsReversed = IsReversed,
+            CurrencyCode = CurrencyCode,
+            ExchangeRate = ExchangeRate,
+            ExchangeRateDate = ExchangeRateDate,
+            JournalEntryType = JournalEntryType,
             ReversalJournalEntryId = ReversalJournalEntryId
         };
 
         Description = description;
         Date = date;
-        IsPosted = true;
         CurrencyCode = currencyCode;
+        ExchangeRate = exchangeRate;
+        ExchangeRateDate = exchangeRateDate;
+        JournalEntryType = journalEntryType;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
     }
 
     public JournalEntry Reverse()
     {
-        if (IsReversed)
+        if (JournalEntryType.Equals(Enums.JournalEntryType.Reversal.Name))
             throw new DomainException("The seat has already been reversed.");
 
         // Create a reverse entry
@@ -88,8 +86,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
-            IsPosted = false,
-            IsReversed = false
+            ReversalJournalEntryId = Id,
+            JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 
         // Mark original as reversed
@@ -102,7 +100,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             );
 
         // Mark original as reversed
-        IsReversed = true;
+        JournalEntryType = Enums.JournalEntryType.Reversal.Name;
         ReversalJournalEntryId = reversal.Id;
 
         // Fire domain event
@@ -134,11 +132,6 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
         var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
-    }
-
-    public void Posted()
-    {
-        IsPosted = true;
     }
 
     public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)

@@ -89,6 +89,23 @@ namespace Accounting.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EventLogs",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    MessageId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProcessedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventLogs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "JournalEntries",
                 columns: table => new
                 {
@@ -100,8 +117,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                     CurrencyCode = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
                     ExchangeRate = table.Column<decimal>(type: "numeric(18,2)", nullable: false, defaultValue: 0m),
                     ExchangeRateDate = table.Column<DateOnly>(type: "date", nullable: true),
-                    IsPosted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    IsReversed = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
+                    JournalEntryType = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: false),
                     ReversalJournalEntryId = table.Column<Guid>(type: "uuid", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
@@ -266,6 +282,9 @@ namespace Accounting.Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "DocumentReferences");
+
+            migrationBuilder.DropTable(
+                name: "EventLogs");
 
             migrationBuilder.DropTable(
                 name: "JournalEntryLines");

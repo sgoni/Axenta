@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
+﻿using Action = Accounting.Domain.Enums.Action;
+
+namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
 
 public class JournalEntryDeletedEventHandler(
     IApplicationDbContext dbContext,
@@ -39,7 +41,7 @@ public class JournalEntryDeletedEventHandler(
             AuditLogId.Of(Guid.NewGuid()),
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(journalEntry.Id).Value),
-            "Delete",
+            Action.DELETE.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
             details
         );

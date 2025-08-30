@@ -16,8 +16,8 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext, IPublishEndpoint
         await PeriodIsOpen(command.Period.PeriodId, cancellationToken);
 
         // Domain rule (does not persist, does not touch infra)
-        period.Reopen(Array.Empty<JournalEntry>());
-        await dbContext.SaveChangesAsync(cancellationToken);
+        //period.Reopen(Array.Empty<JournalEntry>());
+        //await dbContext.SaveChangesAsync(cancellationToken);
 
         var eventMessage = command.Period.Adapt<PeriodReopenedIntegrationEvent>();
         await publishEndpoint.Publish(eventMessage, cancellationToken);
@@ -32,7 +32,7 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext, IPublishEndpoint
 
         if (period is null) throw new PeriodNotFoundException(id);
 
-        // Domain rule (does not persist, does not touch infra)
-        period.Reopen(Array.Empty<JournalEntry>());
+        if (!period.IsClosed)
+            throw new Exception($"The period id: {id} is now opened.");
     }
 }

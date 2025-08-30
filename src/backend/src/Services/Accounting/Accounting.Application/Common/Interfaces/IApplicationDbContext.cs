@@ -11,6 +11,7 @@ public interface IApplicationDbContext
     DbSet<AuditLog> AuditLogs { get; }
     DbSet<CurrencyExchangeRate> CurrencyExchangeRates { get; }
     DbSet<Company> Companies { get; }
+    DbSet<EventLog> EventLogs { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
