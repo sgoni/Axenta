@@ -15,9 +15,9 @@ public class PeriodReopenedIntegrationEventConsumer(
         // Avoid processing the same event twice (if the rententred broker). 
         // Options: 
         // 1) keep a "eventlog" with Messageid (context.messageid) processed. 
-        if (await eventLogRepository.AlreadyProcessedAsync(@event.PeriodId))
-            // We already process it → Ignore
-            return;
+        //if (await eventLogRepository.AlreadyProcessedAsync(@event.PeriodId))
+        // We already process it → Ignore
+        //    return;
 
         // 2) Verify if there are already the reversals of the period.
         if (await journalEntryRepository.PeriodAlreadyReversedAsync(@event.PeriodId))
@@ -37,11 +37,27 @@ public class PeriodReopenedIntegrationEventConsumer(
             await sender.Send(command);
         }
 
+        var period = await ValidateAndOpenPeriod(@event); // Check period
+        await dbContext.SaveChangesAsync(default);
         // We keep in the log that this message was attended
         await eventLogRepository.SaveProcessedAsync(@event.PeriodId);
 
         // Redelivery with Delay due to external dependence not available:
         // throw new DelayedRedeliveryException(TimeSpan.FromSeconds(30));
+    }
+
+    private async Task<Period> ValidateAndOpenPeriod(PeriodReopenedIntegrationEvent @event)
+    {
+        // Check period
+        var periodId = PeriodId.Of(@event.PeriodId);
+        var period = await dbContext.Periods.FindAsync(periodId).ConfigureAwait(false);
+
+        if (period is null) throw new PeriodNotFoundException(@event.PeriodId);
+
+        // Domain rule (does not persist, does not touch infra)
+        period.Reopen(Array.Empty<JournalEntry>());
+
+        return period;
     }
 
     private ReverseJournalEntryCommand MapToReverseJournalEntryCommand(Guid message)

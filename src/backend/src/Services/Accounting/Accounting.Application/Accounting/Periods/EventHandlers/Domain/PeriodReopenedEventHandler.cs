@@ -23,7 +23,7 @@ public class PeriodReopenedEventHandler(
             EntityId.Of(PeriodId.Of(periodId).Value),
             JournalEntryType.Reversal.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
-            $"Period closure {periodId}"
+            $"Period reopened {periodId}"
         );
 
         return auditLog;
