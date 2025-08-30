@@ -21,4 +21,6 @@ public class JournalEntryLine : Entity<JournalEntryLineId>
     public decimal Debit { get; private set; }
     public decimal Credit { get; private set; }
     public int LineNumber { get; private set; }
+    public CostCenterId? CostCenterId { get; set; }
+    public CostCenter? CostCenter { get; set; }
 }
