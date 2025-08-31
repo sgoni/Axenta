@@ -5,13 +5,15 @@
 /// </summary>
 public class Company : Entity<CompanyId>
 {
+    private Company()
+    {
+    } // EF
+
     public string Name { get; private set; } = default!;
     public string TaxId { get; private set; } = default!;
     public string Country { get; private set; } = default!;
     public string CurrencyCode { get; private set; } = default!;
     public bool IsActive { get; private set; } = true;
-
-    private Company() { } // EF
 
     public static Company Create(CompanyId id, string name, string taxId, string country, string currencyCode)
     {

@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.UpdateJournalEntry;
+﻿using Axenta.BuildingBlocks.ValueObjects;
+
+namespace Accounting.Application.Accounting.JournalEntries.Commands.UpdateJournalEntry;
 
 public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
     : ICommandHandler<UpdateJournalEntryCommand, UpdateJournalEntryResult>

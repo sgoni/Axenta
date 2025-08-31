@@ -5,14 +5,16 @@
 /// </summary>
 public class AuditLog : Entity<AuditLogId>
 {
+    private AuditLog()
+    {
+    } // EF
+
     public string Entity { get; private set; } = default!;
     public EntityId EntityId { get; private set; } = default!;
     public string Action { get; private set; } = default!; // Consider enum
     public PerformedBy PerformedBy { get; private set; } = default!;
     public DateTime PerformedAt { get; private set; }
     public string? Details { get; private set; }
-
-    private AuditLog() { } // EF
 
     public static AuditLog Create(AuditLogId id, string entity, EntityId entityId, string action,
         PerformedBy performedBy, string? details = null)

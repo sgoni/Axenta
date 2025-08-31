@@ -1,19 +1,11 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public record PerformedBy
+// PerformedBy
+public record PerformedBy : StringValueObject
 {
-    private PerformedBy(Guid value)
+    public PerformedBy(string value) : base(value, 100)
     {
-        Value = value;
     }
 
-    public Guid Value { get; }
-
-    public static PerformedBy Of(Guid value)
-    {
-        ArgumentNullException.ThrowIfNull(value);
-        if (value == Guid.Empty) throw new DomainException("PerformedBy cannot be empty");
-
-        return new PerformedBy(value);
-    }
+    public static PerformedBy Of(string value) => new(value);
 }

@@ -6,14 +6,15 @@
 public class AccountType : Entity<AccountTypeId>
 {
     private readonly List<Account> _accounts = new();
-    public IReadOnlyCollection<Account> Accounts => _accounts.AsReadOnly();
-
-    public string Name { get; private set; } = default!;
-    public string? Description { get; private set; }
 
     private AccountType()
     {
     } // EF
+
+    public IReadOnlyCollection<Account> Accounts => _accounts.AsReadOnly();
+
+    public string Name { get; private set; } = default!;
+    public string? Description { get; private set; }
 
     public static AccountType Create(AccountTypeId id, string name, string? description)
     {

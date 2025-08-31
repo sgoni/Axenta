@@ -3,6 +3,11 @@
 public class CostCenter : Entity<CostCenterId>
 {
     private readonly List<CostCenter> _children = new();
+
+    private CostCenter()
+    {
+    } // EF
+
     public IReadOnlyCollection<CostCenter> Children => _children.AsReadOnly();
 
     public string Code { get; private set; } = default!;
@@ -14,11 +19,7 @@ public class CostCenter : Entity<CostCenterId>
     public Company Company { get; private set; } = default!;
 
     public CostCenterId? ParentCostCenterId { get; private set; }
-    public CostCenter? ParentCostCenter { get; private set; } = default!;
-
-    private CostCenter()
-    {
-    } // EF
+    public CostCenter? ParentCostCenter { get; private set; }
 
     public static CostCenter Create(CostCenterId id, string code, string name, string? description,
         CompanyId companyId, CostCenterId? parentCostCenterId, CostCenter? parentCostCenter = null)
@@ -55,13 +56,20 @@ public class CostCenter : Entity<CostCenterId>
         ParentCostCenter = parentCostCenter;
     }
 
-    public void Deactivate() => IsActive = false;
-    public void Activate() => IsActive = true;
+    public void Deactivate()
+    {
+        IsActive = false;
+    }
+
+    public void Activate()
+    {
+        IsActive = true;
+    }
 
     // 🔎 Auxiliar: Calcula el nivel del CostCenter en el árbol
     public int GetLevel()
     {
-        int level = 1;
+        var level = 1;
         var current = ParentCostCenter;
         while (current != null)
         {

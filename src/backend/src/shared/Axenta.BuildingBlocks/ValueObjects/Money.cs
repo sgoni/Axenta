@@ -1,17 +1,17 @@
-﻿namespace Accounting.Domain.VelueObjects;
+﻿namespace Axenta.BuildingBlocks.ValueObjects;
 
 public record Money
 {
     public Money(decimal amount, string currencyCode)
     {
         if (amount < 0)
-            throw new DomainException("Amount cannot be negative.");
+            throw new ArgumentException("Amount cannot be negative.");
 
         if (string.IsNullOrWhiteSpace(currencyCode))
-            throw new DomainException("Currency code cannot be empty.");
+            throw new ArgumentNullException("Currency code cannot be empty.");
 
         if (currencyCode.Length != 3)
-            throw new DomainException("Currency code must have 3 characters.");
+            throw new ArgumentException("Currency code must have 3 characters.");
 
         Amount = amount;
         CurrencyCode = currencyCode.ToUpper();
@@ -20,7 +20,10 @@ public record Money
     public decimal Amount { get; }
     public string CurrencyCode { get; }
 
-    public static Money Of(decimal amount, string currencyCode) => new Money(amount, currencyCode);
+    public static Money Of(decimal amount, string currencyCode)
+    {
+        return new Money(amount, currencyCode);
+    }
 
     public Money Add(Money other)
     {

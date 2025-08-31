@@ -1,15 +1,14 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public record AuditLogId
+// AuditLogId
+public record AuditLogId : GuidValueObject
 {
-    private AuditLogId(Guid value) => Value = value;
-    public Guid Value { get; }
+    public AuditLogId(Guid value) : base(value)
+    {
+    }
 
     public static AuditLogId Of(Guid value)
     {
-        if (value == Guid.Empty)
-            throw new DomainException("AuditLogId cannot be empty");
-
         return new AuditLogId(value);
     }
 }

@@ -18,8 +18,8 @@ public class JournalEntryLine : Entity<JournalEntryLineId>
 
     public JournalEntryId JournalEntryId { get; private set; } = default!;
     public AccountId AccountId { get; private set; } = default!;
-    public decimal Debit { get; private set; } = default!;
-    public decimal Credit { get; private set; } = default!;
+    public decimal Debit { get; private set; }
+    public decimal Credit { get; private set; }
     public int LineNumber { get; private set; }
 
     public void Update(Money debit, Money credit, int lineNumber)

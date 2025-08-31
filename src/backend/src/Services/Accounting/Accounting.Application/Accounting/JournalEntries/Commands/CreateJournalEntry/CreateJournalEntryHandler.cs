@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
+﻿using Axenta.BuildingBlocks.ValueObjects;
+
+namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
 
 public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateJournalEntryCommand, CreateJournalEntryResult>

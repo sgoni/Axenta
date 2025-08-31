@@ -1,15 +1,13 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public record AccountTypeId
+public record AccountTypeId : GuidValueObject
 {
-    private AccountTypeId(Guid value) => Value = value;
-    public Guid Value { get; }
+    public AccountTypeId(Guid value) : base(value)
+    {
+    }
 
     public static AccountTypeId Of(Guid value)
     {
-        if (value == Guid.Empty)
-            throw new DomainException("AccountTypeId cannot be empty");
-
         return new AccountTypeId(value);
     }
 }

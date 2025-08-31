@@ -5,3 +5,4 @@ global using Accounting.Domain.Exceptions;
 global using Accounting.Domain.Models;
 global using Accounting.Domain.Events;
 global using Accounting.Domain.Enums;
+global using Axenta.BuildingBlocks.ValueObjects;
