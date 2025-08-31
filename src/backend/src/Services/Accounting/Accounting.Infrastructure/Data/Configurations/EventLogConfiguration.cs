@@ -6,19 +6,22 @@ public class EventLogConfiguration : IEntityTypeConfiguration<EventLog>
     {
         builder.ToTable("EventLogs");
 
-        builder.HasKey(dr => dr.Id);
+        builder.HasKey(e => e.Id);
 
-        builder.Property(dr => dr.Id)
+        builder.Property(e => e.Id)
             .HasConversion(
-                jeId => jeId.Value,
-                val => EventLogId.Of(val)
-            )
+                id => id.Value,
+                value => EventLogId.Of(value))
             .IsRequired();
 
-        builder.Property(ev => ev.MessageId)
+        builder.Property(e => e.MessageId)
             .IsRequired();
 
-        builder.Property(ev => ev.ProcessedAt)
+        builder.Property(e => e.ProcessedAt)
             .IsRequired();
+
+        // Opcional: idempotencia
+        builder.HasIndex(e => e.MessageId)
+            .IsUnique();
     }
 }

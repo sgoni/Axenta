@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public class CurrencyExchangeRateId
+public record CurrencyExchangeRateId
 {
     private CurrencyExchangeRateId(Guid value)
     {

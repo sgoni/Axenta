@@ -13,6 +13,7 @@ global using Accounting.Application.Accounting.AuditLogs.Queries.GetAuditLogs;
 global using Accounting.Application.Accounting.Companies.Commands.CreateCompany;
 global using Accounting.Application.Accounting.Companies.Commands.UpdateCompany;
 global using Accounting.Application.Accounting.Companies.Queries.GetCompanies;
+global using Accounting.Application.Accounting.CostCenters.Commands.CreateCostCenter;
 global using Accounting.Application.Accounting.CurrencyExchangeRate.Commands.CreateCurrencyExchangeRate;
 global using Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRateCurrent;
 global using Accounting.Application.Accounting.CurrencyExchangeRate.Queries.GetCurrencyExchangeRates;

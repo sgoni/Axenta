@@ -11,7 +11,7 @@ public class CurrencyExchangeRateValidator : AbstractValidator<CreateCurrencyExc
     {
         RuleFor(x => x.CurrencyExchangeRate.Id).NotEmpty().WithMessage("Id is required");
         RuleFor(x => x.CurrencyExchangeRate.CurrencyCode).NotNull().MaximumLength(3)
-            .WithMessage("Currency Code Id is required");
+            .WithMessage("CurrencyCode must be a 3-letter ISO code and is required");
         RuleFor(x => x.CurrencyExchangeRate.Date).NotEmpty().WithMessage("Date is required.");
         RuleFor(x => x.CurrencyExchangeRate.BuyRate).GreaterThanOrEqualTo(1)
             .WithMessage("Purchase rate must be greater than zero.");

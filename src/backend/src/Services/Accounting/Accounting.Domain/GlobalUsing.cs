@@ -4,3 +4,4 @@ global using Accounting.Domain.VelueObjects;
 global using Accounting.Domain.Exceptions;
 global using Accounting.Domain.Models;
 global using Accounting.Domain.Events;
+global using Accounting.Domain.Enums;

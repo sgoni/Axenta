@@ -10,9 +10,8 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 
         builder.Property(j => j.Id)
             .HasConversion(
-                pid => pid!.Value,
-                val => JournalEntryId.Of(val)
-            )
+                id => id.Value,
+                val => JournalEntryId.Of(val))
             .IsRequired();
 
         builder.Property(j => j.Date)
@@ -23,26 +22,25 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 
         builder.Property(j => j.PeriodId)
             .HasConversion(
-                pid => pid!.Value,
-                val => PeriodId.Of(val)
-            )
-            .HasColumnName("PeriodId");
+                pid => pid.Value,
+                val => PeriodId.Of(val))
+            .HasColumnName("PeriodId")
+            .IsRequired(false);
 
         builder.Property(j => j.CompanyId)
             .HasConversion(
-                pid => pid!.Value,
-                val => CompanyId.Of(val)
-            )
-            .HasColumnName("CompanyId");
+                cid => cid.Value,
+                val => CompanyId.Of(val))
+            .HasColumnName("CompanyId")
+            .IsRequired();
 
         builder.Property(j => j.CurrencyCode)
             .HasMaxLength(3)
-            .IsRequired();
+            .IsRequired(false); // ✅ opcional
 
         builder.Property(j => j.ExchangeRate)
             .HasColumnType("decimal(18,2)")
-            .HasDefaultValue(0m)
-            .IsRequired();
+            .IsRequired(false); // ✅ opcional
 
         builder.Property(j => j.ExchangeRateDate)
             .IsRequired(false);
@@ -53,9 +51,8 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 
         builder.Property(j => j.ReversalJournalEntryId)
             .HasConversion(
-                pid => pid!.Value,
-                val => JournalEntryId.Of(val)
-            )
+                rid => rid.Value,
+                val => JournalEntryId.Of(val))
             .IsRequired(false);
 
         builder.HasMany(j => j.DocumentReferences)
@@ -67,5 +64,7 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
             .WithOne()
             .HasForeignKey(el => el.JournalEntryId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasIndex(j => new { j.CompanyId, j.Date });
     }
 }

@@ -26,7 +26,7 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
             accountDetailDto.Name,
             accountDetailDto.Code,
             AccountTypeId.Of(accountDetailDto.AccountTypeId),
-            AccountId.Of(accountDetailDto.ParentAccountId),
+            AccountId.FromNullable(accountDetailDto.ParentAccountId),
             accountDetailDto.IsActive);
     }
 }

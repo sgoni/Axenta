@@ -6,23 +6,30 @@
 public class AccountType : Entity<AccountTypeId>
 {
     private readonly List<Account> _accounts = new();
-    public IReadOnlyCollection<Account> Accounts => _accounts;
+    public IReadOnlyCollection<Account> Accounts => _accounts.AsReadOnly();
 
     public string Name { get; private set; } = default!;
     public string? Description { get; private set; }
 
-    public static AccountType Create(AccountTypeId id, string name, string description)
+    private AccountType()
+    {
+    } // EF
+
+    public static AccountType Create(AccountTypeId id, string name, string? description)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
-        ArgumentException.ThrowIfNullOrWhiteSpace(description);
 
-        var accountType = new AccountType
+        return new AccountType
         {
             Id = id,
             Name = name,
             Description = description
         };
+    }
 
-        return accountType;
+    public void AddAccount(Account account)
+    {
+        ArgumentNullException.ThrowIfNull(account);
+        _accounts.Add(account);
     }
 }

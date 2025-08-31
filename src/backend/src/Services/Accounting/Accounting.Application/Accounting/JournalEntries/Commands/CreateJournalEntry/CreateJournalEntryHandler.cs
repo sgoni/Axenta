@@ -51,8 +51,8 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         foreach (var journalEntryLineDto in journalEntryDto.Lines)
             newJournalEntry.AddLine(
                 AccountId.Of(journalEntryLineDto.AccountId),
-                journalEntryLineDto.Debit,
-                journalEntryLineDto.Credit,
+                Money.Of(journalEntryLineDto.Debit, journalEntryDto.CurrencyCode),
+                Money.Of(journalEntryLineDto.Credit, journalEntryDto.CurrencyCode),
                 lineNumber++
             );
 

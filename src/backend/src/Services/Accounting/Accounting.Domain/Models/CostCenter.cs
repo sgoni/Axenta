@@ -2,16 +2,84 @@
 
 public class CostCenter : Entity<CostCenterId>
 {
-    public string Code { get; set; } = default!; // Unique Code, Ex: "CC-001"
-    public string Name { get; set; } = default!; // Descriptive name
-    public string? Description { get; set; } // Free text
-    public bool IsActive { get; set; } = true; // Activate/deactivate
+    private readonly List<CostCenter> _children = new();
+    public IReadOnlyCollection<CostCenter> Children => _children.AsReadOnly();
 
-    // Relationship with company (multi company)
-    public CompanyId CompanyId { get; set; }
-    public Company Company { get; set; } = default!;
+    public string Code { get; private set; } = default!;
+    public string Name { get; private set; } = default!;
+    public string? Description { get; private set; }
+    public bool IsActive { get; private set; } = true;
 
-    // Optional: hierarchy of cost centers
-    public CostCenterId? ParentCostCenterId { get; set; }
-    public CostCenter? ParentCostCenter { get; set; }
+    public CompanyId CompanyId { get; private set; }
+    public Company Company { get; private set; } = default!;
+
+    public CostCenterId? ParentCostCenterId { get; private set; }
+    public CostCenter? ParentCostCenter { get; private set; } = default!;
+
+    private CostCenter()
+    {
+    } // EF
+
+    public static CostCenter Create(CostCenterId id, string code, string name, string? description,
+        CompanyId companyId, CostCenterId? parentCostCenterId, CostCenter? parentCostCenter = null)
+    {
+        ValidateInputs(code, name, description);
+
+        if (parentCostCenter != null && parentCostCenter.GetLevel() >= 3)
+            throw new DomainException("CostCenter cannot be created beyond level 3.");
+
+        return new CostCenter
+        {
+            Id = id,
+            Code = code,
+            Name = name,
+            Description = description,
+            CompanyId = companyId,
+            ParentCostCenterId = parentCostCenterId,
+            ParentCostCenter = parentCostCenter
+        };
+    }
+
+    public void Update(string code, string name, string? description, CostCenterId? parentCostCenterId,
+        CostCenter? parentCostCenter = null)
+    {
+        ValidateInputs(code, name, description);
+
+        if (parentCostCenter != null && parentCostCenter.GetLevel() >= 3)
+            throw new DomainException("CostCenter cannot be moved beyond level 3.");
+
+        Code = code;
+        Name = name;
+        Description = description;
+        ParentCostCenterId = parentCostCenterId;
+        ParentCostCenter = parentCostCenter;
+    }
+
+    public void Deactivate() => IsActive = false;
+    public void Activate() => IsActive = true;
+
+    // 🔎 Auxiliar: Calcula el nivel del CostCenter en el árbol
+    public int GetLevel()
+    {
+        int level = 1;
+        var current = ParentCostCenter;
+        while (current != null)
+        {
+            level++;
+            current = current.ParentCostCenter;
+        }
+
+        return level;
+    }
+
+    private static void ValidateInputs(string code, string name, string? description)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(code);
+        if (code.Length > 50) throw new DomainException("Code must be <= 50 characters");
+
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        if (name.Length > 200) throw new DomainException("Name must be <= 200 characters");
+
+        if (description?.Length > 1000) throw new DomainException("Description must be <= 1000 characters");
+    }
 }

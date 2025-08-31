@@ -1,6 +1,4 @@
-﻿using Accounting.Domain.Enums;
-
-namespace Accounting.Domain.Models;
+﻿namespace Accounting.Domain.Models;
 
 /// <summary>
 ///     Control of open/closed periods

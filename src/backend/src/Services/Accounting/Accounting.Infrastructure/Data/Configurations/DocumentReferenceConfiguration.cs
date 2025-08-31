@@ -10,18 +10,15 @@ public class DocumentReferenceConfiguration : IEntityTypeConfiguration<DocumentR
 
         builder.Property(dr => dr.Id)
             .HasConversion(
-                jeId => jeId.Value,
-                val => DocumentReferenceId.Of(val)
-            )
+                id => id.Value,
+                value => DocumentReferenceId.Of(value))
             .IsRequired();
 
         builder.Property(dr => dr.JournalEntryId)
             .HasConversion(
-                jeId => jeId.Value,
-                val => JournalEntryId.Of(val)
-            )
-            .IsRequired()
-            .HasColumnName("JournalEntryId");
+                id => id.Value,
+                value => JournalEntryId.Of(value))
+            .IsRequired();
 
         builder.Property(dr => dr.SourceType)
             .IsRequired()
@@ -29,18 +26,19 @@ public class DocumentReferenceConfiguration : IEntityTypeConfiguration<DocumentR
 
         builder.Property(dr => dr.SourceId)
             .HasConversion(
-                src => src.Value,
-                val => SourceId.Of(val)
-            )
-            .IsRequired()
-            .HasColumnName("SourceId");
+                id => id.Value,
+                value => SourceId.Of(value))
+            .IsRequired();
 
         builder.Property(dr => dr.ReferenceNumber)
+            .HasConversion(
+                vo => vo.Value,
+                value => DocumentReferenceNumber.Of(value))
             .IsRequired()
             .HasMaxLength(150);
 
         builder.Property(dr => dr.Description)
-            .HasMaxLength(200);
+            .HasMaxLength(500);
 
         builder.HasOne<JournalEntry>()
             .WithMany(j => j.DocumentReferences)

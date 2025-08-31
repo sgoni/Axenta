@@ -22,14 +22,16 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
         builder.Property(a => a.TaxId)
             .IsRequired()
             .HasMaxLength(50);
-
+        
+        builder.HasIndex(c => c.TaxId).IsUnique();
+        
         builder.Property(a => a.Country)
             .IsRequired()
             .HasMaxLength(50);
 
         builder.Property(a => a.CurrencyCode)
             .IsRequired()
-            .HasMaxLength(5);
+            .HasMaxLength(3);
 
         builder.Property(a => a.IsActive)
             .HasDefaultValue(true)

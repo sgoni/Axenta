@@ -94,8 +94,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
         foreach (var line in _journalEntryLines)
             reversal.AddLine(
                 line.AccountId,
-                line.Credit,
-                line.Debit,
+                Money.Of(line.Credit, CurrencyCode),
+                Money.Of(line.Debit, CurrencyCode),
                 line.LineNumber
             );
 
@@ -109,22 +109,22 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return reversal;
     }
 
-    public void AddLine(AccountId accountId, decimal debit, decimal credit, int lineNumber = 1)
+    public void AddLine(AccountId accountId, Money debit, Money credit, int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(debit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentOutOfRangeException.ThrowIfNegative(debit.Amount);
+        ;
+        ArgumentOutOfRangeException.ThrowIfNegative(credit.Amount);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
         var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
     }
 
-    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, decimal debit, decimal credit,
+    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, Money debit, Money credit,
         int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(debit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentOutOfRangeException.ThrowIfNegative(debit.Amount);
+        ArgumentOutOfRangeException.ThrowIfNegative(credit.Amount);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
         var line = _journalEntryLines.SingleOrDefault(x => x.Id == IdLine);
@@ -134,12 +134,13 @@ public class JournalEntry : Aggregate<JournalEntryId>
         _journalEntryLines.Add(journalEntryLine);
     }
 
-    public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)
+    public void AddDocumentReference(string sourceType, SourceId sourceId, DocumentReferenceNumber referenceNumber,
+        string description)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceType);
         ArgumentNullException.ThrowIfNull(sourceId);
 
-        var documentReference = new DocumentReference(Id, sourceType, sourceId, referenceNumber, description);
+        var documentReference = DocumentReference.Create(Id, sourceType, sourceId, referenceNumber, description);
         _documentReferences.Add(documentReference);
     }
 

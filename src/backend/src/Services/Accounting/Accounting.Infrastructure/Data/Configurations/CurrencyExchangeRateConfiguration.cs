@@ -10,24 +10,27 @@ public class CurrencyExchangeRateConfiguration : IEntityTypeConfiguration<Curren
 
         builder.Property(al => al.Id)
             .HasConversion(
-                pid => pid!.Value,
+                id => id.Value,
                 val => CurrencyExchangeRateId.Of(val)
             )
             .IsRequired();
 
         builder.Property(al => al.CurrencyCode)
             .IsRequired()
-            .HasMaxLength(5);
+            .HasMaxLength(3);
 
         builder.Property(j => j.Date)
             .IsRequired();
 
         builder.Property(l => l.BuyRate)
-            .HasColumnType("decimal(18,2)")
+            .HasColumnType("decimal(18,6)")
             .IsRequired();
 
         builder.Property(l => l.SellRate)
-            .HasColumnType("decimal(18,2)")
+            .HasColumnType("decimal(18,6)")
             .IsRequired();
+
+        // Único por divisa + fecha
+        builder.HasIndex(c => new { c.CurrencyCode, c.Date }).IsUnique();
     }
 }

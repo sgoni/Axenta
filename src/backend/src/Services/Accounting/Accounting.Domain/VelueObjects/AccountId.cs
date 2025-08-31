@@ -17,16 +17,9 @@ public record AccountId
         return new AccountId(value);
     }
 
-    public static AccountId Of(Guid? parentAccountId)
+    public static AccountId? FromNullable(Guid? value)
     {
-        //if (parentAccountId is null)
-        //    throw new DomainException("ParentAccountId is required");
-
-        //if (parentAccountId == Guid.Empty)
-        //    throw new DomainException("ParentAccountId cannot be empty");
-
-        if (!parentAccountId.HasValue || parentAccountId == Guid.Empty) return null;
-
-        return new AccountId(parentAccountId.Value);
+        if (!value.HasValue || value == Guid.Empty) return null;
+        return new AccountId(value.Value);
     }
 }

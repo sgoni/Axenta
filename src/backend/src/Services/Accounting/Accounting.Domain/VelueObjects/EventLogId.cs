@@ -11,8 +11,8 @@ public record EventLogId
 
     public static EventLogId Of(Guid value)
     {
-        ArgumentNullException.ThrowIfNull(value);
-        if (value == Guid.Empty) throw new DomainException("EventLogId cannot be empty");
+        if (value == Guid.Empty)
+            throw new DomainException("EventLogId cannot be empty");
 
         return new EventLogId(value);
     }
