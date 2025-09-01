@@ -6,5 +6,8 @@ public record EventLogId : GuidValueObject
     {
     }
 
-    public static EventLogId Of(Guid value) => new(value);
+    public static EventLogId Of(Guid value)
+    {
+        return new EventLogId(value);
+    }
 }

@@ -6,5 +6,8 @@ public record PeriodId : GuidValueObject
     {
     }
 
-    public static PeriodId Of(Guid value) => new(value);
+    public static PeriodId Of(Guid value)
+    {
+        return new PeriodId(value);
+    }
 }

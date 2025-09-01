@@ -16,17 +16,20 @@ public class DocumentReference : Entity<DocumentReferenceId>
         Description = description;
     }
 
-    public JournalEntryId JournalEntryId { get; private set; }
-    public string SourceType { get; private set; }
-    public SourceId SourceId { get; private set; }
-    public DocumentReferenceNumber ReferenceNumber { get; private set; }
-    public string Description { get; private set; }
+    public JournalEntryId JournalEntryId { get; private set; } = default!;
+    public string SourceType { get; private set; } = default!;
+    public SourceId SourceId { get; private set; } = default!;
+    public DocumentReferenceNumber ReferenceNumber { get; private set; } = default!;
+    public string Description { get; private set; } = default!;
 
     public static DocumentReference Create(JournalEntryId journalEntryId, string sourceType, SourceId sourceId,
         DocumentReferenceNumber referenceNumber, string description)
     {
         ArgumentNullException.ThrowIfNull(journalEntryId);
         ArgumentNullException.ThrowIfNull(sourceId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceType);
+
+        var id = DocumentReferenceId.Of(Guid.NewGuid());
         return new DocumentReference(journalEntryId, sourceType, sourceId, referenceNumber, description);
     }
 }

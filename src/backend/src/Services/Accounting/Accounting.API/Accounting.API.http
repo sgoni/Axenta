@@ -135,7 +135,7 @@ Content-Type: application/json
     "description": "Registro de ventas demo.",
     "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
-    "currencyCode": "CRC",
+    "currencyCode": "USD",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-14",
     "lines": [

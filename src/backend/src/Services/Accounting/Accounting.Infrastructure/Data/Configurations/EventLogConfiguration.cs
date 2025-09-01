@@ -19,9 +19,5 @@ public class EventLogConfiguration : IEntityTypeConfiguration<EventLog>
 
         builder.Property(e => e.ProcessedAt)
             .IsRequired();
-
-        // Opcional: idempotencia
-        builder.HasIndex(e => e.MessageId)
-            .IsUnique();
     }
 }

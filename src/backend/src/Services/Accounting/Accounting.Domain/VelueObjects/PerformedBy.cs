@@ -1,11 +1,14 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
 // PerformedBy
-public record PerformedBy : StringValueObject
+public record PerformedBy : GuidValueObject
 {
-    public PerformedBy(string value) : base(value, 100)
+    public PerformedBy(Guid value) : base(value)
     {
     }
 
-    public static PerformedBy Of(string value) => new(value);
+    public static PerformedBy Of(Guid value)
+    {
+        return new PerformedBy(value);
+    }
 }

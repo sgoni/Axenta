@@ -22,10 +22,10 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 
         builder.Property(j => j.PeriodId)
             .HasConversion(
-                pid => pid.Value,
+                pid => pid!.Value,
                 val => PeriodId.Of(val))
             .HasColumnName("PeriodId")
-            .IsRequired(false);
+            .IsRequired();
 
         builder.Property(j => j.CompanyId)
             .HasConversion(
@@ -39,7 +39,8 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
             .IsRequired(false); // ✅ opcional
 
         builder.Property(j => j.ExchangeRate)
-            .HasColumnType("decimal(18,2)")
+            .HasColumnType("decimal(18,6)")
+            .HasDefaultValue(0m)
             .IsRequired(false); // ✅ opcional
 
         builder.Property(j => j.ExchangeRateDate)
@@ -51,7 +52,7 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 
         builder.Property(j => j.ReversalJournalEntryId)
             .HasConversion(
-                rid => rid.Value,
+                rid => rid!.Value,
                 val => JournalEntryId.Of(val))
             .IsRequired(false);
 

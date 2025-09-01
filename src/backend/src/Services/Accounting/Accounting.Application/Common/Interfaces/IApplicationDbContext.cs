@@ -14,6 +14,6 @@ public interface IApplicationDbContext
 
     DbSet<EventLog> EventLogs { get; }
 
-    //DbSet<CostCenter> CostCenters { get; }
+    DbSet<CostCenter> CostCenters { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

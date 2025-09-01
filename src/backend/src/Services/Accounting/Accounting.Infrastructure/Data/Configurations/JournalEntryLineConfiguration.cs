@@ -10,7 +10,7 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
 
         builder.Property(l => l.Id)
             .HasConversion(
-                lineId => lineId.Value,
+                id => id.Value,
                 val => JournalEntryLineId.Of(val))
             .IsRequired();
 
@@ -18,39 +18,36 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
             .HasConversion(
                 jeId => jeId.Value,
                 val => JournalEntryId.Of(val))
-            .IsRequired()
-            .HasColumnName("JournalEntryId");
+            .IsRequired();
 
         builder.Property(l => l.AccountId)
             .HasConversion(
                 accId => accId.Value,
                 val => AccountId.Of(val))
-            .IsRequired()
-            .HasColumnName("AccountId");
-
-        // Mapeo de Debit como Money (decimal + currency)
+            .IsRequired();
+        // Debit (Amount + Currency)
         builder.OwnsOne(l => l.Debit, debit =>
         {
-            debit.Property(d => d.Amount)
+            debit.Property(p => p.Amount)
                 .HasColumnName("DebitAmount")
                 .HasColumnType("decimal(18,2)")
                 .IsRequired();
 
-            debit.Property(d => d.CurrencyCode)
+            debit.Property(p => p.CurrencyCode)
                 .HasColumnName("DebitCurrency")
                 .HasMaxLength(3)
                 .IsRequired();
         });
 
-        // Mapeo de Credit como Money (decimal + currency)
+        // Credit (Amount + Currency)
         builder.OwnsOne(l => l.Credit, credit =>
         {
-            credit.Property(c => c.Amount)
+            credit.Property(p => p.Amount)
                 .HasColumnName("CreditAmount")
                 .HasColumnType("decimal(18,2)")
                 .IsRequired();
 
-            credit.Property(c => c.CurrencyCode)
+            credit.Property(p => p.CurrencyCode)
                 .HasColumnName("CreditCurrency")
                 .HasMaxLength(3)
                 .IsRequired();

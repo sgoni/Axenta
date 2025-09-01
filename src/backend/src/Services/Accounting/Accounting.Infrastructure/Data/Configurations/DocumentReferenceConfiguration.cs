@@ -5,38 +5,38 @@ public class DocumentReferenceConfiguration : IEntityTypeConfiguration<DocumentR
     public void Configure(EntityTypeBuilder<DocumentReference> builder)
     {
         builder.ToTable("DocumentReferences");
-
         builder.HasKey(dr => dr.Id);
 
         builder.Property(dr => dr.Id)
             .HasConversion(
-                id => id.Value,
+                drId => drId.Value,
                 value => DocumentReferenceId.Of(value))
             .IsRequired();
 
         builder.Property(dr => dr.JournalEntryId)
             .HasConversion(
-                id => id.Value,
+                jeId => jeId.Value,
                 value => JournalEntryId.Of(value))
             .IsRequired();
 
         builder.Property(dr => dr.SourceType)
-            .IsRequired()
-            .HasMaxLength(100);
+            .HasMaxLength(100)
+            .IsRequired();
 
         builder.Property(dr => dr.SourceId)
             .HasConversion(
-                id => id.Value,
-                value => SourceId.Of(value))
+                src => src.Value,
+                val => SourceId.Of(val))
             .IsRequired();
 
         builder.Property(dr => dr.ReferenceNumber)
             .HasConversion(
-                vo => vo.Value,
-                value => DocumentReferenceNumber.Of(value))
-            .IsRequired()
-            .HasMaxLength(150);
+                jeId => jeId.Value,
+                val => DocumentReferenceNumber.Of(val))
+            .HasMaxLength(150)
+            .IsRequired();
 
+        //   builder.Property(dr => dr.ReferenceNumber).HasMaxLength(150).IsRequired();
         builder.Property(dr => dr.Description)
             .HasMaxLength(500);
 
@@ -45,7 +45,6 @@ public class DocumentReferenceConfiguration : IEntityTypeConfiguration<DocumentR
             .HasForeignKey(dr => dr.JournalEntryId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasIndex(dr => new { dr.JournalEntryId, dr.SourceType, dr.SourceId })
-            .IsUnique();
+        builder.HasIndex(dr => new { dr.JournalEntryId, dr.SourceType, dr.SourceId }).IsUnique();
     }
 }

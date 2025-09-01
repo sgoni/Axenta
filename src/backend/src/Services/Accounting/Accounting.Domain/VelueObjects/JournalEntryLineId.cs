@@ -6,5 +6,8 @@ public record JournalEntryLineId : GuidValueObject
     {
     }
 
-    public static JournalEntryLineId Of(Guid value) => new(value);
+    public static JournalEntryLineId Of(Guid value)
+    {
+        return new JournalEntryLineId(value);
+    }
 }

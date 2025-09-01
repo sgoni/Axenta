@@ -28,7 +28,7 @@ public record Money
     public Money Add(Money other)
     {
         if (CurrencyCode != other.CurrencyCode)
-            throw new DomainException("Cannot add Money with different currencies.");
+            throw new ArgumentException("Cannot add Money with different currencies.");
 
         return new Money(Amount + other.Amount, CurrencyCode);
     }
@@ -36,7 +36,7 @@ public record Money
     public Money Subtract(Money other)
     {
         if (CurrencyCode != other.CurrencyCode)
-            throw new DomainException("Cannot subtract Money with different currencies.");
+            throw new ArgumentException("Cannot subtract Money with different currencies.");
 
         return new Money(Amount - other.Amount, CurrencyCode);
     }

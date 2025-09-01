@@ -10,7 +10,7 @@ public record AccountId : GuidValueObject
     {
         return new AccountId(value);
     }
-    
+
     public static AccountId? FromNullable(Guid? parentAccountId)
     {
         if (!parentAccountId.HasValue || parentAccountId == Guid.Empty) return null;

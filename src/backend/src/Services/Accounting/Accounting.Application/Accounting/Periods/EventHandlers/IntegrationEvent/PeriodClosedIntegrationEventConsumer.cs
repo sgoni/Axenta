@@ -91,7 +91,7 @@ public class PeriodClosedIntegrationEventConsumer(
             message.ReversalJournalEntryId?.Value,
             message.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value,
-                    ln.AccountId.Value, ln.Debit, ln.Credit, ln.LineNumber)).ToList()
+                    ln.AccountId.Value, ln.Debit.Amount, ln.Credit.Amount, ln.LineNumber)).ToList()
         );
 
         return new UpdateJournalEntryCommand(journalEntryDto);

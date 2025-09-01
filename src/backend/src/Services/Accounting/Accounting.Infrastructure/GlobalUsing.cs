@@ -6,6 +6,7 @@ global using Accounting.Domain.VelueObjects;
 global using Accounting.Infrastructure.Data.Interceptors;
 global using Accounting.Infrastructure.Data;
 global using Accounting.Infrastructure.Data;
+global using Axenta.BuildingBlocks.ValueObjects;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
