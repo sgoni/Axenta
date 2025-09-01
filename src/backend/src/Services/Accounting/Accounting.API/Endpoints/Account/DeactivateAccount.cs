@@ -9,7 +9,7 @@
 
 public record DesactivateAccountResponse(bool IsSuccess);
 
-public class DesactivateAccount : ICarterModule
+public class DeactivateAccount : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -22,7 +22,7 @@ public class DesactivateAccount : ICarterModule
                     return Results.Ok(response);
                 }
             )
-            .WithName("DesactivateAccount")
+            .WithName("DeactivateAccount")
             .Produces<DesactivateAccountResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Desactivate an account.")

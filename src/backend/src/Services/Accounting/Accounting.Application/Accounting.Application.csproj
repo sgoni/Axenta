@@ -13,7 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Accounting\CostCenters\Commands\DesactivateCostCenter\"/>
         <Folder Include="Accounting\CostCenters\Queries\GetCostCenterById\"/>
         <Folder Include="Accounting\CostCenters\Queries\GetCostCenters\"/>
         <Folder Include="Accounting\CostCenters\Queries\GetCostCentersTree\"/>

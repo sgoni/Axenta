@@ -47,3 +47,4 @@ global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Accounting.Application.Accounting.CostCenters.Commands.ActiveCostCenter;
+global using Accounting.Application.Accounting.CostCenters.Commands.DeactivateCostCenter;

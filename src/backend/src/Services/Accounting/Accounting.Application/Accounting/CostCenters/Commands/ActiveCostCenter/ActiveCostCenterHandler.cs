@@ -6,7 +6,7 @@ public class ActiveCostCenterHandler(IApplicationDbContext dbContext)
     public async Task<ActiveCostCenterResult> Handle(ActiveCostCenterCommand command,
         CancellationToken cancellationToken)
     {
-        var costCenterId = AccountId.Of(command.CostCenterId);
+        var costCenterId = CostCenterId.Of(command.CostCenterId);
         var costCenter = await dbContext.CostCenters.FindAsync([costCenterId], cancellationToken);
 
         if (costCenter is null) throw new AccountNotFoundException(command.CostCenterId);

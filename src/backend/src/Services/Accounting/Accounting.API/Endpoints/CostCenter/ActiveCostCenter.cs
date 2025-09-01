@@ -1,6 +1,6 @@
 ﻿namespace Accounting.API.Endpoints.CostCenter;
 
-//- Accepts the cost center  ID as a parameter.
+//- Accepts the cost center ID as a parameter.
 //- Constructs a ActiveCostCenterCommand.
 //- Sends the command using MediatR.
 //- Returns a success or not found response.
@@ -12,7 +12,7 @@ public class ActiveCostCenter : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/accounts/{id}/activate", async (Guid Id, ISender sender) =>
+        app.MapPut("/cost-centers/{id}/activate", async (Guid Id, ISender sender) =>
                 {
                     var result = await sender.Send(new ActiveCostCenterCommand(Id));
 

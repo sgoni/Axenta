@@ -1052,6 +1052,31 @@ curl -X 'GET' \
 
 Administration of accounting costs
 
+#### Activate cost center.
+
+```http
+put /cost-centers/{id}/activate
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `Id` | UUID | Yes | Cost center ID to activate
+
+**Sample Application:**
+```bash
+ curl -X 'PUT' \
+  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
 #### Create a new cost center
 
 ```http
@@ -1151,7 +1176,31 @@ curl -X 'PUT' \
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 }
 ```
-        
+
+#### Deactivate cost center.
+
+```http
+put /cost-centers/{id}/deactivate
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `Id` | UUID | Yes | Cost center to deactivate
+
+**Sample Application:**
+```bash
+curl -X 'PUT' \
+  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/deactivate' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+
 ### Companies
 
 Company administration
