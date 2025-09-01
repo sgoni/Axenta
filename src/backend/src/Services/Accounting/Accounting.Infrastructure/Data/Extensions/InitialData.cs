@@ -1,6 +1,4 @@
-﻿using Axenta.BuildingBlocks.ValueObjects;
-
-namespace Accounting.Infrastructure.Data.Extensions;
+﻿namespace Accounting.Infrastructure.Data.Extensions;
 
 public class InitialData
 {

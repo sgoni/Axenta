@@ -15,6 +15,7 @@
   - [Journal Entries](#journal-entries)
   - [Document References](#document-references)
   - [Currency Exchange Rate](#currency-exchange-rates)
+  - [Cost Centers](#cost-centers)
   - [Companies](#companies)   
   - [Audit Logs](#audit-logs)
   - [Accounts](#accounts)
@@ -1047,6 +1048,110 @@ curl -X 'GET' \
 }
 ```
 
+### Cost Centers
+
+Administration of accounting costs
+
+#### Create a new cost center
+
+```http
+post /cost-centers
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `name` | string | No | Cost center name
+| `description` | string | Yes | Description of the cost center
+| `isActive` | bool | Yes | Active or inactive Cost Center
+| `companyId` | UUID | Yes | Legal identifier of the company
+| `parentCostCenterId` | UUID | Yes | Parent cost center ID
+
+**Body of the Request:**
+```json
+{
+  "costCenter": {
+    "name": "string",
+    "description": "string",
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+}
+```
+
+**Sample Application:**
+```bash
+  curl -X 'POST' 
+   'https://localhost:5050/cost-centers' 
+   -H 'accept: application/json' 
+   -H 'Content-Type: application/json' 
+   -d '{
+   "costCenter": {
+     "name": "Administración",
+     "description": "Gastos administrativos generales",
+     "isActive": true,
+     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+     "parentCostCenterId": null
+   }
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+#### Modify an existing cost center
+
+```http
+PUT /cost-centers
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `name` | string | No | Cost center name
+| `description` | string | Yes | Description of the cost center
+| `isActive` | bool | Yes | Active or inactive Cost Center
+| `parentCostCenterId` | UUID | Yes | Parent cost center ID
+
+**Body of the Request:**
+```json
+{
+  "costCenter": {
+    "name": "string",
+    "description": "string",
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+}
+```
+
+**Sample Application:**
+```bash
+curl -X 'PUT' \
+  'https://localhost:5050/cost-centers' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "costCenter": {
+    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+    "name": "Gastos operativos",
+    "description": "Gastos operativos",
+    "isActive": true,
+    "parentCostCenterId": null
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+        
 ### Companies
 
 Company administration

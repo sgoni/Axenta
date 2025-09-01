@@ -24,7 +24,7 @@ public class CostCenter : Entity<CostCenterId>
     public static CostCenter Create(CostCenterId id, string code, string name, string? description,
         CompanyId companyId, CostCenterId? parentCostCenterId, CostCenter? parentCostCenter = null)
     {
-        ValidateInputs(code, name, description);
+        ValidateInputs(name, description);
 
         if (parentCostCenter != null && parentCostCenter.GetLevel() >= 3)
             throw new DomainException("CostCenter cannot be created beyond level 3.");
@@ -41,17 +41,17 @@ public class CostCenter : Entity<CostCenterId>
         };
     }
 
-    public void Update(string code, string name, string? description, CostCenterId? parentCostCenterId,
+    public void Update(string name, string? description, bool isActive, CostCenterId? parentCostCenterId,
         CostCenter? parentCostCenter = null)
     {
-        ValidateInputs(code, name, description);
+        ValidateInputs(name, description);
 
         if (parentCostCenter != null && parentCostCenter.GetLevel() >= 3)
             throw new DomainException("CostCenter cannot be moved beyond level 3.");
 
-        Code = code;
         Name = name;
         Description = description;
+        isActive = isActive;
         ParentCostCenterId = parentCostCenterId;
         ParentCostCenter = parentCostCenter;
     }
@@ -80,10 +80,10 @@ public class CostCenter : Entity<CostCenterId>
         return level;
     }
 
-    private static void ValidateInputs(string code, string name, string? description)
+    private static void ValidateInputs(string name, string? description)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(code);
-        if (code.Length > 50) throw new DomainException("Code must be <= 50 characters");
+        //ArgumentException.ThrowIfNullOrWhiteSpace(code);
+        //if (code.Length > 50) throw new DomainException("Code must be <= 50 characters");
 
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         if (name.Length > 200) throw new DomainException("Name must be <= 200 characters");

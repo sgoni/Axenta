@@ -311,6 +311,64 @@ accept: application/json
 ###
 
 # curl -X 'POST' 
+#  'https://localhost:5050/cost-centers' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "costCenter": {
+#    "name": "Administración",
+#    "description": "Gastos administrativos generales",
+#    "isActive": true,
+#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+#    "parentCostCenterId": null
+#  }
+#}'
+POST {{API_HostAddress}}/cost-centers
+accept: application/json
+Content-Type: application/json
+
+{
+  "costCenter": {
+    "name": "Administración",
+    "description": "Gastos administrativos generales",
+    "isActive": true,
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "parentCostCenterId": null
+  }
+}
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "costCenter": {
+#    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+#    "name": "Gastos operativos",
+#    "description": "Gastos operativos",
+#    "isActive": true,
+#    "parentCostCenterId": null
+#  }
+#}'
+PUT {{API_HostAddress}}/cost-centers
+accept: application/json
+Content-Type: application/json
+
+{
+  "costCenter": {
+    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+    "name": "Gastos operativos",
+    "description": "Gastos operativos",
+    "isActive": true,
+    "parentCostCenterId": null
+  }
+}
+
+###
+
+# curl -X 'POST' 
 #  'https://localhost:5050/companies' 
 #  -H 'accept: application/json' 
 #  -H 'Content-Type: application/json' 

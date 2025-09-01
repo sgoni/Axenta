@@ -10,4 +10,10 @@ public record CostCenterId : GuidValueObject
     {
         return new CostCenterId(value);
     }
+
+    public static CostCenterId? FromNullable(Guid? parentAccountId)
+    {
+        if (!parentAccountId.HasValue || parentAccountId == Guid.Empty) return null;
+        return new CostCenterId(parentAccountId.Value);
+    }
 }

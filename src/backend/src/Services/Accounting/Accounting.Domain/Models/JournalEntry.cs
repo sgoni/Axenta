@@ -118,20 +118,13 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
         // If the seat declares currency at the heading level, all lines must match
         if (!string.IsNullOrWhiteSpace(CurrencyCode))
-        {
             if (!CurrencyCode!.Equals(debit.CurrencyCode, StringComparison.OrdinalIgnoreCase) ||
                 !CurrencyCode!.Equals(credit.CurrencyCode, StringComparison.OrdinalIgnoreCase))
-            {
                 throw new DomainException("Line currency must match JournalEntry currency.");
-            }
-        }
-        else
-        {
-            // Optional/Recommended: If the header does not define currency, force the company's base currency 
-            // Var Basecurrency = Company.Basecurrency; // If you have it in Company 
-            // if (debit.currencycode!
-        }
 
+        // Optional/Recommended: If the header does not define currency, force the company's base currency 
+        // Var Basecurrency = Company.Basecurrency; // If you have it in Company 
+        // if (debit.currencycode!
         var journalEntryLine = JournalEntryLine.Create(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
     }
