@@ -1127,6 +1127,48 @@ post /cost-centers
 }
 ```
 
+#### Get list of accounting accounts
+
+```http
+GET /cost-centers
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `PageIndex` | integer | 0 | Page number
+| `PageSize` | integer | 10 | Elements per page
+| `costCenterId` | UUID | Yes | Cost center ID to get
+
+**Sample Application:**
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "costCenters": {
+    "pageIndex": 0,
+    "pageSize": 0,
+    "count": 0,
+    "data": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "code": "string",
+        "name": "string",
+        "description": "string",
+        "isActive": true,
+        "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      }
+    ]
+  }
+}
+```
+
 #### Modify an existing cost center
 
 ```http
@@ -1204,32 +1246,35 @@ curl -X 'PUT' \
 #### Get Cost Center by ID
 
 ```http
-GET /cost-centers/{costCenterId}
+GET /cost-centers/{costCenterId}/{CompanyId}
 ```
 
 **Parameters:**
 | Parameter | Type | Required | Description
 |-----|-----|-----|-----
 | `costCenterId` | UUID | Yes | Cost center ID to get
+| `companyId` | UUID | Yes | Company ID
 
 **Sample Application:**
 ```bash
-curl -X 'GET' \
-  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26' \
+ curl -X 'GET' \
+  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
   -H 'accept: application/json'
 ```
 
 **Sample Answer:**
 ```json
+{
   "costCenterDetail": {
-    "id": "cfc933f3-0ba7-41b1-bbcd-9a766e547b26",
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "code": "string",
     "name": "string",
     "description": "string",
-    "isActive": bool,
-    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
-    "parentCostCenterId": "cfc933f3-0ba7-41b1-bbcd-9a766e547b26"
+    "isActive": true,
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
   }
+}
 ```
 
 ### Companies

@@ -14,9 +14,9 @@ public class GetCostCenterById : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/cost-centers/{costCenterId}", async (Guid costCenterId, ISender sender) =>
+        app.MapGet("/cost-centers/{costCenterId}/{CompanyId}", async (Guid costCenterId, Guid companyId, ISender sender) =>
             {
-                var result = await sender.Send(new GetCostCenterByIdQuery(costCenterId));
+                var result = await sender.Send(new GetCostCenterByIdQuery(costCenterId, companyId));
 
                 var response = result.Adapt<GetCostCenterByIdResponse>();
 

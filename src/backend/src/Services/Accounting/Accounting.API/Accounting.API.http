@@ -347,6 +347,14 @@ Content-Type: application/json
 
 ###
 
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
+
+###
+
 # curl -X 'PUT' 
 #  'https://localhost:5050/cost-centers' 
 #  -H 'accept: application/json' 
@@ -374,13 +382,20 @@ Content-Type: application/json
   }
 }
 
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
 
 ###
 
 # curl -X 'PUT' 
-#  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/deactivate' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/deactivate' 
 #  -H 'accept: application/json'
-PUT https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/deactivate
+PUT {{API_HostAddress}}/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/deactivate
 accept: application/json
 
 ###
@@ -415,9 +430,9 @@ Content-Type: application/json
 ###
 
 # curl -X 'GET' 
-#  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26
+GET {{API_HostAddress}}/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###
