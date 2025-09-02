@@ -1201,6 +1201,37 @@ curl -X 'PUT' \
   "isSuccess": true
 }
 
+#### Get Cost Center by ID
+
+```http
+GET /cost-centers/{costCenterId}
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `costCenterId` | UUID | Yes | Cost center ID to get
+
+**Sample Application:**
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+  "costCenterDetail": {
+    "id": "cfc933f3-0ba7-41b1-bbcd-9a766e547b26",
+    "code": "string",
+    "name": "string",
+    "description": "string",
+    "isActive": bool,
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "parentCostCenterId": "cfc933f3-0ba7-41b1-bbcd-9a766e547b26"
+  }
+```
+
 ### Companies
 
 Company administration

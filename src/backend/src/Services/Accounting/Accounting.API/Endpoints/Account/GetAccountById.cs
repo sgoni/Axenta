@@ -1,7 +1,7 @@
 ﻿namespace Accounting.API.Endpoints.Account;
 
 //- Accepts a customer ID.
-//- Uses a GetOrdersByCustomerQuery to fetch orders.
+//- Uses a GetAccountByIdQuery to fetch orders.
 //- Returns the list of orders for that customer.m
 
 //public record GetAccountByIdRequest(Guid AccountId);
