@@ -14,13 +14,13 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext, IPublishEndpoin
         var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
 
         if (company is null || company is null)
-            throw new CompanyNotFoundException(command.Period.CompanyId);
+            throw EntityNotFoundException.For<Company>(command.Period.CompanyId);
 
         // Check period
         var periodId = PeriodId.Of(command.Period.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(command.Period.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(command.Period.PeriodId);
         await PeriodIsClose(command.Period.PeriodId, cancellationToken);
 
         var eventMessage = command.Period.Adapt<PeriodClosedIntegrationEvent>();
@@ -38,7 +38,7 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext, IPublishEndpoin
         var periodId = PeriodId.Of(id);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(id);
+        if (period is null) throw EntityNotFoundException.For<Period>(id);
 
         if (period.IsClosed)
             throw new Exception($"The period id: {id} is now closed.");

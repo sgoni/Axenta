@@ -26,7 +26,7 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             .FirstOrDefaultAsync(cancellationToken);
 
         if (journalEntry is null)
-            throw new JournalEntryNotFoundExceptions(command.JournalEntry.Id);
+            throw EntityNotFoundException.For<JournalEntry>(command.JournalEntry.Id);
 
         // Validation accounting period is Open
         await PeriodIsOpen(command, cancellationToken);
@@ -55,7 +55,7 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
         var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(command.JournalEntry.PeriodId);
 
         if (period.IsClosed)
             throw new BadRequestException("The accounting period is closed and seats cannot be modified.");

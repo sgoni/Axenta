@@ -13,7 +13,7 @@ public class ReverseJournalEntryHandler(IApplicationDbContext dbContext)
             .FirstOrDefaultAsync(cancellationToken);
 
         if (journalEntry is null)
-            throw new JournalEntryNotFoundExceptions(command.ReversalJournalEntryId);
+            throw EntityNotFoundException.For<JournalEntry>(command.ReversalJournalEntryId);
 
         //Validation accounting period is Open
         await PeriodIsOpen(journalEntry, cancellationToken);
@@ -30,7 +30,7 @@ public class ReverseJournalEntryHandler(IApplicationDbContext dbContext)
     {
         var period = await dbContext.Periods.FindAsync(journalEntry.PeriodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(period.Id.Value);
+        if (period is null) throw EntityNotFoundException.For<Period>(period.Id.Value);
 
         //if (period.IsClosed)
         //    throw new BadRequestException("The accounting period is closed, it cannot be reversed.");

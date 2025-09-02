@@ -12,7 +12,7 @@ public class DeleteAccountHandler(IApplicationDbContext dbContext)
         var accountId = AccountId.Of(command.accountId);
         var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
 
-        if (account is null) throw new AccountNotFoundException(command.accountId);
+        if (account is null) throw EntityNotFoundException.For<Account>(command.accountId);
 
         dbContext.Accounts.Remove(account);
         await dbContext.SaveChangesAsync(cancellationToken);

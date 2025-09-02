@@ -12,7 +12,7 @@ public class UpdateCompanyHandler(IApplicationDbContext dbContext)
         var companyId = CompanyId.Of(command.Company.Id);
         var company = await dbContext.Companies.FindAsync([companyId], cancellationToken);
 
-        if (company is null) throw new CompanyNotFoundException(command.Company.Id);
+        if (company is null) throw EntityNotFoundException.For<Company>(command.Company.Id);
 
         UpdateCompanytWithNewValues(company, command.Company);
         await dbContext.SaveChangesAsync(cancellationToken);

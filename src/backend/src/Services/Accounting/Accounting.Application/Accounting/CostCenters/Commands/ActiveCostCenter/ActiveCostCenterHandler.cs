@@ -9,7 +9,7 @@ public class ActiveCostCenterHandler(IApplicationDbContext dbContext)
         var costCenterId = CostCenterId.Of(command.CostCenterId);
         var costCenter = await dbContext.CostCenters.FindAsync([costCenterId], cancellationToken);
 
-        if (costCenter is null) throw new AccountNotFoundException(command.CostCenterId);
+        if (costCenter is null) throw EntityNotFoundException.For<Account>(command.CostCenterId);
 
         costCenter.Activate();
         await dbContext.SaveChangesAsync(cancellationToken);

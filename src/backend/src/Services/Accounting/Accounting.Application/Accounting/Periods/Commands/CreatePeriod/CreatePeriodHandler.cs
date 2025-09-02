@@ -15,7 +15,7 @@ public class CreatePeriodHandler(IApplicationDbContext dbContext)
         var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
 
         if (company is null)
-            throw new CompanyNotFoundException(command.Period.CompanyId);
+            throw EntityNotFoundException.For<Company>(command.Period.CompanyId);
 
         var exists = await dbContext.Periods
             .AnyAsync(p => p.Year == DateTime.Now.Year && p.Month == DateTime.Now.Month);

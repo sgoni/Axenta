@@ -13,7 +13,7 @@ public class UpdateCostCenterHandler(IApplicationDbContext dbContext)
         var costCenterId = CostCenterId.Of(command.CostCenter.Id);
         var costCenter = await dbContext.CostCenters.FindAsync([costCenterId], cancellationToken);
 
-        if (costCenter is null) throw new AccountNotFoundException(command.CostCenter.Id);
+        if (costCenter is null) throw EntityNotFoundException.For<Account>(command.CostCenter.Id);
 
         UpdateCostCenterWithNewValues(costCenter, command.CostCenter);
         await dbContext.SaveChangesAsync(cancellationToken);

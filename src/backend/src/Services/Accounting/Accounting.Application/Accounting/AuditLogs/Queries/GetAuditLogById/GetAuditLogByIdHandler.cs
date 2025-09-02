@@ -12,7 +12,7 @@ public class GetAuditLogByIdHandler(IApplicationDbContext dbContext)
         var audilogId = AuditLogId.Of(query.AuditLogId);
         var auditLog = await dbContext.AuditLogs.FindAsync(audilogId, cancellationToken);
 
-        if (auditLog == null) throw new AuditlogNotFoundException(query.AuditLogId);
+        if (auditLog == null) throw EntityNotFoundException.For<AuditLog>(query.AuditLogId);
 
         return new GetAuditLogByIdQueryResult(auditLog.ToAuditLogDto());
     }
