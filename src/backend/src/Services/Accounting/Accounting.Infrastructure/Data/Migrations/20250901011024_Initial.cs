@@ -17,7 +17,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
@@ -57,7 +57,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     TaxId = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Country = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    CurrencyCode = table.Column<string>(type: "character varying(5)", maxLength: 5, nullable: false),
+                    CurrencyCode = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
@@ -74,10 +74,10 @@ namespace Accounting.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    CurrencyCode = table.Column<string>(type: "character varying(5)", maxLength: 5, nullable: false),
+                    CurrencyCode = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
                     Date = table.Column<DateOnly>(type: "date", nullable: false),
-                    BuyRate = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    SellRate = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    BuyRate = table.Column<decimal>(type: "numeric(18,6)", nullable: false),
+                    SellRate = table.Column<decimal>(type: "numeric(18,6)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
@@ -110,12 +110,12 @@ namespace Accounting.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    PeriodId = table.Column<Guid>(type: "uuid", nullable: true),
+                    PeriodId = table.Column<Guid>(type: "uuid", nullable: false),
                     CompanyId = table.Column<Guid>(type: "uuid", nullable: false),
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
-                    CurrencyCode = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
-                    ExchangeRate = table.Column<decimal>(type: "numeric(18,2)", nullable: false, defaultValue: 0m),
+                    CurrencyCode = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: true),
+                    ExchangeRate = table.Column<decimal>(type: "numeric(18,6)", nullable: true, defaultValue: 0m),
                     ExchangeRateDate = table.Column<DateOnly>(type: "date", nullable: true),
                     JournalEntryType = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: false),
                     ReversalJournalEntryId = table.Column<Guid>(type: "uuid", nullable: true),
@@ -156,12 +156,12 @@ namespace Accounting.Infrastructure.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Name = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    AccountTypeId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ParentId = table.Column<Guid>(type: "uuid", nullable: true),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     Level = table.Column<int>(type: "integer", nullable: false),
                     IsMovable = table.Column<bool>(type: "boolean", nullable: false),
+                    AccountTypeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ParentId = table.Column<Guid>(type: "uuid", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
@@ -185,6 +185,39 @@ namespace Accounting.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CostCenters",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ParentCostCenterId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "text", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CostCenters", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CostCenters_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CostCenters_CostCenters_ParentCostCenterId",
+                        column: x => x.ParentCostCenterId,
+                        principalTable: "CostCenters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DocumentReferences",
                 columns: table => new
                 {
@@ -193,7 +226,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                     SourceType = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     SourceId = table.Column<Guid>(type: "uuid", nullable: false),
                     ReferenceNumber = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    Description = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
                     LastModified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
@@ -217,8 +250,10 @@ namespace Accounting.Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     JournalEntryId = table.Column<Guid>(type: "uuid", nullable: false),
                     AccountId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Debit = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    Credit = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    DebitAmount = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    DebitCurrency = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
+                    CreditAmount = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    CreditCurrency = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
                     LineNumber = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
@@ -247,10 +282,43 @@ namespace Accounting.Infrastructure.Data.Migrations
                 column: "ParentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Companies_TaxId",
+                table: "Companies",
+                column: "TaxId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CostCenters_Code_CompanyId",
+                table: "CostCenters",
+                columns: new[] { "Code", "CompanyId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CostCenters_CompanyId",
+                table: "CostCenters",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CostCenters_ParentCostCenterId",
+                table: "CostCenters",
+                column: "ParentCostCenterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CurrencyExchangeRates_CurrencyCode_Date",
+                table: "CurrencyExchangeRates",
+                columns: new[] { "CurrencyCode", "Date" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DocumentReferences_JournalEntryId_SourceType_SourceId",
                 table: "DocumentReferences",
                 columns: new[] { "JournalEntryId", "SourceType", "SourceId" },
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JournalEntries_CompanyId_Date",
+                table: "JournalEntries",
+                columns: new[] { "CompanyId", "Date" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_JournalEntryLines_JournalEntryId_Id_LineNumber",
@@ -275,7 +343,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                 name: "AuditLogs");
 
             migrationBuilder.DropTable(
-                name: "Companies");
+                name: "CostCenters");
 
             migrationBuilder.DropTable(
                 name: "CurrencyExchangeRates");
@@ -294,6 +362,9 @@ namespace Accounting.Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AccountTypes");
+
+            migrationBuilder.DropTable(
+                name: "Companies");
 
             migrationBuilder.DropTable(
                 name: "JournalEntries");

@@ -16,13 +16,8 @@ public class EventLogRepository : IEventLogRepository
 
     public async Task SaveProcessedAsync(Guid messageId)
     {
-        _dbContext.EventLogs.Add(new EventLog
-        {
-            Id = EventLogId.Of(Guid.NewGuid()),
-            MessageId = messageId,
-            ProcessedAt = DateTime.UtcNow
-        });
-
+        var eventLog = EventLog.Create(messageId);
+        _dbContext.EventLogs.Add(eventLog);
         await _dbContext.SaveChangesAsync(default);
     }
 }

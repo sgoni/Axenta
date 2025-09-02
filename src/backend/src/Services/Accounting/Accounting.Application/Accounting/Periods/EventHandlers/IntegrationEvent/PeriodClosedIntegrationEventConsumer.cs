@@ -59,7 +59,7 @@ public class PeriodClosedIntegrationEventConsumer(
         var companyId = CompanyId.Of(@event.CompanyId);
         var company = await dbContext.Companies.FindAsync([companyId], default);
 
-        if (company is null) throw new CompanyNotFoundException(@event.CompanyId);
+        if (company is null) throw EntityNotFoundException.For<Company>(@event.CompanyId);
     }
 
     private async Task<Period> ValidateAndClosePeriod(PeriodClosedIntegrationEvent @event)
@@ -68,7 +68,7 @@ public class PeriodClosedIntegrationEventConsumer(
         var periodId = PeriodId.Of(@event.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId).ConfigureAwait(false);
 
-        if (period is null) throw new PeriodNotFoundException(@event.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(@event.PeriodId);
 
         // Domain rule (does not persist, does not touch infra)
         period.Close();
@@ -91,7 +91,7 @@ public class PeriodClosedIntegrationEventConsumer(
             message.ReversalJournalEntryId?.Value,
             message.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value,
-                    ln.AccountId.Value, ln.Debit, ln.Credit, ln.LineNumber)).ToList()
+                    ln.AccountId.Value, ln.Debit.Amount, ln.Credit.Amount, ln.LineNumber)).ToList()
         );
 
         return new UpdateJournalEntryCommand(journalEntryDto);

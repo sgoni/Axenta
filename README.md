@@ -15,6 +15,7 @@
   - [Journal Entries](#journal-entries)
   - [Document References](#document-references)
   - [Currency Exchange Rate](#currency-exchange-rates)
+  - [Cost Centers](#cost-centers)
   - [Companies](#companies)   
   - [Audit Logs](#audit-logs)
   - [Accounts](#accounts)
@@ -1044,6 +1045,270 @@ curl -X 'GET' \
     "buyRate": 499,
     "sellRate": 513
   }
+}
+```
+
+### Cost Centers
+
+Administration of accounting costs
+
+#### Activate cost center.
+
+```http
+put /cost-centers/{id}/activate
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `Id` | UUID | Yes | Cost center ID to activate
+
+**Sample Application:**
+```bash
+ curl -X 'PUT' \
+  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+```
+
+#### Create a new cost center
+
+```http
+post /cost-centers
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `name` | string | No | Cost center name
+| `description` | string | Yes | Description of the cost center
+| `isActive` | bool | Yes | Active or inactive Cost Center
+| `companyId` | UUID | Yes | Legal identifier of the company
+| `parentCostCenterId` | UUID | Yes | Parent cost center ID
+
+**Body of the Request:**
+```json
+{
+  "costCenter": {
+    "name": "string",
+    "description": "string",
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+}
+```
+
+**Sample Application:**
+```bash
+  curl -X 'POST' 
+   'https://localhost:5050/cost-centers' 
+   -H 'accept: application/json' 
+   -H 'Content-Type: application/json' 
+   -d '{
+   "costCenter": {
+     "name": "Administración",
+     "description": "Gastos administrativos generales",
+     "isActive": true,
+     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+     "parentCostCenterId": null
+   }
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+#### Get list of accounting accounts
+
+```http
+GET /cost-centers
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `PageIndex` | integer | 0 | Page number
+| `PageSize` | integer | 10 | Elements per page
+| `costCenterId` | UUID | Yes | Cost center ID to get
+
+**Sample Application:**
+```bash
+curl -X 'GET' \
+  'https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "costCenters": {
+    "pageIndex": 0,
+    "pageSize": 0,
+    "count": 0,
+    "data": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "code": "string",
+        "name": "string",
+        "description": "string",
+        "isActive": true,
+        "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      }
+    ]
+  }
+}
+```
+
+#### Modify an existing cost center
+
+```http
+PUT /cost-centers
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `name` | string | No | Cost center name
+| `description` | string | Yes | Description of the cost center
+| `isActive` | bool | Yes | Active or inactive Cost Center
+| `parentCostCenterId` | UUID | Yes | Parent cost center ID
+
+**Body of the Request:**
+```json
+{
+  "costCenter": {
+    "name": "string",
+    "description": "string",
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+}
+```
+
+**Sample Application:**
+```bash
+curl -X 'PUT' \
+  'https://localhost:5050/cost-centers' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "costCenter": {
+    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+    "name": "Gastos operativos",
+    "description": "Gastos operativos",
+    "isActive": true,
+    "parentCostCenterId": null
+  }
+}'
+```
+
+**Sample Answer:**
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+#### Deactivate cost center.
+
+```http
+put /cost-centers/{id}/deactivate
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `Id` | UUID | Yes | Cost center to deactivate
+
+**Sample Application:**
+```bash
+curl -X 'PUT' \
+  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/deactivate' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "isSuccess": true
+}
+
+#### Get Cost Center by ID
+
+```http
+GET /cost-centers/{costCenterId}/{CompanyId}
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `costCenterId` | UUID | Yes | Cost center ID to get
+| `companyId` | UUID | Yes | Company ID
+
+**Sample Application:**
+```bash
+ curl -X 'GET' \
+  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
+  -H 'accept: application/json'
+```
+
+**Sample Answer:**
+```json
+{
+  "costCenterDetail": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "code": "string",
+    "name": "string",
+    "description": "string",
+    "isActive": true,
+    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+}
+```
+
+#### Return hierarchical tree of cost centers by company
+
+```http
+GET /cost-centers/{companyId}/tree
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `companyId` | UUID | Yes | Company ID
+
+**Sample Application:**
+```bash
+ curl -X 'GET' \
+  'https://localhost:5050/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree' \
+  -H 'accept: application/json'
+```
+
+**Sample Response:**
+```json
+{
+  "costCenterTree": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "code": "string",
+      "name": "string",
+      "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "children": [
+        "string"
+      ]
+    }
+  ]
 }
 ```
 

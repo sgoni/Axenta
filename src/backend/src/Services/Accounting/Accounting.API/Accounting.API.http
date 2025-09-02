@@ -135,7 +135,7 @@ Content-Type: application/json
     "description": "Registro de ventas demo.",
     "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
-    "currencyCode": "CRC",
+    "currencyCode": "USD",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-14",
     "lines": [
@@ -310,6 +310,104 @@ accept: application/json
 
 ###
 
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' 
+#  -H 'accept: application/json'
+PUT https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate
+accept: application/json
+
+###
+
+# curl -X 'POST' 
+#  'https://localhost:5050/cost-centers' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "costCenter": {
+#    "name": "Administración",
+#    "description": "Gastos administrativos generales",
+#    "isActive": true,
+#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+#    "parentCostCenterId": null
+#  }
+#}'
+POST {{API_HostAddress}}/cost-centers
+accept: application/json
+Content-Type: application/json
+
+{
+  "costCenter": {
+    "name": "Administración",
+    "description": "Gastos administrativos generales",
+    "isActive": true,
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "parentCostCenterId": null
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "costCenter": {
+#    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+#    "name": "Gastos operativos",
+#    "description": "Gastos operativos",
+#    "isActive": true,
+#    "parentCostCenterId": null
+#  }
+#}'
+PUT {{API_HostAddress}}/cost-centers
+accept: application/json
+Content-Type: application/json
+
+{
+  "costCenter": {
+    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+    "name": "Gastos operativos",
+    "description": "Gastos operativos",
+    "isActive": true,
+    "parentCostCenterId": null
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/deactivate' 
+#  -H 'accept: application/json'
+PUT {{API_HostAddress}}/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/deactivate
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree
+accept: application/json
+
+###
+
 # curl -X 'POST' 
 #  'https://localhost:5050/companies' 
 #  -H 'accept: application/json' 
@@ -336,6 +434,14 @@ Content-Type: application/json
     "isActive": true
   }
 }
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
 
 ###
 

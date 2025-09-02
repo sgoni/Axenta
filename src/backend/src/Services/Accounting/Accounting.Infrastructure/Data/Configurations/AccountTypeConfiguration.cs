@@ -10,7 +10,7 @@ public class AccountTypeConfiguration : IEntityTypeConfiguration<AccountType>
 
         builder.Property(at => at.Id)
             .HasConversion(
-                pid => pid!.Value,
+                id => id.Value,
                 val => AccountTypeId.Of(val)
             )
             .IsRequired();
@@ -20,8 +20,9 @@ public class AccountTypeConfiguration : IEntityTypeConfiguration<AccountType>
             .HasMaxLength(100);
 
         builder.Property(at => at.Description)
-            .HasMaxLength(250);
+            .HasMaxLength(500);
 
+        // Relación uno a muchos con Accounts
         builder.HasMany(at => at.Accounts)
             .WithOne(a => a.Type)
             .HasForeignKey(a => a.AccountTypeId)

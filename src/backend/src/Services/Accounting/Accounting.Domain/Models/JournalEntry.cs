@@ -109,37 +109,44 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return reversal;
     }
 
-    public void AddLine(AccountId accountId, decimal debit, decimal credit, int lineNumber = 1)
+    public void AddLine(AccountId accountId, Money debit, Money credit, int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(debit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentNullException.ThrowIfNull(accountId);
+        ArgumentNullException.ThrowIfNull(debit);
+        ArgumentNullException.ThrowIfNull(credit);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
-        var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
+        // If the seat declares currency at the heading level, all lines must match
+        if (!string.IsNullOrWhiteSpace(CurrencyCode))
+            if (!CurrencyCode!.Equals(debit.CurrencyCode, StringComparison.OrdinalIgnoreCase) ||
+                !CurrencyCode!.Equals(credit.CurrencyCode, StringComparison.OrdinalIgnoreCase))
+                throw new DomainException("Line currency must match JournalEntry currency.");
+
+        // Optional/Recommended: If the header does not define currency, force the company's base currency 
+        // Var Basecurrency = Company.Basecurrency; // If you have it in Company 
+        // if (debit.currencycode!
+        var journalEntryLine = JournalEntryLine.Create(Id, accountId, debit, credit, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
     }
 
-    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, decimal debit, decimal credit,
+    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, Money debit, Money credit,
         int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(debit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentOutOfRangeException.ThrowIfNegative(debit.Amount);
+        ArgumentOutOfRangeException.ThrowIfNegative(credit.Amount);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
         var line = _journalEntryLines.SingleOrDefault(x => x.Id == IdLine);
-        RemoveLine(line.Id);
-
-        var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
-        _journalEntryLines.Add(journalEntryLine);
+        line.Update(line.Debit, line.Credit, line.LineNumber);
     }
 
-    public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)
+    public void AddDocumentReference(string sourceType, SourceId sourceId, DocumentReferenceNumber referenceNumber,
+        string description)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceType);
         ArgumentNullException.ThrowIfNull(sourceId);
 
-        var documentReference = new DocumentReference(Id, sourceType, sourceId, referenceNumber, description);
+        var documentReference = DocumentReference.Create(Id, sourceType, sourceId, referenceNumber, description);
         _documentReferences.Add(documentReference);
     }
 
@@ -157,10 +164,17 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
     public void ValidateBalance()
     {
-        var totalDebit = _journalEntryLines.Sum(l => l.Debit);
-        var totalCredit = _journalEntryLines.Sum(l => l.Credit);
+        if (!_journalEntryLines.Any())
+            throw new DomainException("Journal entry must have at least one line.");
 
-        if (totalDebit != totalCredit)
-            throw new DomainException("The accounting seat does not square: debits ≠ credits.");
+        var totalDebit = _journalEntryLines.Select(l => l.Debit)
+            .Aggregate(Money.Of(0, _journalEntryLines.First().Debit.CurrencyCode), (acc, m) => acc.Add(m));
+
+        var totalCredit = _journalEntryLines.Select(l => l.Credit)
+            .Aggregate(Money.Of(0, _journalEntryLines.First().Credit.CurrencyCode), (acc, m) => acc.Add(m));
+
+        if (totalDebit.Amount != totalCredit.Amount)
+            throw new DomainException(
+                $"Unbalanced entry. Debit {totalDebit.Amount} {totalDebit.CurrencyCode} != Credit {totalCredit.Amount} {totalCredit.CurrencyCode}");
     }
 }

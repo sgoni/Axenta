@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
+﻿using Axenta.BuildingBlocks.ValueObjects;
+
+namespace Accounting.Application.Accounting.JournalEntries.Commands.CreateJournalEntry;
 
 public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateJournalEntryCommand, CreateJournalEntryResult>
@@ -26,7 +28,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(command.JournalEntry.PeriodId);
 
         if (period.IsClosed)
             throw new BadRequestException("The accounting period is closed and seats cannot be registered.");
@@ -51,8 +53,8 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
         foreach (var journalEntryLineDto in journalEntryDto.Lines)
             newJournalEntry.AddLine(
                 AccountId.Of(journalEntryLineDto.AccountId),
-                journalEntryLineDto.Debit,
-                journalEntryLineDto.Credit,
+                Money.Of(journalEntryLineDto.Debit, journalEntryDto.CurrencyCode),
+                Money.Of(journalEntryLineDto.Credit, journalEntryDto.CurrencyCode),
                 lineNumber++
             );
 

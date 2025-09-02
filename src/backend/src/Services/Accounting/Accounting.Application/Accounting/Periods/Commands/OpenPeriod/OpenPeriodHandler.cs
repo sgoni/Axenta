@@ -30,7 +30,7 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext, IPublishEndpoint
         var periodId = PeriodId.Of(id);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(id);
+        if (period is null) throw EntityNotFoundException.For<Period>(id);
 
         if (!period.IsClosed)
             throw new Exception($"The period id: {id} is now opened.");

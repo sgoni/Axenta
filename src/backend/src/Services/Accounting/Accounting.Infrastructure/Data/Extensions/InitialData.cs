@@ -372,14 +372,14 @@ public class InitialData
 
             journalEntry1.AddLine(
                 AccountId.Of(new Guid("b603261e-272e-4aa6-9398-0dfb1a617d89")),
-                5000000,
-                0
+                Money.Of(5000000, "CRC"),
+                Money.Of(0, "CRC")
             );
 
             journalEntry1.AddLine(
                 AccountId.Of(new Guid("a91a4d34-c88e-4f29-8e31-03986820bada")),
-                0,
-                5000000,
+                Money.Of(0, "CRC"),
+                Money.Of(5000000, "CRC"),
                 2
             );
 
@@ -400,21 +400,21 @@ public class InitialData
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("66eee587-bee4-4cac-af59-b8e8a0b77206")),
-                15000000,
-                0
+                Money.Of(15000000, "CRC"),
+                Money.Of(0, "CRC")
             );
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("7446ddcb-7be6-46e4-94de-1b5275cd8b0f")),
-                35000000,
-                0,
+                Money.Of(35000000, "CRC"),
+                Money.Of(0, "CRC"),
                 2
             );
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("f4c0eb3c-eefa-49e2-b72b-01b55105d7b7")),
-                0,
-                50000000,
+                Money.Of(0, "CRC"),
+                Money.Of(50000000, "CRC"),
                 3
             );
 
@@ -435,14 +435,14 @@ public class InitialData
 
             journalEntry3.AddLine(
                 AccountId.Of(new Guid("057a93fb-c93b-4cf7-a79e-fab3583f2f13")),
-                2000000,
-                0
+                Money.Of(2000000, "CRC"),
+                Money.Of(0, "CRC")
             );
 
             journalEntry3.AddLine(
                 AccountId.Of(new Guid("a04ee151-03d4-4840-8697-600360d6977d")),
-                0,
-                2000000,
+                Money.Of(0, "CRC"),
+                Money.Of(2000000, "CRC"),
                 2
             );
 
@@ -463,14 +463,14 @@ public class InitialData
 
             journalEntry4.AddLine(
                 AccountId.Of(new Guid("4d9adb9e-ad24-4e0e-803a-7b25e953e560")),
-                2500000,
-                0
+                Money.Of(2500000, "CRC"),
+                Money.Of(0, "CRC")
             );
 
             journalEntry4.AddLine(
                 AccountId.Of(new Guid("a06a0526-6d78-487d-bca8-d4b4cb57ac00")),
-                0,
-                2500000,
+                Money.Of(0, "CRC"),
+                Money.Of(2500000, "CRC"),
                 2
             );
 
@@ -491,14 +491,14 @@ public class InitialData
 
             journalEntry5.AddLine(
                 AccountId.Of(new Guid("a04ee151-03d4-4840-8697-600360d6977d")),
-                1000000,
-                0
+                Money.Of(1000000, "CRC"),
+                Money.Of(0, "CRC")
             );
 
             journalEntry5.AddLine(
                 AccountId.Of(new Guid("23b79d9f-96d3-4c20-ac8e-4387a70152b3")),
-                0,
-                1000000,
+                Money.Of(0, "CRC"),
+                Money.Of(1000000, "CRC"),
                 2
             );
 
@@ -519,21 +519,21 @@ public class InitialData
 
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("e769d46b-268d-463c-8074-71983ead323f")),
-                800000,
-                0
+                Money.Of(800000, "CRC"),
+                Money.Of(0, "CRC")
             );
 
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("e19f4576-6224-40e3-8b03-01343b413df7")),
-                500000,
-                0,
+                Money.Of(500000, "CRC"),
+                Money.Of(0, "CRC"),
                 2
             );
 
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("a06a0526-6d78-487d-bca8-d4b4cb57ac00")),
-                0,
-                1300000,
+                Money.Of(0, "CRC"),
+                Money.Of(1300000, "CRC"),
                 3
             );
 
@@ -550,7 +550,8 @@ public class InitialData
                 JournalEntryId.Of(new Guid("0b55189d-ce04-471f-abbb-f73208be063a")),
                 "Loan",
                 SourceId.Of(new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")),
-                "123456789", "Registro de préstamo con la entidad financiera"
+                DocumentReferenceNumber.Of("123456789"),
+                "Registro de préstamo con la entidad financiera"
             )
         };
 

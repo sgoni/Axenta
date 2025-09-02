@@ -8,7 +8,7 @@ public class ActiveAccountHandler(IApplicationDbContext dbContext)
         var accountId = AccountId.Of(command.accountId);
         var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
 
-        if (account is null) throw new AccountNotFoundException(command.accountId);
+        if (account is null) throw EntityNotFoundException.For<Account>(command.accountId);
 
         account.Activate();
         await dbContext.SaveChangesAsync(cancellationToken);

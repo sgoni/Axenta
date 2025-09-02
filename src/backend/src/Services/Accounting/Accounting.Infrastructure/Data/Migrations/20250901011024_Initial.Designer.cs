@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Accounting.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250828033430_Initial")]
+    [Migration("20250901011024_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -61,8 +61,8 @@ namespace Accounting.Infrastructure.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("uuid");
@@ -88,8 +88,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
@@ -173,8 +173,8 @@ namespace Accounting.Infrastructure.Data.Migrations
 
                     b.Property<string>("CurrencyCode")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("character varying(5)");
+                        .HasMaxLength(3)
+                        .HasColumnType("character varying(3)");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -199,7 +199,62 @@ namespace Accounting.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TaxId")
+                        .IsUnique();
+
                     b.ToTable("Companies", (string)null);
+                });
+
+            modelBuilder.Entity("Accounting.Domain.Models.CostCenter", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<Guid?>("ParentCostCenterId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("ParentCostCenterId");
+
+                    b.HasIndex("Code", "CompanyId")
+                        .IsUnique();
+
+                    b.ToTable("CostCenters", (string)null);
                 });
 
             modelBuilder.Entity("Accounting.Domain.Models.CurrencyExchangeRate", b =>
@@ -208,7 +263,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("BuyRate")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,6)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -218,8 +273,8 @@ namespace Accounting.Infrastructure.Data.Migrations
 
                     b.Property<string>("CurrencyCode")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("character varying(5)");
+                        .HasMaxLength(3)
+                        .HasColumnType("character varying(3)");
 
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
@@ -231,9 +286,12 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("SellRate")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrencyCode", "Date")
+                        .IsUnique();
 
                     b.ToTable("CurrencyExchangeRates", (string)null);
                 });
@@ -251,12 +309,11 @@ namespace Accounting.Infrastructure.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<Guid>("JournalEntryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("JournalEntryId");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
@@ -270,8 +327,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("character varying(150)");
 
                     b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("SourceType")
                         .IsRequired()
@@ -330,7 +386,6 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("CurrencyCode")
-                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("character varying(3)");
 
@@ -341,9 +396,9 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
-                    b.Property<decimal>("ExchangeRate")
+                    b.Property<decimal?>("ExchangeRate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18,6)")
                         .HasDefaultValue(0m);
 
                     b.Property<DateOnly?>("ExchangeRateDate")
@@ -360,7 +415,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("PeriodId")
+                    b.Property<Guid>("PeriodId")
                         .HasColumnType("uuid")
                         .HasColumnName("PeriodId");
 
@@ -368,6 +423,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId", "Date");
 
                     b.ToTable("JournalEntries", (string)null);
                 });
@@ -378,8 +435,7 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("AccountId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("AccountId");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -387,15 +443,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Credit")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Debit")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<Guid>("JournalEntryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("JournalEntryId");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
@@ -475,6 +524,24 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.Navigation("Type");
                 });
 
+            modelBuilder.Entity("Accounting.Domain.Models.CostCenter", b =>
+                {
+                    b.HasOne("Accounting.Domain.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Accounting.Domain.Models.CostCenter", "ParentCostCenter")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentCostCenterId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Company");
+
+                    b.Navigation("ParentCostCenter");
+                });
+
             modelBuilder.Entity("Accounting.Domain.Models.DocumentReference", b =>
                 {
                     b.HasOne("Accounting.Domain.Models.JournalEntry", null)
@@ -491,6 +558,58 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasForeignKey("JournalEntryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.OwnsOne("Axenta.BuildingBlocks.ValueObjects.Money", "Credit", b1 =>
+                        {
+                            b1.Property<Guid>("JournalEntryLineId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("Amount")
+                                .HasColumnType("decimal(18,2)")
+                                .HasColumnName("CreditAmount");
+
+                            b1.Property<string>("CurrencyCode")
+                                .IsRequired()
+                                .HasMaxLength(3)
+                                .HasColumnType("character varying(3)")
+                                .HasColumnName("CreditCurrency");
+
+                            b1.HasKey("JournalEntryLineId");
+
+                            b1.ToTable("JournalEntryLines");
+
+                            b1.WithOwner()
+                                .HasForeignKey("JournalEntryLineId");
+                        });
+
+                    b.OwnsOne("Axenta.BuildingBlocks.ValueObjects.Money", "Debit", b1 =>
+                        {
+                            b1.Property<Guid>("JournalEntryLineId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("Amount")
+                                .HasColumnType("decimal(18,2)")
+                                .HasColumnName("DebitAmount");
+
+                            b1.Property<string>("CurrencyCode")
+                                .IsRequired()
+                                .HasMaxLength(3)
+                                .HasColumnType("character varying(3)")
+                                .HasColumnName("DebitCurrency");
+
+                            b1.HasKey("JournalEntryLineId");
+
+                            b1.ToTable("JournalEntryLines");
+
+                            b1.WithOwner()
+                                .HasForeignKey("JournalEntryLineId");
+                        });
+
+                    b.Navigation("Credit")
+                        .IsRequired();
+
+                    b.Navigation("Debit")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Accounting.Domain.Models.Account", b =>
@@ -501,6 +620,11 @@ namespace Accounting.Infrastructure.Data.Migrations
             modelBuilder.Entity("Accounting.Domain.Models.AccountType", b =>
                 {
                     b.Navigation("Accounts");
+                });
+
+            modelBuilder.Entity("Accounting.Domain.Models.CostCenter", b =>
+                {
+                    b.Navigation("Children");
                 });
 
             modelBuilder.Entity("Accounting.Domain.Models.JournalEntry", b =>

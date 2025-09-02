@@ -11,7 +11,7 @@ public class GetPeriodByIdHandler(IApplicationDbContext dbContext)
         var periodId = PeriodId.Of(query.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period == null) throw new PeriodNotFoundException(query.PeriodId);
+        if (period == null) throw EntityNotFoundException.For<Period>(query.PeriodId);
 
         return new GetPeriodByIdQueryResult(period.ToPeriodDto());
     }

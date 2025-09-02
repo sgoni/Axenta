@@ -5,19 +5,24 @@
 /// </summary>
 public class Company : Entity<CompanyId>
 {
-    public string Name { get; private set; }
-    public string TaxId { get; private set; }
-    public string Country { get; private set; }
-    public string CurrencyCode { get; private set; }
+    private Company()
+    {
+    } // EF
+
+    public string Name { get; private set; } = default!;
+    public string TaxId { get; private set; } = default!;
+    public string Country { get; private set; } = default!;
+    public string CurrencyCode { get; private set; } = default!;
     public bool IsActive { get; private set; } = true;
 
     public static Company Create(CompanyId id, string name, string taxId, string country, string currencyCode)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentException.ThrowIfNullOrWhiteSpace(taxId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(country);
         ArgumentException.ThrowIfNullOrWhiteSpace(currencyCode);
 
-        var company = new Company
+        return new Company
         {
             Id = id,
             Name = name,
@@ -26,14 +31,13 @@ public class Company : Entity<CompanyId>
             CurrencyCode = currencyCode,
             IsActive = true
         };
-
-        return company;
     }
 
     public void Update(string name, string taxId, string country, string currencyCode, bool isActive)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentException.ThrowIfNullOrWhiteSpace(taxId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(country);
         ArgumentException.ThrowIfNullOrWhiteSpace(currencyCode);
 
         Name = name;

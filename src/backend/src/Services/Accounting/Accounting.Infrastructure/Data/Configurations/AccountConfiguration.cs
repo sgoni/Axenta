@@ -21,12 +21,16 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 
         builder.Property(a => a.Name)
             .IsRequired()
-            .HasMaxLength(150);
+            .HasMaxLength(200);
 
         builder.Property(a => a.IsActive)
             .IsRequired();
 
         builder.Property(a => a.AccountTypeId)
+            .HasConversion(
+                pid => pid!.Value,
+                val => AccountTypeId.Of(val)
+            )
             .IsRequired();
 
         builder.Property(a => a.Level)
@@ -40,7 +44,8 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .HasForeignKey(a => a.AccountTypeId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Property(a => a.ParentId);
+        builder.Property(a => a.ParentId)
+            .IsRequired(false);
 
         builder.HasOne(a => a.Parent)
             .WithMany(a => a.Children)

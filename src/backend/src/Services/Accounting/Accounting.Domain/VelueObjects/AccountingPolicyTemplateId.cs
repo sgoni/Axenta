@@ -1,19 +1,13 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public record AccountingPolicyTemplateId
+public record AccountingPolicyTemplateId : GuidValueObject
 {
-    private AccountingPolicyTemplateId(Guid value)
+    public AccountingPolicyTemplateId(Guid value) : base(value)
     {
-        Value = value;
     }
-
-    public Guid Value { get; }
 
     public static AccountingPolicyTemplateId Of(Guid value)
     {
-        ArgumentNullException.ThrowIfNull(value);
-        if (value == Guid.Empty) throw new DomainException("AccountingPolicyTemplateId cannot be empty");
-
         return new AccountingPolicyTemplateId(value);
     }
 }

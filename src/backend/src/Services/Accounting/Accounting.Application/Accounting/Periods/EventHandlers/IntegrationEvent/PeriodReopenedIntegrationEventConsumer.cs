@@ -52,7 +52,7 @@ public class PeriodReopenedIntegrationEventConsumer(
         var periodId = PeriodId.Of(@event.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId).ConfigureAwait(false);
 
-        if (period is null) throw new PeriodNotFoundException(@event.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(@event.PeriodId);
 
         // Domain rule (does not persist, does not touch infra)
         period.Reopen(Array.Empty<JournalEntry>());

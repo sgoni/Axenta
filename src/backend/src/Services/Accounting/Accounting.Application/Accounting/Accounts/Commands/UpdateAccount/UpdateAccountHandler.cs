@@ -12,7 +12,7 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
         var accountId = AccountId.Of(command.AccountDetail.Id);
         var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
 
-        if (account is null) throw new AccountNotFoundException(command.AccountDetail.Id);
+        if (account is null) throw EntityNotFoundException.For<Account>(command.AccountDetail.Id);
 
         UpdateAccountWithNewValues(account, command.AccountDetail);
         await dbContext.SaveChangesAsync(cancellationToken);
@@ -26,7 +26,7 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
             accountDetailDto.Name,
             accountDetailDto.Code,
             AccountTypeId.Of(accountDetailDto.AccountTypeId),
-            AccountId.Of(accountDetailDto.ParentAccountId),
+            AccountId.FromNullable(accountDetailDto.ParentAccountId),
             accountDetailDto.IsActive);
     }
 }

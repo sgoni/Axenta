@@ -1,5 +1,8 @@
 ﻿namespace Accounting.Domain.Models;
 
+/// <summary>
+///     Accounting Policy Template
+/// </summary>
 public class AccountingPolicyTemplate : Entity<AccountingPolicyTemplateId>
 {
     private readonly List<AccountingPolicyLine> _lines = new();

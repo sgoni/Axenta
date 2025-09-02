@@ -6,17 +6,24 @@
 public class Account : Entity<AccountId>
 {
     private readonly List<Account> _children = new();
+
+    private Account()
+    {
+    } // Necesario para EF
+
     public IReadOnlyCollection<Account> Children => _children.AsReadOnly();
 
     public string Code { get; private set; } = default!;
     public string Name { get; private set; } = default!;
-    public AccountTypeId AccountTypeId { get; private set; } = default!;
-    public AccountId? ParentId { get; private set; }
     public bool IsActive { get; private set; }
     public int Level { get; private set; }
     public bool IsMovable { get; private set; }
+
+    public AccountTypeId AccountTypeId { get; private set; } = default!;
     public AccountType Type { get; private set; } = null!;
-    public Account Parent { get; private set; } = default!;
+
+    public AccountId? ParentId { get; private set; }
+    public Account? Parent { get; private set; }
 
     public static Account Create(AccountId id, string code, string name, AccountTypeId accountTypeId,
         AccountId? parentId, int level, bool isMovable)
@@ -24,7 +31,7 @@ public class Account : Entity<AccountId>
         ArgumentException.ThrowIfNullOrWhiteSpace(code);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
 
-        var account = new Account
+        return new Account
         {
             Id = id,
             Code = code,
@@ -35,12 +42,9 @@ public class Account : Entity<AccountId>
             Level = level,
             IsMovable = isMovable
         };
-
-        return account;
     }
 
-    public void Update(string code, string name, AccountTypeId accountTypeId, AccountId parentId,
-        bool isActive)
+    public void Update(string code, string name, AccountTypeId accountTypeId, AccountId? parentId, bool isActive)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(code);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -50,6 +54,12 @@ public class Account : Entity<AccountId>
         AccountTypeId = accountTypeId;
         ParentId = parentId;
         IsActive = isActive;
+    }
+
+    public void AddChild(Account child)
+    {
+        ArgumentNullException.ThrowIfNull(child);
+        _children.Add(child);
     }
 
     public void Deactivate()
