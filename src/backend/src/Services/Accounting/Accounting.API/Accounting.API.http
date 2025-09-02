@@ -400,6 +400,14 @@ accept: application/json
 
 ###
 
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree
+accept: application/json
+
+###
+
 # curl -X 'POST' 
 #  'https://localhost:5050/companies' 
 #  -H 'accept: application/json' 

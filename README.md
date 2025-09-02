@@ -1277,6 +1277,41 @@ GET /cost-centers/{costCenterId}/{CompanyId}
 }
 ```
 
+#### Return hierarchical tree of cost centers by company
+
+```http
+GET /cost-centers/{companyId}/tree
+```
+
+**Parameters:**
+| Parameter | Type | Required | Description
+|-----|-----|-----|-----
+| `companyId` | UUID | Yes | Company ID
+
+**Sample Application:**
+```bash
+ curl -X 'GET' \
+  'https://localhost:5050/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree' \
+  -H 'accept: application/json'
+```
+
+**Sample Response:**
+```json
+{
+  "costCenterTree": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "code": "string",
+      "name": "string",
+      "parentCostCenterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "children": [
+        "string"
+      ]
+    }
+  ]
+}
+```
+
 ### Companies
 
 Company administration

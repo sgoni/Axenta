@@ -14,14 +14,15 @@ public class GetCostCenterById : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/cost-centers/{costCenterId}/{CompanyId}", async (Guid costCenterId, Guid companyId, ISender sender) =>
-            {
-                var result = await sender.Send(new GetCostCenterByIdQuery(costCenterId, companyId));
+        app.MapGet("/cost-centers/{costCenterId}/{companyId}",
+                async (Guid costCenterId, Guid companyId, ISender sender) =>
+                {
+                    var result = await sender.Send(new GetCostCenterByIdQuery(costCenterId, companyId));
 
-                var response = result.Adapt<GetCostCenterByIdResponse>();
+                    var response = result.Adapt<GetCostCenterByIdResponse>();
 
-                return Results.Ok(response);
-            })
+                    return Results.Ok(response);
+                })
             .WithName("GetCostCentertById")
             .Produces<GetCostCenterByIdResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)

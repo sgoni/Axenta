@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "018d6670-ea52-451f-805b-6442000c63de",
+		"_postman_id": "07760d9d-3598-4272-afe0-5448ed211bb9",
 		"name": "Accounting.API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25334165"
@@ -28,7 +28,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+									"raw": "{\n  \"period\": {\n    \"periodId\": \"urn:uuid:917de7a9-43f3-7ff1-d99b-5d96b002334a\",\n    \"companyId\": \"35382146-e200-e4d5-6169-a115deb56fb9\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -65,7 +65,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"urn:uuid:917de7a9-43f3-7ff1-d99b-5d96b002334a\",\n    \"companyId\": \"35382146-e200-e4d5-6169-a115deb56fb9\"\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -112,7 +112,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"urn:uuid:917de7a9-43f3-7ff1-d99b-5d96b002334a\",\n    \"companyId\": \"35382146-e200-e4d5-6169-a115deb56fb9\"\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -141,7 +141,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -237,7 +237,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -270,7 +270,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -301,7 +301,7 @@
 									"variable": [
 										{
 											"key": "periodId",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -383,7 +383,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -421,7 +421,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -446,7 +446,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+									"raw": "{\n  \"period\": {\n    \"periodId\": \"urn:uuid:917de7a9-43f3-7ff1-d99b-5d96b002334a\",\n    \"companyId\": \"35382146-e200-e4d5-6169-a115deb56fb9\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -483,7 +483,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"urn:uuid:917de7a9-43f3-7ff1-d99b-5d96b002334a\",\n    \"companyId\": \"35382146-e200-e4d5-6169-a115deb56fb9\"\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -530,7 +530,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"period\": {\n    \"periodId\": \"fa8d430f-9227-29d8-7215-e221a12ab0f0\",\n    \"companyId\": \"bd315ee6-91ac-686b-96ec-1747c544fb7a\"\n  }\n}",
+											"raw": "{\n  \"period\": {\n    \"periodId\": \"urn:uuid:917de7a9-43f3-7ff1-d99b-5d96b002334a\",\n    \"companyId\": \"35382146-e200-e4d5-6169-a115deb56fb9\"\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -559,7 +559,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -637,7 +637,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"periods\": {\n    \"pageIndex\": 6076,\n    \"pageSize\": 4296,\n    \"count\": 6987,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:e5f09c9e-8351-db07-5fa9-e445e5e26ee8\",\n        \"year\": 6628,\n        \"month\": 7978,\n        \"startDate\": \"1969-02-25T18:26:23.287Z\",\n        \"endDate\": \"1959-01-15T16:00:48.206Z\",\n        \"isClosed\": true\n      },\n      {\n        \"id\": \"5b4e5c6a-7950-c775-5f36-ec0d2b03a14b\",\n        \"year\": 2016,\n        \"month\": 606,\n        \"startDate\": \"1988-01-07T10:21:13.648Z\",\n        \"endDate\": \"2007-01-25T00:35:15.958Z\",\n        \"isClosed\": false\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"periods\": {\n    \"pageIndex\": 869,\n    \"pageSize\": 4082,\n    \"count\": 2479,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:0c154d95-8d18-9e8f-eb31-d3fa6dace4b7\",\n        \"companyId\": \"urn:uuid:3de4df84-1003-b234-5dda-c7cae7aaf758\",\n        \"year\": 46,\n        \"month\": 7880,\n        \"startDate\": \"1976-01-02T05:36:27.804Z\",\n        \"endDate\": \"2011-03-22T19:49:43.266Z\",\n        \"isClosed\": true\n      },\n      {\n        \"id\": \"urn:uuid:b942ef54-3139-ade0-db13-9abf26040f7f\",\n        \"companyId\": \"a2e138b4-83d9-74c7-d77a-c2070228db62\",\n        \"year\": 7783,\n        \"month\": 5200,\n        \"startDate\": \"2023-02-07T04:37:38.450Z\",\n        \"endDate\": \"1979-07-04T10:23:27.071Z\",\n        \"isClosed\": false\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -679,7 +679,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -721,7 +721,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -741,7 +741,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
+							"raw": "{\n  \"period\": {\n    \"companyId\": \"urn:uuid:7b0b23d1-f7e7-480a-6a02-e1ac57a50085\"\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -777,7 +777,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
+									"raw": "{\n  \"period\": {\n    \"companyId\": \"urn:uuid:7b0b23d1-f7e7-480a-6a02-e1ac57a50085\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -805,7 +805,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"periodId\": \"76d404f6-7e25-e187-7259-1f492171c8df\"\n}"
+							"body": "{\n  \"periodId\": \"urn:uuid:7e6f6ead-a524-653d-246b-2ad65af32611\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -823,7 +823,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
+									"raw": "{\n  \"period\": {\n    \"companyId\": \"urn:uuid:7b0b23d1-f7e7-480a-6a02-e1ac57a50085\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -851,7 +851,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Conflict",
@@ -869,7 +869,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"period\": {\n    \"companyId\": \"3909babc-2f0a-e88c-c326-5765d9a8276e\"\n  }\n}",
+									"raw": "{\n  \"period\": {\n    \"companyId\": \"urn:uuid:7b0b23d1-f7e7-480a-6a02-e1ac57a50085\"\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -897,7 +897,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -935,7 +935,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 													"description": "(Required) "
 												}
 											]
@@ -1019,7 +1019,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -1044,7 +1044,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:f5c03162-ac89-9db8-1c6a-cba64c48fdbc\",\n    \"journalEntryId\": \"edf8e814-17e4-f812-ac9d-fda2905aed19\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"3213191e-2ef1-e39e-d2bc-9524de7645c5\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
+											"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:bea011c1-bc84-1eb9-381d-e932ee47953c\",\n    \"journalEntryId\": \"69b195f8-0d83-5a0f-94d6-80284fb3942f\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"urn:uuid:b283f2df-64e7-58fb-0ba7-5bd48708e096\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -1087,7 +1087,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:f5c03162-ac89-9db8-1c6a-cba64c48fdbc\",\n    \"journalEntryId\": \"edf8e814-17e4-f812-ac9d-fda2905aed19\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"3213191e-2ef1-e39e-d2bc-9524de7645c5\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
+													"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:bea011c1-bc84-1eb9-381d-e932ee47953c\",\n    \"journalEntryId\": \"69b195f8-0d83-5a0f-94d6-80284fb3942f\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"urn:uuid:b283f2df-64e7-58fb-0ba7-5bd48708e096\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1122,7 +1122,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+											"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
 										},
 										{
 											"name": "Bad Request",
@@ -1140,7 +1140,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:f5c03162-ac89-9db8-1c6a-cba64c48fdbc\",\n    \"journalEntryId\": \"edf8e814-17e4-f812-ac9d-fda2905aed19\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"3213191e-2ef1-e39e-d2bc-9524de7645c5\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
+													"raw": "{\n  \"documentReference\": {\n    \"id\": \"urn:uuid:bea011c1-bc84-1eb9-381d-e932ee47953c\",\n    \"journalEntryId\": \"69b195f8-0d83-5a0f-94d6-80284fb3942f\",\n    \"sourceType\": \"string\",\n    \"sourceId\": \"urn:uuid:b283f2df-64e7-58fb-0ba7-5bd48708e096\",\n    \"referenceNumber\": \"string\",\n    \"description\": \"string\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1175,7 +1175,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								},
@@ -1202,7 +1202,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 													"description": "(Required) "
 												}
 											]
@@ -1247,7 +1247,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"documentReferences\": [\n    {\n      \"id\": \"urn:uuid:71e98715-96a4-4ed0-2c2c-a64314a85ac6\",\n      \"journalEntryId\": \"urn:uuid:a169a2e7-4c3a-0e66-c69e-0d54cd8280a0\",\n      \"sourceType\": \"string\",\n      \"sourceId\": \"3c501545-05a0-5281-e98e-0f4e3dc02d9a\",\n      \"referenceNumber\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"976bafa1-088c-1e42-334f-66932409c397\",\n      \"journalEntryId\": \"urn:uuid:a36dd01b-2ee7-73aa-10ee-81add993747b\",\n      \"sourceType\": \"string\",\n      \"sourceId\": \"4b741e3c-8efa-f628-0999-385ee412f18d\",\n      \"referenceNumber\": \"string\",\n      \"description\": \"stri\"\n    }\n  ]\n}"
+											"body": "{\n  \"documentReferences\": [\n    {\n      \"id\": \"2f3d924a-9b01-db0a-2f31-03847283a70c\",\n      \"journalEntryId\": \"49eda8ad-27c3-a4a7-52b8-35e30cfcf264\",\n      \"sourceType\": \"string\",\n      \"sourceId\": \"urn:uuid:8ec969ec-b548-5c5c-31f6-4f222b1023fb\",\n      \"referenceNumber\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"urn:uuid:41c898e8-3992-2331-021a-d3959dbc18df\",\n      \"journalEntryId\": \"17b383ff-8446-cd24-500e-2cd294fa3063\",\n      \"sourceType\": \"string\",\n      \"sourceId\": \"urn:uuid:b89c1711-ec16-a331-4f5a-e0d20b739684\",\n      \"referenceNumber\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}"
 										},
 										{
 											"name": "Bad Request",
@@ -1286,7 +1286,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										},
 										{
 											"name": "Not Found",
@@ -1325,7 +1325,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -1353,7 +1353,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -1435,7 +1435,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -1473,7 +1473,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -1504,7 +1504,7 @@
 									"variable": [
 										{
 											"key": "journalEntryId",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -1548,7 +1548,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"journalEntryDetail\": {\n    \"id\": \"urn:uuid:301ca5e5-4149-bbec-307f-688e3f019b08\",\n    \"date\": \"1993-03-14T02:29:58.895Z\",\n    \"description\": \"string\",\n    \"periodId\": \"e714f688-e9dd-f34f-8a60-4d7bdeba322c\",\n    \"companyId\": \"6bb1592e-b96e-0b4b-77d1-e22d64236c14\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 656.5998003446572,\n    \"exchangeRateDate\": \"1953-09-01\",\n    \"isPosted\": false,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"urn:uuid:1a1392da-6318-20e7-5959-a99c09a19b47\",\n        \"journalEntryId\": \"8867108b-7af2-9de1-a7ff-594ab8e58032\",\n        \"accountId\": \"4e6aaebc-213f-412d-cf39-1f1beecc5e4e\",\n        \"debit\": 2301.750137785079,\n        \"credit\": 5993.62449531357,\n        \"lineNumber\": 3435\n      },\n      {\n        \"id\": \"5f52ce81-1c87-2343-0a47-c00f5a576fea\",\n        \"journalEntryId\": \"fda15496-e641-ac19-2535-9a6159916f34\",\n        \"accountId\": \"urn:uuid:b7e0ae3f-7e79-0fe0-4506-9b9e063adfa2\",\n        \"debit\": 5002.392933799473,\n        \"credit\": 2584.5563798005464,\n        \"lineNumber\": 9226\n      }\n    ]\n  }\n}"
+									"body": "{\n  \"journalEntryDetail\": {\n    \"id\": \"35beceb4-a7c9-1fba-ca0b-56be7de20935\",\n    \"date\": \"1990-03-26T14:41:11.728Z\",\n    \"description\": \"string\",\n    \"periodId\": \"5e4b0a8f-5e0d-4c09-9c5e-6d6e9998c8e4\",\n    \"companyId\": \"a0c1bd7b-9ece-9352-9e8e-378479fe875c\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2965.973384473688,\n    \"exchangeRateDate\": \"1971-11-07\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"8ccec632-52c0-2c36-a073-6394f345ff9d\",\n    \"lines\": [\n      {\n        \"id\": \"9369a2df-00cf-163f-1627-40722f946234\",\n        \"journalEntryId\": \"urn:uuid:9a7e02d8-a379-06d3-60f7-11ff86664946\",\n        \"accountId\": \"urn:uuid:cbf543e2-588b-fdf7-1719-79309cb2119c\",\n        \"debit\": 8487.220236665209,\n        \"credit\": 7882.668512712725,\n        \"lineNumber\": 2480\n      },\n      {\n        \"id\": \"urn:uuid:02cb6926-00f2-da5b-df30-9f886215cea2\",\n        \"journalEntryId\": \"urn:uuid:0797024a-acac-605c-c783-6ad56638b768\",\n        \"accountId\": \"urn:uuid:09314917-888d-9856-c56c-c68eade20fbc\",\n        \"debit\": 6015.251657370528,\n        \"credit\": 4356.85784507366,\n        \"lineNumber\": 2971\n      }\n    ]\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -1586,7 +1586,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -1624,7 +1624,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -1646,7 +1646,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
+							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"7692ade2-f3a7-ea18-35bb-6385e9b39c50\",\n    \"date\": \"1966-01-13T21:42:23.706Z\",\n    \"description\": \"string\",\n    \"periodId\": \"de655329-96dc-a372-f2e2-5f75f3c06448\",\n    \"companyId\": \"62dd6f49-a51e-a377-76cf-23ad9c75f418\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2391.718212374627,\n    \"exchangeRateDate\": \"2023-11-25\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"73863dac-4e45-57d9-694f-627ad83d2683\",\n    \"lines\": [\n      {\n        \"id\": \"f95448a4-03fe-4bcc-47e2-6f645b400fca\",\n        \"journalEntryId\": \"urn:uuid:eaa33649-31f0-e108-d9ac-d01031af6d31\",\n        \"accountId\": \"urn:uuid:ce5a75a5-d5f1-6fc7-defb-dfe3682d46e4\",\n        \"debit\": 3575.5462936862823,\n        \"credit\": 8947.582221301509,\n        \"lineNumber\": 5381\n      },\n      {\n        \"id\": \"04d418fe-26e9-a356-5b6b-caa8e0ecb748\",\n        \"journalEntryId\": \"46fad0d5-4537-ee98-574f-8fb0bfa90ac4\",\n        \"accountId\": \"urn:uuid:106b74d8-7dc8-25b5-79c2-918c8d185045\",\n        \"debit\": 1574.5692798215182,\n        \"credit\": 9003.912088685736,\n        \"lineNumber\": 6066\n      }\n    ]\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1682,7 +1682,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"7692ade2-f3a7-ea18-35bb-6385e9b39c50\",\n    \"date\": \"1966-01-13T21:42:23.706Z\",\n    \"description\": \"string\",\n    \"periodId\": \"de655329-96dc-a372-f2e2-5f75f3c06448\",\n    \"companyId\": \"62dd6f49-a51e-a377-76cf-23ad9c75f418\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2391.718212374627,\n    \"exchangeRateDate\": \"2023-11-25\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"73863dac-4e45-57d9-694f-627ad83d2683\",\n    \"lines\": [\n      {\n        \"id\": \"f95448a4-03fe-4bcc-47e2-6f645b400fca\",\n        \"journalEntryId\": \"urn:uuid:eaa33649-31f0-e108-d9ac-d01031af6d31\",\n        \"accountId\": \"urn:uuid:ce5a75a5-d5f1-6fc7-defb-dfe3682d46e4\",\n        \"debit\": 3575.5462936862823,\n        \"credit\": 8947.582221301509,\n        \"lineNumber\": 5381\n      },\n      {\n        \"id\": \"04d418fe-26e9-a356-5b6b-caa8e0ecb748\",\n        \"journalEntryId\": \"46fad0d5-4537-ee98-574f-8fb0bfa90ac4\",\n        \"accountId\": \"urn:uuid:106b74d8-7dc8-25b5-79c2-918c8d185045\",\n        \"debit\": 1574.5692798215182,\n        \"credit\": 9003.912088685736,\n        \"lineNumber\": 6066\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1710,7 +1710,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -1728,7 +1728,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"7692ade2-f3a7-ea18-35bb-6385e9b39c50\",\n    \"date\": \"1966-01-13T21:42:23.706Z\",\n    \"description\": \"string\",\n    \"periodId\": \"de655329-96dc-a372-f2e2-5f75f3c06448\",\n    \"companyId\": \"62dd6f49-a51e-a377-76cf-23ad9c75f418\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2391.718212374627,\n    \"exchangeRateDate\": \"2023-11-25\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"73863dac-4e45-57d9-694f-627ad83d2683\",\n    \"lines\": [\n      {\n        \"id\": \"f95448a4-03fe-4bcc-47e2-6f645b400fca\",\n        \"journalEntryId\": \"urn:uuid:eaa33649-31f0-e108-d9ac-d01031af6d31\",\n        \"accountId\": \"urn:uuid:ce5a75a5-d5f1-6fc7-defb-dfe3682d46e4\",\n        \"debit\": 3575.5462936862823,\n        \"credit\": 8947.582221301509,\n        \"lineNumber\": 5381\n      },\n      {\n        \"id\": \"04d418fe-26e9-a356-5b6b-caa8e0ecb748\",\n        \"journalEntryId\": \"46fad0d5-4537-ee98-574f-8fb0bfa90ac4\",\n        \"accountId\": \"urn:uuid:106b74d8-7dc8-25b5-79c2-918c8d185045\",\n        \"debit\": 1574.5692798215182,\n        \"credit\": 9003.912088685736,\n        \"lineNumber\": 6066\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1756,7 +1756,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -1771,7 +1771,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+							"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10&PeriodId=93758e35-1895-383d-9465-d40ef3fafbb8&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1786,6 +1786,16 @@
 								{
 									"key": "PageSize",
 									"value": "10"
+								},
+								{
+									"key": "PeriodId",
+									"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+									"description": "(Required) "
+								},
+								{
+									"key": "CompanyId",
+									"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+									"description": "(Required) "
 								}
 							]
 						},
@@ -1803,7 +1813,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10&PeriodId=93758e35-1895-383d-9465-d40ef3fafbb8&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1818,6 +1828,16 @@
 										{
 											"key": "PageSize",
 											"value": "10"
+										},
+										{
+											"key": "PeriodId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
+										},
+										{
+											"key": "CompanyId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
 										}
 									]
 								}
@@ -1832,7 +1852,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"journalEntries\": {\n    \"pageIndex\": 6451,\n    \"pageSize\": 1104,\n    \"count\": 7159,\n    \"data\": [\n      {\n        \"id\": \"b4df8940-4dc2-3ebb-e40f-8e179851e601\",\n        \"date\": \"2023-06-20T17:40:09.056Z\",\n        \"description\": \"string\",\n        \"periodId\": \"urn:uuid:27a7912c-7106-c51d-0ea6-28cc1110ea20\",\n        \"companyId\": \"4e028afd-9b10-fc45-59f9-1bb02b5f7270\",\n        \"currencyCode\": \"string\",\n        \"exchangeRate\": 7992.2549759078665,\n        \"exchangeRateDate\": \"1972-10-27\",\n        \"isPosted\": true,\n        \"isReversed\": true,\n        \"lines\": [\n          {\n            \"id\": \"96c4d24b-3b88-ee8e-716e-b2e6cd39e851\",\n            \"journalEntryId\": \"7241792c-05e2-2495-e828-d5a7174f0b62\",\n            \"accountId\": \"3f48e0d9-df32-f872-3b62-30a9c77b203b\",\n            \"debit\": 8075.647439979328,\n            \"credit\": 244.02240285269937,\n            \"lineNumber\": 6500\n          },\n          {\n            \"id\": \"urn:uuid:89a87662-279c-1aa1-adae-99ae9c7354d7\",\n            \"journalEntryId\": \"urn:uuid:817e2e0e-79f4-a590-d271-8c0e26269575\",\n            \"accountId\": \"f5f6f262-bec8-b085-fc7c-b08cdaab92fa\",\n            \"debit\": 5266.853860451619,\n            \"credit\": 2319.9773192289117,\n            \"lineNumber\": 5395\n          }\n        ]\n      },\n      {\n        \"id\": \"urn:uuid:f2ea8b96-6484-fc6e-8636-ac038394f34f\",\n        \"date\": \"1954-12-01T12:53:29.927Z\",\n        \"description\": \"string\",\n        \"periodId\": \"urn:uuid:f1962b2c-1aa6-1ce5-f4cd-9620e119c2f5\",\n        \"companyId\": \"urn:uuid:e661e90f-6289-e121-b593-9d5059200db5\",\n        \"currencyCode\": \"string\",\n        \"exchangeRate\": 6517.018221614377,\n        \"exchangeRateDate\": \"1980-05-25\",\n        \"isPosted\": false,\n        \"isReversed\": true,\n        \"lines\": [\n          {\n            \"id\": \"urn:uuid:4e2966c2-5fbc-d3df-4874-98340cc53b5a\",\n            \"journalEntryId\": \"urn:uuid:4665a77f-aa06-3073-5c03-ca320eb71968\",\n            \"accountId\": \"7eb1aba7-c521-271e-ae94-fefcb74e75b4\",\n            \"debit\": 7196.258907017858,\n            \"credit\": 4658.534237667757,\n            \"lineNumber\": 3372\n          },\n          {\n            \"id\": \"56269b7a-93bf-1447-611f-7a8d8ffc439c\",\n            \"journalEntryId\": \"a6679f6d-bdf1-5330-36c8-c1840cf008af\",\n            \"accountId\": \"8bc6547a-e97a-0fd2-c988-c4ab653bbf0f\",\n            \"debit\": 9411.64332812355,\n            \"credit\": 7660.179102726765,\n            \"lineNumber\": 3422\n          }\n        ]\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"journalEntries\": {\n    \"pageIndex\": 7738,\n    \"pageSize\": 3181,\n    \"count\": 402,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:d1e11266-9f96-1250-95b3-224fa310e7db\",\n        \"date\": \"1950-06-22T18:26:44.453Z\",\n        \"description\": \"string\",\n        \"periodId\": \"urn:uuid:68efe644-c96d-b6c2-fb1c-260d2631ed58\",\n        \"companyId\": \"998afa13-9a2c-c2b1-95d3-f6af5b335042\",\n        \"currencyCode\": \"string\",\n        \"exchangeRate\": 1370.8477361665782,\n        \"exchangeRateDate\": \"2013-01-12\",\n        \"journalEntryType\": \"string\",\n        \"reversalJournalEntryId\": \"urn:uuid:0d7fe26e-50d6-5e19-81cb-ff4dadee53aa\",\n        \"lines\": [\n          {\n            \"id\": \"urn:uuid:9f1c4c58-9896-1ddd-21eb-44729de15fc3\",\n            \"journalEntryId\": \"e324c610-e192-dcea-e64b-dc34450fb5d6\",\n            \"accountId\": \"urn:uuid:8e9fd939-1a74-b801-8169-8d5a9a48f696\",\n            \"debit\": 5499.650999187857,\n            \"credit\": 230.44513867811034,\n            \"lineNumber\": 6062\n          },\n          {\n            \"id\": \"urn:uuid:466b98ad-902a-14ed-fc60-5bfc85fe7503\",\n            \"journalEntryId\": \"urn:uuid:129aeafc-5e32-61ea-b825-52fe2ab99850\",\n            \"accountId\": \"urn:uuid:a69e3b63-2724-2035-4e22-d1ec19cfcc63\",\n            \"debit\": 9536.618072586283,\n            \"credit\": 3354.1676243919196,\n            \"lineNumber\": 4859\n          }\n        ]\n      },\n      {\n        \"id\": \"c2de5a2a-6b08-1060-f476-118543321272\",\n        \"date\": \"1993-03-26T22:45:44.896Z\",\n        \"description\": \"string\",\n        \"periodId\": \"3cf82726-9379-057f-06e2-41c791dce84a\",\n        \"companyId\": \"urn:uuid:150852ac-75aa-872a-b300-3ada0556a210\",\n        \"currencyCode\": \"string\",\n        \"exchangeRate\": 7710.171047119543,\n        \"exchangeRateDate\": \"1966-08-30\",\n        \"journalEntryType\": \"string\",\n        \"reversalJournalEntryId\": \"3b25fada-e7bd-fdf7-1189-01135cadee88\",\n        \"lines\": [\n          {\n            \"id\": \"urn:uuid:afae1afb-794f-bee1-5e71-74d9738f6e06\",\n            \"journalEntryId\": \"270cddb6-51da-9859-b9e5-924c7294d21e\",\n            \"accountId\": \"02b5393d-cbaf-13e1-0d0b-b68b1e681380\",\n            \"debit\": 4567.342969974673,\n            \"credit\": 1687.432306004355,\n            \"lineNumber\": 1414\n          },\n          {\n            \"id\": \"urn:uuid:b83b97b8-69d6-ad5e-e5f5-4a5e9944d335\",\n            \"journalEntryId\": \"1424908d-78a6-4e0f-6eec-4f80929c3734\",\n            \"accountId\": \"urn:uuid:f4cfc863-e166-6b41-300e-a09921135f5e\",\n            \"debit\": 4897.748300145324,\n            \"credit\": 9259.439137293886,\n            \"lineNumber\": 9471\n          }\n        ]\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -1845,7 +1865,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10&PeriodId=93758e35-1895-383d-9465-d40ef3fafbb8&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1860,6 +1880,16 @@
 										{
 											"key": "PageSize",
 											"value": "10"
+										},
+										{
+											"key": "PeriodId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
+										},
+										{
+											"key": "CompanyId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
 										}
 									]
 								}
@@ -1874,7 +1904,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -1887,7 +1917,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10",
+									"raw": "{{baseUrl}}/journal-entries?PageIndex=0&PageSize=10&PeriodId=93758e35-1895-383d-9465-d40ef3fafbb8&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1902,6 +1932,16 @@
 										{
 											"key": "PageSize",
 											"value": "10"
+										},
+										{
+											"key": "PeriodId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
+										},
+										{
+											"key": "CompanyId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
 										}
 									]
 								}
@@ -1916,7 +1956,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -1936,7 +1976,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
+							"raw": "{\n  \"journalEntry\": {\n    \"id\": \"7692ade2-f3a7-ea18-35bb-6385e9b39c50\",\n    \"date\": \"1966-01-13T21:42:23.706Z\",\n    \"description\": \"string\",\n    \"periodId\": \"de655329-96dc-a372-f2e2-5f75f3c06448\",\n    \"companyId\": \"62dd6f49-a51e-a377-76cf-23ad9c75f418\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2391.718212374627,\n    \"exchangeRateDate\": \"2023-11-25\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"73863dac-4e45-57d9-694f-627ad83d2683\",\n    \"lines\": [\n      {\n        \"id\": \"f95448a4-03fe-4bcc-47e2-6f645b400fca\",\n        \"journalEntryId\": \"urn:uuid:eaa33649-31f0-e108-d9ac-d01031af6d31\",\n        \"accountId\": \"urn:uuid:ce5a75a5-d5f1-6fc7-defb-dfe3682d46e4\",\n        \"debit\": 3575.5462936862823,\n        \"credit\": 8947.582221301509,\n        \"lineNumber\": 5381\n      },\n      {\n        \"id\": \"04d418fe-26e9-a356-5b6b-caa8e0ecb748\",\n        \"journalEntryId\": \"46fad0d5-4537-ee98-574f-8fb0bfa90ac4\",\n        \"accountId\": \"urn:uuid:106b74d8-7dc8-25b5-79c2-918c8d185045\",\n        \"debit\": 1574.5692798215182,\n        \"credit\": 9003.912088685736,\n        \"lineNumber\": 6066\n      }\n    ]\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1972,7 +2012,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"7692ade2-f3a7-ea18-35bb-6385e9b39c50\",\n    \"date\": \"1966-01-13T21:42:23.706Z\",\n    \"description\": \"string\",\n    \"periodId\": \"de655329-96dc-a372-f2e2-5f75f3c06448\",\n    \"companyId\": \"62dd6f49-a51e-a377-76cf-23ad9c75f418\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2391.718212374627,\n    \"exchangeRateDate\": \"2023-11-25\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"73863dac-4e45-57d9-694f-627ad83d2683\",\n    \"lines\": [\n      {\n        \"id\": \"f95448a4-03fe-4bcc-47e2-6f645b400fca\",\n        \"journalEntryId\": \"urn:uuid:eaa33649-31f0-e108-d9ac-d01031af6d31\",\n        \"accountId\": \"urn:uuid:ce5a75a5-d5f1-6fc7-defb-dfe3682d46e4\",\n        \"debit\": 3575.5462936862823,\n        \"credit\": 8947.582221301509,\n        \"lineNumber\": 5381\n      },\n      {\n        \"id\": \"04d418fe-26e9-a356-5b6b-caa8e0ecb748\",\n        \"journalEntryId\": \"46fad0d5-4537-ee98-574f-8fb0bfa90ac4\",\n        \"accountId\": \"urn:uuid:106b74d8-7dc8-25b5-79c2-918c8d185045\",\n        \"debit\": 1574.5692798215182,\n        \"credit\": 9003.912088685736,\n        \"lineNumber\": 6066\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2000,7 +2040,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+							"body": "{\n  \"isSuccess\": true\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -2018,7 +2058,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"8dc8e968-3be8-5381-2cbc-d755ed22e48b\",\n    \"date\": \"1983-08-28T01:11:04.475Z\",\n    \"description\": \"string\",\n    \"periodId\": \"b27346d7-e1d2-6e81-1795-0947a127ce07\",\n    \"companyId\": \"a5b5c7c8-ecde-3690-7122-8f1ae813a99e\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 417.58582641191475,\n    \"exchangeRateDate\": \"1972-08-25\",\n    \"isPosted\": true,\n    \"isReversed\": true,\n    \"lines\": [\n      {\n        \"id\": \"aee79545-fa2b-2ea2-d810-47fe5f89b1a8\",\n        \"journalEntryId\": \"urn:uuid:63af3ca6-5f48-f759-2e20-a2cf5ccf559e\",\n        \"accountId\": \"urn:uuid:ab7022c4-7ef0-0603-5dcb-f2f009e65ff8\",\n        \"debit\": 8456.26649965474,\n        \"credit\": 1710.5884312624098,\n        \"lineNumber\": 1458\n      },\n      {\n        \"id\": \"f5d645c6-fa41-a309-4e21-13fd38c86891\",\n        \"journalEntryId\": \"urn:uuid:01af23d0-9b7b-e4bb-0fe4-fdbdc9e126ac\",\n        \"accountId\": \"urn:uuid:47fc1f9c-e130-2a5b-aaf6-7cc2c255d7ce\",\n        \"debit\": 8419.72540271828,\n        \"credit\": 9281.777644316422,\n        \"lineNumber\": 5985\n      }\n    ]\n  }\n}",
+									"raw": "{\n  \"journalEntry\": {\n    \"id\": \"7692ade2-f3a7-ea18-35bb-6385e9b39c50\",\n    \"date\": \"1966-01-13T21:42:23.706Z\",\n    \"description\": \"string\",\n    \"periodId\": \"de655329-96dc-a372-f2e2-5f75f3c06448\",\n    \"companyId\": \"62dd6f49-a51e-a377-76cf-23ad9c75f418\",\n    \"currencyCode\": \"string\",\n    \"exchangeRate\": 2391.718212374627,\n    \"exchangeRateDate\": \"2023-11-25\",\n    \"journalEntryType\": \"string\",\n    \"reversalJournalEntryId\": \"73863dac-4e45-57d9-694f-627ad83d2683\",\n    \"lines\": [\n      {\n        \"id\": \"f95448a4-03fe-4bcc-47e2-6f645b400fca\",\n        \"journalEntryId\": \"urn:uuid:eaa33649-31f0-e108-d9ac-d01031af6d31\",\n        \"accountId\": \"urn:uuid:ce5a75a5-d5f1-6fc7-defb-dfe3682d46e4\",\n        \"debit\": 3575.5462936862823,\n        \"credit\": 8947.582221301509,\n        \"lineNumber\": 5381\n      },\n      {\n        \"id\": \"04d418fe-26e9-a356-5b6b-caa8e0ecb748\",\n        \"journalEntryId\": \"46fad0d5-4537-ee98-574f-8fb0bfa90ac4\",\n        \"accountId\": \"urn:uuid:106b74d8-7dc8-25b5-79c2-918c8d185045\",\n        \"debit\": 1574.5692798215182,\n        \"credit\": 9003.912088685736,\n        \"lineNumber\": 6066\n      }\n    ]\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2046,7 +2086,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -2112,7 +2152,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}"
+									"body": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"b1918d33-5b6d-4289-aa8b-d870f50f01b3\",\n    \"currencyCode\": \"str\",\n    \"date\": \"1972-05-10\",\n    \"buyRate\": 8118.08151026787,\n    \"sellRate\": 7483.154000884926\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2145,7 +2185,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -2178,7 +2218,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -2200,7 +2240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}",
+							"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"b1918d33-5b6d-4289-aa8b-d870f50f01b3\",\n    \"currencyCode\": \"str\",\n    \"date\": \"1972-05-10\",\n    \"buyRate\": 8118.08151026787,\n    \"sellRate\": 7483.154000884926\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -2236,7 +2276,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}",
+									"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"b1918d33-5b6d-4289-aa8b-d870f50f01b3\",\n    \"currencyCode\": \"str\",\n    \"date\": \"1972-05-10\",\n    \"buyRate\": 8118.08151026787,\n    \"sellRate\": 7483.154000884926\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2264,7 +2304,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -2282,7 +2322,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"7b181849-2f94-c856-b06c-ad9fd73c86c8\",\n    \"currencyCode\": \"string\",\n    \"date\": \"2015-05-08\",\n    \"buyRate\": 2759.0257714615186,\n    \"sellRate\": 6136.060672241872\n  }\n}",
+									"raw": "{\n  \"currencyExchangeRate\": {\n    \"id\": \"b1918d33-5b6d-4289-aa8b-d870f50f01b3\",\n    \"currencyCode\": \"str\",\n    \"date\": \"1972-05-10\",\n    \"buyRate\": 8118.08151026787,\n    \"sellRate\": 7483.154000884926\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2310,7 +2350,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -2386,7 +2426,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"currencyExchangeRates\": {\n    \"pageIndex\": 5173,\n    \"pageSize\": 6964,\n    \"count\": 7320,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:3b64fe3a-22d5-3e2c-560a-3adea8639123\",\n        \"currencyCode\": \"string\",\n        \"date\": \"1953-05-11\",\n        \"buyRate\": 370.1392755594224,\n        \"sellRate\": 9584.115905095983\n      },\n      {\n        \"id\": \"688e48f1-30df-70f0-7f71-4d71729f4d90\",\n        \"currencyCode\": \"string\",\n        \"date\": \"2004-11-04\",\n        \"buyRate\": 5341.882511737374,\n        \"sellRate\": 2755.370864282265\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"currencyExchangeRates\": {\n    \"pageIndex\": 1162,\n    \"pageSize\": 432,\n    \"count\": 283,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:b528b91a-cd90-e57a-d9fc-ab7ae89f6244\",\n        \"currencyCode\": \"string\",\n        \"date\": \"1946-08-14\",\n        \"buyRate\": 7665.725205924922,\n        \"sellRate\": 5501.748991184956\n      },\n      {\n        \"id\": \"urn:uuid:302a083b-46e5-00f1-ba30-f0f4497e0d0b\",\n        \"currencyCode\": \"string\",\n        \"date\": \"2023-02-22\",\n        \"buyRate\": 5092.041998033002,\n        \"sellRate\": 2239.308033083842\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -2428,7 +2468,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -2470,7 +2510,1023 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cost-centers",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "activate",
+							"item": [
+								{
+									"name": "Activate cost center.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cost-centers/:id/activate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cost-centers",
+												":id",
+												"activate"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Activate cost center."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:id/activate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":id",
+														"activate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": true\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:id/activate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":id",
+														"activate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "deactivate",
+							"item": [
+								{
+									"name": "Deactivate cost center.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cost-centers/:id/deactivate",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cost-centers",
+												":id",
+												"deactivate"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Deactivate cost center."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:id/deactivate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":id",
+														"deactivate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"isSuccess\": true\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:id/deactivate",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":id",
+														"deactivate"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{costCenterId}",
+					"item": [
+						{
+							"name": "{companyId}",
+							"item": [
+								{
+									"name": "Detail of a cost center",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cost-centers/:costCenterId/:companyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cost-centers",
+												":costCenterId",
+												":companyId"
+											],
+											"variable": [
+												{
+													"key": "costCenterId",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+													"description": "(Required) "
+												},
+												{
+													"key": "companyId",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Detail of a cost center."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:costCenterId/:companyId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":costCenterId",
+														":companyId"
+													],
+													"variable": [
+														{
+															"key": "costCenterId"
+														},
+														{
+															"key": "companyId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"costCenterDetail\": {\n    \"id\": \"urn:uuid:dfe687c2-8d52-cfad-b4ce-7a7a240e063d\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": true,\n    \"companyId\": \"urn:uuid:af6d14b0-be29-d62d-f8f6-1c5ead9c62b8\",\n    \"parentCostCenterId\": \"2318fab1-2177-9066-5e4d-52506147152a\"\n  }\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:costCenterId/:companyId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":costCenterId",
+														":companyId"
+													],
+													"variable": [
+														{
+															"key": "costCenterId"
+														},
+														{
+															"key": "companyId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:costCenterId/:companyId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":costCenterId",
+														":companyId"
+													],
+													"variable": [
+														{
+															"key": "costCenterId"
+														},
+														{
+															"key": "companyId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{companyId}",
+					"item": [
+						{
+							"name": "tree",
+							"item": [
+								{
+									"name": "Return hierarchical tree of cost centers by company",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cost-centers/:companyId/tree",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cost-centers",
+												":companyId",
+												"tree"
+											],
+											"variable": [
+												{
+													"key": "companyId",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Return hierarchical tree of cost centers by company"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:companyId/tree",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":companyId",
+														"tree"
+													],
+													"variable": [
+														{
+															"key": "companyId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"costCenterTree\": [\n    {\n      \"id\": \"urn:uuid:f2761e4a-d69c-7333-f2bd-134725b295fc\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"parentCostCenterId\": \"urn:uuid:6ab4d50e-0758-c966-feaf-da9d18309a63\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/CostCenterTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/CostCenterTreeDto detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"urn:uuid:0bc147c4-2ba9-73fa-5cbc-b089b346a975\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"parentCostCenterId\": \"urn:uuid:1de58af7-1288-738c-2c8a-1796c5999848\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/CostCenterTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/CostCenterTreeDto detected>\"\n        }\n      ]\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:companyId/tree",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":companyId",
+														"tree"
+													],
+													"variable": [
+														{
+															"key": "companyId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/cost-centers/:companyId/tree",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"cost-centers",
+														":companyId",
+														"tree"
+													],
+													"variable": [
+														{
+															"key": "companyId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create a new cost center",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"costCenter\": {\n    \"id\": \"urn:uuid:48133a04-3a9b-12d5-49bc-bac6b4791fb8\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": false,\n    \"companyId\": \"urn:uuid:1f5cd336-a9cb-5dbf-cf8b-4e6b0ad0152c\",\n    \"parentCostCenterId\": \"urn:uuid:a8edae11-ac8d-766d-2c5b-00f0d4e37707\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cost-centers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cost-centers"
+							]
+						},
+						"description": "Create a new cost center"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"costCenter\": {\n    \"id\": \"urn:uuid:48133a04-3a9b-12d5-49bc-bac6b4791fb8\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": false,\n    \"companyId\": \"urn:uuid:1f5cd336-a9cb-5dbf-cf8b-4e6b0ad0152c\",\n    \"parentCostCenterId\": \"urn:uuid:a8edae11-ac8d-766d-2c5b-00f0d4e37707\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"costCenter\": {\n    \"id\": \"urn:uuid:48133a04-3a9b-12d5-49bc-bac6b4791fb8\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": false,\n    \"companyId\": \"urn:uuid:1f5cd336-a9cb-5dbf-cf8b-4e6b0ad0152c\",\n    \"parentCostCenterId\": \"urn:uuid:a8edae11-ac8d-766d-2c5b-00f0d4e37707\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get list of accounting accounts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cost-centers?PageIndex=0&PageSize=10&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cost-centers"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								},
+								{
+									"key": "CompanyId",
+									"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Get list of accounting accounts"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers?PageIndex=0&PageSize=10&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										},
+										{
+											"key": "CompanyId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"costCenters\": {\n    \"pageIndex\": 4191,\n    \"pageSize\": 947,\n    \"count\": 3539,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:fb578816-756d-9e80-3847-56bc79b8377f\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"s\",\n        \"isActive\": false,\n        \"companyId\": \"2baf2125-c420-d542-df96-50cde535818f\",\n        \"parentCostCenterId\": \"91f68d50-f69b-ee2b-195d-aa504a5eed5c\"\n      },\n      {\n        \"id\": \"urn:uuid:e9eb306c-d481-ecdf-3da1-8d707e09ca68\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"isActive\": true,\n        \"companyId\": \"78323566-c56a-f23d-a884-0678f2be4904\",\n        \"parentCostCenterId\": \"urn:uuid:c5fea709-86ed-4946-6345-1a982ccdc786\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers?PageIndex=0&PageSize=10&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										},
+										{
+											"key": "CompanyId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers?PageIndex=0&PageSize=10&CompanyId=93758e35-1895-383d-9465-d40ef3fafbb8",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										},
+										{
+											"key": "CompanyId",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify an existing cost center",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"costCenter\": {\n    \"id\": \"urn:uuid:48133a04-3a9b-12d5-49bc-bac6b4791fb8\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": false,\n    \"companyId\": \"urn:uuid:1f5cd336-a9cb-5dbf-cf8b-4e6b0ad0152c\",\n    \"parentCostCenterId\": \"urn:uuid:a8edae11-ac8d-766d-2c5b-00f0d4e37707\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cost-centers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cost-centers"
+							]
+						},
+						"description": "Modify an existing cost center"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"costCenter\": {\n    \"id\": \"urn:uuid:48133a04-3a9b-12d5-49bc-bac6b4791fb8\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": false,\n    \"companyId\": \"urn:uuid:1f5cd336-a9cb-5dbf-cf8b-4e6b0ad0152c\",\n    \"parentCostCenterId\": \"urn:uuid:a8edae11-ac8d-766d-2c5b-00f0d4e37707\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"costCenter\": {\n    \"id\": \"urn:uuid:48133a04-3a9b-12d5-49bc-bac6b4791fb8\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"isActive\": false,\n    \"companyId\": \"urn:uuid:1f5cd336-a9cb-5dbf-cf8b-4e6b0ad0152c\",\n    \"parentCostCenterId\": \"urn:uuid:a8edae11-ac8d-766d-2c5b-00f0d4e37707\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cost-centers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cost-centers"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -2504,7 +3560,7 @@
 									"variable": [
 										{
 											"key": "companyId",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -2548,7 +3604,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"companyDetail\": {\n    \"id\": \"urn:uuid:8d5dd367-0ec6-ef60-8551-4449c8ad9055\",\n    \"name\": \"stri\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}"
+									"body": "{\n  \"companyDetail\": {\n    \"id\": \"d425d46a-386c-32b8-5a61-d6257ce1a84f\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"st\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -2586,7 +3642,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -2624,7 +3680,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -2646,7 +3702,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+							"raw": "{\n  \"company\": {\n    \"id\": \"b2356419-71ae-70d7-7739-963dc5c3f2dc\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -2682,7 +3738,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"raw": "{\n  \"company\": {\n    \"id\": \"b2356419-71ae-70d7-7739-963dc5c3f2dc\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2710,7 +3766,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -2728,7 +3784,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"raw": "{\n  \"company\": {\n    \"id\": \"b2356419-71ae-70d7-7739-963dc5c3f2dc\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2756,7 +3812,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -2832,7 +3888,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"companies\": {\n    \"pageIndex\": 9050,\n    \"pageSize\": 4739,\n    \"count\": 8918,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:79589118-8eb6-3bab-42ff-2bfce7da6848\",\n        \"name\": \"string\",\n        \"taxId\": \"string\",\n        \"country\": \"string\",\n        \"currencyCode\": \"string\",\n        \"isActive\": false\n      },\n      {\n        \"id\": \"urn:uuid:b41dcc5f-7fec-8b88-a3ca-5c5fdf343148\",\n        \"name\": \"string\",\n        \"taxId\": \"string\",\n        \"country\": \"string\",\n        \"currencyCode\": \"string\",\n        \"isActive\": false\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"companies\": {\n    \"pageIndex\": 1882,\n    \"pageSize\": 4208,\n    \"count\": 3556,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:ee878ae8-f236-a276-baaf-a4cd8cd35f1a\",\n        \"name\": \"string\",\n        \"taxId\": \"string\",\n        \"country\": \"string\",\n        \"currencyCode\": \"string\",\n        \"isActive\": true\n      },\n      {\n        \"id\": \"0d5056e7-2234-a262-df6d-63758c8b268c\",\n        \"name\": \"string\",\n        \"taxId\": \"string\",\n        \"country\": \"string\",\n        \"currencyCode\": \"string\",\n        \"isActive\": false\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -2874,7 +3930,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -2916,7 +3972,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -2936,7 +3992,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+							"raw": "{\n  \"company\": {\n    \"id\": \"b2356419-71ae-70d7-7739-963dc5c3f2dc\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -2972,7 +4028,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"raw": "{\n  \"company\": {\n    \"id\": \"b2356419-71ae-70d7-7739-963dc5c3f2dc\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3018,7 +4074,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"company\": {\n    \"id\": \"1d87fe4c-8916-8d40-914c-89accd8fba13\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": false\n  }\n}",
+									"raw": "{\n  \"company\": {\n    \"id\": \"b2356419-71ae-70d7-7739-963dc5c3f2dc\",\n    \"name\": \"string\",\n    \"taxId\": \"string\",\n    \"country\": \"string\",\n    \"currencyCode\": \"string\",\n    \"isActive\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3046,7 +4102,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -3080,7 +4136,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -3124,7 +4180,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"auditDetail\": {\n    \"id\": \"urn:uuid:82e5ba31-2afc-f0cc-5cba-d9ff6d2a0508\",\n    \"entity\": \"string\",\n    \"action\": \"string\",\n    \"performedBy\": \"urn:uuid:e61b8b8b-9d7a-9c29-0c54-345dbaeb1c06\",\n    \"performedAt\": \"2019-02-12T05:34:36.712Z\",\n    \"details\": \"string\"\n  }\n}"
+									"body": "{\n  \"auditDetail\": {\n    \"id\": \"eee32ba7-b2ea-c507-5d85-0f9b76d4a9f9\",\n    \"entity\": \"string\",\n    \"action\": \"string\",\n    \"performedBy\": \"urn:uuid:45645054-649b-6749-1125-ab31f5a77b7e\",\n    \"performedAt\": \"1948-01-16T08:54:38.256Z\",\n    \"details\": \"string\"\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -3162,7 +4218,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -3200,7 +4256,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -3278,7 +4334,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"auditlogs\": {\n    \"pageIndex\": 5173,\n    \"pageSize\": 8809,\n    \"count\": 2878,\n    \"data\": [\n      {\n        \"id\": \"da334671-0777-2501-0a9a-ac42e32c651a\",\n        \"entity\": \"string\",\n        \"action\": \"string\",\n        \"performedBy\": \"urn:uuid:73181b77-6546-6851-624f-20c852a03358\",\n        \"performedAt\": \"1985-03-01T21:29:38.792Z\",\n        \"details\": \"string\"\n      },\n      {\n        \"id\": \"urn:uuid:875b4e88-21e4-7ddb-8bba-d29b0a432d4d\",\n        \"entity\": \"string\",\n        \"action\": \"string\",\n        \"performedBy\": \"urn:uuid:b5522319-8b83-e8e0-ede6-f8bdc4e3005d\",\n        \"performedAt\": \"1998-04-13T04:42:44.545Z\",\n        \"details\": \"strin\"\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"auditlogs\": {\n    \"pageIndex\": 733,\n    \"pageSize\": 3998,\n    \"count\": 5624,\n    \"data\": [\n      {\n        \"id\": \"a1c04b0b-3d52-2e2f-e845-f6e42f03cdf8\",\n        \"entity\": \"string\",\n        \"action\": \"string\",\n        \"performedBy\": \"urn:uuid:56074c20-d8c2-e993-36d9-8a7bde775b0a\",\n        \"performedAt\": \"2011-02-02T11:22:35.376Z\",\n        \"details\": \"string\"\n      },\n      {\n        \"id\": \"4c244638-dc7a-0d59-6801-8eb4d939945b\",\n        \"entity\": \"string\",\n        \"action\": \"string\",\n        \"performedBy\": \"urn:uuid:e7543141-4ca3-862e-8b3c-ed9579c9b33a\",\n        \"performedAt\": \"1996-08-16T09:56:23.632Z\",\n        \"details\": \"string\"\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -3320,7 +4376,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -3362,7 +4418,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -3400,7 +4456,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 													"description": "(Required) "
 												}
 											]
@@ -3484,7 +4540,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -3516,7 +4572,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+													"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 													"description": "(Required) "
 												}
 											]
@@ -3600,7 +4656,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+											"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 										}
 									]
 								}
@@ -3628,7 +4684,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -3710,7 +4766,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -3748,7 +4804,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -3779,7 +4835,7 @@
 									"variable": [
 										{
 											"key": "accountId",
-											"value": "urn:uuid:ec22a67e-08c9-f23e-45c2-1b7f4773e6cd",
+											"value": "93758e35-1895-383d-9465-d40ef3fafbb8",
 											"description": "(Required) "
 										}
 									]
@@ -3823,7 +4879,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}"
+									"body": "{\n  \"accountDetail\": {\n    \"id\": \"ea1d3f96-dc64-d165-f074-17056aa6aff7\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"fbde02f8-305a-7a1f-6ecb-33556c44781b\",\n    \"parentAccountId\": \"9e73f1af-a117-eb86-9a6d-1c10459e9a7f\",\n    \"isActive\": true,\n    \"level\": 115,\n    \"isMovable\": true\n  }\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -3861,7 +4917,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -3899,7 +4955,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -3962,7 +5018,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"accountTree\": [\n    {\n      \"id\": \"urn:uuid:320a4ed1-89d0-fd34-e787-8235643b5eb3\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"accountTypeId\": \"urn:uuid:c074a530-4eaf-489d-6b04-e59f02a36fe1\",\n      \"parentAccountId\": \"urn:uuid:ff068109-189b-5d80-bef8-8248cb3fe719\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"61665715-610c-4431-baea-94074313ee25\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"accountTypeId\": \"5c4a1603-4369-3e7c-51e5-bf4ccb8e8752\",\n      \"parentAccountId\": \"urn:uuid:2766392f-69f6-4efe-1045-39c1ebd9ce7b\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    }\n  ]\n}"
+									"body": "{\n  \"accountTree\": [\n    {\n      \"id\": \"73ca791c-5968-4c8f-a96f-cdfe2fcfbb2a\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"accountTypeId\": \"urn:uuid:421ce165-1bab-1ce7-36c1-acbd1f2630b7\",\n      \"parentAccountId\": \"urn:uuid:5e8fd0ca-a4e4-e007-45e8-0628ae458149\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"18264afa-ad61-01dd-0bd8-097ccdbe53ac\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"accountTypeId\": \"e953f8a2-f435-67c1-e893-941a37d14084\",\n      \"parentAccountId\": \"69c4a3bb-f8bc-0787-e888-132006dbbdbc\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/AccountTreeDto detected>\"\n        }\n      ]\n    }\n  ]\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -3995,7 +5051,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -4028,7 +5084,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -4091,7 +5147,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"accountTypes\": [\n    {\n      \"id\": \"urn:uuid:785f2086-dfc1-a519-41d9-954473cd8e5f\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"2b70a4b1-2e44-c14c-a93b-df5297e96557\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}"
+									"body": "{\n  \"accountTypes\": [\n    {\n      \"id\": \"urn:uuid:555776c4-94a6-f250-d2b9-07923011a8e8\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"9f1828d5-1943-fea8-7a56-2e2bbc6c3337\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -4124,7 +5180,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								},
 								{
 									"name": "Not Found",
@@ -4157,7 +5213,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+									"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 								}
 							]
 						}
@@ -4179,7 +5235,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:d006a0ec-8e87-a239-1550-7500d61ef93c\",\n    \"code\": \"str\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"urn:uuid:ffb0cad1-5698-e1c8-bd8c-70b4872d2304\",\n    \"parentAccountId\": \"f1b90f51-36cd-fd3d-62cd-47140344dca8\",\n    \"isActive\": true,\n    \"level\": 3708,\n    \"isMovable\": true\n  }\n}",
+							"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:e18836c7-a40e-7ff3-ebe7-37c65058c80c\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"3390623f-9360-daa5-c668-83350e8325bf\",\n    \"parentAccountId\": \"76c0a07e-db1a-a5f9-0968-1ca84baa2858\",\n    \"isActive\": false,\n    \"level\": 6629,\n    \"isMovable\": false\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -4215,7 +5271,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:d006a0ec-8e87-a239-1550-7500d61ef93c\",\n    \"code\": \"str\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"urn:uuid:ffb0cad1-5698-e1c8-bd8c-70b4872d2304\",\n    \"parentAccountId\": \"f1b90f51-36cd-fd3d-62cd-47140344dca8\",\n    \"isActive\": true,\n    \"level\": 3708,\n    \"isMovable\": true\n  }\n}",
+									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:e18836c7-a40e-7ff3-ebe7-37c65058c80c\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"3390623f-9360-daa5-c668-83350e8325bf\",\n    \"parentAccountId\": \"76c0a07e-db1a-a5f9-0968-1ca84baa2858\",\n    \"isActive\": false,\n    \"level\": 6629,\n    \"isMovable\": false\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4243,7 +5299,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"id\": \"urn:uuid:a285f9b2-3074-21df-6777-61b67f629ad0\"\n}"
+							"body": "{\n  \"id\": \"urn:uuid:933014f5-74a0-2f2c-98da-21b158ec446d\"\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -4261,7 +5317,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:d006a0ec-8e87-a239-1550-7500d61ef93c\",\n    \"code\": \"str\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"urn:uuid:ffb0cad1-5698-e1c8-bd8c-70b4872d2304\",\n    \"parentAccountId\": \"f1b90f51-36cd-fd3d-62cd-47140344dca8\",\n    \"isActive\": true,\n    \"level\": 3708,\n    \"isMovable\": true\n  }\n}",
+									"raw": "{\n  \"account\": {\n    \"id\": \"urn:uuid:e18836c7-a40e-7ff3-ebe7-37c65058c80c\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"3390623f-9360-daa5-c668-83350e8325bf\",\n    \"parentAccountId\": \"76c0a07e-db1a-a5f9-0968-1ca84baa2858\",\n    \"isActive\": false,\n    \"level\": 6629,\n    \"isMovable\": false\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4289,7 +5345,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -4365,7 +5421,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"accounts\": {\n    \"pageIndex\": 1287,\n    \"pageSize\": 5321,\n    \"count\": 8131,\n    \"data\": [\n      {\n        \"id\": \"f837c9a7-58f1-9a8b-508e-e0dd05fa2ee4\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"accountTypeId\": \"urn:uuid:5543ee50-8464-51ab-690a-1cd1002c449e\",\n        \"parentAccountId\": \"urn:uuid:9ea947c2-3273-022e-9c47-b730c3b376b8\",\n        \"isActive\": true,\n        \"level\": 5035,\n        \"isMovable\": true\n      },\n      {\n        \"id\": \"86798888-f58d-7db4-89ef-fb7de6beaca2\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"accountTypeId\": \"urn:uuid:67e4daed-3072-ef37-46ab-7d6ab4015f62\",\n        \"parentAccountId\": \"1ba7d77e-2c15-e92e-ab7d-d9cc41c1b32d\",\n        \"isActive\": true,\n        \"level\": 460,\n        \"isMovable\": false\n      }\n    ]\n  }\n}"
+							"body": "{\n  \"accounts\": {\n    \"pageIndex\": 5738,\n    \"pageSize\": 1834,\n    \"count\": 5636,\n    \"data\": [\n      {\n        \"id\": \"urn:uuid:5da26e29-9ec2-09fc-a980-a5ee1647aa1f\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"accountTypeId\": \"urn:uuid:89ea8c4c-d180-78a3-7da3-8e87c1eaabc4\",\n        \"parentAccountId\": \"urn:uuid:2827ff7a-7a17-bac7-d044-d991f0f06495\",\n        \"isActive\": true,\n        \"level\": 5542,\n        \"isMovable\": true\n      },\n      {\n        \"id\": \"urn:uuid:cafe1d70-15f5-6378-2b17-eee19bf63087\",\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"accountTypeId\": \"1513f887-ebf7-506b-aeb1-9869e239933d\",\n        \"parentAccountId\": \"7febdb4f-780b-ec5f-7a7b-8fb99c3e6a19\",\n        \"isActive\": false,\n        \"level\": 4482,\n        \"isMovable\": false\n      }\n    ]\n  }\n}"
 						},
 						{
 							"name": "Bad Request",
@@ -4407,7 +5463,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						},
 						{
 							"name": "Not Found",
@@ -4449,7 +5505,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				},
@@ -4469,7 +5525,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}",
+							"raw": "{\n  \"accountDetail\": {\n    \"id\": \"ea1d3f96-dc64-d165-f074-17056aa6aff7\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"fbde02f8-305a-7a1f-6ecb-33556c44781b\",\n    \"parentAccountId\": \"9e73f1af-a117-eb86-9a6d-1c10459e9a7f\",\n    \"isActive\": true,\n    \"level\": 115,\n    \"isMovable\": true\n  }\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -4505,7 +5561,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}",
+									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"ea1d3f96-dc64-d165-f074-17056aa6aff7\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"fbde02f8-305a-7a1f-6ecb-33556c44781b\",\n    \"parentAccountId\": \"9e73f1af-a117-eb86-9a6d-1c10459e9a7f\",\n    \"isActive\": true,\n    \"level\": 115,\n    \"isMovable\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4551,7 +5607,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"fdb0e5b6-53b8-15f2-95e9-3350b2765354\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"b220c084-fbdb-43d9-aed4-09119831190e\",\n    \"parentAccountId\": \"urn:uuid:a39e86bb-84e0-5b8f-8978-7a6babbd22b0\",\n    \"isActive\": true,\n    \"level\": 2238,\n    \"isMovable\": false\n  }\n}",
+									"raw": "{\n  \"accountDetail\": {\n    \"id\": \"ea1d3f96-dc64-d165-f074-17056aa6aff7\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"accountTypeId\": \"fbde02f8-305a-7a1f-6ecb-33556c44781b\",\n    \"parentAccountId\": \"9e73f1af-a117-eb86-9a6d-1c10459e9a7f\",\n    \"isActive\": true,\n    \"level\": 115,\n    \"isMovable\": true\n  }\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4579,7 +5635,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 457,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
+							"body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2156,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"
 						}
 					]
 				}
@@ -4593,11 +5649,11 @@
 		},
 		{
 			"key": "year",
-			"value": "1961"
+			"value": "2091"
 		},
 		{
 			"key": "month",
-			"value": "1961"
+			"value": "2091"
 		}
 	]
 }
