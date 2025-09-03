@@ -96,6 +96,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
                 line.AccountId,
                 line.Credit,
                 line.Debit,
+                line.CostCenterId,
                 line.LineNumber
             );
 
@@ -109,7 +110,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return reversal;
     }
 
-    public void AddLine(AccountId accountId, Money debit, Money credit, int lineNumber = 1)
+    public void AddLine(AccountId accountId, Money debit, Money credit, CostCenterId? costCenterId, int lineNumber = 1)
     {
         ArgumentNullException.ThrowIfNull(accountId);
         ArgumentNullException.ThrowIfNull(debit);
@@ -125,19 +126,19 @@ public class JournalEntry : Aggregate<JournalEntryId>
         // Optional/Recommended: If the header does not define currency, force the company's base currency 
         // Var Basecurrency = Company.Basecurrency; // If you have it in Company 
         // if (debit.currencycode!
-        var journalEntryLine = JournalEntryLine.Create(Id, accountId, debit, credit, lineNumber);
+        var journalEntryLine = JournalEntryLine.Create(Id, accountId, debit, credit, costCenterId, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
     }
 
     public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, Money debit, Money credit,
-        int lineNumber = 1)
+        CostCenterId costCenterId, int lineNumber = 1)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(debit.Amount);
         ArgumentOutOfRangeException.ThrowIfNegative(credit.Amount);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
         var line = _journalEntryLines.SingleOrDefault(x => x.Id == IdLine);
-        line.Update(line.Debit, line.Credit, line.LineNumber);
+        line.Update(line.Debit, line.Credit, costCenterId, line.LineNumber);
     }
 
     public void AddDocumentReference(string sourceType, SourceId sourceId, DocumentReferenceNumber referenceNumber,

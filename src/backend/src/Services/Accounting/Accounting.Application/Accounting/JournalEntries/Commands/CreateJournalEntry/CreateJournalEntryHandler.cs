@@ -55,6 +55,7 @@ public class CreateJournalEntryHandler(IApplicationDbContext dbContext)
                 AccountId.Of(journalEntryLineDto.AccountId),
                 Money.Of(journalEntryLineDto.Debit, journalEntryDto.CurrencyCode),
                 Money.Of(journalEntryLineDto.Credit, journalEntryDto.CurrencyCode),
+                CostCenterId.FromNullable(journalEntryLineDto.CostCenterId),
                 lineNumber++
             );
 

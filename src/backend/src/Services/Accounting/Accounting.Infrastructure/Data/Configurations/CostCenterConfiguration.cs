@@ -1,6 +1,4 @@
-﻿namespace Accounting.Infrastructure.Data.Configurations;
-
-public class CostCenterConfiguration : IEntityTypeConfiguration<CostCenter>
+﻿public class CostCenterConfiguration : IEntityTypeConfiguration<CostCenter>
 {
     public void Configure(EntityTypeBuilder<CostCenter> builder)
     {

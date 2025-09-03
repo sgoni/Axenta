@@ -1,6 +1,4 @@
-﻿using MapsterMapper;
-
-namespace Accounting.Application.Accounting.CostCenters.Queries.GetCostCenterById;
+﻿namespace Accounting.Application.Accounting.CostCenters.Queries.GetCostCenterById;
 
 public class GetCostCenterByIdHandler(IApplicationDbContext dbContext)
     : IQueryHandler<GetCostCenterByIdQuery, GetCostCenterByIdResult>

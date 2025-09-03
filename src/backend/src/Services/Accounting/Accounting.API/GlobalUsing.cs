@@ -1,5 +1,4 @@
-﻿
-global using Accounting.API;
+﻿global using Accounting.API;
 global using Accounting.Application.Accounting.Accounts.Commands.ActiveAccount;
 global using Accounting.Application.Accounting.Accounts.Commands.CreateAccount;
 global using Accounting.Application.Accounting.Accounts.Commands.DeleteAccount;

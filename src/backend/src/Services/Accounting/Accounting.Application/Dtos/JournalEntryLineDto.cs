@@ -6,4 +6,5 @@ public record JournalEntryLineDto(
     Guid AccountId,
     decimal Debit,
     decimal Credit,
+    Guid? CostCenterId,
     int LineNumber);
