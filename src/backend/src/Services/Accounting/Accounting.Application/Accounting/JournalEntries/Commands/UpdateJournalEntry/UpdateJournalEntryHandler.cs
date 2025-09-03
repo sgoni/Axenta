@@ -81,8 +81,9 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
         foreach (var journalEntryLineDto in journalEntryDto.Lines)
             newJournalEntry.AddLine(
                 AccountId.Of(journalEntryLineDto.AccountId),
-                Money.Of(journalEntryLineDto.Debit, journalEntryDto.CurrencyCode),
-                Money.Of(journalEntryLineDto.Credit, journalEntryDto.CurrencyCode),
+                Money.Of(journalEntryLineDto.Debit, journalEntryDto.CurrencyCode!),
+                Money.Of(journalEntryLineDto.Credit, journalEntryDto.CurrencyCode!),
+                CostCenterId.FromNullable(journalEntryLineDto.CostCenterId),
                 lineNumber++
             );
 

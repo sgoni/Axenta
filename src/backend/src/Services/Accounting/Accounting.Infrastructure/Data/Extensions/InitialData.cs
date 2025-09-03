@@ -340,6 +340,49 @@ public class InitialData
                 false)
         };
 
+    public static IEnumerable<CostCenter> Costcenter =>
+        new List<CostCenter>
+        {
+            CostCenter.Create(CostCenterId.Of(new Guid("2f24d620-3ae2-4a09-8975-a57e594e42e2")), "1", "Administración",
+                "Gastos administrativos generales", CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("0ba82d9a-1ae3-41e4-aa07-7e13a078647b")), "2", "Finanzas",
+                "Costos relacionados con el área financiera",
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("c88840cc-501d-4787-8274-3034640df188")), "2",
+                "Recursos Humanos",
+                "Costos de gestión de personal y capacitación",
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("c208f7a1-9361-4565-8f74-996799861a05")), "2",
+                "Comercial/Ventas",
+                "Gastos del área comercial y ventas", CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("24fb5c06-69b4-4ae7-9033-76a2a8e9e183")), "2", "Marketing",
+                "Publicidad, promociones y marketing", CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("a5efec11-1024-4f48-b134-76d736835db1")), "2", "Producción",
+                "Costos de producción y manufactura", CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("082f996f-9d09-4e38-8d75-3e5cd6599681")), "2", "Logística",
+                "Costos de transporte, almacén y distribución",
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("0f0b6a28-466c-4b39-8da3-5336ed78d5f6")), "2", "Tecnología",
+                "Costos de infraestructura y soporte tecnológico",
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("2728c01d-07c8-48d5-8802-33ed38bfdf48")), "2",
+                "Investigación y Desarrollo",
+                "Proyectos de innovación y desarrollo de nuevos productos",
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null),
+            CostCenter.Create(CostCenterId.Of(new Guid("0cc95761-4200-481e-9bde-e376e938cb85")), "2", "Obras/Proyectos",
+                "Costos de proyectos específicos o contratos",
+                CompanyId.Of(new Guid("41607051-4bd8-4a54-a5e2-cb713aef6ca2")),
+                null)
+        };
 
     public static IEnumerable<Period> Periods =>
         new List<Period>
@@ -373,16 +416,17 @@ public class InitialData
             journalEntry1.AddLine(
                 AccountId.Of(new Guid("b603261e-272e-4aa6-9398-0dfb1a617d89")),
                 Money.Of(5000000, "CRC"),
-                Money.Of(0, "CRC")
+                Money.Of(0, "CRC"),
+                null
             );
 
             journalEntry1.AddLine(
                 AccountId.Of(new Guid("a91a4d34-c88e-4f29-8e31-03986820bada")),
                 Money.Of(0, "CRC"),
                 Money.Of(5000000, "CRC"),
+                null,
                 2
             );
-
 
             /*
              * journal Entry 2
@@ -401,13 +445,15 @@ public class InitialData
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("66eee587-bee4-4cac-af59-b8e8a0b77206")),
                 Money.Of(15000000, "CRC"),
-                Money.Of(0, "CRC")
+                Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("0ba82d9a-1ae3-41e4-aa07-7e13a078647b"))
             );
 
             journalEntry2.AddLine(
                 AccountId.Of(new Guid("7446ddcb-7be6-46e4-94de-1b5275cd8b0f")),
                 Money.Of(35000000, "CRC"),
                 Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("0ba82d9a-1ae3-41e4-aa07-7e13a078647b")),
                 2
             );
 
@@ -415,6 +461,7 @@ public class InitialData
                 AccountId.Of(new Guid("f4c0eb3c-eefa-49e2-b72b-01b55105d7b7")),
                 Money.Of(0, "CRC"),
                 Money.Of(50000000, "CRC"),
+                null,
                 3
             );
 
@@ -436,13 +483,15 @@ public class InitialData
             journalEntry3.AddLine(
                 AccountId.Of(new Guid("057a93fb-c93b-4cf7-a79e-fab3583f2f13")),
                 Money.Of(2000000, "CRC"),
-                Money.Of(0, "CRC")
+                Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("0ba82d9a-1ae3-41e4-aa07-7e13a078647b"))
             );
 
             journalEntry3.AddLine(
                 AccountId.Of(new Guid("a04ee151-03d4-4840-8697-600360d6977d")),
                 Money.Of(0, "CRC"),
                 Money.Of(2000000, "CRC"),
+                null,
                 2
             );
 
@@ -464,13 +513,15 @@ public class InitialData
             journalEntry4.AddLine(
                 AccountId.Of(new Guid("4d9adb9e-ad24-4e0e-803a-7b25e953e560")),
                 Money.Of(2500000, "CRC"),
-                Money.Of(0, "CRC")
+                Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("0ba82d9a-1ae3-41e4-aa07-7e13a078647b"))
             );
 
             journalEntry4.AddLine(
                 AccountId.Of(new Guid("a06a0526-6d78-487d-bca8-d4b4cb57ac00")),
                 Money.Of(0, "CRC"),
                 Money.Of(2500000, "CRC"),
+                null,
                 2
             );
 
@@ -492,13 +543,15 @@ public class InitialData
             journalEntry5.AddLine(
                 AccountId.Of(new Guid("a04ee151-03d4-4840-8697-600360d6977d")),
                 Money.Of(1000000, "CRC"),
-                Money.Of(0, "CRC")
+                Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("0ba82d9a-1ae3-41e4-aa07-7e13a078647b"))
             );
 
             journalEntry5.AddLine(
                 AccountId.Of(new Guid("23b79d9f-96d3-4c20-ac8e-4387a70152b3")),
                 Money.Of(0, "CRC"),
                 Money.Of(1000000, "CRC"),
+                null,
                 2
             );
 
@@ -520,13 +573,15 @@ public class InitialData
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("e769d46b-268d-463c-8074-71983ead323f")),
                 Money.Of(800000, "CRC"),
-                Money.Of(0, "CRC")
+                Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("c88840cc-501d-4787-8274-3034640df188"))
             );
 
             journalEntry6.AddLine(
                 AccountId.Of(new Guid("e19f4576-6224-40e3-8b03-01343b413df7")),
                 Money.Of(500000, "CRC"),
                 Money.Of(0, "CRC"),
+                CostCenterId.Of(new Guid("2f24d620-3ae2-4a09-8975-a57e594e42e2")),
                 2
             );
 
@@ -534,6 +589,7 @@ public class InitialData
                 AccountId.Of(new Guid("a06a0526-6d78-487d-bca8-d4b4cb57ac00")),
                 Money.Of(0, "CRC"),
                 Money.Of(1300000, "CRC"),
+                null,
                 3
             );
 

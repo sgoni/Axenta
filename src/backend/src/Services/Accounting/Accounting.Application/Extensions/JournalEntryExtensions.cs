@@ -18,7 +18,7 @@ public static class JournalEntryExtensions
             journalEntry.ReversalJournalEntryId.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
-                    ln.Debit.Amount, ln.Credit.Amount, ln.LineNumber)).ToList()
+                    ln.Debit.Amount, ln.Credit.Amount, ln.CostCenterId.Value, ln.LineNumber)).ToList()
         ));
     }
 
@@ -42,7 +42,7 @@ public static class JournalEntryExtensions
             journalEntry.ReversalJournalEntryId?.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
-                    ln.Debit.Amount, ln.Credit.Amount, ln.LineNumber)).ToList()
+                    ln.Debit.Amount, ln.Credit.Amount, ln.CostCenterId?.Value, ln.LineNumber)).ToList()
         );
     }
 }

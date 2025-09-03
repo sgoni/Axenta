@@ -18,10 +18,20 @@ public static class DatabaseExtensions
         await SeedCompaniesAsync(context);
         await SeedAccountTypeAsync(context);
         await SeedAccountsAsync(context);
+        await SeedCostCenterAsync(context);
         await SeedPeriodsAsync(context);
         await SeedJornalEntryWithLinesAsync(context);
         await SeedDocumentReferencesAsync(context);
         await SeedCurrencyExchangeRateAsync(context);
+    }
+
+    private static async Task SeedCostCenterAsync(ApplicationDbContext context)
+    {
+        if (!await context.CostCenters.AnyAsync())
+        {
+            await context.CostCenters.AddRangeAsync(InitialData.Costcenter);
+            await context.SaveChangesAsync();
+        }
     }
 
     private static async Task SeedCompaniesAsync(ApplicationDbContext context)

@@ -226,7 +226,9 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("character varying(1000)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
@@ -239,17 +241,16 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.Property<Guid?>("ParentCostCenterId")
+                    b.Property<Guid>("ParentCostCenterId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Code");
+
                     b.HasIndex("CompanyId");
 
                     b.HasIndex("ParentCostCenterId");
-
-                    b.HasIndex("Code", "CompanyId")
-                        .IsUnique();
 
                     b.ToTable("CostCenters", (string)null);
                 });
@@ -394,17 +395,15 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("character varying(500)");
 
                     b.Property<decimal?>("ExchangeRate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(18,6)")
-                        .HasDefaultValue(0m);
+                        .HasColumnType("decimal(18,6)");
 
                     b.Property<DateOnly?>("ExchangeRateDate")
                         .HasColumnType("date");
 
                     b.Property<string>("JournalEntryType")
                         .IsRequired()
-                        .HasMaxLength(55)
-                        .HasColumnType("character varying(55)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
@@ -412,16 +411,15 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("PeriodId")
+                    b.Property<Guid?>("PeriodId")
                         .HasColumnType("uuid")
                         .HasColumnName("PeriodId");
 
                     b.Property<Guid?>("ReversalJournalEntryId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("ReversalJournalEntryId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId", "Date");
 
                     b.ToTable("JournalEntries", (string)null);
                 });
@@ -432,7 +430,12 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("AccountId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("AccountId");
+
+                    b.Property<Guid?>("CostCenterId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CostCenterId");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -441,7 +444,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<Guid>("JournalEntryId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("JournalEntryId");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp with time zone");
@@ -453,6 +457,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CostCenterId");
 
                     b.HasIndex("JournalEntryId", "Id", "LineNumber")
                         .IsUnique();
@@ -532,7 +538,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                     b.HasOne("Accounting.Domain.Models.CostCenter", "ParentCostCenter")
                         .WithMany("Children")
                         .HasForeignKey("ParentCostCenterId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Company");
 
@@ -550,6 +557,10 @@ namespace Accounting.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Accounting.Domain.Models.JournalEntryLine", b =>
                 {
+                    b.HasOne("Accounting.Domain.Models.CostCenter", "CostCenter")
+                        .WithMany()
+                        .HasForeignKey("CostCenterId");
+
                     b.HasOne("Accounting.Domain.Models.JournalEntry", null)
                         .WithMany("JournalEntryLines")
                         .HasForeignKey("JournalEntryId")
@@ -601,6 +612,8 @@ namespace Accounting.Infrastructure.Data.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("JournalEntryLineId");
                         });
+
+                    b.Navigation("CostCenter");
 
                     b.Navigation("Credit")
                         .IsRequired();

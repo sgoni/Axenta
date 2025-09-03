@@ -1,4 +1,4 @@
-# 📄 Axenta API Documentation
+# 🚀 Axenta API Documentation
 
 ## Table of Contents
 
@@ -10,33 +10,45 @@
 - [Error Handling](#error-handling)
 - [Rate Limiting](#rate-limiting)
 - [Endpoints](#endpoints)
-  - [Health](#health) 
-  - [Periods](#periods)
-  - [Journal Entries](#journal-entries)
-  - [Document References](#document-references)
-  - [Currency Exchange Rate](#currency-exchange-rates)
-  - [Cost Centers](#cost-centers)
-  - [Companies](#companies)   
-  - [Audit Logs](#audit-logs)
-  - [Accounts](#accounts)
-  - [Account Types](#account-types)
-  - [Reports](#reports)  
+  - [General Accounting](#general-accounting)
+    - [Health](#health)
+    - [Periods](#periods)
+    - [Journal Entries](#journal-entries)
+    - [Document References](#document-references)
+    - [Currency Exchange Rate](#currency-exchange-rates)
+    - [Cost Centers](#cost-centers)
+    - [Companies](#companies)
+    - [Audit Logs](#audit-logs)
+    - [Accounts](#accounts)
+    - [Account Types](#account-types)
+  - [Reports](#reports)
 - [Data Models](#data-models)
 - [Usage Examples](#usage-examples)
 - [SDKs and Libraries](#sdks-and-libraries)
 - [Changelog](#changelog)
 
-### Built With
+### 🛠 Built With
 
-* ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
-* ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-* ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)  
+ 
+## 📊 Monitoring & Logging  
 
-## Overview
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Graylog](https://img.shields.io/badge/Graylog-FF3633?style=for-the-badge&logo=graylog&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white) 
 
-The Accounting API provides a complete set of endpoints for managing enterprise accounting systems, including:
 
-### Key Features
+## 🛠️ Observability & Infra  
+
+![Consul](https://img.shields.io/badge/Consul-CA2171?style=for-the-badge&logo=consul&logoColor=white)
+![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
+![Vault](https://img.shields.io/badge/Vault-000000?style=for-the-badge&logo=vault&logoColor=white)
+
+## 🌐 Overview
+
+### ✨ Key Features
 
 - ✅ Multi-company management with multi-company support
 - ✅ Accounting periods with opening/closing control
@@ -47,9 +59,9 @@ The Accounting API provides a complete set of endpoints for managing enterprise 
 - ✅ Full audit trail of all transactions
 - ✅ Journal entry reversals for corrections
 
-### Proposed Software Architecture
+### 🏗️ Proposed Software Architecture
 
-#### Microservices-based architecture
+#### 🧩 Microservices-based architecture
 
 * Frontend: Angular (SPA)
 * API Gateway: ASP.NET Core + Ocelot/YARP
@@ -62,7 +74,7 @@ The Accounting API provides a complete set of endpoints for managing enterprise 
 * CI/CD: GitHub Actions + AWS CodePipeline
 * Observability: Prometheus + Grafana or AWS CloudWatch
 
-### Functional Modules of the System
+### 📦 Functional Modules of the System
 
 1. Accounting Catalog
    - Chart of Accounts, Account Types, Hierarchies
@@ -82,11 +94,11 @@ The Accounting API provides a complete set of endpoints for managing enterprise 
 10. Event Audit
     - Logs, Critical Data Changes
 
-### API Version
+### 📌 API Version
 
 Current version: **v1.0**
 
-## Authentication
+## 🔐 Authentication
 
 > **Note:** Add your authentication method here (API Key, Bearer Token, OAuth, etc.)
 
@@ -97,13 +109,15 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
      https://api.example.com/v1/periods
 ```
 
-## Base URL
+## 🔗 Base URL
 
 ```abc
 Production: https://api.example.com/v1
 Staging: https://staging-api.example.com/v1
 ```
+
 ## Development URL
+
 ```abc
 Accounting.Api: https://localhost:5050
 Report.Api: https://localhost:6060
@@ -114,6 +128,7 @@ Report.Api: https://localhost:6060
 All API responses follow a consistent JSON structure:
 
 ### Success Response
+
 ```json
 {
   "data": { /* Response data */ },
@@ -125,6 +140,7 @@ All API responses follow a consistent JSON structure:
 ```
 
 ### Paginated Response
+
 ```json
 {
   "pageIndex": 0,
@@ -134,11 +150,12 @@ All API responses follow a consistent JSON structure:
 }
 ```
 
-## Error Handling
+## ❌ Error Handling
 
 The API uses standard HTTP status codes and returns detailed error information:
 
 ### Error Response Format
+
 ```json
 {
   "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
@@ -153,34 +170,38 @@ The API uses standard HTTP status codes and returns detailed error information:
 ```
 
 ### Common HTTP Status Codes
-| Code | Description |
-|------|-------------|
-| `200` | OK - Request successful |
-| `201` | Created - Resource created successfully |
-| `400` | Bad Request - Invalid request parameters |
-| `401` | Unauthorized - Authentication required |
-| `403` | Forbidden - Insufficient permissions |
-| `404` | Not Found - Resource not found |
-| `409` | Conflict - Resource already exists |
-| `422` | Unprocessable Entity - Validation failed |
-| `500` | Internal Server Error - Server error |
 
-## Rate Limiting
+
+| Code  | Description                              |
+| ----- | ---------------------------------------- |
+| `200` | OK - Request successful                  |
+| `201` | Created - Resource created successfully  |
+| `400` | Bad Request - Invalid request parameters |
+| `401` | Unauthorized - Authentication required   |
+| `403` | Forbidden - Insufficient permissions     |
+| `404` | Not Found - Resource not found           |
+| `409` | Conflict - Resource already exists       |
+| `422` | Unprocessable Entity - Validation failed |
+| `500` | Internal Server Error - Server error     |
+
+## ⏱️ Rate Limiting
 
 > **Note:** Add your rate limiting information here
 
 - **Rate Limit:** 1000 requests per hour per API key
 - **Headers:** Check `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers
 
-## Pagination
+## 📄 Pagination
 
 All endpoints that return lists support pagination:
 
 **Parameters:**
+
 - `Pageindex`: page number (base 0, default: 0)
 - `Pagesize`: Elements per page (default: 10, maximum: 100)
 
 **Response format:**
+
 ```json
 {
   "pageIndex": 0,
@@ -190,22 +211,25 @@ All endpoints that return lists support pagination:
 }
 ```
 
-## Installation
+## ⚙️ Installation
 
 1. Clone the repo
    ```sh
    git clone https://github.com/sgoni/Axenta.git
    ```
 
-## Endpoints
+## 🔗 Endpoints
 
-### Health
+### 📊 Accounting API
+
+#### Health
 
 ```http
 GET /health
 ```
 
 **Example of application:**
+
 ```bash
 curl -sS -H "Accept: application/json" https://localhost:5050/health
 ```
@@ -222,12 +246,14 @@ GET /periods
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number (base 0)
-| `PageSize` | integer | 10 | Items per page (1-100)
+
+| Parameter   | Type    | Required | Description            |
+| ----------- | ------- | -------- | ---------------------- |
+| `PageIndex` | integer | 0        | Page number (base 0)   |
+| `PageSize`  | integer | 10       | Items per page (1-100) |
 
 **Sample application:**
+
 ```bash
 curl -X 'GET' 
   'https://localhost:5050/periods?PageIndex=0&PageSize=10' 
@@ -235,6 +261,7 @@ curl -X 'GET'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "periods": {
@@ -262,11 +289,14 @@ POST /periods
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `companyId` | UUID | Yes | ID of the company
+
+
+| Parameter   | Type | Required | Description       |
+| ----------- | ---- | -------- | ----------------- |
+| `companyId` | UUID | Yes      | ID of the company |
 
 **Body of the Request:**
+
 ```json
 {
   "period": {
@@ -276,6 +306,7 @@ POST /periods
 ```
 
 **Sample Application:**
+
 ```bash
  curl -X 'POST' 
   'https://localhost:5050/periods' 
@@ -285,9 +316,10 @@ POST /periods
   "period": {
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
   }
-```     
+```
 
 **Sample Answer:**
+
 ```json
 {
    "periodId": "123e4567-e89b-12d3-a456-426614174001"
@@ -301,12 +333,15 @@ PUT /periods/close
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to close
-| `companyId` | UUID | Yes | ID of the company
+
+
+| Parameter   | Type | Required | Description               |
+| ----------- | ---- | -------- | ------------------------- |
+| `periodId`  | UUID | Yes      | ID of the period to close |
+| `companyId` | UUID | Yes      | ID of the company         |
 
 **Body of the Request:**
+
 ```json
 {
   "period": {
@@ -317,6 +352,7 @@ PUT /periods/close
 ```
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/periods/close' 
@@ -346,10 +382,11 @@ GET /periods/year={year}&month={month}
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `year` | integer | Yes | Year of the period
-| `month` | integer | Yes | Month of the period (1-12)
+
+| Parameter | Type    | Required | Description                |
+| --------- | ------- | -------- | -------------------------- |
+| `year`    | integer | Yes      | Year of the period         |
+| `month`   | integer | Yes      | Month of the period (1-12) |
 
 **Sample Application:**
 
@@ -375,9 +412,10 @@ GET /periods/{periodId}
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to get
+
+| Parameter  | Type | Required | Description             |
+| ---------- | ---- | -------- | ----------------------- |
+| `periodId` | UUID | Yes      | ID of the period to get |
 
 **Sample Application:**
 
@@ -410,12 +448,14 @@ PUT /periods/open
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period to open
-| `companyId` | UUID | Yes | ID of the company
+
+| Parameter   | Type | Required | Description              |
+| ----------- | ---- | -------- | ------------------------ |
+| `periodId`  | UUID | Yes      | ID of the period to open |
+| `companyId` | UUID | Yes      | ID of the company        |
 
 **Body of the Request:**
+
 ```json
 {
   "period": {
@@ -426,6 +466,7 @@ PUT /periods/open
 ```
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/periods/open' 
@@ -440,12 +481,12 @@ PUT /periods/open
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
 }
 ```
-
 
 ### Journal Entries
 
@@ -459,19 +500,20 @@ POST /journal-entries
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `Id` | UUID | Yes | ID of the period to open
-| `description` | string | Yes | Journal description
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
-| `currencyCode` | string | Yes | CUrrency code
-| `exchangeRate` | Decimal | No | Exchange rate
-| `exchangeRateDate` | UUID | No | Exchange rate date
-| `accountId` | UUID | Yes | ID of the company
-| `debit` | UUID | Yes | Balance debit
-| `credit` | UUID | Yes | Balance credit
-| `lineNumber` | UUID | Yes | Line number
+
+| Parameter          | Type    | Required | Description              |
+| ------------------ | ------- | -------- | ------------------------ |
+| `Id`               | UUID    | Yes      | ID of the period to open |
+| `description`      | string  | Yes      | Journal description      |
+| `periodId`         | UUID    | Yes      | ID of the period         |
+| `companyId`        | UUID    | Yes      | ID of the company        |
+| `currencyCode`     | string  | Yes      | CUrrency code            |
+| `exchangeRate`     | Decimal | No       | Exchange rate            |
+| `exchangeRateDate` | UUID    | No       | Exchange rate date       |
+| `accountId`        | UUID    | Yes      | ID of the company        |
+| `debit`            | UUID    | Yes      | Balance debit            |
+| `credit`           | UUID    | Yes      | Balance credit           |
+| `lineNumber`       | UUID    | Yes      | Line number              |
 
 **Body of the Request:**
 
@@ -484,7 +526,7 @@ POST /journal-entries
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
     "currencyCode": "CRC",
     "exchangeRate": 0,
-    "exchangeRateDate": "2025-08-14",    
+    "exchangeRateDate": "2025-08-14",  
     "lines": [
       {
         "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
@@ -504,6 +546,7 @@ POST /journal-entries
 ```
 
 **Validation Rules:**
+
 - ✅ The total debits must equal the total credits
 - ✅ At least two lines are required
 - ✅ All amounts must be positive
@@ -511,6 +554,7 @@ POST /journal-entries
 - ✅ The period must be open
 
 **Sample Application:**
+
 ```bash
 curl -X 'POST' \
   'https://localhost:5050/journal-entries' \
@@ -524,7 +568,7 @@ curl -X 'POST' \
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
     "currencyCode": "CRC",
     "exchangeRate": 0,
-    "exchangeRateDate": "2025-08-14",    
+    "exchangeRateDate": "2025-08-14",  
     "lines": [
       {
         "accountId": "7573e77c-110b-4a3b-9bda-7be306bb14b4",
@@ -541,9 +585,10 @@ curl -X 'POST' \
     ]
   }
 }'
-```     
+```
 
 **Sample Answer:**
+
 ```json
 {
    "id": "123e4567-e89b-12d3-a456-426614174004"
@@ -560,14 +605,16 @@ GET /journal-entries
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
+
+| Parameter   | Type    | Required | Description       |
+| ----------- | ------- | -------- | ----------------- |
+| `PageIndex` | integer | 0        | Page number       |
+| `PageSize`  | integer | 10       | Elements per page |
+| `periodId`  | UUID    | Yes      | ID of the period  |
+| `companyId` | UUID    | Yes      | ID of the company |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' \
    'https://localhost:5050/journal-entries?PageIndex=0&PageSize=10&PeriodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
@@ -575,6 +622,7 @@ GET /journal-entries
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "journalEntries": {
@@ -609,7 +657,7 @@ GET /journal-entries
             "debit": 0,
             "credit": 50000,
             "lineNumber": 0
-          }          
+          }        
         ]
       }
     ]
@@ -625,19 +673,20 @@ PUT /journal-entries
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the seat
-| `description` | string | Yes | Journal description
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
-| `currencyCode` | string | Yes | CUrrency code
-| `exchangeRate` | Decimal | No | Exchange rate
-| `exchangeRateDate` | UUID | No | Exchange rate date
-| `accountId` | UUID | Yes | ID of the company
-| `debit` | UUID | Yes | Balance debit
-| `credit` | UUID | Yes | Balance credit
-| `lineNumber` | UUID | Yes | Line number
+
+| Parameter          | Type    | Required | Description         |
+| ------------------ | ------- | -------- | ------------------- |
+| `id`               | UUID    | Yes      | ID of the seat      |
+| `description`      | string  | Yes      | Journal description |
+| `periodId`         | UUID    | Yes      | ID of the period    |
+| `companyId`        | UUID    | Yes      | ID of the company   |
+| `currencyCode`     | string  | Yes      | CUrrency code       |
+| `exchangeRate`     | Decimal | No       | Exchange rate       |
+| `exchangeRateDate` | UUID    | No       | Exchange rate date  |
+| `accountId`        | UUID    | Yes      | ID of the company   |
+| `debit`            | UUID    | Yes      | Balance debit       |
+| `credit`           | UUID    | Yes      | Balance credit      |
+| `lineNumber`       | UUID    | Yes      | Line number         |
 
 **Body of the Request:**
 
@@ -666,6 +715,7 @@ PUT /journal-entries
 ```
 
 **Validation Rules:**
+
 - ✅ The total debits must equal the total credits
 - ✅ At least two lines are required
 - ✅ All amounts must be positive
@@ -673,6 +723,7 @@ PUT /journal-entries
 - ✅ The period must be open
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/journal-entries' 
@@ -711,6 +762,7 @@ PUT /journal-entries
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -725,16 +777,19 @@ DELETE /journal-entries/{id}
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the seat to be deleted
+
+| Parameter | Type | Required | Description                  |
+| --------- | ---- | -------- | ---------------------------- |
+| `id`      | UUID | Yes      | ID of the seat to be deleted |
 
 **Validation Rules:**
+
 - ✅ Valid account IDs are required
 - ✅ The period must be open
 - ✅ The journal entry is not posted
 
 **Sample Application:**
+
 ```bash
 curl -X 'DELETE' 
   'https://localhost:5050/journal-entries/896dd1df-1413-4098-bbbd-d5586cb8f86e' 
@@ -742,6 +797,7 @@ curl -X 'DELETE'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -756,11 +812,13 @@ GET /journal-entries/{journalEntryId}
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the seat
+
+| Parameter | Type | Required | Description    |
+| --------- | ---- | -------- | -------------- |
+| `id`      | UUID | Yes      | ID of the seat |
 
 **Sample Application:**
+
 ```bash
 curl -X 'GET' 
  'https://localhost:5050/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946' 
@@ -768,6 +826,7 @@ curl -X 'GET'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "journalEntryDetail": {
@@ -802,6 +861,7 @@ curl -X 'GET'
   }
 }
 ```
+
 #### Reverse an entry (only if the period is open)
 
 ```http
@@ -810,15 +870,18 @@ PUT /journal-entries/{id}/reverse
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | ID of the seat to be deleted
+
+| Parameter | Type | Required | Description                  |
+| --------- | ---- | -------- | ---------------------------- |
+| `id`      | UUID | Yes      | ID of the seat to be deleted |
 
 **Validation Rules:**
+
 - ✅ Valid account IDs are required
 - ✅ The period must be open
 
 **Sample Application:**
+
 ```bash
 curl -X 'PUT' 
  'https://localhost:5050/journal-entries3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
@@ -826,6 +889,7 @@ curl -X 'PUT'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -844,14 +908,17 @@ POST /journal-entries/{id}/documents
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Journal Entry ID
+
+| Parameter | Type | Required | Description      |
+| --------- | ---- | -------- | ---------------- |
+| `id`      | UUID | Yes      | Journal Entry ID |
 
 **Validation Rules:**
+
 - ✅ The journal entry must exist
 
 **Body of the Request:**
+
 ```json
 {
   "documentReference": {
@@ -866,6 +933,7 @@ POST /journal-entries/{id}/documents
 ```
 
 **Sample Application:**
+
 ```bash
 curl -X 'POST' \
   'https://localhost:5050/journal-entries/{id}/documents' \
@@ -883,6 +951,7 @@ curl -X 'POST' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "id": "b2c6d0ca-cd5d-4154-951c-82568c4f01fd"
@@ -897,14 +966,17 @@ GET /journal-entries/{id}/documents
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Journal Entry ID
+
+| Parameter | Type | Required | Description      |
+| --------- | ---- | -------- | ---------------- |
+| `id`      | UUID | Yes      | Journal Entry ID |
 
 **Validation Rules:**
+
 - ✅ The journal entry must exist
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:5050/journal-entries/3fa85f64-5717-4562-b3fc-2c963f66afa6/documents' 
@@ -912,6 +984,7 @@ GET /journal-entries/{id}/documents
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "documentReferences": [
@@ -939,15 +1012,17 @@ POST /currencies
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Company ID
-| `currencyCode` | string | Yes | Currency code
-| `date` | Date | Yes | Exchange rate date
-| `buyRate` | Decimal | Yes | Exchange rate purchase
-| `sellRate` | Decimal | Yes | Exchange rate sale
+
+| Parameter      | Type    | Required | Description            |
+| -------------- | ------- | -------- | ---------------------- |
+| `id`           | UUID    | Yes      | Company ID             |
+| `currencyCode` | string  | Yes      | Currency code          |
+| `date`         | Date    | Yes      | Exchange rate date     |
+| `buyRate`      | Decimal | Yes      | Exchange rate purchase |
+| `sellRate`     | Decimal | Yes      | Exchange rate sale     |
 
 **Body of the Request:**
+
 ```json
 {
   "currencyExchangeRate": {
@@ -961,6 +1036,7 @@ POST /currencies
 ```
 
 **Sample Application:**
+
 ```bash
 curl -X 'POST' \
   'https://localhost:5050/currencies' \
@@ -977,6 +1053,7 @@ curl -X 'POST' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "id": "66f63e17-b4ec-4624-a6a8-121515b47927"
@@ -990,12 +1067,15 @@ GET /currencies
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
+
+
+| Parameter   | Type    | Required | Description       |
+| ----------- | ------- | -------- | ----------------- |
+| `PageIndex` | integer | 0        | Page number       |
+| `PageSize`  | integer | 10       | Elements per page |
 
 **Sample Application:**
+
 ```bash
 curl -X 'GET' \
   'https://localhost:5050/currencies?PageIndex=0&PageSize=10' \
@@ -1003,6 +1083,7 @@ curl -X 'GET' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "currencyExchangeRates": {
@@ -1029,6 +1110,7 @@ GET /currencies/daily
 ```
 
 **Sample Application:**
+
 ```bash
 curl -X 'GET' \
   'https://localhost:5050/currencies/daily' \
@@ -1036,6 +1118,7 @@ curl -X 'GET' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "currencyExchangeRate": {
@@ -1059,11 +1142,14 @@ put /cost-centers/{id}/activate
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `Id` | UUID | Yes | Cost center ID to activate
+
+
+| Parameter | Type | Required | Description                |
+| --------- | ---- | -------- | -------------------------- |
+| `Id`      | UUID | Yes      | Cost center ID to activate |
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' \
   'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' \
@@ -1071,6 +1157,7 @@ put /cost-centers/{id}/activate
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -1084,15 +1171,18 @@ post /cost-centers
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `name` | string | No | Cost center name
-| `description` | string | Yes | Description of the cost center
-| `isActive` | bool | Yes | Active or inactive Cost Center
-| `companyId` | UUID | Yes | Legal identifier of the company
-| `parentCostCenterId` | UUID | Yes | Parent cost center ID
+
+
+| Parameter            | Type   | Required | Description                     |
+| -------------------- | ------ | -------- | ------------------------------- |
+| `name`               | string | No       | Cost center name                |
+| `description`        | string | Yes      | Description of the cost center  |
+| `isActive`           | bool   | Yes      | Active or inactive Cost Center  |
+| `companyId`          | UUID   | Yes      | Legal identifier of the company |
+| `parentCostCenterId` | UUID   | Yes      | Parent cost center ID           |
 
 **Body of the Request:**
+
 ```json
 {
   "costCenter": {
@@ -1105,6 +1195,7 @@ post /cost-centers
 ```
 
 **Sample Application:**
+
 ```bash
   curl -X 'POST' 
    'https://localhost:5050/cost-centers' 
@@ -1121,6 +1212,7 @@ post /cost-centers
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -1134,13 +1226,16 @@ GET /cost-centers
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
-| `costCenterId` | UUID | Yes | Cost center ID to get
+
+
+| Parameter      | Type    | Required | Description           |
+| -------------- | ------- | -------- | --------------------- |
+| `PageIndex`    | integer | 0        | Page number           |
+| `PageSize`     | integer | 10       | Elements per page     |
+| `costCenterId` | UUID    | Yes      | Cost center ID to get |
 
 **Sample Application:**
+
 ```bash
 curl -X 'GET' \
   'https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
@@ -1148,6 +1243,7 @@ curl -X 'GET' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "costCenters": {
@@ -1176,14 +1272,17 @@ PUT /cost-centers
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `name` | string | No | Cost center name
-| `description` | string | Yes | Description of the cost center
-| `isActive` | bool | Yes | Active or inactive Cost Center
-| `parentCostCenterId` | UUID | Yes | Parent cost center ID
+
+
+| Parameter            | Type   | Required | Description                    |
+| -------------------- | ------ | -------- | ------------------------------ |
+| `name`               | string | No       | Cost center name               |
+| `description`        | string | Yes      | Description of the cost center |
+| `isActive`           | bool   | Yes      | Active or inactive Cost Center |
+| `parentCostCenterId` | UUID   | Yes      | Parent cost center ID          |
 
 **Body of the Request:**
+
 ```json
 {
   "costCenter": {
@@ -1196,6 +1295,7 @@ PUT /cost-centers
 ```
 
 **Sample Application:**
+
 ```bash
 curl -X 'PUT' \
   'https://localhost:5050/cost-centers' \
@@ -1213,9 +1313,10 @@ curl -X 'PUT' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
-  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  "isSuccess": true
 }
 ```
 
@@ -1226,11 +1327,14 @@ put /cost-centers/{id}/deactivate
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `Id` | UUID | Yes | Cost center to deactivate
+
+
+| Parameter | Type | Required | Description               |
+| --------- | ---- | -------- | ------------------------- |
+| `Id`      | UUID | Yes      | Cost center to deactivate |
 
 **Sample Application:**
+
 ```bash
 curl -X 'PUT' \
   'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/deactivate' \
@@ -1238,10 +1342,12 @@ curl -X 'PUT' \
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
 }
+```
 
 #### Get Cost Center by ID
 
@@ -1250,12 +1356,15 @@ GET /cost-centers/{costCenterId}/{CompanyId}
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `costCenterId` | UUID | Yes | Cost center ID to get
-| `companyId` | UUID | Yes | Company ID
+
+
+| Parameter      | Type | Required | Description           |
+| -------------- | ---- | -------- | --------------------- |
+| `costCenterId` | UUID | Yes      | Cost center ID to get |
+| `companyId`    | UUID | Yes      | Company ID            |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' \
   'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' \
@@ -1263,6 +1372,7 @@ GET /cost-centers/{costCenterId}/{CompanyId}
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "costCenterDetail": {
@@ -1284,11 +1394,14 @@ GET /cost-centers/{companyId}/tree
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `companyId` | UUID | Yes | Company ID
+
+
+| Parameter   | Type | Required | Description |
+| ----------- | ---- | -------- | ----------- |
+| `companyId` | UUID | Yes      | Company ID  |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' \
   'https://localhost:5050/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree' \
@@ -1296,6 +1409,7 @@ GET /cost-centers/{companyId}/tree
 ```
 
 **Sample Response:**
+
 ```json
 {
   "costCenterTree": [
@@ -1323,16 +1437,19 @@ POST /companies
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | No | Company ID
-| `name` | string | Yes | Company name
-| `taxId` | string | Yes | Legal identifier of the company
-| `country` | string | Yes | Name of the country
-| `currencyCode` | string | Yes | Currency code
-| `isActive` | boolean | No | Company active
+
+
+| Parameter      | Type    | Required | Description                     |
+| -------------- | ------- | -------- | ------------------------------- |
+| `id`           | UUID    | No       | Company ID                      |
+| `name`         | string  | Yes      | Company name                    |
+| `taxId`        | string  | Yes      | Legal identifier of the company |
+| `country`      | string  | Yes      | Name of the country             |
+| `currencyCode` | string  | Yes      | Currency code                   |
+| `isActive`     | boolean | No       | Company active                  |
 
 **Body of the Request:**
+
 ```json
 {
   "company": {
@@ -1347,6 +1464,7 @@ POST /companies
 ```
 
 **Sample Application:**
+
 ```bash
  curl -X 'POST' 
   'https://localhost:5050/companies' 
@@ -1364,6 +1482,7 @@ POST /companies
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "currencyExchangeRate": {
@@ -1383,12 +1502,15 @@ GET /companies
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
+
+
+| Parameter   | Type    | Required | Description       |
+| ----------- | ------- | -------- | ----------------- |
+| `PageIndex` | integer | 0        | Page number       |
+| `PageSize`  | integer | 10       | Elements per page |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:5050/companies?PageIndex=0&PageSize=10' 
@@ -1396,6 +1518,7 @@ GET /companies
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "companies": {
@@ -1431,16 +1554,19 @@ PUT /companies
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Company ID
-| `name` | string | Yes | Company name
-| `taxId` | string | Yes | Legal identifier of the company
-| `country` | string | Yes | Name of the country
-| `currencyCode` | string | Yes | Currency code
-| `isActive` | boolean | Yes | Company active
+
+
+| Parameter      | Type    | Required | Description                     |
+| -------------- | ------- | -------- | ------------------------------- |
+| `id`           | UUID    | Yes      | Company ID                      |
+| `name`         | string  | Yes      | Company name                    |
+| `taxId`        | string  | Yes      | Legal identifier of the company |
+| `country`      | string  | Yes      | Name of the country             |
+| `currencyCode` | string  | Yes      | Currency code                   |
+| `isActive`     | boolean | Yes      | Company active                  |
 
 **Body of the Request:**
+
 ```json
 {
   "company": {
@@ -1455,6 +1581,7 @@ PUT /companies
 ```
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/companies' 
@@ -1473,6 +1600,7 @@ PUT /companies
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -1486,11 +1614,14 @@ GET /companies/{companyId}
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `companyId` | UUID | Yes | Company ID
+
+
+| Parameter   | Type | Required | Description |
+| ----------- | ---- | -------- | ----------- |
+| `companyId` | UUID | Yes      | Company ID  |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:5050/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
@@ -1498,6 +1629,7 @@ GET /companies/{companyId}
 ```
 
 **Body of the Request:**
+
 ```json
 {
   "companyDetail": {
@@ -1522,11 +1654,14 @@ GET /audit-logs/{id}
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Company ID
+
+
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `id`      | UUID | Yes      | Company ID  |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:5050/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
@@ -1534,6 +1669,7 @@ GET /audit-logs/{id}
 ```
 
 **Body of the Request:**
+
 ```json
 {
   "auditDetail": {
@@ -1548,6 +1684,7 @@ GET /audit-logs/{id}
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -1562,12 +1699,14 @@ GET /audit-logs
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
+
+| Parameter   | Type    | Required | Description       |
+| ----------- | ------- | -------- | ----------------- |
+| `PageIndex` | integer | 0        | Page number       |
+| `PageSize`  | integer | 10       | Elements per page |
 
 **Sample Answer:**
+
 ```json
 {
    "auditlogs": {
@@ -1599,11 +1738,14 @@ PUT /accounts/{id}/activate
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Account ID
+
+
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `id`      | UUID | Yes      | Account ID  |
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/activate' 
@@ -1611,11 +1753,13 @@ PUT /accounts/{id}/activate
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
 }
 ```
+
 #### Create Account
 
 ```http
@@ -1623,16 +1767,19 @@ POST /accounts
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `code` | string | No | Multi-level account code
-| `name` | string | Yes | Account name
-| `accountTypeId` | string | Yes | Account type (Liability, asset, equity, etc.)
-| `parentAccountId` | string | Yes | Parent account ID
-| `isActive` | boolean | No | Account is active
-| `isMovable` | boolean | Yes | Accepts daily seat movements
+
+
+| Parameter         | Type    | Required | Description                                   |
+| ----------------- | ------- | -------- | --------------------------------------------- |
+| `code`            | string  | No       | Multi-level account code                      |
+| `name`            | string  | Yes      | Account name                                  |
+| `accountTypeId`   | string  | Yes      | Account type (Liability, asset, equity, etc.) |
+| `parentAccountId` | string  | Yes      | Parent account ID                             |
+| `isActive`        | boolean | No       | Account is active                             |
+| `isMovable`       | boolean | Yes      | Accepts daily seat movements                  |
 
 **Body of the Application:**
+
 ```json
 {
    "account": {
@@ -1647,6 +1794,7 @@ POST /accounts
 ```
 
 **Sample Application:**
+
 ```bash
 curl -X POST "https://api.accounting.com/v1/accounts" \
      -H "Authorization: Bearer YOUR_API_KEY" \
@@ -1660,9 +1808,10 @@ curl -X POST "https://api.accounting.com/v1/accounts" \
          "isMovable": true
        }
      }
-```     
+```
 
 **Sample Answer:**
+
 ```json
 {
    "id": "123e4567-e89b-12d3-a456-426614174005"
@@ -1677,11 +1826,11 @@ GET /accounts
 
 **Parameters:**
 
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `PageIndex` | integer | 0 | Page number
-| `PageSize` | integer | 10 | Elements per page
 
+| Parameter   | Type    | Required | Description       |
+| ----------- | ------- | -------- | ----------------- |
+| `PageIndex` | integer | 0        | Page number       |
+| `PageSize`  | integer | 10       | Elements per page |
 
 #### Update Account
 
@@ -1690,17 +1839,20 @@ PUT /accounts
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `id` | UUID | Yes | Account ID
-| `code` | string | No | Multi-level account code
-| `name` | string | Yes | Account name
-| `accountTypeId` | string | Yes | Account type (Liability, asset, equity, etc.)
-| `parentAccountId` | string | No | Parent account ID
-| `isActive` | boolean | No | Account is active
-| `isMovable` | boolean | No | Accepts daily seat movements
+
+
+| Parameter         | Type    | Required | Description                                   |
+| ----------------- | ------- | -------- | --------------------------------------------- |
+| `id`              | UUID    | Yes      | Account ID                                    |
+| `code`            | string  | No       | Multi-level account code                      |
+| `name`            | string  | Yes      | Account name                                  |
+| `accountTypeId`   | string  | Yes      | Account type (Liability, asset, equity, etc.) |
+| `parentAccountId` | string  | No       | Parent account ID                             |
+| `isActive`        | boolean | No       | Account is active                             |
+| `isMovable`       | boolean | No       | Accepts daily seat movements                  |
 
 **Sample Application:**
+
 ```bash
 curl -X 'PUT' 
  'https://localhost:5050/accounts' 
@@ -1718,6 +1870,7 @@ curl -X 'PUT'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -1729,14 +1882,18 @@ curl -X 'PUT'
 ```http
 DELETE /accounts/{id}
 ```
+
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `Id` | UUID | Yes | Account ID to physical delete
+
+
+| Parameter | Type | Required | Description                   |
+| --------- | ---- | -------- | ----------------------------- |
+| `Id`      | UUID | Yes      | Account ID to physical delete |
 
 Delete a phisical record account.
 
 **Sample Application:**
+
 ```bash
 curl -X 'DELETE' 
  'https://localhost:5050/accounts/0065ecee-ee6b-4d42-bb8b-0e24b20c213f' 
@@ -1744,6 +1901,7 @@ curl -X 'DELETE'
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -1757,11 +1915,14 @@ PUT /accounts/{id}/desactivate
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `Id` | UUID | Yes | Account ID to deactivate
+
+
+| Parameter | Type | Required | Description              |
+| --------- | ---- | -------- | ------------------------ |
+| `Id`      | UUID | Yes      | Account ID to deactivate |
 
 **Sample Application:**
+
 ```bash
  curl -X 'PUT' 
   'https://localhost:5050/accounts/cacfc56f-82ca-4cd5-b694-540b5e1b2e03/desactivate' 
@@ -1769,6 +1930,7 @@ PUT /accounts/{id}/desactivate
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "isSuccess": true
@@ -1782,11 +1944,14 @@ GET /accounts/{accountId}
 ```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `accountId` | UUID | Yes | Account ID to get
+
+
+| Parameter   | Type | Required | Description       |
+| ----------- | ---- | -------- | ----------------- |
+| `accountId` | UUID | Yes      | Account ID to get |
 
 **Sample Application:**
+
 ```bash
 curl -X 'GET' \
   'https://localhost:5050/accounts/7573e77c-110b-4a3b-9bda-7be306bb14b4' \
@@ -1794,6 +1959,7 @@ curl -X 'GET' \
 ```
 
 **Sample Answer:**
+
 ```json
 
   "accountDetail": {
@@ -1817,6 +1983,7 @@ GET /accounts/tree
 Returns accounts in a hierarchical structure.
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:5050/accounts/tree' 
@@ -1824,6 +1991,7 @@ Returns accounts in a hierarchical structure.
 ```
 
 **Sample Response:**
+
 ```json
 {
    "accountTree": 
@@ -1860,6 +2028,7 @@ GET /accounts/types
 ```
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:5050/accounts/tree' 
@@ -1867,6 +2036,7 @@ GET /accounts/types
 ```
 
 **Sample Answer:**
+
 ```json
 {
    "accountTypes": [
@@ -1889,7 +2059,7 @@ GET /accounts/types
 }
 ```
 
-### Reports
+### 📑 Reports
 
 Generation of accounting reports.
 
@@ -1897,15 +2067,18 @@ Generation of accounting reports.
 
 ```http
 GET /reports/income-statement?periodId={periodId}&companyId={companyId}
- ```
+```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
+
+
+| Parameter   | Type | Required | Description       |
+| ----------- | ---- | -------- | ----------------- |
+| `periodId`  | UUID | Yes      | ID of the period  |
+| `companyId` | UUID | Yes      | ID of the company |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:6060/reports/income-statement?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
@@ -1913,6 +2086,7 @@ GET /reports/income-statement?periodId={periodId}&companyId={companyId}
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "incomeStatementDto": [
@@ -1936,15 +2110,18 @@ GET /reports/income-statement?periodId={periodId}&companyId={companyId}
 
 ```http
 GET /reports/trial-balance?periodId={periodId}&companyId={companyId}
- ```
+```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
+
+
+| Parameter   | Type | Required | Description       |
+| ----------- | ---- | -------- | ----------------- |
+| `periodId`  | UUID | Yes      | ID of the period  |
+| `companyId` | UUID | Yes      | ID of the company |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:6060/reports/trial-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
@@ -1978,14 +2155,17 @@ GET /reports/trial-balance?periodId={periodId}&companyId={companyId}
 
 ```http
 GET /reports/account-balance/{accountId}
- ```
+```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `accountId` | UUID | Yes | ID account
+
+
+| Parameter   | Type | Required | Description |
+| ----------- | ---- | -------- | ----------- |
+| `accountId` | UUID | Yes      | ID account  |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:6060/reports/account-balance/a04ee151-03d4-4840-8697-600360d6977d' 
@@ -2004,15 +2184,18 @@ GET /reports/account-balance/{accountId}
 
 ```http
 GET /reports/account-balance/period?periodId={periodId}&accountId={accountId}
- ```
+```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period
-| `accountId` | UUID | Yes | ID account
+
+
+| Parameter   | Type | Required | Description      |
+| ----------- | ---- | -------- | ---------------- |
+| `periodId`  | UUID | Yes      | ID of the period |
+| `accountId` | UUID | Yes      | ID account       |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=a04ee151-03d4-4840-8697-600360d6977d' 
@@ -2025,21 +2208,24 @@ GET /reports/account-balance/period?periodId={periodId}&accountId={accountId}
 {
   "balance": -1000000.00
 }
-
 ```
 
 #### General ledger report
+
 ```http
 GET /reports/general-ledger?periodId={periodId}&companyId={companyId}
- ```
+```
 
 **Parameters:**
-Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
+
+
+| Parameter   | Type | Required | Description       |
+| ----------- | ---- | -------- | ----------------- |
+| `periodId`  | UUID | Yes      | ID of the period  |
+| `companyId` | UUID | Yes      | ID of the company |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=23b79d9f-96d3-4c20-ac8e-4387a70152b3' 
@@ -2047,6 +2233,7 @@ Parameter | Type | Required | Description
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "balance": -1000000.00
@@ -2057,15 +2244,18 @@ Parameter | Type | Required | Description
 
 ```http
 GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
- ```
+```
 
 **Parameters:**
-| Parameter | Type | Required | Description
-|-----|-----|-----|-----
-| `periodId` | UUID | Yes | ID of the period
-| `companyId` | UUID | Yes | ID of the company
+
+
+| Parameter   | Type | Required | Description       |
+| ----------- | ---- | -------- | ----------------- |
+| `periodId`  | UUID | Yes      | ID of the period  |
+| `companyId` | UUID | Yes      | ID of the company |
 
 **Sample Application:**
+
 ```bash
  curl -X 'GET' 
   'https://localhost:6060/reports/balance-sheet?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
@@ -2073,6 +2263,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 **Sample Answer:**
+
 ```json
 {
   "balanceSheet": [
@@ -2092,7 +2283,12 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 }
 ```
 
-## Data Models
+### 💸 Accounts payable
+### 💰 Accounts receivable
+### 🏦 Banking conciliation
+### 🏷️ Cost Center
+
+## 📊 Data Models
 
 ### CompanyDto
 
@@ -2108,6 +2304,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### PeriodDto
+
 ```json
 {
   "id": "string (UUID)",
@@ -2121,6 +2318,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### CreatePeriodDto
+
 ```json
 {
   "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -2155,6 +2353,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### AccountDto
+
 ```json
 {
   "id": "string (UUID)",
@@ -2181,6 +2380,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### DocumentReferenceDto
+
 ```json
 {
   "id": "string (UUID)",
@@ -2193,6 +2393,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### AccountTypeDto
+
 ```json
 {
   "id": "string (UUID)",
@@ -2202,6 +2403,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### AuditLogDto
+
 ```json
 {
   "id": "string (UUID)",
@@ -2214,6 +2416,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### BalanceSheetDto
+
 ```json
 {
   "code": "string",
@@ -2224,6 +2427,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### IncomeStatementDto
+
 ```json
 {
   "code": "string",
@@ -2234,6 +2438,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### GeneralLedgerDto
+
 ```json
 {
   "date": "2025-08-21T03:54:09.061Z",
@@ -2245,6 +2450,7 @@ GET /reports/balance-sheet?periodId={periodId}&companyId={companyId}
 ```
 
 ### TrialBalanceDto
+
 ```json
 {
   "code": "string",
@@ -2369,8 +2575,8 @@ curl -X POST "https://api.accounting.com/v1/journal-entries/journal-entry-id/doc
          "description": "Factura de venta"
        }
      }'
-```     
-	 
+```
+
 ### Example of Entry Reversal
 
 ```bash
@@ -2385,6 +2591,7 @@ This will automatically create a reversing entry with the debits and credits rev
 ## SDKs and Libraries
 
 ### Official SDKs
+
 - **JavaScript/Node.js**: `npm install @accounting-api/client`
 - **Python**: `pip install accounting-api-client`
 - **C#/.NET**: `dotnet add package AccountingApi.Client`
@@ -2468,6 +2675,7 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
 ## Changelog
 
 ### Version 1.0 (Current)
+
 - ✅ Multi-company management with complete tax information
 - ✅ Multi-currency support with automatic exchange rates
 - ✅ Accounting periods with opening/closing control by company
@@ -2478,15 +2686,17 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
 - ✅ Audit system with detailed history
 - ✅ Pagination on all listing endpoints
 - ✅ Robust validations for accounting integrity
-- ✅ **Financial Reports** (Balance Sheet, Income Statement)
-- 
+- ✅ Financial Reports (Balance Sheet, Income Statement)
+- ✅ Cost Centers for Detailed Analysis
+
 ### Upcoming Features
+
 - 🔄 **Automatic Bank Reconciliation**
 - 🔄 **Budgets** and Budget Control
-- 🔄 **Cost Centers** for Detailed Analysis
 - 🔄 **Mass Import** of Accounting Entries
 - 🔄 **Webhook Notifications** for Important Events
 - 🔄 **Reporting API** with Customizable Formats
+
 ---
 
 ## Support
@@ -2498,6 +2708,7 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
 - **GitHub**: [https://github.com/accounting-api](https://github.com/accounting-api)
 
 ### Support Hours
+
 - **Technical Support**: Monday to Friday, 9:00 AM - 6:00 PM (UTC-5)
 - **Emergency Support**: 24/7 for Enterprise customers
 
