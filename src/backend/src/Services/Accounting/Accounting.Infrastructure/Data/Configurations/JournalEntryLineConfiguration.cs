@@ -16,16 +16,25 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
 
         builder.Property(l => l.JournalEntryId)
             .HasConversion(
-                jeId => jeId.Value,
+                id => id.Value,
                 val => JournalEntryId.Of(val))
-            .IsRequired();
+            .IsRequired()
+            .HasColumnName("JournalEntryId");
 
         builder.Property(l => l.AccountId)
             .HasConversion(
-                accId => accId.Value,
+                id => id.Value,
                 val => AccountId.Of(val))
-            .IsRequired();
-        // Debit (Amount + Currency)
+            .IsRequired()
+            .HasColumnName("AccountId");
+
+        builder.Property(l => l.CostCenterId)
+            .HasConversion(
+                id => id.Value,
+                val => CostCenterId.FromNullable(val))
+            .HasColumnName("CostCenterId");
+
+        // Propiedad Money: Debit
         builder.OwnsOne(l => l.Debit, debit =>
         {
             debit.Property(p => p.Amount)
@@ -39,7 +48,7 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
                 .IsRequired();
         });
 
-        // Credit (Amount + Currency)
+        // Propiedad Money: Credit
         builder.OwnsOne(l => l.Credit, credit =>
         {
             credit.Property(p => p.Amount)
@@ -56,11 +65,7 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
         builder.Property(l => l.LineNumber)
             .IsRequired();
 
-        builder.HasOne<JournalEntry>()
-            .WithMany(j => j.JournalEntryLines)
-            .HasForeignKey(l => l.JournalEntryId)
-            .OnDelete(DeleteBehavior.Cascade);
-
+        // Índice único
         builder.HasIndex(l => new { l.JournalEntryId, l.Id, l.LineNumber })
             .IsUnique();
     }

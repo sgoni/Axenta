@@ -1,56 +1,84 @@
-﻿public class CostCenterConfiguration : IEntityTypeConfiguration<CostCenter>
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+namespace Accounting.Infrastructure.Data.Configurations
 {
-    public void Configure(EntityTypeBuilder<CostCenter> builder)
+    public class CostCenterConfiguration : IEntityTypeConfiguration<CostCenter>
     {
-        builder.ToTable("CostCenters");
+        public void Configure(EntityTypeBuilder<CostCenter> builder)
+        {
+            // Tabla
+            builder.ToTable("CostCenters");
 
-        builder.HasKey(a => a.Id);
+            // ValueConverters para los VOs
+            var costCenterIdConverter = new ValueConverter<CostCenterId, Guid>(
+                v => v.Value,
+                v => CostCenterId.Of(v));
 
-        builder.Property(a => a.Id)
-            .HasConversion(
-                id => id.Value,
-                val => CostCenterId.Of(val)
-            )
-            .IsRequired();
+            var companyIdConverter = new ValueConverter<CompanyId, Guid>(
+                v => v.Value,
+                v => CompanyId.Of(v));
 
-        builder.Property(x => x.Code)
-            .IsRequired()
-            .HasMaxLength(50);
+            //var nullableCostCenterIdConverter = new ValueConverter<CostCenterId?, Guid?>(
+            //    v => v.HasValue ? v.Value.Value : null,
+            //    v => v.HasValue ? CostCenterId.Of(v.Value) : null);
 
-        builder.HasIndex(x => new { x.Code, x.CompanyId })
-            .IsUnique();
+            // Clave primaria
+            builder.HasKey(cc => cc.Id);
 
-        builder.Property(x => x.Name)
-            .IsRequired()
-            .HasMaxLength(200);
+            builder.Property(cc => cc.Id)
+                .HasConversion(costCenterIdConverter)
+                .ValueGeneratedNever();
 
-        builder.Property(x => x.Description)
-            .HasMaxLength(1000);
+            // Propiedades
+            builder.Property(cc => cc.Code)
+                .IsRequired()
+                .HasMaxLength(50);
 
-        builder.Property(x => x.IsActive).IsRequired();
+            builder.Property(cc => cc.Name)
+                .IsRequired()
+                .HasMaxLength(200);
 
-        builder.Property(x => x.CompanyId)
-            .HasConversion(
-                id => id.Value,
-                value => CompanyId.Of(value)
-            )
-            .IsRequired();
+            builder.Property(cc => cc.Description)
+                .HasMaxLength(1000);
 
-        builder.Property(x => x.ParentCostCenterId)
-            .HasConversion(
-                id => id != null ? id.Value : (Guid?)null,
-                value => value.HasValue ? CostCenterId.Of(value.Value) : null
-            )
-            .IsRequired(false);
+            builder.Property(cc => cc.IsActive)
+                .IsRequired()
+                .HasDefaultValue(true);
 
-        builder.HasOne(x => x.Company)
-            .WithMany()
-            .HasForeignKey(x => x.CompanyId)
-            .OnDelete(DeleteBehavior.Restrict);
+            // Foreign key CompanyId
+            builder.Property(cc => cc.CompanyId)
+                .HasConversion(companyIdConverter)
+                .IsRequired();
 
-        builder.HasOne(x => x.ParentCostCenter)
-            .WithMany(x => x.Children)
-            .HasForeignKey(x => x.ParentCostCenterId)
-            .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(cc => cc.Company)
+                .WithMany()
+                .HasForeignKey(cc => cc.CompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Relaciones jerárquicas (ParentCostCenter)
+            //builder.Property(cc => cc.ParentCostCenterId)
+            //       .HasConversion(nullableCostCenterIdConverter);
+
+            builder.Property(cc => cc.ParentCostCenterId)
+                .HasConversion(
+                    pid => pid!.Value,
+                    val => CostCenterId.FromNullable(val)
+                )
+                .IsRequired();
+
+            builder.HasOne(cc => cc.ParentCostCenter)
+                .WithMany(cc => cc.Children)
+                .HasForeignKey(cc => cc.ParentCostCenterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Acceso al campo privado _children
+            builder.Metadata
+                .FindNavigation(nameof(CostCenter.Children))!
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
+
+            // Índices opcionales
+            builder.HasIndex(cc => cc.Code);
+            builder.HasIndex(cc => cc.CompanyId);
+        }
     }
 }
