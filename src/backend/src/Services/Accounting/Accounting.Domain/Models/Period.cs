@@ -47,11 +47,11 @@ public class Period : Aggregate<PeriodId>
             throw new DomainException("The period is now open");
 
         // Reverse all closing entries
-        foreach (var entry in closingEntries.Where(e => e.IsPosted))
+        foreach (var entry in closingEntries.Where(e => e.JournalEntryType == JournalEntryType.Normal.Name))
         {
             var reversal = entry.Reverse();
             // Here you must persist the reversal in the application handler
-            AddDomainEvent(new JournalEntryReversedDomainEvent(reversal.Id.Value, reversal.Id.Value));
+            AddDomainEvent(new JournalEntryReversedDomainEvent(reversal.Id.Value));
         }
 
         IsClosed = false;

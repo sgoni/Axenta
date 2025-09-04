@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.Commands.UpdateJournalEntry;
+﻿using Axenta.BuildingBlocks.ValueObjects;
+
+namespace Accounting.Application.Accounting.JournalEntries.Commands.UpdateJournalEntry;
 
 public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
     : ICommandHandler<UpdateJournalEntryCommand, UpdateJournalEntryResult>
@@ -24,32 +26,24 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             .FirstOrDefaultAsync(cancellationToken);
 
         if (journalEntry is null)
-            throw new JournalEntryNotFoundExceptions(command.JournalEntry.Id);
+            throw EntityNotFoundException.For<JournalEntry>(command.JournalEntry.Id);
 
         // Validation accounting period is Open
         await PeriodIsOpen(command, cancellationToken);
 
         // JournalEntry is  reversed
-        if (journalEntry.IsReversed)
+        if (journalEntry.JournalEntryType.Equals(JournalEntryType.Reversal.Name))
             throw new BadRequestException("The journal entry currently appears reversed.");
 
-        if (!journalEntry.IsPosted)
-        {
-            var newJournalEntry = CreateNewJournalEntry(command.JournalEntry);
-            dbContext.JournalEntries.Add(newJournalEntry);
-            dbContext.JournalEntries.Remove(journalEntry);
-        } 
-        else
-        {
-            journalEntry.Update(
-                command.JournalEntry.Description,
-                command.JournalEntry.Date,
-                command.JournalEntry.CurrencyCode,
-                command.JournalEntry.ExchangeRate,
-                command.JournalEntry.ExchangeRateDate);
-            dbContext.JournalEntries.Update(journalEntry);
-        }
+        journalEntry.Update(
+            command.JournalEntry.Description,
+            command.JournalEntry.Date,
+            command.JournalEntry.CurrencyCode,
+            command.JournalEntry.ExchangeRate,
+            command.JournalEntry.ExchangeRateDate
+        );
 
+        dbContext.JournalEntries.Update(journalEntry);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new UpdateJournalEntryResult(true);
@@ -60,7 +54,7 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
         var periodId = PeriodId.Of(command.JournalEntry.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(command.JournalEntry.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(command.JournalEntry.PeriodId);
 
         if (period.IsClosed)
             throw new BadRequestException("The accounting period is closed and seats cannot be modified.");
@@ -86,8 +80,9 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
         foreach (var journalEntryLineDto in journalEntryDto.Lines)
             newJournalEntry.AddLine(
                 AccountId.Of(journalEntryLineDto.AccountId),
-                journalEntryLineDto.Debit,
-                journalEntryLineDto.Credit,
+                Money.Of(journalEntryLineDto.Debit, journalEntryDto.CurrencyCode!),
+                Money.Of(journalEntryLineDto.Credit, journalEntryDto.CurrencyCode!),
+                CostCenterId.FromNullable(journalEntryLineDto.CostCenterId),
                 lineNumber++
             );
 

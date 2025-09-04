@@ -17,6 +17,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
     public DbSet<CurrencyExchangeRate> CurrencyExchangeRates => Set<CurrencyExchangeRate>();
     public DbSet<Company> Companies => Set<Company>();
+    public DbSet<EventLog> EventLogs => Set<EventLog>();
+    public DbSet<CostCenter> CostCenters => Set<CostCenter>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

@@ -14,11 +14,11 @@ public static class JournalEntryExtensions
             journalEntry.CurrencyCode,
             journalEntry.ExchangeRate,
             journalEntry.ExchangeRateDate,
-            journalEntry.IsPosted,
-            journalEntry.IsReversed,
+            journalEntry.JournalEntryType,
+            journalEntry.ReversalJournalEntryId?.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
-                    ln.Debit, ln.Credit, ln.LineNumber)).ToList()
+                    ln.Debit.Amount, ln.Credit.Amount, ln.CostCenterId?.Value, ln.LineNumber)).ToList()
         ));
     }
 
@@ -38,11 +38,11 @@ public static class JournalEntryExtensions
             journalEntry.CurrencyCode,
             journalEntry.ExchangeRate,
             journalEntry.ExchangeRateDate,
-            journalEntry.IsPosted,
-            journalEntry.IsReversed,
+            journalEntry.JournalEntryType,
+            journalEntry.ReversalJournalEntryId?.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
-                    ln.Debit, ln.Credit, ln.LineNumber)).ToList()
+                    ln.Debit.Amount, ln.Credit.Amount, ln.CostCenterId?.Value, ln.LineNumber)).ToList()
         );
     }
 }

@@ -10,9 +10,17 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
         //return result
 
         var accountId = AccountId.Of(command.AccountDetail.Id);
-        var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
+        var account = await dbContext.Accounts
+            .Include(a => a.Parent)
+            .FirstOrDefaultAsync(a => a.Id == accountId);
 
-        if (account is null) throw new AccountNotFoundException(command.AccountDetail.Id);
+        if (account is null) throw EntityNotFoundException.For<Account>(command.AccountDetail.Id);
+
+        var childAccount = dbContext.Accounts
+            .Include(a => a.Parent)
+            .FirstOrDefault(a => a.ParentId == AccountId.FromNullable(command.AccountDetail.ParentAccountId));
+
+        if (childAccount is null) throw new ConflictException("FK error parent account ID");
 
         UpdateAccountWithNewValues(account, command.AccountDetail);
         await dbContext.SaveChangesAsync(cancellationToken);
@@ -26,7 +34,7 @@ public class UpdateAccountHandler(IApplicationDbContext dbContext)
             accountDetailDto.Name,
             accountDetailDto.Code,
             AccountTypeId.Of(accountDetailDto.AccountTypeId),
-            AccountId.Of(accountDetailDto.ParentAccountId),
+            AccountId.FromNullable(accountDetailDto.ParentAccountId),
             accountDetailDto.IsActive);
     }
 }

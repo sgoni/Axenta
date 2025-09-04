@@ -1,19 +1,13 @@
 ﻿namespace Accounting.Domain.VelueObjects;
 
-public record PeriodId
+public record PeriodId : GuidValueObject
 {
-    private PeriodId(Guid value)
+    public PeriodId(Guid value) : base(value)
     {
-        Value = value;
     }
-
-    public Guid Value { get; }
 
     public static PeriodId Of(Guid value)
     {
-        ArgumentNullException.ThrowIfNull(value);
-        if (value == Guid.Empty) throw new DomainException("PeriodId cannot be empty");
-
         return new PeriodId(value);
     }
 }

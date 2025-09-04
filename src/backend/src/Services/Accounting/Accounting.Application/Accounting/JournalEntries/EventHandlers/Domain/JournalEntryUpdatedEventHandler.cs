@@ -32,8 +32,7 @@ public class JournalEntryUpdatedEventHandler(
                 before.CurrencyCode,
                 before.PeriodId,
                 before.CompanyId,
-                before.IsPosted,
-                before.IsReversed
+                before.JournalEntryType
                 //before.Lines
             },
             After = new
@@ -46,8 +45,7 @@ public class JournalEntryUpdatedEventHandler(
                 after.CurrencyCode,
                 after.PeriodId,
                 after.CompanyId,
-                after.IsPosted,
-                after.IsReversed
+                after.JournalEntryType
                 //after.Lines
             }
         });
@@ -56,7 +54,7 @@ public class JournalEntryUpdatedEventHandler(
             AuditLogId.Of(Guid.NewGuid()),
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(after.Id).Value),
-            "Update",
+            JournalEntryType.Adjustment.Name,
             PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
             details
         );

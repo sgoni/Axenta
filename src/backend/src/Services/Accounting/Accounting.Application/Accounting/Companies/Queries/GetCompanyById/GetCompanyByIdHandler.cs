@@ -8,7 +8,7 @@ public class GetCompanyByIdHandler(IApplicationDbContext dbContext)
         var companyId = CompanyId.Of(query.companyId);
         var company = await dbContext.Companies.FindAsync([companyId], cancellationToken);
 
-        if (company is null) throw new CompanyNotFoundException(query.companyId);
+        if (company is null) throw EntityNotFoundException.For<Company>(query.companyId);
 
         return new GetCompanyByIdQueryResult(company.ToCompanyDto());
     }

@@ -10,7 +10,7 @@ public class GetAccountByIdHandler(IApplicationDbContext dbContext)
         var accountId = AccountId.Of(query.AccountId);
         var account = await dbContext.Accounts.FindAsync([accountId], cancellationToken);
 
-        if (account is null) throw new AccountNotFoundException(query.AccountId);
+        if (account is null) throw EntityNotFoundException.For<Account>(query.AccountId);
 
         return new GetAccountByIdQueryResult(account.ToAccountDto());
     }

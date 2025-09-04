@@ -382,6 +382,24 @@
               "format": "int32",
               "default": 10
             }
+          },
+          {
+            "name": "PeriodId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "CompanyId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
@@ -817,6 +835,358 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GetDailyCurrencyExchangeRatesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cost-centers/{id}/activate": {
+      "put": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Activate cost center.",
+        "description": "Activate cost center.",
+        "operationId": "ActivateCostCenter",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivateCostCenterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cost-centers": {
+      "post": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Create a new cost center",
+        "description": "Create a new cost center",
+        "operationId": "CreateCostCenter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCostCenterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCostCenterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Get list of accounting accounts",
+        "description": "Get list of accounting accounts",
+        "operationId": "GetCostCenters",
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "CompanyId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCostCentersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Modify an existing cost center",
+        "description": "Modify an existing cost center",
+        "operationId": "UpdateCostCenter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCostCenterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCostCenterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cost-centers/{id}/deactivate": {
+      "put": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Deactivate cost center.",
+        "description": "Deactivate cost center.",
+        "operationId": "DeactivateCostCenter",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeactivateCostCenterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cost-centers/{costCenterId}/{companyId}": {
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Detail of a cost center",
+        "description": "Detail of a cost center.",
+        "operationId": "GetCostCentertById",
+        "parameters": [
+          {
+            "name": "costCenterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCostCenterByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cost-centers/{companyId}/tree": {
+      "get": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Return hierarchical tree of cost centers by company",
+        "description": "Return hierarchical tree of cost centers by company",
+        "operationId": "GetCostCentersTree",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCostCentersTreeResponse"
                 }
               }
             }
@@ -1339,6 +1709,49 @@
         }
       }
     },
+    "/accounts/{id}/desactivate": {
+      "put": {
+        "tags": [
+          "Accounting.API"
+        ],
+        "summary": "Desactivate an account.",
+        "description": "Desactivate an account.",
+        "operationId": "DeactivateAccount",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DesactivateAccountResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/accounts/{id}": {
       "delete": {
         "tags": [
@@ -1381,49 +1794,6 @@
           },
           "404": {
             "description": "Not Found",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/accounts/{id}/desactivate": {
-      "put": {
-        "tags": [
-          "Accounting.API"
-        ],
-        "summary": "Desactivate an account.",
-        "description": "Desactivate an account.",
-        "operationId": "DesactivateAccount",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DesactivateAccountResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1698,6 +2068,15 @@
         },
         "additionalProperties": false
       },
+      "ActivateCostCenterResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "AuditLogDto": {
         "type": "object",
         "properties": {
@@ -1839,6 +2218,95 @@
         },
         "additionalProperties": false
       },
+      "CostCenterDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parentCostCenterId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CostCenterDtoPaginatedResult": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CostCenterDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CostCenterTreeDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentCostCenterId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CostCenterTreeDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreatCompanyRequest": {
         "type": "object",
         "properties": {
@@ -1868,6 +2336,25 @@
         "additionalProperties": false
       },
       "CreateCompanyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCostCenterRequest": {
+        "type": "object",
+        "properties": {
+          "costCenter": {
+            "$ref": "#/components/schemas/CostCenterDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCostCenterResponse": {
         "type": "object",
         "properties": {
           "id": {
@@ -2014,6 +2501,15 @@
         },
         "additionalProperties": false
       },
+      "DeactivateCostCenterResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "DeleteAccountResponse": {
         "type": "object",
         "properties": {
@@ -2155,6 +2651,37 @@
         },
         "additionalProperties": false
       },
+      "GetCostCenterByIdResponse": {
+        "type": "object",
+        "properties": {
+          "costCenterDetail": {
+            "$ref": "#/components/schemas/CostCenterDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCostCentersResponse": {
+        "type": "object",
+        "properties": {
+          "costCenters": {
+            "$ref": "#/components/schemas/CostCenterDtoPaginatedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCostCentersTreeResponse": {
+        "type": "object",
+        "properties": {
+          "costCenterTree": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CostCenterTreeDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetCurrencyExchangeRatesResponse": {
         "type": "object",
         "properties": {
@@ -2254,11 +2781,14 @@
             "format": "date",
             "nullable": true
           },
-          "isPosted": {
-            "type": "boolean"
+          "journalEntryType": {
+            "type": "string",
+            "nullable": true
           },
-          "isReversed": {
-            "type": "boolean"
+          "reversalJournalEntryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
           },
           "lines": {
             "type": "array",
@@ -2361,6 +2891,10 @@
         "type": "object",
         "properties": {
           "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "companyId": {
             "type": "string",
             "format": "uuid"
           },
@@ -2483,6 +3017,25 @@
         },
         "additionalProperties": false
       },
+      "UpdateCostCenterRequest": {
+        "type": "object",
+        "properties": {
+          "costCenter": {
+            "$ref": "#/components/schemas/CostCenterDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCostCenterResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateJournalEntryRequest": {
         "type": "object",
         "properties": {
@@ -2495,9 +3048,8 @@
       "UpdateJournalEntryResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
+          "isSuccess": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

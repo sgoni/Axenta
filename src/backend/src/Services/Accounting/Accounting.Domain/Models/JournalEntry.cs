@@ -19,10 +19,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
     public string? CurrencyCode { get; private set; } // null = moneda local
     public decimal? ExchangeRate { get; private set; }
     public DateOnly? ExchangeRateDate { get; private set; }
-
-    public bool IsPosted { get; private set; } = true;
-    public bool IsReversed { get; private set; }
-    public JournalEntryId ReversalJournalEntryId { get; private set; }
+    public string JournalEntryType { get; private set; } = Enums.JournalEntryType.Normal.Name;
+    public JournalEntryId? ReversalJournalEntryId { get; private set; }
 
     public static JournalEntry Create(JournalEntryId id, DateTime date, string? description, PeriodId? periodId,
         CompanyId companyId, string? currencyCode, decimal? exchangeRate, DateOnly? exchangeRateDate)
@@ -37,8 +35,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = currencyCode,
             ExchangeRate = exchangeRate,
             ExchangeRateDate = exchangeRateDate,
-            IsPosted = true,
-            IsReversed = false
+            JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 
         journalEntry.AddDomainEvent(new JournalEntryCreatedEvent(journalEntry));
@@ -46,35 +43,36 @@ public class JournalEntry : Aggregate<JournalEntryId>
         return journalEntry;
     }
 
-    public void Update(string? description, DateTime date, string currencyCode, decimal? exchangeRate,
+    public void Update(string? description, DateTime date, string? currencyCode, decimal? exchangeRate,
         DateOnly? exchangeRateDate)
     {
-        JournalEntry before = new JournalEntry
+        var before = new JournalEntry
         {
             Id = Id,
             PeriodId = PeriodId,
             CompanyId = CompanyId,
             Description = Description,
             Date = Date,
-            IsPosted = true,
-            CurrencyCode = currencyCode,
-            ExchangeRate = exchangeRate,
-            ExchangeRateDate = exchangeRateDate,
-            IsReversed = IsReversed,
+            CurrencyCode = CurrencyCode,
+            ExchangeRate = ExchangeRate,
+            ExchangeRateDate = ExchangeRateDate,
+            JournalEntryType = Enums.JournalEntryType.Normal.Name,
             ReversalJournalEntryId = ReversalJournalEntryId
         };
 
         Description = description;
         Date = date;
-        IsPosted = true;
         CurrencyCode = currencyCode;
+        ExchangeRate = exchangeRate;
+        ExchangeRateDate = exchangeRateDate;
+        JournalEntryType = Enums.JournalEntryType.Adjustment.Name;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
     }
 
     public JournalEntry Reverse()
     {
-        if (IsReversed)
+        if (JournalEntryType.Equals(Enums.JournalEntryType.Reversal.Name))
             throw new DomainException("The seat has already been reversed.");
 
         // Create a reverse entry
@@ -88,8 +86,8 @@ public class JournalEntry : Aggregate<JournalEntryId>
             CurrencyCode = CurrencyCode,
             ExchangeRate = ExchangeRate,
             ExchangeRateDate = ExchangeRateDate,
-            IsPosted = false,
-            IsReversed = false
+            ReversalJournalEntryId = Id,
+            JournalEntryType = Enums.JournalEntryType.Normal.Name
         };
 
         // Mark original as reversed
@@ -98,55 +96,58 @@ public class JournalEntry : Aggregate<JournalEntryId>
                 line.AccountId,
                 line.Credit,
                 line.Debit,
+                line.CostCenterId,
                 line.LineNumber
             );
 
         // Mark original as reversed
-        IsReversed = true;
+        JournalEntryType = Enums.JournalEntryType.Reversal.Name;
         ReversalJournalEntryId = reversal.Id;
 
         // Fire domain event
-        AddDomainEvent(new JournalEntryReversedDomainEvent(Id.Value, reversal.Id.Value));
+        AddDomainEvent(new JournalEntryReversedDomainEvent(Id.Value));
 
         return reversal;
     }
 
-    public void AddLine(AccountId accountId, decimal debit, decimal credit, int lineNumber = 1)
+    public void AddLine(AccountId accountId, Money debit, Money credit, CostCenterId? costCenterId, int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(debit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentNullException.ThrowIfNull(accountId);
+        ArgumentNullException.ThrowIfNull(debit);
+        ArgumentNullException.ThrowIfNull(credit);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
-        var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
+        // If the seat declares currency at the heading level, all lines must match
+        if (!string.IsNullOrWhiteSpace(CurrencyCode))
+            if (!CurrencyCode!.Equals(debit.CurrencyCode, StringComparison.OrdinalIgnoreCase) ||
+                !CurrencyCode!.Equals(credit.CurrencyCode, StringComparison.OrdinalIgnoreCase))
+                throw new DomainException("Line currency must match JournalEntry currency.");
+
+        // Optional/Recommended: If the header does not define currency, force the company's base currency 
+        // Var Basecurrency = Company.Basecurrency; // If you have it in Company 
+        // if (debit.currencycode!
+        var journalEntryLine = JournalEntryLine.Create(Id, accountId, debit, credit, costCenterId, lineNumber);
         _journalEntryLines.Add(journalEntryLine);
     }
 
-    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, decimal debit, decimal credit,
-        int lineNumber = 1)
+    public void UpdateLine(JournalEntryLineId IdLine, AccountId accountId, Money debit, Money credit,
+        CostCenterId costCenterId, int lineNumber = 1)
     {
-        ArgumentOutOfRangeException.ThrowIfNegative(debit);
-        ArgumentOutOfRangeException.ThrowIfNegative(credit);
+        ArgumentOutOfRangeException.ThrowIfNegative(debit.Amount);
+        ArgumentOutOfRangeException.ThrowIfNegative(credit.Amount);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(lineNumber);
 
         var line = _journalEntryLines.SingleOrDefault(x => x.Id == IdLine);
-        RemoveLine(line.Id);
-
-        var journalEntryLine = new JournalEntryLine(Id, accountId, debit, credit, lineNumber);
-        _journalEntryLines.Add(journalEntryLine);
+        line.Update(line.Debit, line.Credit, costCenterId, line.LineNumber);
     }
 
-    public void Posted()
-    {
-        IsPosted = true;
-    }
-
-    public void AddDocumentReference(string sourceType, SourceId sourceId, string referenceNumber, string description)
+    public void AddDocumentReference(string sourceType, SourceId sourceId, DocumentReferenceNumber referenceNumber,
+        string description)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceType);
         ArgumentNullException.ThrowIfNull(sourceId);
 
-        var documentReference = new DocumentReference(Id, sourceType, sourceId, referenceNumber, description);
+        var documentReference = DocumentReference.Create(Id, sourceType, sourceId, referenceNumber, description);
         _documentReferences.Add(documentReference);
     }
 
@@ -164,10 +165,17 @@ public class JournalEntry : Aggregate<JournalEntryId>
 
     public void ValidateBalance()
     {
-        var totalDebit = _journalEntryLines.Sum(l => l.Debit);
-        var totalCredit = _journalEntryLines.Sum(l => l.Credit);
+        if (!_journalEntryLines.Any())
+            throw new DomainException("Journal entry must have at least one line.");
 
-        if (totalDebit != totalCredit)
-            throw new DomainException("The accounting seat does not square: debits ≠ credits.");
+        var totalDebit = _journalEntryLines.Select(l => l.Debit)
+            .Aggregate(Money.Of(0, _journalEntryLines.First().Debit.CurrencyCode), (acc, m) => acc.Add(m));
+
+        var totalCredit = _journalEntryLines.Select(l => l.Credit)
+            .Aggregate(Money.Of(0, _journalEntryLines.First().Credit.CurrencyCode), (acc, m) => acc.Add(m));
+
+        if (totalDebit.Amount != totalCredit.Amount)
+            throw new DomainException(
+                $"Unbalanced entry. Debit {totalDebit.Amount} {totalDebit.CurrencyCode} != Credit {totalCredit.Amount} {totalCredit.CurrencyCode}");
     }
 }

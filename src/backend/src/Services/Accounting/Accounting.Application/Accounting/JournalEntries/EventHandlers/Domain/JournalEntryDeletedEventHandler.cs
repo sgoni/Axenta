@@ -1,4 +1,6 @@
-﻿namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
+﻿using Action = Accounting.Domain.Enums.Action;
+
+namespace Accounting.Application.Accounting.JournalEntries.EventHandlers.Domain;
 
 public class JournalEntryDeletedEventHandler(
     IApplicationDbContext dbContext,
@@ -6,15 +8,14 @@ public class JournalEntryDeletedEventHandler(
     ILogger<JournalEntryDeletedEventHandler> logger)
     : INotificationHandler<JournalEntryDeletedEvent>
 {
-    public Task Handle(JournalEntryDeletedEvent domainEvent, CancellationToken cancellationToken)
+    public async Task Handle(JournalEntryDeletedEvent domainEvent, CancellationToken cancellationToken)
     {
         logger.LogInformation("Domain Event handled: {DomainEvent}", domainEvent.GetType().Name);
         var journalEntryDomainEvent = domainEvent.journalEntry.ToJournalEntryDto();
 
         var auditLog = CreateNewAuditLog(journalEntryDomainEvent);
         dbContext.AuditLogs.Add(auditLog);
-        dbContext.SaveChangesAsync(cancellationToken);
-        return Task.CompletedTask;
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
     private AuditLog CreateNewAuditLog(JournalEntryDto journalEntry)
@@ -37,12 +38,12 @@ public class JournalEntryDeletedEventHandler(
         });
 
         var auditLog = AuditLog.Create(
-            AuditLogId.Of(new Guid()),
+            AuditLogId.Of(Guid.NewGuid()),
             "JournalEntry",
             EntityId.Of(JournalEntryId.Of(journalEntry.Id).Value),
-            "Create",
-            PerformedBy.Of(currentUserService.UserId.Value),
-            ""
+            Action.DELETE.Name,
+            PerformedBy.Of(new Guid("d1521f2b-7690-467d-9fe3-4d2ee00f6950")),
+            details
         );
 
         return auditLog;

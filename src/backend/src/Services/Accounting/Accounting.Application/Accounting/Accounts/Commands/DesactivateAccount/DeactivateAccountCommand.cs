@@ -1,6 +1,9 @@
-﻿namespace Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
+﻿using Accounting.Application.Accounting.CostCenters.Commands.DeactivateCostCenter;
 
-public record DeactivateAccountCommand(Guid accountId) : ICommand<DesactivateAccountResult>;
+namespace Accounting.Application.Accounting.Accounts.Commands.DesactivateAccount;
+
+public record DeactivateAccountCommand(Guid accountId)
+    : ICommand<DesactivateAccountResult>, ICommand<DeactiveCostCenterResult>;
 
 public record DesactivateAccountResult(bool IsSuccess);
 

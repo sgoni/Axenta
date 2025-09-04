@@ -14,7 +14,7 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
 
         if (command.Account.ParentAccountId != null)
         {
-            var parentAccountId = AccountId.Of(command.Account.ParentAccountId);
+            var parentAccountId = AccountId.FromNullable(command.Account.ParentAccountId);
             parentAccount = await dbContext.Accounts.FindAsync(parentAccountId);
 
             if (parentAccount is null)
@@ -49,7 +49,7 @@ public class CreateAccountHandler(IApplicationDbContext dbContext)
                 newCode,
                 accountDetailDto.Name,
                 AccountTypeId.Of(accountDetailDto.AccountTypeId),
-                AccountId.Of(accountDetailDto.ParentAccountId),
+                AccountId.FromNullable(accountDetailDto.ParentAccountId),
                 accountDetailDto.Level == null ? 1 : parentAccount.Level + 1,
                 accountDetailDto.IsMovable);
 

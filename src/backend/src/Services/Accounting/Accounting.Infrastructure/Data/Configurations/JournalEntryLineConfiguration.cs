@@ -10,43 +10,62 @@ public class JournalEntryLineConfiguration : IEntityTypeConfiguration<JournalEnt
 
         builder.Property(l => l.Id)
             .HasConversion(
-                lineId => lineId.Value,
-                val => JournalEntryLineId.Of(val)
-            )
+                id => id.Value,
+                val => JournalEntryLineId.Of(val))
             .IsRequired();
 
         builder.Property(l => l.JournalEntryId)
             .HasConversion(
-                jeId => jeId.Value,
-                val => JournalEntryId.Of(val)
-            )
+                id => id.Value,
+                val => JournalEntryId.Of(val))
             .IsRequired()
             .HasColumnName("JournalEntryId");
 
         builder.Property(l => l.AccountId)
             .HasConversion(
-                accId => accId.Value,
-                val => AccountId.Of(val)
-            )
+                id => id.Value,
+                val => AccountId.Of(val))
             .IsRequired()
             .HasColumnName("AccountId");
 
-        builder.Property(l => l.Debit)
-            .HasColumnType("decimal(18,2)")
-            .IsRequired();
+        builder.Property(l => l.CostCenterId)
+            .HasConversion(
+                id => id.Value,
+                val => CostCenterId.FromNullable(val))
+            .HasColumnName("CostCenterId");
 
-        builder.Property(l => l.Credit)
-            .HasColumnType("decimal(18,2)")
-            .IsRequired();
+        // Propiedad Money: Debit
+        builder.OwnsOne(l => l.Debit, debit =>
+        {
+            debit.Property(p => p.Amount)
+                .HasColumnName("DebitAmount")
+                .HasColumnType("decimal(18,2)")
+                .IsRequired();
+
+            debit.Property(p => p.CurrencyCode)
+                .HasColumnName("DebitCurrency")
+                .HasMaxLength(3)
+                .IsRequired();
+        });
+
+        // Propiedad Money: Credit
+        builder.OwnsOne(l => l.Credit, credit =>
+        {
+            credit.Property(p => p.Amount)
+                .HasColumnName("CreditAmount")
+                .HasColumnType("decimal(18,2)")
+                .IsRequired();
+
+            credit.Property(p => p.CurrencyCode)
+                .HasColumnName("CreditCurrency")
+                .HasMaxLength(3)
+                .IsRequired();
+        });
 
         builder.Property(l => l.LineNumber)
             .IsRequired();
 
-        builder.HasOne<JournalEntry>()
-            .WithMany(j => j.JournalEntryLines)
-            .HasForeignKey(l => l.JournalEntryId)
-            .OnDelete(DeleteBehavior.Cascade);
-
+        // Índice único
         builder.HasIndex(l => new { l.JournalEntryId, l.Id, l.LineNumber })
             .IsUnique();
     }

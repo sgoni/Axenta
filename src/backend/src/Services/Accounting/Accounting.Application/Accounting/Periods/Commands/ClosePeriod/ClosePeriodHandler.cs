@@ -1,6 +1,6 @@
 ﻿namespace Accounting.Application.Accounting.Periods.Commands.ClosePeriod;
 
-public class ClosePeriodHandler(IApplicationDbContext dbContext)
+public class ClosePeriodHandler(IApplicationDbContext dbContext, IPublishEndpoint publishEndpoint)
     : ICommandHandler<ClosePeriodCommand, ClosePeriodResult>
 {
     public async Task<ClosePeriodResult> Handle(ClosePeriodCommand command, CancellationToken cancellationToken)
@@ -14,36 +14,33 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext)
         var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
 
         if (company is null || company is null)
-            throw new CompanyNotFoundException(command.Period.CompanyId);
+            throw EntityNotFoundException.For<Company>(command.Period.CompanyId);
 
         // Check period
         var periodId = PeriodId.Of(command.Period.PeriodId);
         var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
 
-        if (period is null)
-            throw new PeriodNotFoundException(command.Period.PeriodId);
+        if (period is null) throw EntityNotFoundException.For<Period>(command.Period.PeriodId);
+        await PeriodIsClose(command.Period.PeriodId, cancellationToken);
 
-        if (period.IsClosed)
-            throw new Exception($"The period id: {command.Period.PeriodId} is now closed.");
+        var eventMessage = command.Period.Adapt<PeriodClosedIntegrationEvent>();
+        await publishEndpoint.Publish(eventMessage, cancellationToken);
 
-        // 1 Generate closing entry (simplified example)
-        var closingEntry = JournalEntry.Create(
-            JournalEntryId.Of(Guid.NewGuid()),
-            DateTime.UtcNow,
-            $"Period closing entry {period.Year}-{period.Month}",
-            periodId,
-            companyId,
-            company.CurrencyCode,
-            0,
-            null
-        );
-
-        // Here we would use templates (point 2) to define the lines
-
-        period.Close();
-        dbContext.JournalEntries.Add(closingEntry);
-        await dbContext.SaveChangesAsync(cancellationToken);
+        // Domain rule (does not persist, does not touch infra)
+        //period.Close();
+        //await dbContext.SaveChangesAsync(cancellationToken);
 
         return new ClosePeriodResult(true);
+    }
+
+    private async Task PeriodIsClose(Guid id, CancellationToken cancellationToken)
+    {
+        var periodId = PeriodId.Of(id);
+        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
+
+        if (period is null) throw EntityNotFoundException.For<Period>(id);
+
+        if (period.IsClosed)
+            throw new Exception($"The period id: {id} is now closed.");
     }
 }

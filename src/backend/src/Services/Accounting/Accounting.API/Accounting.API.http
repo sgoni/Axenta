@@ -26,7 +26,7 @@ Content-Type: application/json
 
 {
   "period": {
-    "companyId": "d83d7326-679b-435e-98b0-bbe407069ed6"
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
   }
 }
 
@@ -87,8 +87,8 @@ Content-Type: application/json
 
 {
   "period": {
-    "periodId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
   }
 }
 
@@ -135,7 +135,7 @@ Content-Type: application/json
     "description": "Registro de ventas demo.",
     "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
     "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
-    "currencyCode": "CRC",
+    "currencyCode": "USD",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-14",
     "lines": [
@@ -206,11 +206,11 @@ Content-Type: application/json
 
 {
   "journalEntry": {
-    "id": "0a522347-f05d-47dc-884b-c0d469c842eb",
+    "id": "7610151c-4a7d-4f19-ad6a-b253ffed5cb2",
     "date": "2025-08-01T02:26:27.053Z",
     "description": "Registro de ventas por contado demo mas pruebas #3.",
-    "periodId": "3c917011-9b7e-4e22-8ab1-9693c4a91c39",
-    "companyId": "77ed9118-b8ce-4490-88e1-6dfb9ab365c8",
+    "periodId": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
     "currencyCode": "CRC",
     "exchangeRate": 0,
     "exchangeRateDate": "2025-08-14",
@@ -254,7 +254,7 @@ accept: application/json
 # curl -X 'PUT' 
 #  'https://localhost:5050/journal-entries/3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
 #  -H 'accept: application/json'
-PUT {{API_HostAddress}}/journal-entries/b5b78718-127d-40cd-bbaa-7d34a2d625b3/reverse
+PUT {{API_HostAddress}}/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946/reverse
 accept: application/json
 
 ###
@@ -310,6 +310,104 @@ accept: application/json
 
 ###
 
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' 
+#  -H 'accept: application/json'
+PUT https://localhost:5050/cost-centers/5a7ecc2b-08de-4ccc-8200-e7f66474071d/activate
+accept: application/json
+
+###
+
+# curl -X 'POST' 
+#  'https://localhost:5050/cost-centers' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "costCenter": {
+#    "name": "Administración",
+#    "description": "Gastos administrativos generales",
+#    "isActive": true,
+#    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+#    "parentCostCenterId": null
+#  }
+#}'
+POST {{API_HostAddress}}/cost-centers
+accept: application/json
+Content-Type: application/json
+
+{
+  "costCenter": {
+    "name": "Administración demo #51",
+    "description": "Gastos administrativos generales",
+    "isActive": true,
+    "companyId": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
+    "parentCostCenterId": "7823e137-f1f9-4266-8e9e-762bb7bc25a9"
+  }
+}
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET https://localhost:5050/cost-centers?PageIndex=0&PageSize=10&CompanyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '{
+#  "costCenter": {
+#    "id": "fa19b15d-6fdc-465d-8c01-817625211286",
+#    "name": "Gastos operativos",
+#    "description": "Gastos operativos",
+#    "isActive": true,
+#    "parentCostCenterId": null
+#  }
+#}'
+PUT {{API_HostAddress}}/cost-centers
+accept: application/json
+Content-Type: application/json
+
+{
+  "costCenter": {
+    "id": "24aa80d1-e984-41d2-947e-8fbeca6fa010",
+    "name": "Gastos operativos demo #2234",
+    "description": "Gastos operativos",
+    "isActive": true,
+    "parentCostCenterId": "0ba82d9a-1ae3-41e4-aa07-7e13a078647b"
+  }
+}
+
+###
+
+# curl -X 'PUT' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/deactivate' 
+#  -H 'accept: application/json'
+PUT {{API_HostAddress}}/cost-centers/5a7ecc2b-08de-4ccc-8200-e7f66474071d/deactivate
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/0d6af96b-c0ad-4eff-a4d8-56c3fdcfa9b7/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/d6297894-0ea4-4755-92c9-c6ac05233edf/41607051-4bd8-4a54-a5e2-cb713aef6ca2
+accept: application/json
+
+###
+
+# curl -X 'GET' 
+#  'https://localhost:5050/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree' 
+#  -H 'accept: application/json'
+GET {{API_HostAddress}}/cost-centers/41607051-4bd8-4a54-a5e2-cb713aef6ca2/tree
+accept: application/json
+
+###
+
 # curl -X 'POST' 
 #  'https://localhost:5050/companies' 
 #  -H 'accept: application/json' 
@@ -330,7 +428,7 @@ Content-Type: application/json
 {
   "company": {
     "name": "Demo",
-    "taxId": "3101268467",
+    "taxId": "3101268468",
     "country": "CR",
     "currencyCode": "USD",
     "isActive": true
@@ -367,7 +465,7 @@ Content-Type: application/json
 
 {
   "company": {
-    "id": "33474ae5-2399-4930-84a9-1f03dc431750",
+    "id": "d30bbc16-c7f6-458c-84fa-ffb1c7727950",
     "name": "Demo 1",
     "taxId": "3101268467",
     "country": "CR",
@@ -381,7 +479,7 @@ Content-Type: application/json
 # curl -X 'GET' 
 #  'https://localhost:5050/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/companies/41607051-4bd8-4a54-a5e2-cb713aef6ca2
+GET {{API_HostAddress}}/companies/f5ac526f-772b-4511-8040-31b61fc04ef0
 accept: application/json
 
 ###
@@ -397,7 +495,7 @@ accept: application/json
 # curl -X 'GET' 
 #  'https://localhost:5050/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12' 
 #  -H 'accept: application/json'
-GET {{API_HostAddress}}/audit-logs/e44ed594-272c-4978-a3b5-11fb47e9ca12
+GET {{API_HostAddress}}/audit-logs/63d5eea6-9872-4a15-b9f4-b1567755bd68
 accept: application/json
 
 ###
@@ -429,7 +527,7 @@ Content-Type: application/json
   "account": {
     "name": "Gasto por alquiler",
     "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
-    "ParentAccountId": "15165f65-a55a-4f7c-8d87-9275301217af"
+    "ParentAccountId": "e19f4576-6224-40e3-8b03-01343b413df7"
   }
 }
 
@@ -462,12 +560,12 @@ Content-Type: application/json
 
 {
   "accountDetail": {
-    "id": "cacfc56f-82ca-4cd5-b694-540b5e1b2e03",
+    "id": "7a8181e1-6197-489b-b7fa-5cfab03d84c1",
     "code": "7006",
-    "name": "Gastos varios de segundo nivel",
+    "name": "Gastos varios de segundo nivel #45",
     "accountTypeId": "71bbd6e0-abf4-4f2a-afec-9199bb404b08",
-    "parentAccountId": "8c597200-7580-4494-87b2-4661becf8690",
-    "isActive": false
+    "parentAccountId": "15165f65-a55a-4f7c-8d87-9275301217a",
+    "isActive": true
   }
 }
 

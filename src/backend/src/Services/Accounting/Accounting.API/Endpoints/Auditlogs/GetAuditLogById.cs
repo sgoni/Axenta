@@ -6,7 +6,7 @@
 
 //public record GetAuditLogByIdRequest(Guid PeriodId);
 
-public record GetAuditLogByIdResponse(AuditLogDto AuditDetail);
+public record GetAuditLogByIdResponse(AuditLogDto AuditLogDetail);
 
 public class GetAuditLogById : ICarterModule
 {

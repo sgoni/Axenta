@@ -10,66 +10,56 @@ public class JournalEntryConfiguration : IEntityTypeConfiguration<JournalEntry>
 
         builder.Property(j => j.Id)
             .HasConversion(
-                pid => pid!.Value,
-                val => JournalEntryId.Of(val)
-            )
+                id => id.Value,
+                val => JournalEntryId.Of(val))
             .IsRequired();
-
-        builder.Property(j => j.Date)
-            .IsRequired();
-
-        builder.Property(j => j.Description)
-            .HasMaxLength(500);
 
         builder.Property(j => j.PeriodId)
             .HasConversion(
-                pid => pid!.Value,
-                val => PeriodId.Of(val)
-            )
+                id => id.Value,
+                val => PeriodId.Of(val))
             .HasColumnName("PeriodId");
 
         builder.Property(j => j.CompanyId)
             .HasConversion(
-                pid => pid!.Value,
-                val => CompanyId.Of(val)
-            )
+                id => id.Value,
+                val => CompanyId.Of(val))
+            .IsRequired()
             .HasColumnName("CompanyId");
 
+        builder.Property(j => j.Date).IsRequired();
+
+        builder.Property(j => j.Description)
+            .HasMaxLength(500);
+
         builder.Property(j => j.CurrencyCode)
-            .HasMaxLength(3)
-            .IsRequired();
+            .HasMaxLength(3);
 
         builder.Property(j => j.ExchangeRate)
-            .HasColumnType("decimal(18,2)")
-            .HasDefaultValue(0m)
+            .HasColumnType("decimal(18,6)");
+
+        builder.Property(j => j.ExchangeRateDate);
+
+        builder.Property(j => j.JournalEntryType)
+            .HasMaxLength(50)
             .IsRequired();
-
-        builder.Property(j => j.ExchangeRateDate)
-            .IsRequired(false);
-
-        builder.Property(j => j.IsPosted)
-            .IsRequired()
-            .HasDefaultValue(false);
-
-        builder.Property(j => j.IsReversed)
-            .IsRequired()
-            .HasDefaultValue(false);
 
         builder.Property(j => j.ReversalJournalEntryId)
             .HasConversion(
-                pid => pid!.Value,
-                val => JournalEntryId.Of(val)
-            )
-            .IsRequired(false);
+                id => id!.Value,
+                val => JournalEntryId.Of(val))
+            .HasColumnName("ReversalJournalEntryId");
 
+        // relación con líneas
+        builder.HasMany(j => j.JournalEntryLines)
+            .WithOne()
+            .HasForeignKey(l => l.JournalEntryId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // relación con referencias de documentos
         builder.HasMany(j => j.DocumentReferences)
             .WithOne()
             .HasForeignKey(dr => dr.JournalEntryId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasMany(j => j.JournalEntryLines)
-            .WithOne()
-            .HasForeignKey(el => el.JournalEntryId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

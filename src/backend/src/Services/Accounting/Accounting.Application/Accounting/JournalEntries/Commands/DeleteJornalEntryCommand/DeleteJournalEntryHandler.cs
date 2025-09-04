@@ -13,17 +13,17 @@ public class DeleteJournalEntryHandler(IApplicationDbContext dbContext)
         var journalEntryId = JournalEntryId.Of(command.journalEntryId);
         var journalEntry = await dbContext.JournalEntries.FindAsync([journalEntryId], cancellationToken);
 
-        if (journalEntry is null) throw new JournalEntryNotFoundExceptions(command.journalEntryId);
+        if (journalEntry is null) throw EntityNotFoundException.For<JournalEntry>(command.journalEntryId);
 
         // Validation accounting period is Open
         await PeriodIsOpen(journalEntry.PeriodId, cancellationToken);
 
         // JournalEntry is reversed
-        if (journalEntry.IsReversed)
+        if (journalEntry.JournalEntryType.Equals(JournalEntryType.Reversal.Name))
             throw new BadRequestException("The journal entry is now reversed.");
 
-        // JournalEntry is posted
-        if (journalEntry.IsPosted)
+        // JournalEntry is close
+        if (journalEntry.JournalEntryType.Equals(JournalEntryType.Closing.Name))
             throw new BadRequestException(
                 "The journal entry appears verified and cannot be physically deleted, please proceed to reverse it.");
 
@@ -37,7 +37,7 @@ public class DeleteJournalEntryHandler(IApplicationDbContext dbContext)
     {
         var period = await dbContext.Periods.FindAsync(id, cancellationToken);
 
-        if (period is null) throw new PeriodNotFoundException(id.Value);
+        if (period is null) throw EntityNotFoundException.For<Period>(id.Value);
 
         if (period.IsClosed)
             throw new BadRequestException("The accounting period is closed and seats cannot be modified.");
