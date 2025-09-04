@@ -7,7 +7,7 @@
 
 public record UpdateCostCenterRequest(CostCenterDto CostCenter);
 
-public record UpdateCostCenterResponse(Guid Id);
+public record UpdateCostCenterResponse(bool IsSuccess);
 
 public class UpdateCostCenter : ICarterModule
 {

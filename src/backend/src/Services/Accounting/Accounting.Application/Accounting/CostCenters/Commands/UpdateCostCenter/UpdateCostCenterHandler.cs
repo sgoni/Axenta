@@ -11,7 +11,9 @@ public class UpdateCostCenterHandler(IApplicationDbContext dbContext)
         //return result
 
         var costCenterId = CostCenterId.Of(command.CostCenter.Id);
-        var costCenter = await dbContext.CostCenters.FindAsync([costCenterId], cancellationToken);
+        var costCenter = await dbContext.CostCenters
+            .Include(a => a.ParentCostCenter)
+            .FirstOrDefaultAsync(a => a.Id == costCenterId);
 
         if (costCenter is null) throw EntityNotFoundException.For<CostCenter>(command.CostCenter.Id);
 
@@ -21,14 +23,14 @@ public class UpdateCostCenterHandler(IApplicationDbContext dbContext)
         return new UpdateCostCenterResult(true);
     }
 
-    private void UpdateCostCenterWithNewValues(CostCenter costCenter, CostCenterDto commandCostCenter)
+    private async void UpdateCostCenterWithNewValues(CostCenter costCenter, CostCenterDto commandCostCenter)
     {
         costCenter.Update(
             commandCostCenter.Name,
             commandCostCenter.Description,
             commandCostCenter.IsActive,
             CostCenterId.FromNullable(commandCostCenter.ParentCostCenterId),
-            costCenter
+            costCenter.ParentCostCenter
         );
     }
 }

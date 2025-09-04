@@ -45,7 +45,14 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(a => a.ParentId)
+            .HasConversion(
+                pid => pid!.Value,
+                val => AccountId.FromNullable(val)
+            )
             .IsRequired(false);
+
+        //builder.Property(a => a.ParentId)
+        //    .IsRequired(false);
 
         builder.HasOne(a => a.Parent)
             .WithMany(a => a.Children)

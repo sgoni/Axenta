@@ -15,10 +15,10 @@ public static class JournalEntryExtensions
             journalEntry.ExchangeRate,
             journalEntry.ExchangeRateDate,
             journalEntry.JournalEntryType,
-            journalEntry.ReversalJournalEntryId.Value,
+            journalEntry.ReversalJournalEntryId?.Value,
             journalEntry.JournalEntryLines
                 .Select(ln => new JournalEntryLineDto(ln.Id.Value, ln.JournalEntryId.Value, ln.AccountId.Value,
-                    ln.Debit.Amount, ln.Credit.Amount, ln.CostCenterId.Value, ln.LineNumber)).ToList()
+                    ln.Debit.Amount, ln.Credit.Amount, ln.CostCenterId?.Value, ln.LineNumber)).ToList()
         ));
     }
 

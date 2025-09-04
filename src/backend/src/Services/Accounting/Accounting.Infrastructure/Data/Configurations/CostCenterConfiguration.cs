@@ -64,7 +64,7 @@ namespace Accounting.Infrastructure.Data.Configurations
                     pid => pid!.Value,
                     val => CostCenterId.FromNullable(val)
                 )
-                .IsRequired();
+                .IsRequired(false);
 
             builder.HasOne(cc => cc.ParentCostCenter)
                 .WithMany(cc => cc.Children)

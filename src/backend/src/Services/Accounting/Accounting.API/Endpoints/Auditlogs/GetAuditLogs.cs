@@ -6,7 +6,7 @@
 
 //public record GetAuditlogsRequest(PaginationRequest PaginationRequest);
 
-public record GetAuditlogsResponse(PaginatedResult<AuditLogDto> Auditlogs);
+public record GetAuditlogsResponse(PaginatedResult<AuditLogDto> AuditLogs);
 
 public class GetAuditLogsLIcar : ICarterModule
 {
