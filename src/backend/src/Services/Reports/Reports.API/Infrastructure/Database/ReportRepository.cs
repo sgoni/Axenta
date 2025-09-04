@@ -9,12 +9,12 @@ public class ReportRepository : IReportRepository
         _db = db;
     }
 
-    public async Task<decimal?> GetAccountBalanceAsync(Guid accountId)
+    public async Task<decimal?> GetAccountBalanceAsync(Guid accountId, Guid companyId)
     {
         var nameSpace =
             string.Concat(SqlLoader.ProjectName(), ".", "Infrastructure.Database.Sql.GetAccountBalance.sql");
         var sql = SqlLoader.LoadSql(nameSpace);
-        return await _db.ExecuteScalarAsync<decimal>(sql, new { AccountId = accountId });
+        return await _db.ExecuteScalarAsync<decimal>(sql, new { AccountId = accountId, CompanyId = companyId });
     }
 
     public async Task<decimal?> GetAccountBalanceByPeriodAsync(Guid accountId, Guid periodId)

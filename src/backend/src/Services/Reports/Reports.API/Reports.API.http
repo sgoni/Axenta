@@ -15,16 +15,16 @@ accept: application/json
 # curl -X 'GET' 
 #  'https://localhost:6060/reports/trial-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET https://localhost:6060/reports/trial-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
+GET {{API_HostAddress}}/reports/trial-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
     companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###
 
 # curl -X 'GET' 
-#  'https://localhost:6060/reports/account-balance/a04ee151-03d4-4840-8697-600360d6977d' 
+#  'https://localhost:6060/reports/account-balance/a04ee151-03d4-4840-8697-600360d6977d/41607051-4bd8-4a54-a5e2-cb713aef6ca2' 
 #  -H 'accept: application/json'
-GET https://localhost:6060/reports/account-balance/a04ee151-03d4-4840-8697-600360d6977d
+GET {{API_HostAddress}}/reports/account-balance/a04ee151-03d4-4840-8697-600360d6977d/41607051-4bd8-4a54-a5e2-cb713aef6ca2
 accept: application/json
 
 ###
@@ -32,7 +32,7 @@ accept: application/json
 # curl -X 'GET' 
 #  'https://localhost:6060/reports/account-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=a04ee151-03d4-4840-8697-600360d6977d' 
 #  -H 'accept: application/json'
-GET https://localhost:6060/reports/account-balance/period?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
+GET {{API_HostAddress}}/reports/account-balance/period?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&
     accountId=a04ee151-03d4-4840-8697-600360d6977d
 accept: application/json
 

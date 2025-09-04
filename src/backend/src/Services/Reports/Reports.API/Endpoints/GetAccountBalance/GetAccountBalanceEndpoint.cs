@@ -1,16 +1,16 @@
 ﻿namespace Reports.API.Endpoints.GetAccountBalance;
 
-//public record GetAccountBalanceRequest(Guid AccountId);
+//public record GetAccountBalanceRequest(Guid AccountId), Guid companyId;
 public record GetAccountBalanceResponse(decimal Balance);
 
 public class GetAccountBalanceEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/reports/account-balance/{accountId}",
-                async (Guid accountId, ISender sender) =>
+        app.MapGet("/reports/account-balance/{accountId}/{companyId}",
+                async (Guid accountId, Guid companyId, ISender sender) =>
                 {
-                    var result = await sender.Send(new GetAccountBalanceQuery(accountId));
+                    var result = await sender.Send(new GetAccountBalanceQuery(accountId, companyId));
 
                     var response = result.Adapt<GetAccountBalanceResponse>();
 
