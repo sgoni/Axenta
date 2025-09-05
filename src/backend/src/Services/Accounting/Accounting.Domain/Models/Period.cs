@@ -38,7 +38,7 @@ public class Period : Aggregate<PeriodId>
     {
         IsClosed = true;
         // Trigger event
-        AddDomainEvent(new PeriodClosedDomainEvent(Id.Value));
+        AddDomainEvent(new PeriodClosedDomainEvent(Id.Value, Year, Month));
     }
 
     public void Reopen(IEnumerable<JournalEntry> closingEntries)
@@ -55,7 +55,7 @@ public class Period : Aggregate<PeriodId>
         }
 
         IsClosed = false;
-        AddDomainEvent(new PeriodReopenedDomainEvent(Id.Value));
+        AddDomainEvent(new PeriodReopenedDomainEvent(Id.Value, Year, Month));
     }
 
     private static DateTime GetFirstDayOfTheMonth()

@@ -3,6 +3,7 @@
 public class PeriodClosedEventHandler(
     IApplicationDbContext dbContext,
     ICurrentUserService currentUserService,
+    IPublishEndpoint publishEndpoint,
     ILogger<PeriodClosedEventHandler> logger) : INotificationHandler<PeriodClosedDomainEvent>
 {
     public async Task Handle(PeriodClosedDomainEvent domainEvent, CancellationToken cancellationToken)
@@ -13,6 +14,17 @@ public class PeriodClosedEventHandler(
         var auditLog = CreateNewAuditLog(periodDomainEvent);
         dbContext.AuditLogs.Add(auditLog);
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        // Notification event
+        var evt = new EmailNotificationIntegrationEvent(
+            Guid.NewGuid(),
+            DateTime.UtcNow,
+            "finanzas@empresa.com",
+            "Closing of accounting period",
+            $"The period {domainEvent.Year}-{domainEvent.Month} has been successfully closed."
+        );
+
+        await publishEndpoint.Publish(evt, cancellationToken);
     }
 
     private AuditLog CreateNewAuditLog(Guid periodId)
