@@ -21,7 +21,7 @@ public class PeriodReopenedEventHandler(
             DateTime.UtcNow,
             "finanzas@empresa.com",
             "Reopening of the accounting period",
-            $"The period {domainEvent.Year}-{domainEvent.Month} has been successfully reopened."
+            $"The period {domainEvent.Year}-{domainEvent.Month} has been reopened by {domainEvent.ClosedBy}."
         );
 
         await publishEndpoint.Publish(evt, cancellationToken);
