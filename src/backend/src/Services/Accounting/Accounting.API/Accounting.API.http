@@ -313,7 +313,7 @@ accept: application/json
 # curl -X 'PUT' 
 #  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' 
 #  -H 'accept: application/json'
-PUT https://localhost:5050/cost-centers/5a7ecc2b-08de-4ccc-8200-e7f66474071d/activate
+PUT {{API_HostAddress}}/cost-centers/5a7ecc2b-08de-4ccc-8200-e7f66474071d/activate
 accept: application/json
 
 ###

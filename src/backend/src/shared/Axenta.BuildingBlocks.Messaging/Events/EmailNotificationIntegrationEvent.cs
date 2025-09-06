@@ -8,5 +8,6 @@ public record EmailNotificationIntegrationEvent(
     string Body,
     string? Cc = null,
     string? Bcc = null,
-    bool IsHtml = true
+    bool IsHtml = true,
+    string? CorrelationId = null
 );

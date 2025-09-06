@@ -3,6 +3,7 @@
 // Se dispara al revertir un asiento
 public record JournalEntryReversedIntegrationEvent(
     Guid JournalEntryId,
-    DateTime Date,
-    string ReversedBy
+    DateTime ReversedAt,
+    string ReversedBy,
+    string? CorrelationId = null
 );

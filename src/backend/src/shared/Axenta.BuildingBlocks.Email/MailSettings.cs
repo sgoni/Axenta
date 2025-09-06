@@ -8,6 +8,6 @@ public class MailSettings
     public int Port { get; set; }
     public string UserName { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
-    public bool EnableSSL { get; set; }
+    public bool UseStartTls { get; set; }
     public string TemplatePath { get; set; } = string.Empty;
 }

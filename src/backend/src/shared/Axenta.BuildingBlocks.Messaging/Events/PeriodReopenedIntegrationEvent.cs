@@ -3,7 +3,7 @@
 public record PeriodReopenedIntegrationEvent : IntegrationEvent
 {
     public PeriodReopenedIntegrationEvent(Guid periodId, Guid companyId, int year, int month, DateTime closedAt,
-        string? closedBy = null)
+        string? closedBy = null, string? correlationId = null)
     {
         PeriodId = periodId;
         CompanyId = companyId;
@@ -11,6 +11,7 @@ public record PeriodReopenedIntegrationEvent : IntegrationEvent
         Month = month;
         ReopenedBy = "System";
         ReopenedAt = closedAt;
+        CorrelationId = correlationId;
     }
 
     public Guid PeriodId { get; set; }
@@ -19,4 +20,5 @@ public record PeriodReopenedIntegrationEvent : IntegrationEvent
     public int Month { get; set; }
     public string ReopenedBy { get; set; }
     public DateTime ReopenedAt { get; set; }
+    public string? CorrelationId { get; set; }
 }

@@ -38,7 +38,7 @@ public class Period : Aggregate<PeriodId>
     {
         IsClosed = true;
         // Trigger event
-        AddDomainEvent(new PeriodClosedDomainEvent(Id.Value, Year, Month));
+        AddDomainEvent(new PeriodClosedDomainEvent(Id.Value, Year, Month, CompanyId.Value));
     }
 
     public void Reopen(IEnumerable<JournalEntry> closingEntries)

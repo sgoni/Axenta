@@ -13,7 +13,7 @@ public static class DependencyInjection
         services.Configure<MailSettings>(configuration.GetSection("EmailSettings"));
 
         // Registrar la clase ConsulServiceRegistrar como un servicio
-        services.AddSingleton<IEmailService, EmailService>();
+        services.AddSingleton<IEmailSender, EmailSender>();
 
         return services;
     }

@@ -4,6 +4,7 @@ public class PeriodClosedIntegrationEventConsumer(
     IApplicationDbContext dbContext,
     IEventLogRepository eventLogRepository,
     IJournalEntryRepository journalEntryRepository,
+    IPublishEndpoint publishEndpoint,
     ISender sender,
     ILogger<PeriodClosedIntegrationEventConsumer> logger) : IConsumer<PeriodClosedIntegrationEvent>
 {
@@ -50,6 +51,16 @@ public class PeriodClosedIntegrationEventConsumer(
 
         // We keep in the log that this message was attended
         await eventLogRepository.SaveProcessedAsync(@event.PeriodId);
+
+        var emailEvent = new EmailNotificationIntegrationEvent(
+            Guid.NewGuid(),
+            DateTime.UtcNow,
+            "finanzas@empresa.com", // TODO: configurable
+            "Closing accounting period",
+            $"The period {@event.Year}-{@event.Month} has been closed by {@event.ClosedBy}."
+        );
+
+        await publishEndpoint.Publish(emailEvent);
 
         // Redelivery with Delay due to external dependence not available:
         // throw new DelayedRedeliveryException(TimeSpan.FromSeconds(30));
