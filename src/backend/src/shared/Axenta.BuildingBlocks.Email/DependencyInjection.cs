@@ -10,7 +10,7 @@ public static class DependencyInjection
         if (services == null) throw new ArgumentNullException(nameof(services));
 
         // Cargar la configuración de Email desde appsettings.json
-        services.Configure<MailSettings>(configuration.GetSection("EmailSettings"));
+        services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
 
         // Registrar la clase ConsulServiceRegistrar como un servicio
         services.AddSingleton<IEmailSender, EmailSender>();

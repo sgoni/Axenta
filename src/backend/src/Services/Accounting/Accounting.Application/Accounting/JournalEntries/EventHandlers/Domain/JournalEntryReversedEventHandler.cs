@@ -16,14 +16,14 @@ public class JournalEntryReversedEventHandler(
         await dbContext.SaveChangesAsync(cancellationToken);
 
         // Notification event
-        var evt = new EmailNotificationIntegrationEvent(
+        var emailEvent = new EmailNotificationIntegrationEvent(
             Guid.NewGuid(),
             DateTime.UtcNow,
             "contabilidad@empresa.com",
             "Reversal of accounting entry",
-            $"The entry with ID {{journalEntry.Id}} has been reversed on date {DateTime.UtcNow:d}."
+            $"The entry with ID {journalEntryDomainEventId} has been reversed on date {DateTime.UtcNow:d}."
         );
-        await publishEndpoint.Publish(evt, cancellationToken);
+        await publishEndpoint.Publish(emailEvent, cancellationToken);
     }
 
     private AuditLog CreateNewAuditLog(Guid journalEntryId)

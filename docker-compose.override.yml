@@ -29,9 +29,9 @@ services:
   axenta.notifications:
     container_name: axenta-notifications
     depends_on:
-      - rabbitmq
+      - messagebroker
     environment:
-      RabbitMq__Host: rabbitmq
+      RabbitMq__Host: amqp://localhost:5672
       RabbitMq__VirtualHost: /
       RabbitMq__Username: guest
       RabbitMq__Password: guest
@@ -42,8 +42,8 @@ services:
       Smtp__FromEmail: noreply@axenta.com
       Smtp__FromName: Axenta Notifications
       Smtp__UseStartTls: "true"
-      networks:
-        - axenta-net
+    networks:
+      - axenta-net
 
 networks:
   axenta-net:  

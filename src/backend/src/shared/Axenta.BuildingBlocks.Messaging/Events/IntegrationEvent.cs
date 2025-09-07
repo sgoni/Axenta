@@ -1,5 +1,6 @@
 ﻿namespace Axenta.BuildingBlocks.Messaging.Events;
 
+// Integration event base log
 public record IntegrationEvent
 {
     public Guid Id => Guid.NewGuid();
