@@ -40,7 +40,8 @@ public record UpdateJournalEntryHandler(IApplicationDbContext dbContext)
             command.JournalEntry.Date,
             command.JournalEntry.CurrencyCode,
             command.JournalEntry.ExchangeRate,
-            command.JournalEntry.ExchangeRateDate
+            command.JournalEntry.ExchangeRateDate,
+            command.JournalEntry.JournalEntryType
         );
 
         dbContext.JournalEntries.Update(journalEntry);

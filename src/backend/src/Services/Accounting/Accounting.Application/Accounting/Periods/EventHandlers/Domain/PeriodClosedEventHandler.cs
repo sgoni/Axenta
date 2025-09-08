@@ -16,15 +16,15 @@ public class PeriodClosedEventHandler(
         await dbContext.SaveChangesAsync(cancellationToken);
 
         // Notification event
-        var evt = new EmailNotificationIntegrationEvent(
+        var emailEvent = new EmailNotificationIntegrationEvent(
             Guid.NewGuid(),
             DateTime.UtcNow,
-            "finanzas@empresa.com",
-            "Closing of accounting period",
+            "finanzas@empresa.com", // TODO: configurable
+            "Closing accounting period",
             $"The period {domainEvent.Year}-{domainEvent.Month} has been successfully closed."
         );
 
-        await publishEndpoint.Publish(evt, cancellationToken);
+        await publishEndpoint.Publish(emailEvent, cancellationToken);
     }
 
     private AuditLog CreateNewAuditLog(Guid periodId)

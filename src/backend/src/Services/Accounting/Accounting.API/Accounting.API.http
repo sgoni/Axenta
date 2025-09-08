@@ -254,7 +254,7 @@ accept: application/json
 # curl -X 'PUT' 
 #  'https://localhost:5050/journal-entries/3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
 #  -H 'accept: application/json'
-PUT {{API_HostAddress}}/journal-entries/a2386d1c-c53e-4f12-ad38-f2ea5a6c4081/reverse
+PUT {{API_HostAddress}}/journal-entries/fd1468cc-d745-45cb-8323-019e74d0c9f9/reverse
 accept: application/json
 
 ###

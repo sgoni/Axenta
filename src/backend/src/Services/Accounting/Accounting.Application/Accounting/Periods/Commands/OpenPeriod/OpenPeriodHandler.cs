@@ -9,8 +9,12 @@ public class OpenPeriodHandler(IApplicationDbContext dbContext, IPublishEndpoint
         // 2) Public the event (if it fails, MT reimburses according to politics)
         // return result
 
-        var periodId = PeriodId.Of(command.Period.PeriodId);
-        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
+        // Check company
+        var companyId = CompanyId.Of(command.Period.CompanyId);
+        var company = await dbContext.Companies.FindAsync(companyId, cancellationToken);
+
+        if (company is null || company is null)
+            throw EntityNotFoundException.For<Company>(command.Period.CompanyId);
 
         //Validation accounting period is Open
         await PeriodIsOpen(command.Period.PeriodId, cancellationToken);

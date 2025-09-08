@@ -16,15 +16,15 @@ public class PeriodReopenedEventHandler(
         await dbContext.SaveChangesAsync(cancellationToken);
 
         // Notification event
-        var evt = new EmailNotificationIntegrationEvent(
+        var emailEvent = new EmailNotificationIntegrationEvent(
             Guid.NewGuid(),
             DateTime.UtcNow,
-            "finanzas@empresa.com",
-            "Reopening of the accounting period",
-            $"The period {domainEvent.Year}-{domainEvent.Month} has been reopened by {domainEvent.ClosedBy}."
+            "auditor@empresa.com",
+            "Accounting period reopening",
+            $"The period {domainEvent.Year}-{domainEvent.Month} has been reopened by {domainEvent.ReopenedBy}."
         );
 
-        await publishEndpoint.Publish(evt, cancellationToken);
+        await publishEndpoint.Publish(emailEvent, cancellationToken);
     }
 
     private AuditLog CreateNewAuditLog(Guid periodId)

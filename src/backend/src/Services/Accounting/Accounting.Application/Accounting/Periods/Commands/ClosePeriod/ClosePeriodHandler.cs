@@ -17,10 +17,6 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext, IPublishEndpoin
             throw EntityNotFoundException.For<Company>(command.Period.CompanyId);
 
         // Check period
-        var periodId = PeriodId.Of(command.Period.PeriodId);
-        var period = await dbContext.Periods.FindAsync(periodId, cancellationToken);
-
-        if (period is null) throw EntityNotFoundException.For<Period>(command.Period.PeriodId);
         await PeriodIsClose(command.Period.PeriodId, cancellationToken);
 
         var eventMessage = command.Period.Adapt<PeriodClosedIntegrationEvent>();
@@ -30,7 +26,7 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext, IPublishEndpoin
         //period.Close();
         //await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new ClosePeriodResult(true);
+        return new ClosePeriodResult(true);  
     }
 
     private async Task PeriodIsClose(Guid id, CancellationToken cancellationToken)

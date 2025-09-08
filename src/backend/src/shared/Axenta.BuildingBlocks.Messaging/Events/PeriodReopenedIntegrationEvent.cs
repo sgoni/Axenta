@@ -2,15 +2,15 @@
 
 public record PeriodReopenedIntegrationEvent : IntegrationEvent
 {
-    public PeriodReopenedIntegrationEvent(Guid periodId, Guid companyId, int year, int month, DateTime closedAt,
-        string? closedBy = null, string? correlationId = null)
+    public PeriodReopenedIntegrationEvent(Guid periodId, Guid companyId, int year, int month, DateTime reopenedAt,
+        string? reopenedBy = null, string? correlationId = null)
     {
         PeriodId = periodId;
         CompanyId = companyId;
         Year = year;
         Month = month;
         ReopenedBy = "System";
-        ReopenedAt = closedAt;
+        ReopenedAt = reopenedAt;
         CorrelationId = correlationId;
     }
 

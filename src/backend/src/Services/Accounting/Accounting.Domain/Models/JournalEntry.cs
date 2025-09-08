@@ -44,7 +44,7 @@ public class JournalEntry : Aggregate<JournalEntryId>
     }
 
     public void Update(string? description, DateTime date, string? currencyCode, decimal? exchangeRate,
-        DateOnly? exchangeRateDate)
+        DateOnly? exchangeRateDate, string? journalEntryType = null)
     {
         var before = new JournalEntry
         {
@@ -65,7 +65,9 @@ public class JournalEntry : Aggregate<JournalEntryId>
         CurrencyCode = currencyCode;
         ExchangeRate = exchangeRate;
         ExchangeRateDate = exchangeRateDate;
-        JournalEntryType = Enums.JournalEntryType.Adjustment.Name;
+        JournalEntryType = journalEntryType is not null
+            ? journalEntryType
+            : Enums.JournalEntryType.Adjustment.Name;
 
         AddDomainEvent(new JournalEntryUpdatedEvent(before, this));
     }

@@ -12,6 +12,9 @@ public class EmailNotificationIntegrationEventConsumer(
 
         await emailSender.SendEmailAsync(@event.To, @event.Subject, @event.Body);
 
+        // Espera de 1 segundo para respetar el límite del plan gratuito
+        await Task.Delay(1000, context.CancellationToken);
+
         logger.LogInformation("Email sent to {To} with subject matter {Subject}", @event.To, @event.Subject);
     }
 }

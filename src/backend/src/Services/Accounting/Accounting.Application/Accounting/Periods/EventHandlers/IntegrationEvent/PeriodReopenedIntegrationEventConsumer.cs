@@ -46,16 +46,6 @@ public class PeriodReopenedIntegrationEventConsumer(
         // We keep in the log that this message was attended
         await eventLogRepository.SaveProcessedAsync(@event.PeriodId);
 
-        var emailEvent = new EmailNotificationIntegrationEvent(
-            Guid.NewGuid(),
-            DateTime.UtcNow,
-            "auditor@empresa.com",
-            "Accounting period reopening",
-            $"The period {period.Year}-{period.Month} has been reopened for {@event.ReopenedBy}."
-        );
-
-        await publishEndpoint.Publish(emailEvent);
-
         // Redelivery with Delay due to external dependence not available:
         // throw new DelayedRedeliveryException(TimeSpan.FromSeconds(30));
     }
