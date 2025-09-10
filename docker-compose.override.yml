@@ -23,6 +23,27 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - axenta-net
+
+  axenta.notifications:
+    container_name: axenta-notifications
+    depends_on:
+      - messagebroker
+    environment:
+      RabbitMq__Host: amqp://localhost:5672
+      RabbitMq__VirtualHost: /
+      RabbitMq__Username: guest
+      RabbitMq__Password: guest
+      Smtp__Host: sandbox.smtp.mailtrap.io
+      Smtp__Port: 2525
+      Smtp__User: e4d8b554a9ac2c
+      Smtp__Password: 13d48767cfe6c1
+      Smtp__FromEmail: noreply@axenta.com
+      Smtp__FromName: Axenta Notifications
+      Smtp__UseStartTls: "true"
+    networks:
+      - axenta-net
 
 networks:
   axenta-net:  

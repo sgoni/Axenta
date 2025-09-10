@@ -3,6 +3,7 @@
 public class PeriodReopenedEventHandler(
     IApplicationDbContext dbContext,
     ICurrentUserService currentUserService,
+    IPublishEndpoint publishEndpoint,
     ILogger<PeriodReopenedEventHandler> logger) : INotificationHandler<PeriodReopenedDomainEvent>
 {
     public async Task Handle(PeriodReopenedDomainEvent domainEvent, CancellationToken cancellationToken)
@@ -13,6 +14,17 @@ public class PeriodReopenedEventHandler(
         var auditLog = CreateNewAuditLog(periodDomainEvent);
         dbContext.AuditLogs.Add(auditLog);
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        // Notification event
+        var emailEvent = new EmailNotificationIntegrationEvent(
+            Guid.NewGuid(),
+            DateTime.UtcNow,
+            "auditor@empresa.com",
+            "Accounting period reopening",
+            $"The period {domainEvent.Year}-{domainEvent.Month} has been reopened by {domainEvent.ReopenedBy}."
+        );
+
+        await publishEndpoint.Publish(emailEvent, cancellationToken);
     }
 
     private AuditLog CreateNewAuditLog(Guid periodId)

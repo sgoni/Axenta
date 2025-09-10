@@ -4,6 +4,7 @@ public class PeriodReopenedIntegrationEventConsumer(
     IApplicationDbContext dbContext,
     IEventLogRepository eventLogRepository,
     IJournalEntryRepository journalEntryRepository,
+    IPublishEndpoint publishEndpoint,
     ISender sender,
     ILogger<PeriodReopenedIntegrationEventConsumer> logger) : IConsumer<PeriodReopenedIntegrationEvent>
 {
@@ -31,14 +32,17 @@ public class PeriodReopenedIntegrationEventConsumer(
             .Where(je => je.PeriodId == PeriodId.Of(@event.PeriodId))
             .ToListAsync();
 
+        // Reverse the closing entries
         foreach (var entry in closingEntries.Where(e => e.JournalEntryType.Equals(JournalEntryType.Closing.Name)))
         {
             var command = MapToReverseJournalEntryCommand(entry.Id.Value);
             await sender.Send(command);
         }
 
+        // Save Period in DB
         var period = await ValidateAndOpenPeriod(@event); // Check period
         await dbContext.SaveChangesAsync(default);
+
         // We keep in the log that this message was attended
         await eventLogRepository.SaveProcessedAsync(@event.PeriodId);
 
