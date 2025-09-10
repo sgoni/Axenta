@@ -23,7 +23,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/reports/income-statement?periodId=6d07e297-28e8-be78-ce84-96401f4ec967&companyId=6d07e297-28e8-be78-ce84-96401f4ec967",
+									"raw": "{{baseUrl}}/reports/income-statement?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -34,12 +34,12 @@
 									"query": [
 										{
 											"key": "periodId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
 											"description": "(Required) "
 										},
 										{
 											"key": "companyId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 											"description": "(Required) "
 										}
 									]
@@ -155,7 +155,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/reports/trial-balance?periodId=6d07e297-28e8-be78-ce84-96401f4ec967&companyId=6d07e297-28e8-be78-ce84-96401f4ec967",
+									"raw": "{{baseUrl}}/reports/trial-balance?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -166,12 +166,12 @@
 									"query": [
 										{
 											"key": "periodId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
 											"description": "(Required) "
 										},
 										{
 											"key": "companyId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 											"description": "(Required) "
 										}
 									]
@@ -290,20 +290,25 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/reports/account-balance/:accountId",
+											"raw": "{{baseUrl}}/reports/account-balance/:accountId/:companyId ",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"reports",
 												"account-balance",
-												":accountId"
+												":accountId",
+												":companyId "
 											],
 											"variable": [
 												{
 													"key": "accountId",
-													"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+													"value": "a04ee151-03d4-4840-8697-600360d6977d",
 													"description": "(Required) "
+												},
+												{
+													"key": "companyId ",
+													"value": "41607051-4bd8-4a54-a5e2-cb713aef6ca2"
 												}
 											]
 										},
@@ -406,7 +411,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/reports/account-balance/period?periodId=6d07e297-28e8-be78-ce84-96401f4ec967&accountId=6d07e297-28e8-be78-ce84-96401f4ec967",
+											"raw": "{{baseUrl}}/reports/account-balance/period?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&accountId=41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -418,12 +423,12 @@
 											"query": [
 												{
 													"key": "periodId",
-													"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+													"value": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
 													"description": "(Required) "
 												},
 												{
 													"key": "accountId",
-													"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+													"value": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 													"description": "(Required) "
 												}
 											]
@@ -543,7 +548,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/reports/general-ledger?periodId=6d07e297-28e8-be78-ce84-96401f4ec967&companyId=6d07e297-28e8-be78-ce84-96401f4ec967&accountID=6d07e297-28e8-be78-ce84-96401f4ec967",
+									"raw": "{{baseUrl}}/reports/general-ledger?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2&accountID=a04ee151-03d4-4840-8697-600360d6977d",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -554,17 +559,17 @@
 									"query": [
 										{
 											"key": "periodId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
 											"description": "(Required) "
 										},
 										{
 											"key": "companyId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 											"description": "(Required) "
 										},
 										{
 											"key": "accountID",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "a04ee151-03d4-4840-8697-600360d6977d",
 											"description": "(Required) "
 										}
 									]
@@ -690,7 +695,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/reports/balance-sheet?periodId=6d07e297-28e8-be78-ce84-96401f4ec967&companyId=6d07e297-28e8-be78-ce84-96401f4ec967",
+									"raw": "{{baseUrl}}/reports/balance-sheet?periodId=e44ed594-272c-4978-a3b5-11fb47e9ca12&companyId=41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -701,12 +706,12 @@
 									"query": [
 										{
 											"key": "periodId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "e44ed594-272c-4978-a3b5-11fb47e9ca12",
 											"description": "(Required) "
 										},
 										{
 											"key": "companyId",
-											"value": "6d07e297-28e8-be78-ce84-96401f4ec967",
+											"value": "41607051-4bd8-4a54-a5e2-cb713aef6ca2",
 											"description": "(Required) "
 										}
 									]
@@ -809,6 +814,45 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/health",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [

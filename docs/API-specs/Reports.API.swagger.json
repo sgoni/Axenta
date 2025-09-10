@@ -109,7 +109,7 @@
         }
       }
     },
-    "/reports/account-balance/{accountId}": {
+    "/reports/account-balance/{accountId}/{companyId}": {
       "get": {
         "tags": [
           "Reports.API"
@@ -120,6 +120,15 @@
         "parameters": [
           {
             "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "companyId",
             "in": "path",
             "required": true,
             "schema": {

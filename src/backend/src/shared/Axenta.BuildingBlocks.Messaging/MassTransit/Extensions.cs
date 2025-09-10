@@ -20,27 +20,37 @@ public static class Extensions
 
             config.UsingRabbitMq((context, configurator) =>
             {
-                configurator.Host(new Uri(configuration["MessageBroker:Host"]!), host =>
+                var hostUri = configuration["MessageBroker:Host"];
+                var userName = configuration["MessageBroker:UserName"];
+                var password = configuration["MessageBroker:Password"];
+
+                if (string.IsNullOrWhiteSpace(hostUri))
+                    throw new ArgumentNullException(nameof(hostUri), "MessageBroker:Host is not configured");
+
+                configurator.Host(new Uri(hostUri), host =>
                 {
-                    host.Username(configuration["MessageBroker:Username"]);
-                    host.Password(configuration["MessageBroker:Password"]);
+                    if (!string.IsNullOrWhiteSpace(userName))
+                        host.Username(userName);
+
+                    if (!string.IsNullOrWhiteSpace(password))
+                        host.Password(password);
                 });
 
                 // Enable to schedule deferred messages (delayed reset)
-                configurator.UseMessageRetry(r =>
-                {
-                    // Exponential: 5 attempts, base 1s, max 30s, factor 2
-                    r.Exponential(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(2));
-                    // Ignore Reintento for Business Errors
-                    //r.Ignore<BusinessRuleValidationException>();
-                    //r.Ignore<ValidationException>();
-                });
-
-                // Deferred Redelivery (if the handler explicitly asks for Delay)
-                configurator.UseScheduledRedelivery(rd =>
-                {
-                    rd.Intervals(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(2));
-                });
+                //configurator.UseMessageRetry(r =>
+                //{
+                //    // Exponential: 5 attempts, base 1s, max 30s, factor 2
+                //    r.Exponential(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(2));
+                //    // Ignore Reintento for Business Errors
+                //    //r.Ignore<BusinessRuleValidationException>();
+                //    //r.Ignore<ValidationException>();
+                //});
+//
+                //// Deferred Redelivery (if the handler explicitly asks for Delay)
+                //configurator.UseScheduledRedelivery(rd =>
+                //{
+                //    rd.Intervals(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(2));
+                //});
 
                 // Error / Dead-Letter that are by default:
                 // - <Queue> _error for messages that definitely fail
@@ -51,7 +61,7 @@ public static class Extensions
         });
 
         // Optional: Hostened Service for Health
-        services.AddMassTransitHostedService();
+        //services.AddMassTransitHostedService();
         return services;
     }
 }

@@ -2688,6 +2688,7 @@ curl -X POST "https://api.accounting.com/v1/journal-entries" \
 - ✅ Robust validations for accounting integrity
 - ✅ Financial Reports (Balance Sheet, Income Statement)
 - ✅ Cost Centers for Detailed Analysis
+- ✅ Sending email notifications
 
 ### Upcoming Features
 

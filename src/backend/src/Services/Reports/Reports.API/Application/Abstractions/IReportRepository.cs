@@ -2,7 +2,7 @@
 
 public interface IReportRepository
 {
-    Task<decimal?> GetAccountBalanceAsync(Guid accountId);
+    Task<decimal?> GetAccountBalanceAsync(Guid accountId, Guid companyId);
     Task<decimal?> GetAccountBalanceByPeriodAsync(Guid accountId, Guid periodId);
     Task<IEnumerable<BalanceSheetDto>> GetBalanceSheetAsync(Guid periodId, Guid companyId);
     Task<IEnumerable<IncomeStatementDto>> GetIncomeStatementAsync(Guid periodId, Guid companyId);

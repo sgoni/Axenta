@@ -254,7 +254,7 @@ accept: application/json
 # curl -X 'PUT' 
 #  'https://localhost:5050/journal-entries/3d5eeef9-d3a9-43e4-9b60-dd4a16e20ba7/reverse' 
 #  -H 'accept: application/json'
-PUT {{API_HostAddress}}/journal-entries/56cb166e-07b6-44f7-bd8b-cbc16c595946/reverse
+PUT {{API_HostAddress}}/journal-entries/fd1468cc-d745-45cb-8323-019e74d0c9f9/reverse
 accept: application/json
 
 ###
@@ -313,7 +313,7 @@ accept: application/json
 # curl -X 'PUT' 
 #  'https://localhost:5050/cost-centers/cfc933f3-0ba7-41b1-bbcd-9a766e547b26/activate' 
 #  -H 'accept: application/json'
-PUT https://localhost:5050/cost-centers/5a7ecc2b-08de-4ccc-8200-e7f66474071d/activate
+PUT {{API_HostAddress}}/cost-centers/5a7ecc2b-08de-4ccc-8200-e7f66474071d/activate
 accept: application/json
 
 ###
