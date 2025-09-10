@@ -4,6 +4,7 @@ public class PeriodClosedIntegrationEventConsumer(
     IApplicationDbContext dbContext,
     IEventLogRepository eventLogRepository,
     IJournalEntryRepository journalEntryRepository,
+    IPublishEndpoint publishEndpoint,
     ISender sender,
     ILogger<PeriodClosedIntegrationEventConsumer> logger) : IConsumer<PeriodClosedIntegrationEvent>
 {
@@ -33,6 +34,7 @@ public class PeriodClosedIntegrationEventConsumer(
             .Where(je => je.PeriodId == PeriodId.Of(@event.PeriodId))
             .ToListAsync();
 
+        // Closing the opening entries
         foreach (var entry in openingEntries.Where(e => e.JournalEntryType.Equals(JournalEntryType.Normal.Name)))
         {
             var commandEntry = MapToJournalEntryDto(entry);
@@ -43,6 +45,7 @@ public class PeriodClosedIntegrationEventConsumer(
         //var command = PeriodClosureSeat(context.Message);
         //await sender.Send(command);
 
+        // Save Period in DB
         var period = await ValidateAndClosePeriod(@event); // Check period
         await dbContext.SaveChangesAsync(default);
 
