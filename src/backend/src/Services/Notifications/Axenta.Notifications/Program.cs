@@ -1,4 +1,5 @@
 // Serilog consola
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .Enrich.FromLogContext()
@@ -6,7 +7,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 IConfiguration configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("appsettings.json", false, true)
     .Build();
 
 var builder = Host.CreateApplicationBuilder(args);

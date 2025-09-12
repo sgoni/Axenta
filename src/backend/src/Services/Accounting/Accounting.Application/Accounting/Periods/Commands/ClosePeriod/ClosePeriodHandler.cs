@@ -26,7 +26,7 @@ public class ClosePeriodHandler(IApplicationDbContext dbContext, IPublishEndpoin
         //period.Close();
         //await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new ClosePeriodResult(true);  
+        return new ClosePeriodResult(true);
     }
 
     private async Task PeriodIsClose(Guid id, CancellationToken cancellationToken)
